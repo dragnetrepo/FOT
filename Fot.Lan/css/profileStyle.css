@@ -1,0 +1,109 @@
+@charset "utf-8";
+/* CSS Document */
+
+.BodyStyle{background-image:url(../images/mainbg.jpg); background-repeat:repeat-x; margin-bottom:2px; margin-top:4px; margin-left:3px; margin-right:3px}
+
+
+.BodyStyle2{ margin-bottom:2px; margin-top:4px; margin-left:3px; margin-right:3px}
+
+a.NavStyle{color:#FFFFFF;text-decoration:none;font-size:12px;font-weight:normal;font-family:Arial, Helvetica, sans-serif}
+a.NavStyle:Hover{color:#FFFFFF;text-decoration:underline}
+.whiteText{color:#FFFFFF;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:12px;font-weight:normal}
+
+.normalText{color:#000000;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:12px;font-weight:normal}
+
+.loginHeader{color:#ffffff;font-family:Arial, Helvetica, sans-serif;font-size:15px;font-weight:bold}
+
+.loginTextBox{width:120px; height:22px; border:1px solid #333333}
+
+a.loginLink{color:#FFFFFF;text-decoration:none;}
+a.loginLink:Hover{color:#FFFFFF;text-decoration:underline}
+
+a.topLink{color:#333333;text-decoration:none;}
+a.topLink:Hover{text-decoration:underline}
+
+.footerText{color:#FFFFFF;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:10px;font-weight:normal}
+
+.footerText2{color:#333333;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:10px;font-weight:normal}
+
+.adminLoginTextBox{width:100px; height:22px; border:1px solid #333333}
+.adminLoginTextBox2{width:120px; height:22px; border:1px solid #333333}
+
+.textBoxLong{width:150px; height:22px; border:1px solid #cccccc}
+
+.pageHeader{color:#333333;font-family:Tahoma,Verdana;font-size:15px;font-weight:bold}
+
+.normalTextBold{color:#000000;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:12px;font-weight:BOLD}
+
+.messageTable { border:1px solid #999999; background-color:#F0F0F0;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:12px;color:#333333;}
+
+.normalTextBold2
+{
+  font-family: tahoma, verdana; 
+  font-size: 11px; 
+  font-weight: bold; 
+}
+
+.normalText2
+{
+  font-family: tahoma, verdana; 
+  font-size: 12px;  
+  line-height:18px;
+}
+
+.normalTextGrey
+{
+  font-family: tahoma, verdana; 
+  font-size: 12px;  
+  line-height:18px;
+  color:#999999
+}
+
+.normalTextBlack
+{
+  font-family: tahoma, verdana; 
+  font-size: 12px;  
+  line-height:18px;
+  color:#000000
+}
+
+
+.normalText3
+{
+  font-family: tahoma, verdana; 
+  font-size: 12px;  
+  line-height:24px;
+  font-weight:bold;
+}
+
+a.company{color:#666666;text-decoration:none;font-size:14px;font-weight:bold;font-family:Arial, Helvetica, sans-serif}
+a.company:Hover{color:#000000;text-decoration:underline}
+
+
+.nocompany {color:#999999;text-decoration:none;font-size:14px;font-weight:bold;font-family:Arial, Helvetica, sans-serif}
+
+.normalText2White
+{
+  font-family: tahoma, verdana; 
+  font-size: 12px;  
+  color:#FFFFFF;
+}
+.textBox{border:1px solid #999999;width:120}
+.textBoxNoWidth{border:1px solid #999999}
+
+.cardTextBox{width:40px;border:1px solid #999999;}
+
+.overAllStyle {font-size: 24px; font-weight: bold; }
+.scoreStyle {	font-size: 9px;
+	color: #333333;
+	font-style: italic;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.scoreStylebold{font-size: 9px; color: #333333; font-style: italic; font-family: Verdana, Arial, Helvetica, sans-serif; font-weight: bold; }
+.verbalStyle {	font-family: Verdana, Arial, Helvetica, sans-serif;font-weight: bold;font-size: 12px;color: #333333;
+}
+
+.profileHeader {font-family:Arial, Helvetica, sans-serif;color:#555555;font-size:14px;}
+
+.newPageHeader {font-family:Arial, Helvetica, sans-serif;color:#555555;font-size:18px;font-weight:bold}
+

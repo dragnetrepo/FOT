@@ -1,0 +1,31 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:Control="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             x:Class="LanMonitor.ScheduleControl" 
+             mc:Ignorable="d" 
+             d:DesignHeight="543" d:DesignWidth="1024" Width="1024" Height="543" Loaded="UserControl_Loaded_1">
+    <Grid>
+        <GroupBox Header="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="197" Width="1004">
+            <Canvas>
+                <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Canvas.Left="141" Canvas.Top="21" TabIndex="1"/>
+                <Button x:Name="bttnDownloadSchedule" Content="Download Schedule" Canvas.Left="141" Canvas.Top="108" Width="200" Height="25" Click="bttnDownloadSchedule_Click" TabIndex="3"/>
+                <Control:ProgressRing x:Name="progressRing" IsActive="False" Canvas.Left="377" Canvas.Top="17" />
+                <TextBlock HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Width="107" Canvas.Left="29" Canvas.Top="23" FontSize="14"/>
+                <TextBlock HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="107" Canvas.Left="29" Canvas.Top="67" FontSize="14"/>
+                <PasswordBox x:Name="txtPassword" Canvas.Left="141" Canvas.Top="65" Width="200" Height="26" TabIndex="2"/>
+                <TextBlock x:Name="lblStatus" Canvas.Left="384" TextWrapping="Wrap" Canvas.Top="20" Width="591" Height="131" FontSize="16" FontWeight="Bold" Foreground="#FFF03030"/>
+            </Canvas>
+        </GroupBox>
+        <GroupBox Header="" HorizontalAlignment="Left" Margin="10,239,0,0" VerticalAlignment="Top" Height="294" Width="1004">
+            <Canvas>
+                <ListBox x:Name="listBoxAssessments" Height="165" Canvas.Left="21" Canvas.Top="47" Width="952" DisplayMemberPath="Name" SelectedValuePath="BundleId"/>
+                <Button x:Name="bttnDownloadAssessment" Content="Download" Canvas.Left="21" Canvas.Top="227" Width="180" Height="25" Click="bttnDownloadAssessment_Click" TabIndex="4"/>
+                <TextBlock HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" Text="Assessments Required" VerticalAlignment="Top" Width="400" FontWeight="Bold" Canvas.Left="21" Canvas.Top="17" FontSize="14"/>
+            </Canvas>
+        </GroupBox>
+    </Grid>
+</UserControl>

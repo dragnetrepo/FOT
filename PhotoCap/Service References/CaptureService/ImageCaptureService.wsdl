@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="/Imports">
+      <xsd:import schemaLocation="http://localhost/Fot.Lan/ImageCaptureService.svc?xsd=xsd0" />
+      <xsd:import schemaLocation="http://localhost/Fot.Lan/ImageCaptureService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost/Fot.Lan/ImageCaptureService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Fot.Lan" />
+      <xsd:import schemaLocation="http://localhost/Fot.Lan/ImageCaptureService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Fot.Lan.Models" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ImageCaptureService_GetCandidates_InputMessage">
+    <wsdl:part name="parameters" element="GetCandidates" />
+  </wsdl:message>
+  <wsdl:message name="ImageCaptureService_GetCandidates_OutputMessage">
+    <wsdl:part name="parameters" element="GetCandidatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ImageCaptureService_UpdateCandidate_InputMessage">
+    <wsdl:part name="parameters" element="UpdateCandidate" />
+  </wsdl:message>
+  <wsdl:message name="ImageCaptureService_UpdateCandidate_OutputMessage">
+    <wsdl:part name="parameters" element="UpdateCandidateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ImageCaptureService_GetStaffList_InputMessage">
+    <wsdl:part name="parameters" element="GetStaffList" />
+  </wsdl:message>
+  <wsdl:message name="ImageCaptureService_GetStaffList_OutputMessage">
+    <wsdl:part name="parameters" element="GetStaffListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ImageCaptureService_UpdateStaff_InputMessage">
+    <wsdl:part name="parameters" element="UpdateStaff" />
+  </wsdl:message>
+  <wsdl:message name="ImageCaptureService_UpdateStaff_OutputMessage">
+    <wsdl:part name="parameters" element="UpdateStaffResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ImageCaptureService">
+    <wsdl:operation name="GetCandidates">
+      <wsdl:input wsaw:Action="urn:ImageCaptureService/GetCandidates" message="ImageCaptureService_GetCandidates_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ImageCaptureService/GetCandidatesResponse" message="ImageCaptureService_GetCandidates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCandidate">
+      <wsdl:input wsaw:Action="urn:ImageCaptureService/UpdateCandidate" message="ImageCaptureService_UpdateCandidate_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ImageCaptureService/UpdateCandidateResponse" message="ImageCaptureService_UpdateCandidate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStaffList">
+      <wsdl:input wsaw:Action="urn:ImageCaptureService/GetStaffList" message="ImageCaptureService_GetStaffList_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ImageCaptureService/GetStaffListResponse" message="ImageCaptureService_GetStaffList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStaff">
+      <wsdl:input wsaw:Action="urn:ImageCaptureService/UpdateStaff" message="ImageCaptureService_UpdateStaff_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ImageCaptureService/UpdateStaffResponse" message="ImageCaptureService_UpdateStaff_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

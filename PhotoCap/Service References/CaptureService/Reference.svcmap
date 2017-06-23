@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5a319500-74a1-4ec1-a0f8-14e244bd3b6d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/Fot.Lan/ImageCaptureService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ImageCaptureService.wsdl" MetadataType="Wsdl" ID="2f16044f-a480-4d56-9ea4-ef84609bf78c" SourceId="1" SourceUrl="http://localhost/Fot.Lan/ImageCaptureService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="ImageCaptureService.xsd" MetadataType="Schema" ID="3a1c228e-d8c0-492b-aecb-14fb86a536af" SourceId="1" SourceUrl="http://localhost/Fot.Lan/ImageCaptureService.svc?xsd=xsd3" />
+    <MetadataFile FileName="ImageCaptureService1.xsd" MetadataType="Schema" ID="7080e7be-f060-444d-9275-a49086e9003a" SourceId="1" SourceUrl="http://localhost/Fot.Lan/ImageCaptureService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ImageCaptureService.disco" MetadataType="Disco" ID="ca4b0bee-72c2-40a9-a801-b13792cd7c3c" SourceId="1" SourceUrl="http://localhost/Fot.Lan/ImageCaptureService.svc?disco" />
+    <MetadataFile FileName="ImageCaptureService2.xsd" MetadataType="Schema" ID="55c0274e-8294-4037-995b-b3f85cf7b7e8" SourceId="1" SourceUrl="http://localhost/Fot.Lan/ImageCaptureService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ImageCaptureService1.wsdl" MetadataType="Wsdl" ID="f1523f9d-5166-4f64-8561-bb2c921ae965" SourceId="1" SourceUrl="http://localhost/Fot.Lan/ImageCaptureService.svc?wsdl" />
+    <MetadataFile FileName="ImageCaptureService3.xsd" MetadataType="Schema" ID="d17be04a-6ef2-42ee-a7cf-553afbeddaff" SourceId="1" SourceUrl="http://localhost/Fot.Lan/ImageCaptureService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

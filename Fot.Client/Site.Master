@@ -1,0 +1,125 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Fot.Client.Site" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="Head1" runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Face Of Testing</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    
+    <script src="Scripts/jquery-1.7.1.min.js"></script>
+
+
+    <script type="text/javascript">
+<!--
+    function MM_openBrWindow(theURL, winName, features) { //v2.0
+
+        var x = window.screen.width;
+        var y = window.screen.height;
+        window.open(theURL, winName, features + 'width=' + x + ',height=' + y);
+    }
+    //-->
+    </script>
+
+    <style type="text/css">
+        .boxDiv
+        {
+            width: 120px;
+            height: 20px;
+            border: 1px solid #E0E0E0;
+            background-color: #fff;
+            margin: 5px;
+            margin-left: 10px;
+            padding: 10px;
+            float: left;
+            padding-top: 10px;
+        }
+
+            .boxDiv:hover
+            {
+                border: 1px solid #E0E0E0;
+                background-color: #edf6fd;
+                cursor: pointer;
+                color: black;
+            }
+
+        .codeStyle
+        {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            color: #666;
+            text-transform: uppercase;
+            text-align: center;
+        }
+    </style>
+    
+   
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="outer_wrapper_inner" style="left: 0px; top: 0px">
+            
+                <div id="wrapper">
+                    <!--header -->
+                    <div id="header" style="height: 80px">
+                        <img src="images/newlogo2.png" alt="" id="logo" />
+                        &nbsp;
+                        <img src="images/exam-text.png" alt="" id="logo2" /></div>
+                    <!--Menu Area -->
+                    <!--content area -->
+
+                    <div id="content">
+                        <div style="border: 1px solid #ccc; width: 810px; height: 50px; margin: auto; padding: 5px; background-color: #fefefe;">
+
+                            <div class='boxDiv' onclick="location.href='Details.aspx';" style="width: 140px;">
+                                <div class='codeStyle'>Schedule Details<asp:ScriptManager ID="ScriptManager1" runat="server">
+                        <Scripts>
+                            <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.Core.js" />
+                            <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.jQuery.js" />
+                        </Scripts>
+                    </asp:ScriptManager>
+                                </div>
+                            </div>
+                            
+                              <div class='boxDiv' onclick="location.href='PhotoUpload.aspx';">
+                                <div class='codeStyle'>Photo Upload</div>
+                            </div>
+                            <div class='boxDiv' onclick="location.href='Results.aspx';">
+                                <div class='codeStyle'>Results</div>
+                            </div>
+
+                            <div class='boxDiv' onclick="location.href='Feedback.aspx';">
+                                <div class='codeStyle'>Feedback</div>
+                            </div>
+                            
+                                <div class='boxDiv' onclick="location.href='Logout.aspx';">
+                                <div class='codeStyle'>Logout</div>
+                            </div>
+
+                        </div>
+
+                        <div style="border: 1px solid #ccc; width: 800px; min-height: 400px; margin: auto; padding: 10px; background-color: #fefefe; margin-top: 20px;">
+                            <div>
+                                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                </asp:ContentPlaceHolder>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <!--footer -->
+
+                <br class="clear" />
+           
+        </div>
+
+    </form>
+</body>
+</html>

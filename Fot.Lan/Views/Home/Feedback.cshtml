@@ -1,0 +1,257 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Face Of Testing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+    <!-- Required -->
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="~/assets/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" media="screen">
+
+    <script src="~/assets/js/jQuery/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/Bootstrap/bootstrap.min.js"></script>
+
+    <style type="text/css">
+        .scar .radio-inline {
+            margin-right: 30px;
+        }
+
+        .scar {
+            margin-top: 30px;
+            padding: 5px;
+            /* border: 1px solid #f0f0f0; */
+        }
+
+        .scar p {
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+
+
+</head>
+    <body>
+
+
+    <div class="container">
+    @using (Html.BeginForm("Feedback", "Home", FormMethod.Post, null))
+    {
+
+        <div class="row">
+            <h3>TEST PROCESS EVALUATION FORM</h3>
+
+            <p>
+                We understand that every recruitment process should be tailored towards creating a compelling atmosphere to explore the strengths
+                of our candidates. Therefore to improve our recruitment process we invite you to give us feedback on how satisfactory
+                our test process has been for you and suggest constructive ways we can improve to help serve you better.
+                <br/>
+                <br/>
+                <strong>Below are a set of statements indicating reaction towards our process. Kindly indicate to what extent you agree or disagree. Remember there is no right or wrong answer. Thank you.</strong>
+
+            </p>
+
+        </div>
+
+        <div class="row scar">
+            <p>Directions to the test center in the invite were accurate.</p>
+            <label class="radio-inline">
+                <input type="radio" name="Directions" value="1" required> Strongly Agree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="Directions" value="2" required> Agree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="Directions" value="3" required> Neither Agree Nor Disagree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="Directions" value="4" required>Disagree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="Directions" value="5" required> Strongly Disagree
+            </label>
+        </div>
+
+
+        <div class="row scar">
+            <p>I did not have to wait long hours at the gate before I was attended to.</p>
+            <label class="radio-inline">
+                <input type="radio" name="WaitTime" value="1" required> Strongly Agree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="WaitTime" value="2" required> Agree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="WaitTime" value="3" required> Neither Agree Nor Disagree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="WaitTime" value="4" required>Disagree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="WaitTime" value="5" required> Strongly Disagree
+            </label>
+        </div>
+
+
+        <div class="row scar">
+            <p>I felt the testing staff were polite and professional.</p>
+            <label class="radio-inline">
+                <input type="radio" name="Professionalism" value="1" required> Strongly Agree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="Professionalism" value="2" required> Agree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="Professionalism" value="3" required> Neither Agree Nor Disagree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="Professionalism" value="4" required>Disagree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="Professionalism" value="5" required> Strongly Disagree
+            </label>
+        </div>
+
+
+
+        <div class="row scar">
+            <p>My test commenced at the time stated on the invite.</p>
+            <label class="radio-inline">
+                <input type="radio" name="StartTime" value="1" required> Strongly Agree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="StartTime" value="2" required> Agree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="StartTime" value="3" required> Neither Agree Nor Disagree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="StartTime" value="4" required>Disagree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="StartTime" value="5" required> Strongly Disagree
+            </label>
+        </div>
+
+
+        <div class="row scar">
+            <p>I felt that the briefing before the test was accurate and helpful during the test.</p>
+            <label class="radio-inline">
+                <input type="radio" name="Briefing" value="1" required> Strongly Agree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="Briefing" value="2" required> Agree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="Briefing" value="3" required> Neither Agree Nor Disagree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="Briefing" value="4" required>Disagree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="Briefing" value="5" required> Strongly Disagree
+            </label>
+        </div>
+
+
+        <div class="row scar">
+            <p>I felt the online registration process was properly structured.</p>
+            <label class="radio-inline">
+                <input type="radio" name="Registration" value="1" required> Strongly Agree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="Registration" value="2" required> Agree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="Registration" value="3" required> Neither Agree Nor Disagree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="Registration" value="4" required>Disagree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="Registration" value="5" required> Strongly Disagree
+            </label>
+        </div>
+
+
+        <div class="row scar">
+            <p>Overall, I am satisfied with the test process.</p>
+            <label class="radio-inline">
+                <input type="radio" name="Overall" value="1" required> Strongly Agree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="Overall" value="2" required> Agree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="Overall" value="3" required> Neither Agree Nor Disagree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="Overall" value="4" required>Disagree
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="Overall" value="5" required> Strongly Disagree
+            </label>
+        </div>
+
+
+        <div class="row scar">
+            <p>Kindly indicate which of the following test process you consider unsatisfactory.</p>
+            <label class="radio-inline">
+                <input type="radio" name="UnsatisfactoryArea" value="1"> Invigilation
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="UnsatisfactoryArea" value="2"> Gate Control
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="UnsatisfactoryArea" value="3"> Photo Capture
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="UnsatisfactoryArea" value="4">Ushering
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="UnsatisfactoryArea" value="5"> Test Reschedule
+            </label>
+        </div>
+
+
+        <div class="row scar">
+            <p>Kindly indicate which of the following test process you consider satisfactory.</p>
+            <label class="radio-inline">
+                <input type="radio" name="SatisfactoryArea" value="1" > Invigilation
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="SatisfactoryArea" value="2"> Gate Control
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="SatisfactoryArea" value="3"> Photo Capture
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="SatisfactoryArea" value="4">Ushering
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="SatisfactoryArea" value="5"> Test Reschedule
+            </label>
+        </div>
+
+        <div class="row scar">
+            <p>Are there any other comments or suggestions? Kindly give us details.</p>
+
+            <textarea rows="3" class="col-md-10" name="Comments"></textarea>
+        </div>
+
+        <div class="row scar" style="margin-bottom: 40px;">
+            <button style="float: left;" type="submit">Submit Feedback</button>
+        </div>
+    }
+    </div>
+    </body>
+
+</html>

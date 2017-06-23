@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Fot.Admin.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Fot.Admin.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="SchedulePackage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssessmentList" nillable="true" type="tns:ArrayOfAssessmentBundleViewModel" />
+      <xs:element minOccurs="0" name="DownloadDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsDone" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ScheduleList" nillable="true" type="tns:ArrayOfTestScheduleViewModel" />
+      <xs:element minOccurs="0" name="StaffList" nillable="true" type="tns:ArrayOfSupportStaffViewModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SchedulePackage" nillable="true" type="tns:SchedulePackage" />
+  <xs:complexType name="ArrayOfAssessmentBundleViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AssessmentBundleViewModel" nillable="true" type="tns:AssessmentBundleViewModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAssessmentBundleViewModel" nillable="true" type="tns:ArrayOfAssessmentBundleViewModel" />
+  <xs:complexType name="AssessmentBundleViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BundleId" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AssessmentBundleViewModel" nillable="true" type="tns:AssessmentBundleViewModel" />
+  <xs:complexType name="ArrayOfTestScheduleViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TestScheduleViewModel" nillable="true" type="tns:TestScheduleViewModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTestScheduleViewModel" nillable="true" type="tns:ArrayOfTestScheduleViewModel" />
+  <xs:complexType name="TestScheduleViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BundleId" type="xs:int" />
+      <xs:element minOccurs="0" name="CampaignId" type="xs:int" />
+      <xs:element minOccurs="0" name="CandidateId" type="xs:int" />
+      <xs:element minOccurs="0" name="Firstname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Lastname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MobileNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SessionId" type="xs:int" />
+      <xs:element minOccurs="0" name="ShowFeedback" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TestScheduleViewModel" nillable="true" type="tns:TestScheduleViewModel" />
+  <xs:complexType name="ArrayOfSupportStaffViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SupportStaffViewModel" nillable="true" type="tns:SupportStaffViewModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSupportStaffViewModel" nillable="true" type="tns:ArrayOfSupportStaffViewModel" />
+  <xs:complexType name="SupportStaffViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Firstname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsCaptureAdmin" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSupportStaff" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Lastname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SupportStaffViewModel" nillable="true" type="tns:SupportStaffViewModel" />
+  <xs:complexType name="BundlePackage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BundleData" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="BundleId" type="xs:int" />
+      <xs:element minOccurs="0" name="BundleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DownloadDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsDone" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BundlePackage" nillable="true" type="tns:BundlePackage" />
+  <xs:complexType name="ResultUpdateModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CampaignId" type="xs:int" />
+      <xs:element minOccurs="0" name="CandidateId" type="xs:int" />
+      <xs:element minOccurs="0" name="CandidatePhoto" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="Feedback" nillable="true" type="tns:FeedbackModel" />
+      <xs:element minOccurs="0" name="PhotoCapturedBy" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Results" nillable="true" type="tns:ArrayOfResultEntryModel" />
+      <xs:element minOccurs="0" name="SessionId" type="xs:int" />
+      <xs:element minOccurs="0" name="TestEndTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TestStartTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResultUpdateModel" nillable="true" type="tns:ResultUpdateModel" />
+  <xs:complexType name="FeedbackModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Briefing" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Comments" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Directions" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Overall" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Professionalism" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Registration" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SatisfactoryArea" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="StartTime" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="UnsatisfactoryArea" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="WaitTime" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FeedbackModel" nillable="true" type="tns:FeedbackModel" />
+  <xs:complexType name="ArrayOfResultEntryModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ResultEntryModel" nillable="true" type="tns:ResultEntryModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfResultEntryModel" nillable="true" type="tns:ArrayOfResultEntryModel" />
+  <xs:complexType name="ResultEntryModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssessmentId" type="xs:int" />
+      <xs:element minOccurs="0" name="CandidateOptions" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EssayText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SelectedEssayId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TestScore" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResultEntryModel" nillable="true" type="tns:ResultEntryModel" />
+  <xs:complexType name="ArrayOfPhotoLogModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PhotoLogModel" nillable="true" type="tns:PhotoLogModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPhotoLogModel" nillable="true" type="tns:ArrayOfPhotoLogModel" />
+  <xs:complexType name="PhotoLogModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdminUserId" type="xs:int" />
+      <xs:element minOccurs="0" name="CandidateId" type="xs:int" />
+      <xs:element minOccurs="0" name="ExpungeDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PhotoLogModel" nillable="true" type="tns:PhotoLogModel" />
+  <xs:complexType name="ArrayOfPersonnelPhotoUpdateModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PersonnelPhotoUpdateModel" nillable="true" type="tns:PersonnelPhotoUpdateModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPersonnelPhotoUpdateModel" nillable="true" type="tns:ArrayOfPersonnelPhotoUpdateModel" />
+  <xs:complexType name="PersonnelPhotoUpdateModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsSupportStaff" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PostTestCapturedByAdminId" type="xs:int" />
+      <xs:element minOccurs="0" name="PostTestPhoto" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="PreTestCapturedByAdminId" type="xs:int" />
+      <xs:element minOccurs="0" name="PreTestPhoto" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="TestDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PersonnelPhotoUpdateModel" nillable="true" type="tns:PersonnelPhotoUpdateModel" />
+</xs:schema>

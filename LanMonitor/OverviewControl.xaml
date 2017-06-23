@@ -1,0 +1,41 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="LanMonitor.OverviewControl" 
+             mc:Ignorable="d" 
+             d:DesignHeight="543" d:DesignWidth="1024" Width="1024" Height="543" Loaded="UserControl_Loaded_1">
+    <UserControl.Resources>
+        <Style TargetType ="{x:Type DataGridColumnHeader}">
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#FF003C60"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <GroupBox Header="Summary" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="116" Width="1004">
+            <Canvas>
+                <TextBlock HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" Text="Total Candidates" VerticalAlignment="Top" Width="120" FontWeight="Bold" FontSize="14" Canvas.Left="21" Canvas.Top="10"/>
+
+                <TextBlock HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" Text="Started" VerticalAlignment="Top" Width="120" FontWeight="Bold" Canvas.Left="21" Canvas.Top="35" FontSize="14"/>
+                <TextBlock HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" Text="Completed" VerticalAlignment="Top" Width="120" FontWeight="Bold" Canvas.Left="21" Canvas.Top="63" FontSize="14"/>
+                <TextBlock x:Name="txtTotal" HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Width="136" Canvas.Left="145" Canvas.Top="10" FontSize="14"/>
+                <TextBlock x:Name="txtStarted" HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Width="136" Canvas.Left="145" Canvas.Top="35" FontSize="14"/>
+                <TextBlock x:Name="txtCompleted" HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Width="136" Canvas.Left="145" Canvas.Top="63" FontSize="14"/>
+                <TextBlock HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" Text="Results Synchronized" VerticalAlignment="Top" Width="157" FontWeight="Bold" Canvas.Left="743" Canvas.Top="10" FontSize="14"/>
+                <TextBlock x:Name="txtSynchronized" HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Canvas.Left="904" Canvas.Top="10" FontSize="14"/>
+            </Canvas>
+        </GroupBox>
+        <DataGrid x:Name="candidateGrid" HorizontalAlignment="Left" Margin="10,158,0,0" VerticalAlignment="Top" Width="1004" Height="311" AutoGenerateColumns="False" MinColumnWidth="100" FontSize="14" HorizontalGridLinesBrush="#FF666666" Foreground="#FF666666" IsReadOnly="True">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Username" Width="200"  Binding="{Binding Username}"/>
+                <DataGridTextColumn Header="First Name" Width="180" Binding="{Binding Firstname}" />
+                <DataGridTextColumn Header="Last Name" Width="190" Binding="{Binding Lastname}"/>
+                <DataGridTextColumn Header="Date / Time Started" Width="200" Binding="{Binding DateTimeStarted}"/>
+                <DataGridCheckBoxColumn Header="Started ?" Binding="{Binding AssessmentStarted}"  IsReadOnly="True"/>
+                <DataGridCheckBoxColumn Header="Completed ?" Binding="{Binding AssessmentCompleted}" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

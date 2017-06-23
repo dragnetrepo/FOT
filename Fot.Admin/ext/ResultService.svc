@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Fot.Admin.ext.ResultService" CodeBehind="ResultService.svc.cs" %>

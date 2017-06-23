@@ -1,0 +1,562 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FotAuthorModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="FotAuthorModelStoreContainer">
+          <EntitySet Name="Assessment" EntityType="FotAuthorModel.Store.Assessment" store:Type="Tables" />
+          <EntitySet Name="AssessmentAnswer" EntityType="FotAuthorModel.Store.AssessmentAnswer" store:Type="Tables" />
+          <EntitySet Name="AssessmentQuestion" EntityType="FotAuthorModel.Store.AssessmentQuestion" store:Type="Tables" />
+          <EntitySet Name="AssessmentTopic" EntityType="FotAuthorModel.Store.AssessmentTopic" store:Type="Tables" />
+          <EntitySet Name="QuestionDifficultyLevel" EntityType="FotAuthorModel.Store.QuestionDifficultyLevel" store:Type="Tables" />
+          <EntitySet Name="QuestionGroup" EntityType="FotAuthorModel.Store.QuestionGroup" store:Type="Tables" />
+          <AssociationSet Name="FK_AssessmentAnswer_AssessmentQuestion" Association="FotAuthorModel.Store.FK_AssessmentAnswer_AssessmentQuestion">
+            <End Role="AssessmentQuestion" EntitySet="AssessmentQuestion" />
+            <End Role="AssessmentAnswer" EntitySet="AssessmentAnswer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentQuestion_Assessment" Association="FotAuthorModel.Store.FK_AssessmentQuestion_Assessment">
+            <End Role="Assessment" EntitySet="Assessment" />
+            <End Role="AssessmentQuestion" EntitySet="AssessmentQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentQuestion_AssessmentTopic" Association="FotAuthorModel.Store.FK_AssessmentQuestion_AssessmentTopic">
+            <End Role="AssessmentTopic" EntitySet="AssessmentTopic" />
+            <End Role="AssessmentQuestion" EntitySet="AssessmentQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentQuestion_QuestionDifficultyLevel" Association="FotAuthorModel.Store.FK_AssessmentQuestion_QuestionDifficultyLevel">
+            <End Role="QuestionDifficultyLevel" EntitySet="QuestionDifficultyLevel" />
+            <End Role="AssessmentQuestion" EntitySet="AssessmentQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentQuestion_QuestionGroup" Association="FotAuthorModel.Store.FK_AssessmentQuestion_QuestionGroup">
+            <End Role="QuestionGroup" EntitySet="QuestionGroup" />
+            <End Role="AssessmentQuestion" EntitySet="AssessmentQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentTopic_Assessment" Association="FotAuthorModel.Store.FK_AssessmentTopic_Assessment">
+            <End Role="Assessment" EntitySet="Assessment" />
+            <End Role="AssessmentTopic" EntitySet="AssessmentTopic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionDifficultyLevel_Assessment" Association="FotAuthorModel.Store.FK_QuestionDifficultyLevel_Assessment">
+            <End Role="Assessment" EntitySet="Assessment" />
+            <End Role="QuestionDifficultyLevel" EntitySet="QuestionDifficultyLevel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionGroup_Assessment" Association="FotAuthorModel.Store.FK_QuestionGroup_Assessment">
+            <End Role="Assessment" EntitySet="Assessment" />
+            <End Role="QuestionGroup" EntitySet="QuestionGroup" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Assessment">
+          <Key>
+            <PropertyRef Name="AssessmentId" />
+          </Key>
+          <Property Name="AssessmentId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Duration" Type="int" Nullable="false" />
+          <Property Name="InstructionText" Type="ntext" />
+          <Property Name="InstructionImage" Type="image" />
+          <Property Name="Timed" Type="bit" Nullable="false" />
+          <Property Name="AssessmentType" Type="int" Nullable="false" />
+          <Property Name="RandomizeQuestions" Type="bit" Nullable="false" />
+          <Property Name="RandomizeOptions" Type="bit" Nullable="false" />
+          <Property Name="AdvancedOutputOptions" Type="bit" Nullable="false" />
+          <Property Name="QuestionsPerTest" Type="int" Nullable="false" />
+          <Property Name="DateAdded" Type="datetime" Nullable="false" />
+          <Property Name="DateLastUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AssessmentAnswer">
+          <Key>
+            <PropertyRef Name="AnswerId" />
+          </Key>
+          <Property Name="AnswerId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionId" Type="int" Nullable="false" />
+          <Property Name="AnswerText" Type="nvarchar" MaxLength="300" />
+          <Property Name="AnswerImage" Type="image" />
+          <Property Name="IsImage" Type="bit" Nullable="false" />
+          <Property Name="IsCorrect" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AssessmentQuestion">
+          <Key>
+            <PropertyRef Name="QuestionId" />
+          </Key>
+          <Property Name="QuestionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AssessmentId" Type="int" Nullable="false" />
+          <Property Name="TopicId" Type="int" />
+          <Property Name="GroupId" Type="int" />
+          <Property Name="DifficultyLevel" Type="int" />
+          <Property Name="QuestionText" Type="ntext" />
+          <Property Name="QuestionImage" Type="image" />
+          <Property Name="AdditionalText" Type="nvarchar" MaxLength="200" />
+          <Property Name="AnswerType" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="OptionsLayoutIsVertical" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AssessmentTopic">
+          <Key>
+            <PropertyRef Name="TopicId" />
+          </Key>
+          <Property Name="TopicId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AssessmentId" Type="int" Nullable="false" />
+          <Property Name="Topic" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="QuestionDifficultyLevel">
+          <Key>
+            <PropertyRef Name="LevelId" />
+          </Key>
+          <Property Name="LevelId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AssessmentId" Type="int" Nullable="false" />
+          <Property Name="LevelName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LevelWeight" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QuestionGroup">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AssessmentId" Type="int" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_AssessmentAnswer_AssessmentQuestion">
+          <End Role="AssessmentQuestion" Type="FotAuthorModel.Store.AssessmentQuestion" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AssessmentAnswer" Type="FotAuthorModel.Store.AssessmentAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentQuestion">
+              <PropertyRef Name="QuestionId" />
+            </Principal>
+            <Dependent Role="AssessmentAnswer">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentQuestion_Assessment">
+          <End Role="Assessment" Type="FotAuthorModel.Store.Assessment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AssessmentQuestion" Type="FotAuthorModel.Store.AssessmentQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentId" />
+            </Principal>
+            <Dependent Role="AssessmentQuestion">
+              <PropertyRef Name="AssessmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentQuestion_AssessmentTopic">
+          <End Role="AssessmentTopic" Type="FotAuthorModel.Store.AssessmentTopic" Multiplicity="0..1" />
+          <End Role="AssessmentQuestion" Type="FotAuthorModel.Store.AssessmentQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentTopic">
+              <PropertyRef Name="TopicId" />
+            </Principal>
+            <Dependent Role="AssessmentQuestion">
+              <PropertyRef Name="TopicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentQuestion_QuestionDifficultyLevel">
+          <End Role="QuestionDifficultyLevel" Type="FotAuthorModel.Store.QuestionDifficultyLevel" Multiplicity="0..1" />
+          <End Role="AssessmentQuestion" Type="FotAuthorModel.Store.AssessmentQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuestionDifficultyLevel">
+              <PropertyRef Name="LevelId" />
+            </Principal>
+            <Dependent Role="AssessmentQuestion">
+              <PropertyRef Name="DifficultyLevel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentQuestion_QuestionGroup">
+          <End Role="QuestionGroup" Type="FotAuthorModel.Store.QuestionGroup" Multiplicity="0..1" />
+          <End Role="AssessmentQuestion" Type="FotAuthorModel.Store.AssessmentQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuestionGroup">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="AssessmentQuestion">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentTopic_Assessment">
+          <End Role="Assessment" Type="FotAuthorModel.Store.Assessment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AssessmentTopic" Type="FotAuthorModel.Store.AssessmentTopic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentId" />
+            </Principal>
+            <Dependent Role="AssessmentTopic">
+              <PropertyRef Name="AssessmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionDifficultyLevel_Assessment">
+          <End Role="Assessment" Type="FotAuthorModel.Store.Assessment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="QuestionDifficultyLevel" Type="FotAuthorModel.Store.QuestionDifficultyLevel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentId" />
+            </Principal>
+            <Dependent Role="QuestionDifficultyLevel">
+              <PropertyRef Name="AssessmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionGroup_Assessment">
+          <End Role="Assessment" Type="FotAuthorModel.Store.Assessment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="QuestionGroup" Type="FotAuthorModel.Store.QuestionGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentId" />
+            </Principal>
+            <Dependent Role="QuestionGroup">
+              <PropertyRef Name="AssessmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FotAuthorModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="FotAuthorContext" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Assessments" EntityType="FotAuthorModel.Assessment" />
+          <EntitySet Name="AssessmentAnswers" EntityType="FotAuthorModel.AssessmentAnswer" />
+          <EntitySet Name="AssessmentQuestions" EntityType="FotAuthorModel.AssessmentQuestion" />
+          <EntitySet Name="AssessmentTopics" EntityType="FotAuthorModel.AssessmentTopic" />
+          <EntitySet Name="QuestionDifficultyLevels" EntityType="FotAuthorModel.QuestionDifficultyLevel" />
+          <EntitySet Name="QuestionGroups" EntityType="FotAuthorModel.QuestionGroup" />
+          <AssociationSet Name="FK_AssessmentQuestion_Assessment" Association="FotAuthorModel.FK_AssessmentQuestion_Assessment">
+            <End Role="Assessment" EntitySet="Assessments" />
+            <End Role="AssessmentQuestion" EntitySet="AssessmentQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentTopic_Assessment" Association="FotAuthorModel.FK_AssessmentTopic_Assessment">
+            <End Role="Assessment" EntitySet="Assessments" />
+            <End Role="AssessmentTopic" EntitySet="AssessmentTopics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionDifficultyLevel_Assessment" Association="FotAuthorModel.FK_QuestionDifficultyLevel_Assessment">
+            <End Role="Assessment" EntitySet="Assessments" />
+            <End Role="QuestionDifficultyLevel" EntitySet="QuestionDifficultyLevels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionGroup_Assessment" Association="FotAuthorModel.FK_QuestionGroup_Assessment">
+            <End Role="Assessment" EntitySet="Assessments" />
+            <End Role="QuestionGroup" EntitySet="QuestionGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentAnswer_AssessmentQuestion" Association="FotAuthorModel.FK_AssessmentAnswer_AssessmentQuestion">
+            <End Role="AssessmentQuestion" EntitySet="AssessmentQuestions" />
+            <End Role="AssessmentAnswer" EntitySet="AssessmentAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentQuestion_AssessmentTopic" Association="FotAuthorModel.FK_AssessmentQuestion_AssessmentTopic">
+            <End Role="AssessmentTopic" EntitySet="AssessmentTopics" />
+            <End Role="AssessmentQuestion" EntitySet="AssessmentQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentQuestion_QuestionDifficultyLevel" Association="FotAuthorModel.FK_AssessmentQuestion_QuestionDifficultyLevel">
+            <End Role="QuestionDifficultyLevel" EntitySet="QuestionDifficultyLevels" />
+            <End Role="AssessmentQuestion" EntitySet="AssessmentQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentQuestion_QuestionGroup" Association="FotAuthorModel.FK_AssessmentQuestion_QuestionGroup">
+            <End Role="QuestionGroup" EntitySet="QuestionGroups" />
+            <End Role="AssessmentQuestion" EntitySet="AssessmentQuestions" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Assessment">
+          <Key>
+            <PropertyRef Name="AssessmentId" />
+          </Key>
+          <Property Name="AssessmentId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Duration" Type="Int32" Nullable="false" />
+          <Property Name="InstructionText" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="InstructionImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Timed" Type="Boolean" Nullable="false" />
+          <Property Name="AssessmentType" Type="FotAuthorModel.AssessmentType" Nullable="false" />
+          <Property Name="RandomizeQuestions" Type="Boolean" Nullable="false" />
+          <Property Name="RandomizeOptions" Type="Boolean" Nullable="false" />
+          <Property Name="AdvancedOutputOptions" Type="Boolean" Nullable="false" />
+          <Property Name="QuestionsPerTest" Type="Int32" Nullable="false" />
+          <Property Name="DateAdded" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateLastUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AssessmentQuestions" Relationship="FotAuthorModel.FK_AssessmentQuestion_Assessment" FromRole="Assessment" ToRole="AssessmentQuestion" />
+          <NavigationProperty Name="AssessmentTopics" Relationship="FotAuthorModel.FK_AssessmentTopic_Assessment" FromRole="Assessment" ToRole="AssessmentTopic" />
+          <NavigationProperty Name="QuestionDifficultyLevels" Relationship="FotAuthorModel.FK_QuestionDifficultyLevel_Assessment" FromRole="Assessment" ToRole="QuestionDifficultyLevel" />
+          <NavigationProperty Name="QuestionGroups" Relationship="FotAuthorModel.FK_QuestionGroup_Assessment" FromRole="Assessment" ToRole="QuestionGroup" />
+        </EntityType>
+        <EntityType Name="AssessmentAnswer">
+          <Key>
+            <PropertyRef Name="AnswerId" />
+          </Key>
+          <Property Name="AnswerId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionId" Type="Int32" Nullable="false" />
+          <Property Name="AnswerText" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="AnswerImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IsImage" Type="Boolean" Nullable="false" />
+          <Property Name="IsCorrect" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AssessmentQuestion" Relationship="FotAuthorModel.FK_AssessmentAnswer_AssessmentQuestion" FromRole="AssessmentAnswer" ToRole="AssessmentQuestion" />
+        </EntityType>
+        <EntityType Name="AssessmentQuestion">
+          <Key>
+            <PropertyRef Name="QuestionId" />
+          </Key>
+          <Property Name="QuestionId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="AssessmentId" Type="Int32" Nullable="false" />
+          <Property Name="TopicId" Type="Int32" />
+          <Property Name="GroupId" Type="Int32" />
+          <Property Name="DifficultyLevel" Type="Int32" />
+          <Property Name="QuestionText" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="QuestionImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="AdditionalText" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="AnswerType" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Assessment" Relationship="FotAuthorModel.FK_AssessmentQuestion_Assessment" FromRole="AssessmentQuestion" ToRole="Assessment" />
+          <NavigationProperty Name="AssessmentAnswers" Relationship="FotAuthorModel.FK_AssessmentAnswer_AssessmentQuestion" FromRole="AssessmentQuestion" ToRole="AssessmentAnswer" />
+          <NavigationProperty Name="AssessmentTopic" Relationship="FotAuthorModel.FK_AssessmentQuestion_AssessmentTopic" FromRole="AssessmentQuestion" ToRole="AssessmentTopic" />
+          <NavigationProperty Name="QuestionDifficultyLevel" Relationship="FotAuthorModel.FK_AssessmentQuestion_QuestionDifficultyLevel" FromRole="AssessmentQuestion" ToRole="QuestionDifficultyLevel" />
+          <NavigationProperty Name="QuestionGroup" Relationship="FotAuthorModel.FK_AssessmentQuestion_QuestionGroup" FromRole="AssessmentQuestion" ToRole="QuestionGroup" />
+          <Property Type="Boolean" Name="OptionsLayoutIsVertical" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AssessmentTopic">
+          <Key>
+            <PropertyRef Name="TopicId" />
+          </Key>
+          <Property Name="TopicId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="AssessmentId" Type="Int32" Nullable="false" />
+          <Property Name="Topic" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Assessment" Relationship="FotAuthorModel.FK_AssessmentTopic_Assessment" FromRole="AssessmentTopic" ToRole="Assessment" />
+          <NavigationProperty Name="AssessmentQuestions" Relationship="FotAuthorModel.FK_AssessmentQuestion_AssessmentTopic" FromRole="AssessmentTopic" ToRole="AssessmentQuestion" />
+        </EntityType>
+        <EntityType Name="QuestionDifficultyLevel">
+          <Key>
+            <PropertyRef Name="LevelId" />
+          </Key>
+          <Property Name="LevelId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="AssessmentId" Type="Int32" Nullable="false" />
+          <Property Name="LevelName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LevelWeight" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Assessment" Relationship="FotAuthorModel.FK_QuestionDifficultyLevel_Assessment" FromRole="QuestionDifficultyLevel" ToRole="Assessment" />
+          <NavigationProperty Name="AssessmentQuestions" Relationship="FotAuthorModel.FK_AssessmentQuestion_QuestionDifficultyLevel" FromRole="QuestionDifficultyLevel" ToRole="AssessmentQuestion" />
+        </EntityType>
+        <EntityType Name="QuestionGroup">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="AssessmentId" Type="Int32" Nullable="false" />
+          <Property Name="GroupName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Assessment" Relationship="FotAuthorModel.FK_QuestionGroup_Assessment" FromRole="QuestionGroup" ToRole="Assessment" />
+          <NavigationProperty Name="AssessmentQuestions" Relationship="FotAuthorModel.FK_AssessmentQuestion_QuestionGroup" FromRole="QuestionGroup" ToRole="AssessmentQuestion" />
+        </EntityType>
+        <Association Name="FK_AssessmentQuestion_Assessment">
+          <End Role="Assessment" Type="FotAuthorModel.Assessment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AssessmentQuestion" Type="FotAuthorModel.AssessmentQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentId" />
+            </Principal>
+            <Dependent Role="AssessmentQuestion">
+              <PropertyRef Name="AssessmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentTopic_Assessment">
+          <End Role="Assessment" Type="FotAuthorModel.Assessment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AssessmentTopic" Type="FotAuthorModel.AssessmentTopic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentId" />
+            </Principal>
+            <Dependent Role="AssessmentTopic">
+              <PropertyRef Name="AssessmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionDifficultyLevel_Assessment">
+          <End Role="Assessment" Type="FotAuthorModel.Assessment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="QuestionDifficultyLevel" Type="FotAuthorModel.QuestionDifficultyLevel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentId" />
+            </Principal>
+            <Dependent Role="QuestionDifficultyLevel">
+              <PropertyRef Name="AssessmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionGroup_Assessment">
+          <End Role="Assessment" Type="FotAuthorModel.Assessment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="QuestionGroup" Type="FotAuthorModel.QuestionGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentId" />
+            </Principal>
+            <Dependent Role="QuestionGroup">
+              <PropertyRef Name="AssessmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentAnswer_AssessmentQuestion">
+          <End Role="AssessmentQuestion" Type="FotAuthorModel.AssessmentQuestion" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AssessmentAnswer" Type="FotAuthorModel.AssessmentAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentQuestion">
+              <PropertyRef Name="QuestionId" />
+            </Principal>
+            <Dependent Role="AssessmentAnswer">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentQuestion_AssessmentTopic">
+          <End Role="AssessmentTopic" Type="FotAuthorModel.AssessmentTopic" Multiplicity="0..1" />
+          <End Role="AssessmentQuestion" Type="FotAuthorModel.AssessmentQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentTopic">
+              <PropertyRef Name="TopicId" />
+            </Principal>
+            <Dependent Role="AssessmentQuestion">
+              <PropertyRef Name="TopicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentQuestion_QuestionDifficultyLevel">
+          <End Role="QuestionDifficultyLevel" Type="FotAuthorModel.QuestionDifficultyLevel" Multiplicity="0..1" />
+          <End Role="AssessmentQuestion" Type="FotAuthorModel.AssessmentQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuestionDifficultyLevel">
+              <PropertyRef Name="LevelId" />
+            </Principal>
+            <Dependent Role="AssessmentQuestion">
+              <PropertyRef Name="DifficultyLevel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentQuestion_QuestionGroup">
+          <End Role="QuestionGroup" Type="FotAuthorModel.QuestionGroup" Multiplicity="0..1" />
+          <End Role="AssessmentQuestion" Type="FotAuthorModel.AssessmentQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuestionGroup">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="AssessmentQuestion">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EnumType Name="AssessmentType" a:ExternalTypeName="AuthorApp.Models.AssessmentType" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FotAuthorModelStoreContainer" CdmEntityContainer="FotAuthorContext">
+          <EntitySetMapping Name="Assessments">
+            <EntityTypeMapping TypeName="FotAuthorModel.Assessment">
+              <MappingFragment StoreEntitySet="Assessment">
+                <ScalarProperty Name="AssessmentId" ColumnName="AssessmentId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="InstructionText" ColumnName="InstructionText" />
+                <ScalarProperty Name="InstructionImage" ColumnName="InstructionImage" />
+                <ScalarProperty Name="Timed" ColumnName="Timed" />
+                <ScalarProperty Name="AssessmentType" ColumnName="AssessmentType" />
+                <ScalarProperty Name="RandomizeQuestions" ColumnName="RandomizeQuestions" />
+                <ScalarProperty Name="RandomizeOptions" ColumnName="RandomizeOptions" />
+                <ScalarProperty Name="AdvancedOutputOptions" ColumnName="AdvancedOutputOptions" />
+                <ScalarProperty Name="QuestionsPerTest" ColumnName="QuestionsPerTest" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="DateLastUpdated" ColumnName="DateLastUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssessmentAnswers">
+            <EntityTypeMapping TypeName="FotAuthorModel.AssessmentAnswer">
+              <MappingFragment StoreEntitySet="AssessmentAnswer">
+                <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="AnswerText" ColumnName="AnswerText" />
+                <ScalarProperty Name="AnswerImage" ColumnName="AnswerImage" />
+                <ScalarProperty Name="IsImage" ColumnName="IsImage" />
+                <ScalarProperty Name="IsCorrect" ColumnName="IsCorrect" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssessmentQuestions">
+            <EntityTypeMapping TypeName="FotAuthorModel.AssessmentQuestion">
+              <MappingFragment StoreEntitySet="AssessmentQuestion">
+                <ScalarProperty Name="OptionsLayoutIsVertical" ColumnName="OptionsLayoutIsVertical" />
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="AssessmentId" ColumnName="AssessmentId" />
+                <ScalarProperty Name="TopicId" ColumnName="TopicId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="DifficultyLevel" ColumnName="DifficultyLevel" />
+                <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
+                <ScalarProperty Name="QuestionImage" ColumnName="QuestionImage" />
+                <ScalarProperty Name="AdditionalText" ColumnName="AdditionalText" />
+                <ScalarProperty Name="AnswerType" ColumnName="AnswerType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssessmentTopics">
+            <EntityTypeMapping TypeName="FotAuthorModel.AssessmentTopic">
+              <MappingFragment StoreEntitySet="AssessmentTopic">
+                <ScalarProperty Name="TopicId" ColumnName="TopicId" />
+                <ScalarProperty Name="AssessmentId" ColumnName="AssessmentId" />
+                <ScalarProperty Name="Topic" ColumnName="Topic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuestionDifficultyLevels">
+            <EntityTypeMapping TypeName="FotAuthorModel.QuestionDifficultyLevel">
+              <MappingFragment StoreEntitySet="QuestionDifficultyLevel">
+                <ScalarProperty Name="LevelId" ColumnName="LevelId" />
+                <ScalarProperty Name="AssessmentId" ColumnName="AssessmentId" />
+                <ScalarProperty Name="LevelName" ColumnName="LevelName" />
+                <ScalarProperty Name="LevelWeight" ColumnName="LevelWeight" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuestionGroups">
+            <EntityTypeMapping TypeName="FotAuthorModel.QuestionGroup">
+              <MappingFragment StoreEntitySet="QuestionGroup">
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="AssessmentId" ColumnName="AssessmentId" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

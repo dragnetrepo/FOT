@@ -1,0 +1,119 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="CenterMaster.Master.cs" Inherits="Fot.Admin.TestCenter.CenterMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Face of Testing - e-Assessment Platform</title>
+    <!--CSS -->
+    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <!--Js -->
+
+    <script src="../Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+
+
+            resizeWindow();
+            $(window).resize(resizeWindow);
+
+
+
+        });
+
+
+
+        function resizeWindow() {
+
+            var winHeight = $(document).height();
+
+            var otherHeight = 180;
+
+
+            // $('#myContainer').height(winHeight - otherHeight);
+            $('#myContainer').css("min-height", (winHeight - otherHeight));
+        }
+
+
+    </script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+
+    <style type="text/css">
+        .masterTable td
+        {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .myPanel
+        {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <!--wrapper -->
+    <div id="outer_wrapper_inner" style="left: 0px; top: 0px">
+        <form id="form1" runat="server">
+            <div id="wrapper">
+                <!--header -->
+                <div id="header" style="height: 80px">
+                    <img src="../images/newlogo2.png" alt="" id="logo" />
+                    &nbsp;
+                    <img src="../images/exam-text.png" alt="" id="logo2" /><asp:ScriptManager ID="ScriptManager1" runat="server">
+                    </asp:ScriptManager>
+                </div>
+                <!--Menu Area -->
+                <!--content area -->
+                <div id="content">
+                    <table cellpadding="10" cellspacing="10" width="100%" border="0" style="height: 100%" class="masterTable">
+                        <tr>
+                            <td style="vertical-align: top; width: 220px;">
+                                <telerik:RadPanelBar ID="AdminPanelBar" runat="server" Skin="Windows7" Width="200px" CssClass="myPanel">
+                                    <Items>
+                                        <telerik:RadPanelItem runat="server" ChildGroupHeight="80px" Expanded="True" Font-Bold="True" Text="Schedule" NavigateUrl="~/TestCenter/TestHistory.aspx">
+                                            <Items>
+                                                <telerik:RadPanelItem runat="server" NavigateUrl="Schedules.aspx" Text="Schedules By Date">
+                                                </telerik:RadPanelItem>
+                                     
+                                                <telerik:RadPanelItem runat="server" Text="Test Schedule History"  NavigateUrl="~/TestCenter/TestHistory.aspx">
+                                                </telerik:RadPanelItem>
+                                                <telerik:RadPanelItem runat="server" Text="Center Profile"  NavigateUrl="~/TestCenter/CenterProfile.aspx">
+                                                </telerik:RadPanelItem>
+
+                                            </Items>
+                                        </telerik:RadPanelItem>
+                                        <telerik:RadPanelItem runat="server" ChildGroupHeight="100px" Expanded="True" Font-Bold="True"
+                                            Text="General Settings">
+
+                                            <Items>
+                                                <telerik:RadPanelItem runat="server" NavigateUrl="ChangePassword.aspx" Text="Change Password">
+                                                </telerik:RadPanelItem>
+                                                <telerik:RadPanelItem runat="server" NavigateUrl="Logout.aspx" Text="Logout">
+                                                </telerik:RadPanelItem>
+                                            </Items>
+                                        </telerik:RadPanelItem>
+                                    </Items>
+                                </telerik:RadPanelBar>
+                            </td>
+                            <td style="vertical-align: top">
+                                <div id="myContainer" style="float: left;">
+                                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                    </asp:ContentPlaceHolder>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</body>
+</html>

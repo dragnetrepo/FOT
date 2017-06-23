@@ -1,0 +1,2487 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FotLanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Assessment">
+          <Key>
+            <PropertyRef Name="AssessmentId" />
+          </Key>
+          <Property Name="AssessmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OwnerPartnerId" Type="int" />
+          <Property Name="AuthorId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Duration" Type="int" Nullable="false" />
+          <Property Name="InstructionText" Type="nvarchar(max)" />
+          <Property Name="InstructionImage" Type="varbinary(max)" />
+          <Property Name="Timed" Type="bit" Nullable="false" />
+          <Property Name="ShowCalculator" Type="bit" Nullable="false" />
+          <Property Name="AssessmentType" Type="int" Nullable="false" />
+          <Property Name="RandomizeQuestions" Type="bit" Nullable="false" />
+          <Property Name="RandomizeOptions" Type="bit" Nullable="false" />
+          <Property Name="AdvancedOutputOptions" Type="bit" Nullable="false" />
+          <Property Name="QuestionsPerTest" Type="int" Nullable="false" />
+          <Property Name="DateAdded" Type="datetime" Nullable="false" />
+          <Property Name="DateLastUpdated" Type="datetime" />
+          <Property Name="HasFixedQuestions" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AssessmentAnswer">
+          <Key>
+            <PropertyRef Name="AnswerId" />
+          </Key>
+          <Property Name="AnswerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionId" Type="int" Nullable="false" />
+          <Property Name="AnswerText" Type="nvarchar" MaxLength="500" />
+          <Property Name="AnswerImage" Type="varbinary(max)" />
+          <Property Name="IsImage" Type="bit" Nullable="false" />
+          <Property Name="IsCorrect" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AssessmentBundle">
+          <Key>
+            <PropertyRef Name="BundleId" />
+          </Key>
+          <Property Name="BundleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OwnerPartnerId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="DescriptionImage" Type="varbinary(max)" />
+          <Property Name="ShowResultsOnSubmit" Type="bit" Nullable="false" />
+          <Property Name="SaveAsYouGo" Type="bit" Nullable="false" />
+          <Property Name="SendResultNotification" Type="bit" Nullable="false" />
+          <Property Name="MinAggregatePassScore" Type="int" />
+          <Property Name="AllowAssessmentSelection" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AssessmentBundleEntry">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BundleId" Type="int" Nullable="false" />
+          <Property Name="AssessmentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AssessmentOutputConfig">
+          <Key>
+            <PropertyRef Name="ConfigId" />
+          </Key>
+          <Property Name="ConfigId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssessmentId" Type="int" Nullable="false" />
+          <Property Name="TopicId" Type="int" />
+          <Property Name="DifficultyLevel" Type="int" />
+          <Property Name="NumQuestions" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AssessmentQuestion">
+          <Key>
+            <PropertyRef Name="QuestionId" />
+          </Key>
+          <Property Name="QuestionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssessmentId" Type="int" Nullable="false" />
+          <Property Name="TopicId" Type="int" />
+          <Property Name="GroupId" Type="int" />
+          <Property Name="DifficultyLevel" Type="int" />
+          <Property Name="QuestionText" Type="nvarchar(max)" />
+          <Property Name="QuestionImage" Type="varbinary(max)" />
+          <Property Name="AdditionalText" Type="nvarchar" MaxLength="200" />
+          <Property Name="AnswerType" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="OptionsLayoutIsVertical" Type="bit" Nullable="false" />
+          <Property Name="Retired" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AssessmentResult">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CampaignEntryId" Type="int" Nullable="false" />
+          <Property Name="AssessmentId" Type="int" Nullable="false" />
+          <Property Name="TestScore" Type="int" />
+          <Property Name="CandidateOptions" Type="nvarchar(max)" />
+          <Property Name="SelectedEssayId" Type="int" />
+          <Property Name="EssayText" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AssessmentTopic">
+          <Key>
+            <PropertyRef Name="TopicId" />
+          </Key>
+          <Property Name="TopicId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssessmentId" Type="int" Nullable="false" />
+          <Property Name="Topic" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Campaign">
+          <Key>
+            <PropertyRef Name="CampaignId" />
+          </Key>
+          <Property Name="CampaignId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PartnerId" Type="int" Nullable="false" />
+          <Property Name="CampaignName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Instructions" Type="nvarchar(max)" />
+          <Property Name="InvitationLogo" Type="nvarchar" MaxLength="50" />
+          <Property Name="LogoPlacement" Type="int" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="ShowFeedback" Type="bit" Nullable="false" />
+          <Property Name="ViewResult" Type="bit" Nullable="false" />
+          <Property Name="BundleId" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="IsUnproctored" Type="bit" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CampaignEntry">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CampaignId" Type="int" Nullable="false" />
+          <Property Name="CandidateId" Type="int" Nullable="false" />
+          <Property Name="Scheduled" Type="bit" Nullable="false" />
+          <Property Name="SessionId" Type="int" />
+          <Property Name="Tested" Type="bit" Nullable="false" />
+          <Property Name="DateTested" Type="datetime" />
+          <Property Name="PhotoCaptured" Type="bit" />
+          <Property Name="PhotoCapturedBy" Type="int" />
+          <Property Name="TestStartTime" Type="datetime" />
+          <Property Name="TestEndTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CampaignSession">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CampaignId" Type="int" Nullable="false" />
+          <Property Name="SessionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Candidate">
+          <Key>
+            <PropertyRef Name="CandidateId" />
+          </Key>
+          <Property Name="CandidateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BiometricaID" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientUniqueID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Username" Type="nvarchar" MaxLength="200" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="AlternateEmail" Type="nvarchar" MaxLength="200" />
+          <Property Name="AlternateMobileNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="DateAdded" Type="datetime" Nullable="false" />
+          <Property Name="LocationId" Type="int" />
+          <Property Name="PhotoFileName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CandidateAssessment">
+          <Key>
+            <PropertyRef Name="CampaignEntryId" />
+          </Key>
+          <Property Name="CampaignEntryId" Type="int" Nullable="false" />
+          <Property Name="CandidateGuid" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssessmentData" Type="varbinary(max)" />
+          <Property Name="CurrentAssessmentState" Type="varbinary(max)" />
+          <Property Name="SaveCount" Type="int" Nullable="false" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="LastUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CandidateFeedback">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CandidateId" Type="int" />
+          <Property Name="FeedBackTypeId" Type="int" />
+          <Property Name="FeedbackOther" Type="nvarchar" MaxLength="200" />
+          <Property Name="FeedbackMessage" Type="nvarchar(max)" />
+          <Property Name="DateSent" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CandidateScheduleResponse">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="int" Nullable="false" />
+          <Property Name="AcceptSchedule" Type="bit" Nullable="false" />
+          <Property Name="RejectReason" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="DateResponded" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Center">
+          <Key>
+            <PropertyRef Name="CenterId" />
+          </Key>
+          <Property Name="CenterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CenterName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LocationId" Type="int" Nullable="false" />
+          <Property Name="CapacityPerSession" Type="int" Nullable="false" />
+          <Property Name="RatePerTested" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="IsPrivateCenter" Type="bit" Nullable="false" />
+          <Property Name="OwnerPartnerId" Type="int" />
+        </EntityType>
+        <EntityType Name="ChosenOption">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShowQuestionEntryId" Type="int" />
+          <Property Name="AnswerId" Type="int" />
+        </EntityType>
+        <EntityType Name="EssayTopic">
+          <Key>
+            <PropertyRef Name="EssayId" />
+          </Key>
+          <Property Name="EssayId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssessmentId" Type="int" />
+          <Property Name="Topic" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="FeedbackType">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FeedbackReason" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="FixedQuestion">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssessmentId" Type="int" Nullable="false" />
+          <Property Name="QuestionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocationName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MappedToLocation" Type="int" />
+        </EntityType>
+        <EntityType Name="Partner">
+          <Key>
+            <PropertyRef Name="PartnerId" />
+          </Key>
+          <Property Name="PartnerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PartnerName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="IsIntegrationPartner" Type="bit" />
+          <Property Name="ResultsPostUrl" Type="nvarchar(max)" />
+          <Property Name="APIKey" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsSelfManaged" Type="bit" Nullable="false" />
+          <Property Name="CostPerTestPublic" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="CostPerTestPrivate" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="WalletBalance" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PartnerWalletDebit">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PartnerId" Type="int" />
+          <Property Name="CampaignEntryId" Type="int" />
+          <Property Name="Amount" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="DebitDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="QuestionDifficultyLevel">
+          <Key>
+            <PropertyRef Name="LevelId" />
+          </Key>
+          <Property Name="LevelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssessmentId" Type="int" Nullable="false" />
+          <Property Name="LevelName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LevelWeight" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QuestionGroup">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssessmentId" Type="int" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ShownQuestion">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CampaignId" Type="int" />
+          <Property Name="CampaignEntryId" Type="int" />
+          <Property Name="QuestionId" Type="int" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="Correct" Type="bit" />
+        </EntityType>
+        <EntityType Name="TestSession">
+          <Key>
+            <PropertyRef Name="SessionId" />
+          </Key>
+          <Property Name="SessionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CenterId" Type="int" Nullable="false" />
+          <Property Name="TestDate" Type="datetime" Nullable="false" />
+          <Property Name="TimeIndex" Type="int" Nullable="false" />
+          <Property Name="TimeText" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Assessment_Partner">
+          <End Role="Partner" Type="Self.Partner" Multiplicity="0..1" />
+          <End Role="Assessment" Type="Self.Assessment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="PartnerId" />
+            </Principal>
+            <Dependent Role="Assessment">
+              <PropertyRef Name="OwnerPartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentAnswer_AssessmentQuestion">
+          <End Role="AssessmentQuestion" Type="Self.AssessmentQuestion" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AssessmentAnswer" Type="Self.AssessmentAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentQuestion">
+              <PropertyRef Name="QuestionId" />
+            </Principal>
+            <Dependent Role="AssessmentAnswer">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentBundle_Partner">
+          <End Role="Partner" Type="Self.Partner" Multiplicity="0..1" />
+          <End Role="AssessmentBundle" Type="Self.AssessmentBundle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="PartnerId" />
+            </Principal>
+            <Dependent Role="AssessmentBundle">
+              <PropertyRef Name="OwnerPartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentBundleEntry_Assessment">
+          <End Role="Assessment" Type="Self.Assessment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AssessmentBundleEntry" Type="Self.AssessmentBundleEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentId" />
+            </Principal>
+            <Dependent Role="AssessmentBundleEntry">
+              <PropertyRef Name="AssessmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentBundleEntry_AssessmentBundle">
+          <End Role="AssessmentBundle" Type="Self.AssessmentBundle" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AssessmentBundleEntry" Type="Self.AssessmentBundleEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentBundle">
+              <PropertyRef Name="BundleId" />
+            </Principal>
+            <Dependent Role="AssessmentBundleEntry">
+              <PropertyRef Name="BundleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentOutputConfig_Assessment">
+          <End Role="Assessment" Type="Self.Assessment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AssessmentOutputConfig" Type="Self.AssessmentOutputConfig" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentId" />
+            </Principal>
+            <Dependent Role="AssessmentOutputConfig">
+              <PropertyRef Name="AssessmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentOutputConfig_AssessmentTopic">
+          <End Role="AssessmentTopic" Type="Self.AssessmentTopic" Multiplicity="0..1" />
+          <End Role="AssessmentOutputConfig" Type="Self.AssessmentOutputConfig" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentTopic">
+              <PropertyRef Name="TopicId" />
+            </Principal>
+            <Dependent Role="AssessmentOutputConfig">
+              <PropertyRef Name="TopicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentOutputConfig_QuestionDifficultyLevel">
+          <End Role="QuestionDifficultyLevel" Type="Self.QuestionDifficultyLevel" Multiplicity="0..1" />
+          <End Role="AssessmentOutputConfig" Type="Self.AssessmentOutputConfig" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuestionDifficultyLevel">
+              <PropertyRef Name="LevelId" />
+            </Principal>
+            <Dependent Role="AssessmentOutputConfig">
+              <PropertyRef Name="DifficultyLevel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentQuestion_Assessment">
+          <End Role="Assessment" Type="Self.Assessment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AssessmentQuestion" Type="Self.AssessmentQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentId" />
+            </Principal>
+            <Dependent Role="AssessmentQuestion">
+              <PropertyRef Name="AssessmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentQuestion_AssessmentTopic">
+          <End Role="AssessmentTopic" Type="Self.AssessmentTopic" Multiplicity="0..1" />
+          <End Role="AssessmentQuestion" Type="Self.AssessmentQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentTopic">
+              <PropertyRef Name="TopicId" />
+            </Principal>
+            <Dependent Role="AssessmentQuestion">
+              <PropertyRef Name="TopicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentQuestion_QuestionDifficultyLevel">
+          <End Role="QuestionDifficultyLevel" Type="Self.QuestionDifficultyLevel" Multiplicity="0..1" />
+          <End Role="AssessmentQuestion" Type="Self.AssessmentQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuestionDifficultyLevel">
+              <PropertyRef Name="LevelId" />
+            </Principal>
+            <Dependent Role="AssessmentQuestion">
+              <PropertyRef Name="DifficultyLevel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentQuestion_QuestionGroup">
+          <End Role="QuestionGroup" Type="Self.QuestionGroup" Multiplicity="0..1" />
+          <End Role="AssessmentQuestion" Type="Self.AssessmentQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuestionGroup">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="AssessmentQuestion">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentResult_Assessment">
+          <End Role="Assessment" Type="Self.Assessment" Multiplicity="1" />
+          <End Role="AssessmentResult" Type="Self.AssessmentResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentId" />
+            </Principal>
+            <Dependent Role="AssessmentResult">
+              <PropertyRef Name="AssessmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentResult_CampaignEntry">
+          <End Role="CampaignEntry" Type="Self.CampaignEntry" Multiplicity="1" />
+          <End Role="AssessmentResult" Type="Self.AssessmentResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CampaignEntry">
+              <PropertyRef Name="EntryId" />
+            </Principal>
+            <Dependent Role="AssessmentResult">
+              <PropertyRef Name="CampaignEntryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentResult_EssayTopic">
+          <End Role="EssayTopic" Type="Self.EssayTopic" Multiplicity="0..1" />
+          <End Role="AssessmentResult" Type="Self.AssessmentResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EssayTopic">
+              <PropertyRef Name="EssayId" />
+            </Principal>
+            <Dependent Role="AssessmentResult">
+              <PropertyRef Name="SelectedEssayId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentTopic_Assessment">
+          <End Role="Assessment" Type="Self.Assessment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AssessmentTopic" Type="Self.AssessmentTopic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentId" />
+            </Principal>
+            <Dependent Role="AssessmentTopic">
+              <PropertyRef Name="AssessmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Campaign_AssessmentBundle">
+          <End Role="AssessmentBundle" Type="Self.AssessmentBundle" Multiplicity="1" />
+          <End Role="Campaign" Type="Self.Campaign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentBundle">
+              <PropertyRef Name="BundleId" />
+            </Principal>
+            <Dependent Role="Campaign">
+              <PropertyRef Name="BundleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Campaign_Partner">
+          <End Role="Partner" Type="Self.Partner" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Campaign" Type="Self.Campaign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="PartnerId" />
+            </Principal>
+            <Dependent Role="Campaign">
+              <PropertyRef Name="PartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CampaignEntry_Campaign">
+          <End Role="Campaign" Type="Self.Campaign" Multiplicity="1" />
+          <End Role="CampaignEntry" Type="Self.CampaignEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campaign">
+              <PropertyRef Name="CampaignId" />
+            </Principal>
+            <Dependent Role="CampaignEntry">
+              <PropertyRef Name="CampaignId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CampaignEntry_Candidate">
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="1" />
+          <End Role="CampaignEntry" Type="Self.CampaignEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidate">
+              <PropertyRef Name="CandidateId" />
+            </Principal>
+            <Dependent Role="CampaignEntry">
+              <PropertyRef Name="CandidateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CampaignEntry_TestSession">
+          <End Role="TestSession" Type="Self.TestSession" Multiplicity="0..1" />
+          <End Role="CampaignEntry" Type="Self.CampaignEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestSession">
+              <PropertyRef Name="SessionId" />
+            </Principal>
+            <Dependent Role="CampaignEntry">
+              <PropertyRef Name="SessionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CampaignSession_Campaign">
+          <End Role="Campaign" Type="Self.Campaign" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CampaignSession" Type="Self.CampaignSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campaign">
+              <PropertyRef Name="CampaignId" />
+            </Principal>
+            <Dependent Role="CampaignSession">
+              <PropertyRef Name="CampaignId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CampaignSession_TestSession">
+          <End Role="TestSession" Type="Self.TestSession" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CampaignSession" Type="Self.CampaignSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestSession">
+              <PropertyRef Name="SessionId" />
+            </Principal>
+            <Dependent Role="CampaignSession">
+              <PropertyRef Name="SessionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidate_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="Candidate">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateAssessment_CampaignEntry">
+          <End Role="CampaignEntry" Type="Self.CampaignEntry" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CandidateAssessment" Type="Self.CandidateAssessment" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CampaignEntry">
+              <PropertyRef Name="EntryId" />
+            </Principal>
+            <Dependent Role="CandidateAssessment">
+              <PropertyRef Name="CampaignEntryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateFeedback_Candidate">
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CandidateFeedback" Type="Self.CandidateFeedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidate">
+              <PropertyRef Name="CandidateId" />
+            </Principal>
+            <Dependent Role="CandidateFeedback">
+              <PropertyRef Name="CandidateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateFeedback_FeedbackType">
+          <End Role="FeedbackType" Type="Self.FeedbackType" Multiplicity="0..1" />
+          <End Role="CandidateFeedback" Type="Self.CandidateFeedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FeedbackType">
+              <PropertyRef Name="EntryId" />
+            </Principal>
+            <Dependent Role="CandidateFeedback">
+              <PropertyRef Name="FeedBackTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateScheduleResponse_CampaignEntry">
+          <End Role="CampaignEntry" Type="Self.CampaignEntry" Multiplicity="1" />
+          <End Role="CandidateScheduleResponse" Type="Self.CandidateScheduleResponse" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CampaignEntry">
+              <PropertyRef Name="EntryId" />
+            </Principal>
+            <Dependent Role="CandidateScheduleResponse">
+              <PropertyRef Name="EntryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Center_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Center" Type="Self.Center" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="Center">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Center_Partner">
+          <End Role="Partner" Type="Self.Partner" Multiplicity="0..1" />
+          <End Role="Center" Type="Self.Center" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="PartnerId" />
+            </Principal>
+            <Dependent Role="Center">
+              <PropertyRef Name="OwnerPartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChosenOption_ShownQuestion">
+          <End Role="ShownQuestion" Type="Self.ShownQuestion" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ChosenOption" Type="Self.ChosenOption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShownQuestion">
+              <PropertyRef Name="EntryId" />
+            </Principal>
+            <Dependent Role="ChosenOption">
+              <PropertyRef Name="ShowQuestionEntryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EssayTopic_Assessment">
+          <End Role="Assessment" Type="Self.Assessment" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EssayTopic" Type="Self.EssayTopic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentId" />
+            </Principal>
+            <Dependent Role="EssayTopic">
+              <PropertyRef Name="AssessmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FixedQuestion_Assessment">
+          <End Role="Assessment" Type="Self.Assessment" Multiplicity="1" />
+          <End Role="FixedQuestion" Type="Self.FixedQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentId" />
+            </Principal>
+            <Dependent Role="FixedQuestion">
+              <PropertyRef Name="AssessmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FixedQuestion_AssessmentQuestion">
+          <End Role="AssessmentQuestion" Type="Self.AssessmentQuestion" Multiplicity="1" />
+          <End Role="FixedQuestion" Type="Self.FixedQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentQuestion">
+              <PropertyRef Name="QuestionId" />
+            </Principal>
+            <Dependent Role="FixedQuestion">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Location_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="Location1" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="Location1">
+              <PropertyRef Name="MappedToLocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PartnerWalletDebit_CampaignEntry">
+          <End Role="CampaignEntry" Type="Self.CampaignEntry" Multiplicity="0..1" />
+          <End Role="PartnerWalletDebit" Type="Self.PartnerWalletDebit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CampaignEntry">
+              <PropertyRef Name="EntryId" />
+            </Principal>
+            <Dependent Role="PartnerWalletDebit">
+              <PropertyRef Name="CampaignEntryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PartnerWalletDebit_Partner">
+          <End Role="Partner" Type="Self.Partner" Multiplicity="0..1" />
+          <End Role="PartnerWalletDebit" Type="Self.PartnerWalletDebit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="PartnerId" />
+            </Principal>
+            <Dependent Role="PartnerWalletDebit">
+              <PropertyRef Name="PartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionDifficultyLevel_Assessment">
+          <End Role="Assessment" Type="Self.Assessment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="QuestionDifficultyLevel" Type="Self.QuestionDifficultyLevel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentId" />
+            </Principal>
+            <Dependent Role="QuestionDifficultyLevel">
+              <PropertyRef Name="AssessmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionGroup_Assessment">
+          <End Role="Assessment" Type="Self.Assessment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="QuestionGroup" Type="Self.QuestionGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentId" />
+            </Principal>
+            <Dependent Role="QuestionGroup">
+              <PropertyRef Name="AssessmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestSession_Center">
+          <End Role="Center" Type="Self.Center" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TestSession" Type="Self.TestSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Center">
+              <PropertyRef Name="CenterId" />
+            </Principal>
+            <Dependent Role="TestSession">
+              <PropertyRef Name="CenterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FotLanModelStoreContainer">
+          <EntitySet Name="Assessment" EntityType="Self.Assessment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AssessmentAnswer" EntityType="Self.AssessmentAnswer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AssessmentBundle" EntityType="Self.AssessmentBundle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AssessmentBundleEntry" EntityType="Self.AssessmentBundleEntry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AssessmentOutputConfig" EntityType="Self.AssessmentOutputConfig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AssessmentQuestion" EntityType="Self.AssessmentQuestion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AssessmentResult" EntityType="Self.AssessmentResult" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AssessmentTopic" EntityType="Self.AssessmentTopic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Campaign" EntityType="Self.Campaign" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CampaignEntry" EntityType="Self.CampaignEntry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CampaignSession" EntityType="Self.CampaignSession" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Candidate" EntityType="Self.Candidate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CandidateAssessment" EntityType="Self.CandidateAssessment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CandidateFeedback" EntityType="Self.CandidateFeedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CandidateScheduleResponse" EntityType="Self.CandidateScheduleResponse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Center" EntityType="Self.Center" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChosenOption" EntityType="Self.ChosenOption" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EssayTopic" EntityType="Self.EssayTopic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FeedbackType" EntityType="Self.FeedbackType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FixedQuestion" EntityType="Self.FixedQuestion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Partner" EntityType="Self.Partner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PartnerWalletDebit" EntityType="Self.PartnerWalletDebit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuestionDifficultyLevel" EntityType="Self.QuestionDifficultyLevel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuestionGroup" EntityType="Self.QuestionGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShownQuestion" EntityType="Self.ShownQuestion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestSession" EntityType="Self.TestSession" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Assessment_Partner" Association="Self.FK_Assessment_Partner">
+            <End Role="Partner" EntitySet="Partner" />
+            <End Role="Assessment" EntitySet="Assessment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentAnswer_AssessmentQuestion" Association="Self.FK_AssessmentAnswer_AssessmentQuestion">
+            <End Role="AssessmentQuestion" EntitySet="AssessmentQuestion" />
+            <End Role="AssessmentAnswer" EntitySet="AssessmentAnswer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentBundle_Partner" Association="Self.FK_AssessmentBundle_Partner">
+            <End Role="Partner" EntitySet="Partner" />
+            <End Role="AssessmentBundle" EntitySet="AssessmentBundle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentBundleEntry_Assessment" Association="Self.FK_AssessmentBundleEntry_Assessment">
+            <End Role="Assessment" EntitySet="Assessment" />
+            <End Role="AssessmentBundleEntry" EntitySet="AssessmentBundleEntry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentBundleEntry_AssessmentBundle" Association="Self.FK_AssessmentBundleEntry_AssessmentBundle">
+            <End Role="AssessmentBundle" EntitySet="AssessmentBundle" />
+            <End Role="AssessmentBundleEntry" EntitySet="AssessmentBundleEntry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentOutputConfig_Assessment" Association="Self.FK_AssessmentOutputConfig_Assessment">
+            <End Role="Assessment" EntitySet="Assessment" />
+            <End Role="AssessmentOutputConfig" EntitySet="AssessmentOutputConfig" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentOutputConfig_AssessmentTopic" Association="Self.FK_AssessmentOutputConfig_AssessmentTopic">
+            <End Role="AssessmentTopic" EntitySet="AssessmentTopic" />
+            <End Role="AssessmentOutputConfig" EntitySet="AssessmentOutputConfig" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentOutputConfig_QuestionDifficultyLevel" Association="Self.FK_AssessmentOutputConfig_QuestionDifficultyLevel">
+            <End Role="QuestionDifficultyLevel" EntitySet="QuestionDifficultyLevel" />
+            <End Role="AssessmentOutputConfig" EntitySet="AssessmentOutputConfig" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentQuestion_Assessment" Association="Self.FK_AssessmentQuestion_Assessment">
+            <End Role="Assessment" EntitySet="Assessment" />
+            <End Role="AssessmentQuestion" EntitySet="AssessmentQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentQuestion_AssessmentTopic" Association="Self.FK_AssessmentQuestion_AssessmentTopic">
+            <End Role="AssessmentTopic" EntitySet="AssessmentTopic" />
+            <End Role="AssessmentQuestion" EntitySet="AssessmentQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentQuestion_QuestionDifficultyLevel" Association="Self.FK_AssessmentQuestion_QuestionDifficultyLevel">
+            <End Role="QuestionDifficultyLevel" EntitySet="QuestionDifficultyLevel" />
+            <End Role="AssessmentQuestion" EntitySet="AssessmentQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentQuestion_QuestionGroup" Association="Self.FK_AssessmentQuestion_QuestionGroup">
+            <End Role="QuestionGroup" EntitySet="QuestionGroup" />
+            <End Role="AssessmentQuestion" EntitySet="AssessmentQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentResult_Assessment" Association="Self.FK_AssessmentResult_Assessment">
+            <End Role="Assessment" EntitySet="Assessment" />
+            <End Role="AssessmentResult" EntitySet="AssessmentResult" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentResult_CampaignEntry" Association="Self.FK_AssessmentResult_CampaignEntry">
+            <End Role="CampaignEntry" EntitySet="CampaignEntry" />
+            <End Role="AssessmentResult" EntitySet="AssessmentResult" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentResult_EssayTopic" Association="Self.FK_AssessmentResult_EssayTopic">
+            <End Role="EssayTopic" EntitySet="EssayTopic" />
+            <End Role="AssessmentResult" EntitySet="AssessmentResult" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentTopic_Assessment" Association="Self.FK_AssessmentTopic_Assessment">
+            <End Role="Assessment" EntitySet="Assessment" />
+            <End Role="AssessmentTopic" EntitySet="AssessmentTopic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Campaign_AssessmentBundle" Association="Self.FK_Campaign_AssessmentBundle">
+            <End Role="AssessmentBundle" EntitySet="AssessmentBundle" />
+            <End Role="Campaign" EntitySet="Campaign" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Campaign_Partner" Association="Self.FK_Campaign_Partner">
+            <End Role="Partner" EntitySet="Partner" />
+            <End Role="Campaign" EntitySet="Campaign" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CampaignEntry_Campaign" Association="Self.FK_CampaignEntry_Campaign">
+            <End Role="Campaign" EntitySet="Campaign" />
+            <End Role="CampaignEntry" EntitySet="CampaignEntry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CampaignEntry_Candidate" Association="Self.FK_CampaignEntry_Candidate">
+            <End Role="Candidate" EntitySet="Candidate" />
+            <End Role="CampaignEntry" EntitySet="CampaignEntry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CampaignEntry_TestSession" Association="Self.FK_CampaignEntry_TestSession">
+            <End Role="TestSession" EntitySet="TestSession" />
+            <End Role="CampaignEntry" EntitySet="CampaignEntry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CampaignSession_Campaign" Association="Self.FK_CampaignSession_Campaign">
+            <End Role="Campaign" EntitySet="Campaign" />
+            <End Role="CampaignSession" EntitySet="CampaignSession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CampaignSession_TestSession" Association="Self.FK_CampaignSession_TestSession">
+            <End Role="TestSession" EntitySet="TestSession" />
+            <End Role="CampaignSession" EntitySet="CampaignSession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidate_Location" Association="Self.FK_Candidate_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Candidate" EntitySet="Candidate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateAssessment_CampaignEntry" Association="Self.FK_CandidateAssessment_CampaignEntry">
+            <End Role="CampaignEntry" EntitySet="CampaignEntry" />
+            <End Role="CandidateAssessment" EntitySet="CandidateAssessment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateFeedback_Candidate" Association="Self.FK_CandidateFeedback_Candidate">
+            <End Role="Candidate" EntitySet="Candidate" />
+            <End Role="CandidateFeedback" EntitySet="CandidateFeedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateFeedback_FeedbackType" Association="Self.FK_CandidateFeedback_FeedbackType">
+            <End Role="FeedbackType" EntitySet="FeedbackType" />
+            <End Role="CandidateFeedback" EntitySet="CandidateFeedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateScheduleResponse_CampaignEntry" Association="Self.FK_CandidateScheduleResponse_CampaignEntry">
+            <End Role="CampaignEntry" EntitySet="CampaignEntry" />
+            <End Role="CandidateScheduleResponse" EntitySet="CandidateScheduleResponse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Center_Location" Association="Self.FK_Center_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Center" EntitySet="Center" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Center_Partner" Association="Self.FK_Center_Partner">
+            <End Role="Partner" EntitySet="Partner" />
+            <End Role="Center" EntitySet="Center" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChosenOption_ShownQuestion" Association="Self.FK_ChosenOption_ShownQuestion">
+            <End Role="ShownQuestion" EntitySet="ShownQuestion" />
+            <End Role="ChosenOption" EntitySet="ChosenOption" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EssayTopic_Assessment" Association="Self.FK_EssayTopic_Assessment">
+            <End Role="Assessment" EntitySet="Assessment" />
+            <End Role="EssayTopic" EntitySet="EssayTopic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FixedQuestion_Assessment" Association="Self.FK_FixedQuestion_Assessment">
+            <End Role="Assessment" EntitySet="Assessment" />
+            <End Role="FixedQuestion" EntitySet="FixedQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FixedQuestion_AssessmentQuestion" Association="Self.FK_FixedQuestion_AssessmentQuestion">
+            <End Role="AssessmentQuestion" EntitySet="AssessmentQuestion" />
+            <End Role="FixedQuestion" EntitySet="FixedQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Location_Location" Association="Self.FK_Location_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Location1" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PartnerWalletDebit_CampaignEntry" Association="Self.FK_PartnerWalletDebit_CampaignEntry">
+            <End Role="CampaignEntry" EntitySet="CampaignEntry" />
+            <End Role="PartnerWalletDebit" EntitySet="PartnerWalletDebit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PartnerWalletDebit_Partner" Association="Self.FK_PartnerWalletDebit_Partner">
+            <End Role="Partner" EntitySet="Partner" />
+            <End Role="PartnerWalletDebit" EntitySet="PartnerWalletDebit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionDifficultyLevel_Assessment" Association="Self.FK_QuestionDifficultyLevel_Assessment">
+            <End Role="Assessment" EntitySet="Assessment" />
+            <End Role="QuestionDifficultyLevel" EntitySet="QuestionDifficultyLevel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionGroup_Assessment" Association="Self.FK_QuestionGroup_Assessment">
+            <End Role="Assessment" EntitySet="Assessment" />
+            <End Role="QuestionGroup" EntitySet="QuestionGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestSession_Center" Association="Self.FK_TestSession_Center">
+            <End Role="Center" EntitySet="Center" />
+            <End Role="TestSession" EntitySet="TestSession" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FotLanModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="LanContext" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Assessments" EntityType="FotLanModel.Assessment" />
+          <EntitySet Name="AssessmentAnswers" EntityType="FotLanModel.AssessmentAnswer" />
+          <EntitySet Name="AssessmentBundles" EntityType="FotLanModel.AssessmentBundle" />
+          <EntitySet Name="AssessmentBundleEntries" EntityType="FotLanModel.AssessmentBundleEntry" />
+          <EntitySet Name="AssessmentOutputConfigs" EntityType="FotLanModel.AssessmentOutputConfig" />
+          <EntitySet Name="AssessmentQuestions" EntityType="FotLanModel.AssessmentQuestion" />
+          <EntitySet Name="AssessmentResults" EntityType="FotLanModel.AssessmentResult" />
+          <EntitySet Name="AssessmentTopics" EntityType="FotLanModel.AssessmentTopic" />
+          <EntitySet Name="Campaigns" EntityType="FotLanModel.Campaign" />
+          <EntitySet Name="CampaignEntries" EntityType="FotLanModel.CampaignEntry" />
+          <EntitySet Name="Candidates" EntityType="FotLanModel.Candidate" />
+          <EntitySet Name="CandidateAssessments" EntityType="FotLanModel.CandidateAssessment" />
+          <EntitySet Name="EssayTopics" EntityType="FotLanModel.EssayTopic" />
+          <EntitySet Name="QuestionDifficultyLevels" EntityType="FotLanModel.QuestionDifficultyLevel" />
+          <EntitySet Name="QuestionGroups" EntityType="FotLanModel.QuestionGroup" />
+          <AssociationSet Name="FK_AssessmentBundleEntry_Assessment" Association="FotLanModel.FK_AssessmentBundleEntry_Assessment">
+            <End Role="Assessment" EntitySet="Assessments" />
+            <End Role="AssessmentBundleEntry" EntitySet="AssessmentBundleEntries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentOutputConfig_Assessment" Association="FotLanModel.FK_AssessmentOutputConfig_Assessment">
+            <End Role="Assessment" EntitySet="Assessments" />
+            <End Role="AssessmentOutputConfig" EntitySet="AssessmentOutputConfigs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentQuestion_Assessment" Association="FotLanModel.FK_AssessmentQuestion_Assessment">
+            <End Role="Assessment" EntitySet="Assessments" />
+            <End Role="AssessmentQuestion" EntitySet="AssessmentQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentResult_Assessment" Association="FotLanModel.FK_AssessmentResult_Assessment">
+            <End Role="Assessment" EntitySet="Assessments" />
+            <End Role="AssessmentResult" EntitySet="AssessmentResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentTopic_Assessment" Association="FotLanModel.FK_AssessmentTopic_Assessment">
+            <End Role="Assessment" EntitySet="Assessments" />
+            <End Role="AssessmentTopic" EntitySet="AssessmentTopics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EssayTopic_Assessment" Association="FotLanModel.FK_EssayTopic_Assessment">
+            <End Role="Assessment" EntitySet="Assessments" />
+            <End Role="EssayTopic" EntitySet="EssayTopics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionDifficultyLevel_Assessment" Association="FotLanModel.FK_QuestionDifficultyLevel_Assessment">
+            <End Role="Assessment" EntitySet="Assessments" />
+            <End Role="QuestionDifficultyLevel" EntitySet="QuestionDifficultyLevels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionGroup_Assessment" Association="FotLanModel.FK_QuestionGroup_Assessment">
+            <End Role="Assessment" EntitySet="Assessments" />
+            <End Role="QuestionGroup" EntitySet="QuestionGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentAnswer_AssessmentQuestion" Association="FotLanModel.FK_AssessmentAnswer_AssessmentQuestion">
+            <End Role="AssessmentQuestion" EntitySet="AssessmentQuestions" />
+            <End Role="AssessmentAnswer" EntitySet="AssessmentAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentBundleEntry_AssessmentBundle" Association="FotLanModel.FK_AssessmentBundleEntry_AssessmentBundle">
+            <End Role="AssessmentBundle" EntitySet="AssessmentBundles" />
+            <End Role="AssessmentBundleEntry" EntitySet="AssessmentBundleEntries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Campaign_AssessmentBundle" Association="FotLanModel.FK_Campaign_AssessmentBundle">
+            <End Role="AssessmentBundle" EntitySet="AssessmentBundles" />
+            <End Role="Campaign" EntitySet="Campaigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentOutputConfig_AssessmentTopic" Association="FotLanModel.FK_AssessmentOutputConfig_AssessmentTopic">
+            <End Role="AssessmentTopic" EntitySet="AssessmentTopics" />
+            <End Role="AssessmentOutputConfig" EntitySet="AssessmentOutputConfigs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentOutputConfig_QuestionDifficultyLevel" Association="FotLanModel.FK_AssessmentOutputConfig_QuestionDifficultyLevel">
+            <End Role="QuestionDifficultyLevel" EntitySet="QuestionDifficultyLevels" />
+            <End Role="AssessmentOutputConfig" EntitySet="AssessmentOutputConfigs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentQuestion_AssessmentTopic" Association="FotLanModel.FK_AssessmentQuestion_AssessmentTopic">
+            <End Role="AssessmentTopic" EntitySet="AssessmentTopics" />
+            <End Role="AssessmentQuestion" EntitySet="AssessmentQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentQuestion_QuestionDifficultyLevel" Association="FotLanModel.FK_AssessmentQuestion_QuestionDifficultyLevel">
+            <End Role="QuestionDifficultyLevel" EntitySet="QuestionDifficultyLevels" />
+            <End Role="AssessmentQuestion" EntitySet="AssessmentQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentQuestion_QuestionGroup" Association="FotLanModel.FK_AssessmentQuestion_QuestionGroup">
+            <End Role="QuestionGroup" EntitySet="QuestionGroups" />
+            <End Role="AssessmentQuestion" EntitySet="AssessmentQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentResult_CampaignEntry" Association="FotLanModel.FK_AssessmentResult_CampaignEntry">
+            <End Role="CampaignEntry" EntitySet="CampaignEntries" />
+            <End Role="AssessmentResult" EntitySet="AssessmentResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentResult_EssayTopic" Association="FotLanModel.FK_AssessmentResult_EssayTopic">
+            <End Role="EssayTopic" EntitySet="EssayTopics" />
+            <End Role="AssessmentResult" EntitySet="AssessmentResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CampaignEntry_Campaign" Association="FotLanModel.FK_CampaignEntry_Campaign">
+            <End Role="Campaign" EntitySet="Campaigns" />
+            <End Role="CampaignEntry" EntitySet="CampaignEntries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CampaignEntry_Candidate" Association="FotLanModel.FK_CampaignEntry_Candidate">
+            <End Role="Candidate" EntitySet="Candidates" />
+            <End Role="CampaignEntry" EntitySet="CampaignEntries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateAssessment_CampaignEntry" Association="FotLanModel.FK_CandidateAssessment_CampaignEntry">
+            <End Role="CampaignEntry" EntitySet="CampaignEntries" />
+            <End Role="CandidateAssessment" EntitySet="CandidateAssessments" />
+          </AssociationSet>
+          <EntitySet Name="Centers" EntityType="FotLanModel.Center" />
+          <EntitySet Name="Locations" EntityType="FotLanModel.Location" />
+          <EntitySet Name="TestSessions" EntityType="FotLanModel.TestSession" />
+          <AssociationSet Name="FK_CampaignEntry_TestSession" Association="FotLanModel.FK_CampaignEntry_TestSession">
+            <End Role="TestSession" EntitySet="TestSessions" />
+            <End Role="CampaignEntry" EntitySet="CampaignEntries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidate_Location" Association="FotLanModel.FK_Candidate_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Candidate" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Center_Location" Association="FotLanModel.FK_Center_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Center" EntitySet="Centers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestSession_Center" Association="FotLanModel.FK_TestSession_Center">
+            <End Role="Center" EntitySet="Centers" />
+            <End Role="TestSession" EntitySet="TestSessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Location_Location" Association="FotLanModel.FK_Location_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Location1" EntitySet="Locations" />
+          </AssociationSet>
+          <EntitySet Name="FeedbackTypes" EntityType="FotLanModel.FeedbackType" />
+          <EntitySet Name="CandidateFeedbacks" EntityType="FotLanModel.CandidateFeedback" />
+          <AssociationSet Name="FK_CandidateFeedback_Candidate" Association="FotLanModel.FK_CandidateFeedback_Candidate">
+            <End Role="Candidate" EntitySet="Candidates" />
+            <End Role="CandidateFeedback" EntitySet="CandidateFeedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateFeedback_FeedbackType" Association="FotLanModel.FK_CandidateFeedback_FeedbackType">
+            <End Role="FeedbackType" EntitySet="FeedbackTypes" />
+            <End Role="CandidateFeedback" EntitySet="CandidateFeedbacks" />
+          </AssociationSet>
+          <EntitySet Name="ChosenOptions" EntityType="FotLanModel.ChosenOption" />
+          <EntitySet Name="ShownQuestions" EntityType="FotLanModel.ShownQuestion" />
+          <AssociationSet Name="FK_ChosenOption_ShownQuestion" Association="FotLanModel.FK_ChosenOption_ShownQuestion">
+            <End Role="ShownQuestion" EntitySet="ShownQuestions" />
+            <End Role="ChosenOption" EntitySet="ChosenOptions" />
+          </AssociationSet>
+          <EntitySet Name="Partners" EntityType="FotLanModel.Partner" />
+          <EntitySet Name="PartnerWalletDebits" EntityType="FotLanModel.PartnerWalletDebit" />
+          <AssociationSet Name="FK_Assessment_Partner" Association="FotLanModel.FK_Assessment_Partner">
+            <End Role="Partner" EntitySet="Partners" />
+            <End Role="Assessment" EntitySet="Assessments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentBundle_Partner" Association="FotLanModel.FK_AssessmentBundle_Partner">
+            <End Role="Partner" EntitySet="Partners" />
+            <End Role="AssessmentBundle" EntitySet="AssessmentBundles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Campaign_Partner" Association="FotLanModel.FK_Campaign_Partner">
+            <End Role="Partner" EntitySet="Partners" />
+            <End Role="Campaign" EntitySet="Campaigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PartnerWalletDebit_CampaignEntry" Association="FotLanModel.FK_PartnerWalletDebit_CampaignEntry">
+            <End Role="CampaignEntry" EntitySet="CampaignEntries" />
+            <End Role="PartnerWalletDebit" EntitySet="PartnerWalletDebits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Center_Partner" Association="FotLanModel.FK_Center_Partner">
+            <End Role="Partner" EntitySet="Partners" />
+            <End Role="Center" EntitySet="Centers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PartnerWalletDebit_Partner" Association="FotLanModel.FK_PartnerWalletDebit_Partner">
+            <End Role="Partner" EntitySet="Partners" />
+            <End Role="PartnerWalletDebit" EntitySet="PartnerWalletDebits" />
+          </AssociationSet>
+          <EntitySet Name="CampaignSessions" EntityType="FotLanModel.CampaignSession" />
+          <AssociationSet Name="FK_CampaignSession_Campaign" Association="FotLanModel.FK_CampaignSession_Campaign">
+            <End Role="Campaign" EntitySet="Campaigns" />
+            <End Role="CampaignSession" EntitySet="CampaignSessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CampaignSession_TestSession" Association="FotLanModel.FK_CampaignSession_TestSession">
+            <End Role="TestSession" EntitySet="TestSessions" />
+            <End Role="CampaignSession" EntitySet="CampaignSessions" />
+          </AssociationSet>
+          <EntitySet Name="CandidateScheduleResponses" EntityType="FotLanModel.CandidateScheduleResponse" />
+          <AssociationSet Name="FK_CandidateScheduleResponse_CampaignEntry" Association="FotLanModel.FK_CandidateScheduleResponse_CampaignEntry">
+            <End Role="CampaignEntry" EntitySet="CampaignEntries" />
+            <End Role="CandidateScheduleResponse" EntitySet="CandidateScheduleResponses" />
+          </AssociationSet>
+          <EntitySet Name="FixedQuestions" EntityType="FotLanModel.FixedQuestion" />
+          <AssociationSet Name="FK_FixedQuestion_Assessment" Association="FotLanModel.FK_FixedQuestion_Assessment">
+            <End Role="Assessment" EntitySet="Assessments" />
+            <End Role="FixedQuestion" EntitySet="FixedQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FixedQuestion_AssessmentQuestion" Association="FotLanModel.FK_FixedQuestion_AssessmentQuestion">
+            <End Role="AssessmentQuestion" EntitySet="AssessmentQuestions" />
+            <End Role="FixedQuestion" EntitySet="FixedQuestions" />
+          </AssociationSet>
+        </EntityContainer>
+        <EnumType Name="AssessmentType" a:ExternalTypeName="Fot.Client.Models.AssessmentType" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+        <EntityType Name="Assessment">
+          <Key>
+            <PropertyRef Name="AssessmentId" />
+          </Key>
+          <Property Type="Int32" Name="AssessmentId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Duration" Nullable="false" />
+          <Property Type="String" Name="InstructionText" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Binary" Name="InstructionImage" MaxLength="Max" FixedLength="false" />
+          <Property Type="Boolean" Name="Timed" Nullable="false" />
+          <Property Type="Boolean" Name="ShowCalculator" Nullable="false" />
+          <Property Type="FotLanModel.AssessmentType" Name="AssessmentType" Nullable="false" />
+          <Property Type="Boolean" Name="RandomizeQuestions" Nullable="false" />
+          <Property Type="Boolean" Name="RandomizeOptions" Nullable="false" />
+          <Property Type="Boolean" Name="AdvancedOutputOptions" Nullable="false" />
+          <Property Type="Int32" Name="QuestionsPerTest" Nullable="false" />
+          <Property Type="DateTime" Name="DateAdded" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="DateLastUpdated" Precision="3" />
+          <NavigationProperty Name="AssessmentBundleEntries" Relationship="FotLanModel.FK_AssessmentBundleEntry_Assessment" FromRole="Assessment" ToRole="AssessmentBundleEntry" />
+          <NavigationProperty Name="AssessmentOutputConfigs" Relationship="FotLanModel.FK_AssessmentOutputConfig_Assessment" FromRole="Assessment" ToRole="AssessmentOutputConfig" />
+          <NavigationProperty Name="AssessmentQuestions" Relationship="FotLanModel.FK_AssessmentQuestion_Assessment" FromRole="Assessment" ToRole="AssessmentQuestion" />
+          <NavigationProperty Name="AssessmentResults" Relationship="FotLanModel.FK_AssessmentResult_Assessment" FromRole="Assessment" ToRole="AssessmentResult" />
+          <NavigationProperty Name="AssessmentTopics" Relationship="FotLanModel.FK_AssessmentTopic_Assessment" FromRole="Assessment" ToRole="AssessmentTopic" />
+          <NavigationProperty Name="EssayTopics" Relationship="FotLanModel.FK_EssayTopic_Assessment" FromRole="Assessment" ToRole="EssayTopic" />
+          <NavigationProperty Name="QuestionDifficultyLevels" Relationship="FotLanModel.FK_QuestionDifficultyLevel_Assessment" FromRole="Assessment" ToRole="QuestionDifficultyLevel" />
+          <NavigationProperty Name="QuestionGroups" Relationship="FotLanModel.FK_QuestionGroup_Assessment" FromRole="Assessment" ToRole="QuestionGroup" />
+          <Property Type="Int32" Name="OwnerPartnerId" />
+          <NavigationProperty Name="Partner" Relationship="FotLanModel.FK_Assessment_Partner" FromRole="Assessment" ToRole="Partner" />
+          <Property Name="HasFixedQuestions" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="FixedQuestions" Relationship="FotLanModel.FK_FixedQuestion_Assessment" FromRole="Assessment" ToRole="FixedQuestion" />
+          <Property Name="AuthorId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AssessmentAnswer">
+          <Key>
+            <PropertyRef Name="AnswerId" />
+          </Key>
+          <Property Type="Int32" Name="AnswerId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="QuestionId" Nullable="false" />
+          <Property Type="String" Name="AnswerText" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Binary" Name="AnswerImage" MaxLength="Max" FixedLength="false" />
+          <Property Type="Boolean" Name="IsImage" Nullable="false" />
+          <Property Type="Boolean" Name="IsCorrect" Nullable="false" />
+          <NavigationProperty Name="AssessmentQuestion" Relationship="FotLanModel.FK_AssessmentAnswer_AssessmentQuestion" FromRole="AssessmentAnswer" ToRole="AssessmentQuestion" />
+        </EntityType>
+        <EntityType Name="AssessmentBundle">
+          <Key>
+            <PropertyRef Name="BundleId" />
+          </Key>
+          <Property Type="Int32" Name="BundleId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Binary" Name="DescriptionImage" MaxLength="Max" FixedLength="false" />
+          <Property Type="Boolean" Name="ShowResultsOnSubmit" Nullable="false" />
+          <Property Type="Boolean" Name="SaveAsYouGo" Nullable="false" />
+          <Property Type="Boolean" Name="SendResultNotification" Nullable="false" />
+          <NavigationProperty Name="AssessmentBundleEntries" Relationship="FotLanModel.FK_AssessmentBundleEntry_AssessmentBundle" FromRole="AssessmentBundle" ToRole="AssessmentBundleEntry" />
+          <NavigationProperty Name="Campaigns" Relationship="FotLanModel.FK_Campaign_AssessmentBundle" FromRole="AssessmentBundle" ToRole="Campaign" />
+          <Property Type="Int32" Name="OwnerPartnerId" />
+          <NavigationProperty Name="Partner" Relationship="FotLanModel.FK_AssessmentBundle_Partner" FromRole="AssessmentBundle" ToRole="Partner" />
+          <Property Type="Int32" Name="MinAggregatePassScore" />
+          <Property Name="AllowAssessmentSelection" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AssessmentBundleEntry">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Type="Int32" Name="EntryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="BundleId" Nullable="false" />
+          <Property Type="Int32" Name="AssessmentId" Nullable="false" />
+          <NavigationProperty Name="Assessment" Relationship="FotLanModel.FK_AssessmentBundleEntry_Assessment" FromRole="AssessmentBundleEntry" ToRole="Assessment" />
+          <NavigationProperty Name="AssessmentBundle" Relationship="FotLanModel.FK_AssessmentBundleEntry_AssessmentBundle" FromRole="AssessmentBundleEntry" ToRole="AssessmentBundle" />
+        </EntityType>
+        <EntityType Name="AssessmentOutputConfig">
+          <Key>
+            <PropertyRef Name="ConfigId" />
+          </Key>
+          <Property Type="Int32" Name="ConfigId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="AssessmentId" Nullable="false" />
+          <Property Type="Int32" Name="TopicId" />
+          <Property Type="Int32" Name="DifficultyLevel" />
+          <Property Type="Int32" Name="NumQuestions" Nullable="false" />
+          <NavigationProperty Name="Assessment" Relationship="FotLanModel.FK_AssessmentOutputConfig_Assessment" FromRole="AssessmentOutputConfig" ToRole="Assessment" />
+          <NavigationProperty Name="AssessmentTopic" Relationship="FotLanModel.FK_AssessmentOutputConfig_AssessmentTopic" FromRole="AssessmentOutputConfig" ToRole="AssessmentTopic" />
+          <NavigationProperty Name="QuestionDifficultyLevel" Relationship="FotLanModel.FK_AssessmentOutputConfig_QuestionDifficultyLevel" FromRole="AssessmentOutputConfig" ToRole="QuestionDifficultyLevel" />
+        </EntityType>
+        <EntityType Name="AssessmentQuestion">
+          <Key>
+            <PropertyRef Name="QuestionId" />
+          </Key>
+          <Property Type="Int32" Name="QuestionId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="AssessmentId" Nullable="false" />
+          <Property Type="Int32" Name="TopicId" />
+          <Property Type="Int32" Name="GroupId" />
+          <Property Type="Int32" Name="DifficultyLevel" />
+          <Property Type="String" Name="QuestionText" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Binary" Name="QuestionImage" MaxLength="Max" FixedLength="false" />
+          <Property Type="String" Name="AdditionalText" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AnswerType" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="OptionsLayoutIsVertical" Nullable="false" />
+          <NavigationProperty Name="Assessment" Relationship="FotLanModel.FK_AssessmentQuestion_Assessment" FromRole="AssessmentQuestion" ToRole="Assessment" />
+          <NavigationProperty Name="AssessmentAnswers" Relationship="FotLanModel.FK_AssessmentAnswer_AssessmentQuestion" FromRole="AssessmentQuestion" ToRole="AssessmentAnswer" />
+          <NavigationProperty Name="AssessmentTopic" Relationship="FotLanModel.FK_AssessmentQuestion_AssessmentTopic" FromRole="AssessmentQuestion" ToRole="AssessmentTopic" />
+          <NavigationProperty Name="QuestionDifficultyLevel" Relationship="FotLanModel.FK_AssessmentQuestion_QuestionDifficultyLevel" FromRole="AssessmentQuestion" ToRole="QuestionDifficultyLevel" />
+          <NavigationProperty Name="QuestionGroup" Relationship="FotLanModel.FK_AssessmentQuestion_QuestionGroup" FromRole="AssessmentQuestion" ToRole="QuestionGroup" />
+          <NavigationProperty Name="FixedQuestions" Relationship="FotLanModel.FK_FixedQuestion_AssessmentQuestion" FromRole="AssessmentQuestion" ToRole="FixedQuestion" />
+          <Property Name="Retired" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AssessmentResult">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Type="Int32" Name="EntryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CampaignEntryId" Nullable="false" />
+          <Property Type="Int32" Name="AssessmentId" Nullable="false" />
+          <Property Type="Int32" Name="TestScore" />
+          <Property Type="String" Name="CandidateOptions" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="SelectedEssayId" />
+          <Property Type="String" Name="EssayText" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Assessment" Relationship="FotLanModel.FK_AssessmentResult_Assessment" FromRole="AssessmentResult" ToRole="Assessment" />
+          <NavigationProperty Name="CampaignEntry" Relationship="FotLanModel.FK_AssessmentResult_CampaignEntry" FromRole="AssessmentResult" ToRole="CampaignEntry" />
+          <NavigationProperty Name="EssayTopic" Relationship="FotLanModel.FK_AssessmentResult_EssayTopic" FromRole="AssessmentResult" ToRole="EssayTopic" />
+        </EntityType>
+        <EntityType Name="AssessmentTopic">
+          <Key>
+            <PropertyRef Name="TopicId" />
+          </Key>
+          <Property Type="Int32" Name="TopicId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="AssessmentId" Nullable="false" />
+          <Property Type="String" Name="Topic" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Assessment" Relationship="FotLanModel.FK_AssessmentTopic_Assessment" FromRole="AssessmentTopic" ToRole="Assessment" />
+          <NavigationProperty Name="AssessmentOutputConfigs" Relationship="FotLanModel.FK_AssessmentOutputConfig_AssessmentTopic" FromRole="AssessmentTopic" ToRole="AssessmentOutputConfig" />
+          <NavigationProperty Name="AssessmentQuestions" Relationship="FotLanModel.FK_AssessmentQuestion_AssessmentTopic" FromRole="AssessmentTopic" ToRole="AssessmentQuestion" />
+        </EntityType>
+        <EntityType Name="Campaign">
+          <Key>
+            <PropertyRef Name="CampaignId" />
+          </Key>
+          <Property Type="Int32" Name="CampaignId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PartnerId" Nullable="false" />
+          <Property Type="String" Name="CampaignName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Active" Nullable="false" />
+          <Property Type="Int32" Name="BundleId" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="3" />
+          <Property Type="Boolean" Name="IsUnproctored" Nullable="false" />
+          <Property Type="DateTime" Name="StartDate" Precision="3" />
+          <Property Type="DateTime" Name="EndDate" Precision="3" />
+          <NavigationProperty Name="AssessmentBundle" Relationship="FotLanModel.FK_Campaign_AssessmentBundle" FromRole="Campaign" ToRole="AssessmentBundle" />
+          <NavigationProperty Name="CampaignEntries" Relationship="FotLanModel.FK_CampaignEntry_Campaign" FromRole="Campaign" ToRole="CampaignEntry" />
+          <NavigationProperty Name="Partner" Relationship="FotLanModel.FK_Campaign_Partner" FromRole="Campaign" ToRole="Partner" />
+          <Property Type="String" Name="Instructions" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CampaignSessions" Relationship="FotLanModel.FK_CampaignSession_Campaign" FromRole="Campaign" ToRole="CampaignSession" />
+          <Property Name="InvitationLogo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LogoPlacement" Type="Int32" />
+          <Property Name="ShowFeedback" Type="Boolean" Nullable="false" />
+          <Property Name="ViewResult" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CampaignEntry">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Type="Int32" Name="EntryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CampaignId" Nullable="false" />
+          <Property Type="Int32" Name="CandidateId" Nullable="false" />
+          <Property Type="Boolean" Name="Scheduled" Nullable="false" />
+          <Property Type="Int32" Name="SessionId" />
+          <Property Type="Boolean" Name="Tested" Nullable="false" />
+          <Property Type="DateTime" Name="DateTested" Precision="3" />
+          <NavigationProperty Name="AssessmentResults" Relationship="FotLanModel.FK_AssessmentResult_CampaignEntry" FromRole="CampaignEntry" ToRole="AssessmentResult" />
+          <NavigationProperty Name="Campaign" Relationship="FotLanModel.FK_CampaignEntry_Campaign" FromRole="CampaignEntry" ToRole="Campaign" />
+          <NavigationProperty Name="Candidate" Relationship="FotLanModel.FK_CampaignEntry_Candidate" FromRole="CampaignEntry" ToRole="Candidate" />
+          <NavigationProperty Name="CandidateAssessment" Relationship="FotLanModel.FK_CandidateAssessment_CampaignEntry" FromRole="CampaignEntry" ToRole="CandidateAssessment" />
+          <NavigationProperty Name="TestSession" Relationship="FotLanModel.FK_CampaignEntry_TestSession" FromRole="CampaignEntry" ToRole="TestSession" />
+          <NavigationProperty Name="PartnerWalletDebits" Relationship="FotLanModel.FK_PartnerWalletDebit_CampaignEntry" FromRole="CampaignEntry" ToRole="PartnerWalletDebit" />
+          <Property Name="PhotoCaptured" Type="Boolean" />
+          <NavigationProperty Name="CandidateScheduleResponse" Relationship="FotLanModel.FK_CandidateScheduleResponse_CampaignEntry" FromRole="CampaignEntry" ToRole="CandidateScheduleResponse" />
+          <Property Name="PhotoCapturedBy" Type="Int32" />
+          <Property Name="TestStartTime" Type="DateTime" Precision="3" />
+          <Property Name="TestEndTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Candidate">
+          <Key>
+            <PropertyRef Name="CandidateId" />
+          </Key>
+          <Property Type="Int32" Name="CandidateId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="BiometricaID" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Username" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MiddleName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MobileNo" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AlternateEmail" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AlternateMobileNo" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateAdded" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="LocationId" />
+          <NavigationProperty Name="CampaignEntries" Relationship="FotLanModel.FK_CampaignEntry_Candidate" FromRole="Candidate" ToRole="CampaignEntry" />
+          <NavigationProperty Name="Location" Relationship="FotLanModel.FK_Candidate_Location" FromRole="Candidate" ToRole="Location" />
+          <NavigationProperty Name="CandidateFeedbacks" Relationship="FotLanModel.FK_CandidateFeedback_Candidate" FromRole="Candidate" ToRole="CandidateFeedback" />
+          <Property Name="ClientUniqueID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PhotoFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CandidateAssessment">
+          <Key>
+            <PropertyRef Name="CampaignEntryId" />
+          </Key>
+          <Property Type="Int32" Name="CampaignEntryId" Nullable="false" />
+          <Property Type="String" Name="CandidateGuid" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Binary" Name="AssessmentData" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="CurrentAssessmentState" MaxLength="Max" FixedLength="false" />
+          <Property Type="Int32" Name="SaveCount" Nullable="false" />
+          <Property Type="DateTime" Name="EntryDate" Precision="3" />
+          <Property Type="DateTime" Name="LastUpdated" Precision="3" />
+          <NavigationProperty Name="CampaignEntry" Relationship="FotLanModel.FK_CandidateAssessment_CampaignEntry" FromRole="CandidateAssessment" ToRole="CampaignEntry" />
+        </EntityType>
+        <EntityType Name="EssayTopic">
+          <Key>
+            <PropertyRef Name="EssayId" />
+          </Key>
+          <Property Type="Int32" Name="EssayId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="AssessmentId" />
+          <Property Type="String" Name="Topic" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Assessment" Relationship="FotLanModel.FK_EssayTopic_Assessment" FromRole="EssayTopic" ToRole="Assessment" />
+          <NavigationProperty Name="AssessmentResults" Relationship="FotLanModel.FK_AssessmentResult_EssayTopic" FromRole="EssayTopic" ToRole="AssessmentResult" />
+        </EntityType>
+        <EntityType Name="QuestionDifficultyLevel">
+          <Key>
+            <PropertyRef Name="LevelId" />
+          </Key>
+          <Property Type="Int32" Name="LevelId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="AssessmentId" Nullable="false" />
+          <Property Type="String" Name="LevelName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="LevelWeight" Nullable="false" />
+          <NavigationProperty Name="Assessment" Relationship="FotLanModel.FK_QuestionDifficultyLevel_Assessment" FromRole="QuestionDifficultyLevel" ToRole="Assessment" />
+          <NavigationProperty Name="AssessmentOutputConfigs" Relationship="FotLanModel.FK_AssessmentOutputConfig_QuestionDifficultyLevel" FromRole="QuestionDifficultyLevel" ToRole="AssessmentOutputConfig" />
+          <NavigationProperty Name="AssessmentQuestions" Relationship="FotLanModel.FK_AssessmentQuestion_QuestionDifficultyLevel" FromRole="QuestionDifficultyLevel" ToRole="AssessmentQuestion" />
+        </EntityType>
+        <EntityType Name="QuestionGroup">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Type="Int32" Name="GroupId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="AssessmentId" Nullable="false" />
+          <Property Type="String" Name="GroupName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Assessment" Relationship="FotLanModel.FK_QuestionGroup_Assessment" FromRole="QuestionGroup" ToRole="Assessment" />
+          <NavigationProperty Name="AssessmentQuestions" Relationship="FotLanModel.FK_AssessmentQuestion_QuestionGroup" FromRole="QuestionGroup" ToRole="AssessmentQuestion" />
+        </EntityType>
+        <Association Name="FK_AssessmentBundleEntry_Assessment">
+          <End Type="FotLanModel.Assessment" Role="Assessment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FotLanModel.AssessmentBundleEntry" Role="AssessmentBundleEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentId" />
+            </Principal>
+            <Dependent Role="AssessmentBundleEntry">
+              <PropertyRef Name="AssessmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentOutputConfig_Assessment">
+          <End Type="FotLanModel.Assessment" Role="Assessment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FotLanModel.AssessmentOutputConfig" Role="AssessmentOutputConfig" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentId" />
+            </Principal>
+            <Dependent Role="AssessmentOutputConfig">
+              <PropertyRef Name="AssessmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentQuestion_Assessment">
+          <End Type="FotLanModel.Assessment" Role="Assessment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FotLanModel.AssessmentQuestion" Role="AssessmentQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentId" />
+            </Principal>
+            <Dependent Role="AssessmentQuestion">
+              <PropertyRef Name="AssessmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentResult_Assessment">
+          <End Type="FotLanModel.Assessment" Role="Assessment" Multiplicity="1" />
+          <End Type="FotLanModel.AssessmentResult" Role="AssessmentResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentId" />
+            </Principal>
+            <Dependent Role="AssessmentResult">
+              <PropertyRef Name="AssessmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentTopic_Assessment">
+          <End Type="FotLanModel.Assessment" Role="Assessment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FotLanModel.AssessmentTopic" Role="AssessmentTopic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentId" />
+            </Principal>
+            <Dependent Role="AssessmentTopic">
+              <PropertyRef Name="AssessmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EssayTopic_Assessment">
+          <End Type="FotLanModel.Assessment" Role="Assessment" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FotLanModel.EssayTopic" Role="EssayTopic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentId" />
+            </Principal>
+            <Dependent Role="EssayTopic">
+              <PropertyRef Name="AssessmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionDifficultyLevel_Assessment">
+          <End Type="FotLanModel.Assessment" Role="Assessment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FotLanModel.QuestionDifficultyLevel" Role="QuestionDifficultyLevel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentId" />
+            </Principal>
+            <Dependent Role="QuestionDifficultyLevel">
+              <PropertyRef Name="AssessmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionGroup_Assessment">
+          <End Type="FotLanModel.Assessment" Role="Assessment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FotLanModel.QuestionGroup" Role="QuestionGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentId" />
+            </Principal>
+            <Dependent Role="QuestionGroup">
+              <PropertyRef Name="AssessmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentAnswer_AssessmentQuestion">
+          <End Type="FotLanModel.AssessmentQuestion" Role="AssessmentQuestion" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FotLanModel.AssessmentAnswer" Role="AssessmentAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentQuestion">
+              <PropertyRef Name="QuestionId" />
+            </Principal>
+            <Dependent Role="AssessmentAnswer">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentBundleEntry_AssessmentBundle">
+          <End Type="FotLanModel.AssessmentBundle" Role="AssessmentBundle" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FotLanModel.AssessmentBundleEntry" Role="AssessmentBundleEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentBundle">
+              <PropertyRef Name="BundleId" />
+            </Principal>
+            <Dependent Role="AssessmentBundleEntry">
+              <PropertyRef Name="BundleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Campaign_AssessmentBundle">
+          <End Type="FotLanModel.AssessmentBundle" Role="AssessmentBundle" Multiplicity="1" />
+          <End Type="FotLanModel.Campaign" Role="Campaign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentBundle">
+              <PropertyRef Name="BundleId" />
+            </Principal>
+            <Dependent Role="Campaign">
+              <PropertyRef Name="BundleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentOutputConfig_AssessmentTopic">
+          <End Type="FotLanModel.AssessmentTopic" Role="AssessmentTopic" Multiplicity="0..1" />
+          <End Type="FotLanModel.AssessmentOutputConfig" Role="AssessmentOutputConfig" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentTopic">
+              <PropertyRef Name="TopicId" />
+            </Principal>
+            <Dependent Role="AssessmentOutputConfig">
+              <PropertyRef Name="TopicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentOutputConfig_QuestionDifficultyLevel">
+          <End Type="FotLanModel.QuestionDifficultyLevel" Role="QuestionDifficultyLevel" Multiplicity="0..1" />
+          <End Type="FotLanModel.AssessmentOutputConfig" Role="AssessmentOutputConfig" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuestionDifficultyLevel">
+              <PropertyRef Name="LevelId" />
+            </Principal>
+            <Dependent Role="AssessmentOutputConfig">
+              <PropertyRef Name="DifficultyLevel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentQuestion_AssessmentTopic">
+          <End Type="FotLanModel.AssessmentTopic" Role="AssessmentTopic" Multiplicity="0..1" />
+          <End Type="FotLanModel.AssessmentQuestion" Role="AssessmentQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentTopic">
+              <PropertyRef Name="TopicId" />
+            </Principal>
+            <Dependent Role="AssessmentQuestion">
+              <PropertyRef Name="TopicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentQuestion_QuestionDifficultyLevel">
+          <End Type="FotLanModel.QuestionDifficultyLevel" Role="QuestionDifficultyLevel" Multiplicity="0..1" />
+          <End Type="FotLanModel.AssessmentQuestion" Role="AssessmentQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuestionDifficultyLevel">
+              <PropertyRef Name="LevelId" />
+            </Principal>
+            <Dependent Role="AssessmentQuestion">
+              <PropertyRef Name="DifficultyLevel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentQuestion_QuestionGroup">
+          <End Type="FotLanModel.QuestionGroup" Role="QuestionGroup" Multiplicity="0..1" />
+          <End Type="FotLanModel.AssessmentQuestion" Role="AssessmentQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuestionGroup">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="AssessmentQuestion">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentResult_CampaignEntry">
+          <End Type="FotLanModel.CampaignEntry" Role="CampaignEntry" Multiplicity="1" />
+          <End Type="FotLanModel.AssessmentResult" Role="AssessmentResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CampaignEntry">
+              <PropertyRef Name="EntryId" />
+            </Principal>
+            <Dependent Role="AssessmentResult">
+              <PropertyRef Name="CampaignEntryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentResult_EssayTopic">
+          <End Type="FotLanModel.EssayTopic" Role="EssayTopic" Multiplicity="0..1" />
+          <End Type="FotLanModel.AssessmentResult" Role="AssessmentResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EssayTopic">
+              <PropertyRef Name="EssayId" />
+            </Principal>
+            <Dependent Role="AssessmentResult">
+              <PropertyRef Name="SelectedEssayId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CampaignEntry_Campaign">
+          <End Type="FotLanModel.Campaign" Role="Campaign" Multiplicity="1" />
+          <End Type="FotLanModel.CampaignEntry" Role="CampaignEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campaign">
+              <PropertyRef Name="CampaignId" />
+            </Principal>
+            <Dependent Role="CampaignEntry">
+              <PropertyRef Name="CampaignId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CampaignEntry_Candidate">
+          <End Type="FotLanModel.Candidate" Role="Candidate" Multiplicity="1" />
+          <End Type="FotLanModel.CampaignEntry" Role="CampaignEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidate">
+              <PropertyRef Name="CandidateId" />
+            </Principal>
+            <Dependent Role="CampaignEntry">
+              <PropertyRef Name="CandidateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateAssessment_CampaignEntry">
+          <End Type="FotLanModel.CampaignEntry" Role="CampaignEntry" Multiplicity="1" />
+          <End Type="FotLanModel.CandidateAssessment" Role="CandidateAssessment" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CampaignEntry">
+              <PropertyRef Name="EntryId" />
+            </Principal>
+            <Dependent Role="CandidateAssessment">
+              <PropertyRef Name="CampaignEntryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Center">
+          <Key>
+            <PropertyRef Name="CenterId" />
+          </Key>
+          <Property Type="Int32" Name="CenterId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CenterName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="LocationId" Nullable="false" />
+          <Property Type="Int32" Name="CapacityPerSession" Nullable="false" />
+          <Property Type="Decimal" Name="RatePerTested" Precision="12" Scale="2" />
+          <Property Type="Boolean" Name="Active" Nullable="false" />
+          <NavigationProperty Name="Location" Relationship="FotLanModel.FK_Center_Location" FromRole="Center" ToRole="Location" />
+          <NavigationProperty Name="TestSessions" Relationship="FotLanModel.FK_TestSession_Center" FromRole="Center" ToRole="TestSession" />
+          <Property Type="Boolean" Name="IsPrivateCenter" Nullable="false" />
+          <Property Type="Int32" Name="OwnerPartnerId" />
+          <NavigationProperty Name="Partner" Relationship="FotLanModel.FK_Center_Partner" FromRole="Center" ToRole="Partner" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Type="Int32" Name="LocationId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="LocationName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="MappedToLocation" />
+          <NavigationProperty Name="Candidates" Relationship="FotLanModel.FK_Candidate_Location" FromRole="Location" ToRole="Candidate" />
+          <NavigationProperty Name="Centers" Relationship="FotLanModel.FK_Center_Location" FromRole="Location" ToRole="Center" />
+          <NavigationProperty Name="MappedLocations" Relationship="FotLanModel.FK_Location_Location" FromRole="Location" ToRole="Location1" />
+          <NavigationProperty Name="ParentLocation" Relationship="FotLanModel.FK_Location_Location" FromRole="Location1" ToRole="Location" />
+        </EntityType>
+        <EntityType Name="TestSession">
+          <Key>
+            <PropertyRef Name="SessionId" />
+          </Key>
+          <Property Type="Int32" Name="SessionId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CenterId" Nullable="false" />
+          <Property Type="DateTime" Name="TestDate" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="TimeIndex" Nullable="false" />
+          <Property Type="String" Name="TimeText" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CampaignEntries" Relationship="FotLanModel.FK_CampaignEntry_TestSession" FromRole="TestSession" ToRole="CampaignEntry" />
+          <NavigationProperty Name="Center" Relationship="FotLanModel.FK_TestSession_Center" FromRole="TestSession" ToRole="Center" />
+          <NavigationProperty Name="CampaignSessions" Relationship="FotLanModel.FK_CampaignSession_TestSession" FromRole="TestSession" ToRole="CampaignSession" />
+        </EntityType>
+        <Association Name="FK_CampaignEntry_TestSession">
+          <End Type="FotLanModel.TestSession" Role="TestSession" Multiplicity="0..1" />
+          <End Type="FotLanModel.CampaignEntry" Role="CampaignEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestSession">
+              <PropertyRef Name="SessionId" />
+            </Principal>
+            <Dependent Role="CampaignEntry">
+              <PropertyRef Name="SessionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidate_Location">
+          <End Type="FotLanModel.Location" Role="Location" Multiplicity="0..1" />
+          <End Type="FotLanModel.Candidate" Role="Candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="Candidate">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Center_Location">
+          <End Type="FotLanModel.Location" Role="Location" Multiplicity="1" />
+          <End Type="FotLanModel.Center" Role="Center" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="Center">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestSession_Center">
+          <End Type="FotLanModel.Center" Role="Center" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FotLanModel.TestSession" Role="TestSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Center">
+              <PropertyRef Name="CenterId" />
+            </Principal>
+            <Dependent Role="TestSession">
+              <PropertyRef Name="CenterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Location_Location">
+          <End Type="FotLanModel.Location" Role="Location" Multiplicity="0..1" />
+          <End Type="FotLanModel.Location" Role="Location1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="Location1">
+              <PropertyRef Name="MappedToLocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="FeedbackType">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Type="Int32" Name="EntryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FeedbackReason" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CandidateFeedbacks" Relationship="FotLanModel.FK_CandidateFeedback_FeedbackType" FromRole="FeedbackType" ToRole="CandidateFeedback" />
+        </EntityType>
+        <EntityType Name="CandidateFeedback">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Type="Int32" Name="EntryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CandidateId" />
+          <Property Type="Int32" Name="FeedBackTypeId" />
+          <Property Type="String" Name="FeedbackOther" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FeedbackMessage" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateSent" Precision="3" />
+          <NavigationProperty Name="Candidate" Relationship="FotLanModel.FK_CandidateFeedback_Candidate" FromRole="CandidateFeedback" ToRole="Candidate" />
+          <NavigationProperty Name="FeedbackType" Relationship="FotLanModel.FK_CandidateFeedback_FeedbackType" FromRole="CandidateFeedback" ToRole="FeedbackType" />
+        </EntityType>
+        <Association Name="FK_CandidateFeedback_Candidate">
+          <End Type="FotLanModel.Candidate" Role="Candidate" Multiplicity="0..1" />
+          <End Type="FotLanModel.CandidateFeedback" Role="CandidateFeedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidate">
+              <PropertyRef Name="CandidateId" />
+            </Principal>
+            <Dependent Role="CandidateFeedback">
+              <PropertyRef Name="CandidateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateFeedback_FeedbackType">
+          <End Type="FotLanModel.FeedbackType" Role="FeedbackType" Multiplicity="0..1" />
+          <End Type="FotLanModel.CandidateFeedback" Role="CandidateFeedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FeedbackType">
+              <PropertyRef Name="EntryId" />
+            </Principal>
+            <Dependent Role="CandidateFeedback">
+              <PropertyRef Name="FeedBackTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ChosenOption">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Type="Int32" Name="EntryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ShowQuestionEntryId" />
+          <Property Type="Int32" Name="AnswerId" />
+          <NavigationProperty Name="ShownQuestion" Relationship="FotLanModel.FK_ChosenOption_ShownQuestion" FromRole="ChosenOption" ToRole="ShownQuestion" />
+        </EntityType>
+        <EntityType Name="ShownQuestion">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Type="Int32" Name="EntryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CampaignId" />
+          <Property Type="Int32" Name="CampaignEntryId" />
+          <Property Type="Int32" Name="QuestionId" />
+          <Property Type="DateTime" Name="EntryDate" Precision="3" />
+          <NavigationProperty Name="ChosenOptions" Relationship="FotLanModel.FK_ChosenOption_ShownQuestion" FromRole="ShownQuestion" ToRole="ChosenOption" />
+          <Property Name="Correct" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK_ChosenOption_ShownQuestion">
+          <End Type="FotLanModel.ShownQuestion" Role="ShownQuestion" Multiplicity="0..1" />
+          <End Type="FotLanModel.ChosenOption" Role="ChosenOption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShownQuestion">
+              <PropertyRef Name="EntryId" />
+            </Principal>
+            <Dependent Role="ChosenOption">
+              <PropertyRef Name="ShowQuestionEntryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Partner">
+          <Key>
+            <PropertyRef Name="PartnerId" />
+          </Key>
+          <Property Type="Int32" Name="PartnerId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="PartnerName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsSelfManaged" Nullable="false" />
+          <Property Type="Decimal" Name="CostPerTestPublic" Precision="12" Scale="2" />
+          <Property Type="Decimal" Name="CostPerTestPrivate" Precision="12" Scale="2" />
+          <Property Type="Decimal" Name="WalletBalance" Nullable="false" Precision="12" Scale="2" />
+          <NavigationProperty Name="Assessments" Relationship="FotLanModel.FK_Assessment_Partner" FromRole="Partner" ToRole="Assessment" />
+          <NavigationProperty Name="AssessmentBundles" Relationship="FotLanModel.FK_AssessmentBundle_Partner" FromRole="Partner" ToRole="AssessmentBundle" />
+          <NavigationProperty Name="Campaigns" Relationship="FotLanModel.FK_Campaign_Partner" FromRole="Partner" ToRole="Campaign" />
+          <NavigationProperty Name="Centers" Relationship="FotLanModel.FK_Center_Partner" FromRole="Partner" ToRole="Center" />
+          <NavigationProperty Name="PartnerWalletDebits" Relationship="FotLanModel.FK_PartnerWalletDebit_Partner" FromRole="Partner" ToRole="PartnerWalletDebit" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="IsIntegrationPartner" Type="Boolean" />
+          <Property Name="ResultsPostUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="APIKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PartnerWalletDebit">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Type="Int32" Name="EntryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PartnerId" />
+          <Property Type="Int32" Name="CampaignEntryId" />
+          <Property Type="Decimal" Name="Amount" Precision="12" Scale="2" />
+          <Property Type="DateTime" Name="DebitDate" Precision="3" />
+          <NavigationProperty Name="CampaignEntry" Relationship="FotLanModel.FK_PartnerWalletDebit_CampaignEntry" FromRole="PartnerWalletDebit" ToRole="CampaignEntry" />
+          <NavigationProperty Name="Partner" Relationship="FotLanModel.FK_PartnerWalletDebit_Partner" FromRole="PartnerWalletDebit" ToRole="Partner" />
+        </EntityType>
+        <Association Name="FK_Assessment_Partner">
+          <End Type="FotLanModel.Partner" Role="Partner" Multiplicity="0..1" />
+          <End Type="FotLanModel.Assessment" Role="Assessment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="PartnerId" />
+            </Principal>
+            <Dependent Role="Assessment">
+              <PropertyRef Name="OwnerPartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentBundle_Partner">
+          <End Type="FotLanModel.Partner" Role="Partner" Multiplicity="0..1" />
+          <End Type="FotLanModel.AssessmentBundle" Role="AssessmentBundle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="PartnerId" />
+            </Principal>
+            <Dependent Role="AssessmentBundle">
+              <PropertyRef Name="OwnerPartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Campaign_Partner">
+          <End Type="FotLanModel.Partner" Role="Partner" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FotLanModel.Campaign" Role="Campaign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="PartnerId" />
+            </Principal>
+            <Dependent Role="Campaign">
+              <PropertyRef Name="PartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PartnerWalletDebit_CampaignEntry">
+          <End Type="FotLanModel.CampaignEntry" Role="CampaignEntry" Multiplicity="0..1" />
+          <End Type="FotLanModel.PartnerWalletDebit" Role="PartnerWalletDebit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CampaignEntry">
+              <PropertyRef Name="EntryId" />
+            </Principal>
+            <Dependent Role="PartnerWalletDebit">
+              <PropertyRef Name="CampaignEntryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Center_Partner">
+          <End Type="FotLanModel.Partner" Role="Partner" Multiplicity="0..1" />
+          <End Type="FotLanModel.Center" Role="Center" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="PartnerId" />
+            </Principal>
+            <Dependent Role="Center">
+              <PropertyRef Name="OwnerPartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PartnerWalletDebit_Partner">
+          <End Type="FotLanModel.Partner" Role="Partner" Multiplicity="0..1" />
+          <End Type="FotLanModel.PartnerWalletDebit" Role="PartnerWalletDebit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="PartnerId" />
+            </Principal>
+            <Dependent Role="PartnerWalletDebit">
+              <PropertyRef Name="PartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CampaignSession">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Type="Int32" Name="EntryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CampaignId" Nullable="false" />
+          <Property Type="Int32" Name="SessionId" Nullable="false" />
+          <NavigationProperty Name="Campaign" Relationship="FotLanModel.FK_CampaignSession_Campaign" FromRole="CampaignSession" ToRole="Campaign" />
+          <NavigationProperty Name="TestSession" Relationship="FotLanModel.FK_CampaignSession_TestSession" FromRole="CampaignSession" ToRole="TestSession" />
+        </EntityType>
+        <Association Name="FK_CampaignSession_Campaign">
+          <End Type="FotLanModel.Campaign" Role="Campaign" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FotLanModel.CampaignSession" Role="CampaignSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campaign">
+              <PropertyRef Name="CampaignId" />
+            </Principal>
+            <Dependent Role="CampaignSession">
+              <PropertyRef Name="CampaignId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CampaignSession_TestSession">
+          <End Type="FotLanModel.TestSession" Role="TestSession" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FotLanModel.CampaignSession" Role="CampaignSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestSession">
+              <PropertyRef Name="SessionId" />
+            </Principal>
+            <Dependent Role="CampaignSession">
+              <PropertyRef Name="SessionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CandidateScheduleResponse">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="Int32" Nullable="false" />
+          <Property Name="AcceptSchedule" Type="Boolean" Nullable="false" />
+          <Property Name="RejectReason" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DateResponded" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CampaignEntry" Relationship="FotLanModel.FK_CandidateScheduleResponse_CampaignEntry" FromRole="CandidateScheduleResponse" ToRole="CampaignEntry" />
+        </EntityType>
+        <Association Name="FK_CandidateScheduleResponse_CampaignEntry">
+          <End Type="FotLanModel.CampaignEntry" Role="CampaignEntry" Multiplicity="1" />
+          <End Type="FotLanModel.CandidateScheduleResponse" Role="CandidateScheduleResponse" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CampaignEntry">
+              <PropertyRef Name="EntryId" />
+            </Principal>
+            <Dependent Role="CandidateScheduleResponse">
+              <PropertyRef Name="EntryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="FixedQuestion">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssessmentId" Type="Int32" Nullable="false" />
+          <Property Name="QuestionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Assessment" Relationship="FotLanModel.FK_FixedQuestion_Assessment" FromRole="FixedQuestion" ToRole="Assessment" />
+          <NavigationProperty Name="AssessmentQuestion" Relationship="FotLanModel.FK_FixedQuestion_AssessmentQuestion" FromRole="FixedQuestion" ToRole="AssessmentQuestion" />
+        </EntityType>
+        <Association Name="FK_FixedQuestion_Assessment">
+          <End Type="FotLanModel.Assessment" Role="Assessment" Multiplicity="1" />
+          <End Type="FotLanModel.FixedQuestion" Role="FixedQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assessment">
+              <PropertyRef Name="AssessmentId" />
+            </Principal>
+            <Dependent Role="FixedQuestion">
+              <PropertyRef Name="AssessmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FixedQuestion_AssessmentQuestion">
+          <End Type="FotLanModel.AssessmentQuestion" Role="AssessmentQuestion" Multiplicity="1" />
+          <End Type="FotLanModel.FixedQuestion" Role="FixedQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssessmentQuestion">
+              <PropertyRef Name="QuestionId" />
+            </Principal>
+            <Dependent Role="FixedQuestion">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FotLanModelStoreContainer" CdmEntityContainer="LanContext">
+          <EntitySetMapping Name="Assessments">
+            <EntityTypeMapping TypeName="FotLanModel.Assessment">
+              <MappingFragment StoreEntitySet="Assessment">
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="HasFixedQuestions" ColumnName="HasFixedQuestions" />
+                <ScalarProperty Name="OwnerPartnerId" ColumnName="OwnerPartnerId" />
+                <ScalarProperty Name="DateLastUpdated" ColumnName="DateLastUpdated" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="QuestionsPerTest" ColumnName="QuestionsPerTest" />
+                <ScalarProperty Name="AdvancedOutputOptions" ColumnName="AdvancedOutputOptions" />
+                <ScalarProperty Name="RandomizeOptions" ColumnName="RandomizeOptions" />
+                <ScalarProperty Name="RandomizeQuestions" ColumnName="RandomizeQuestions" />
+                <ScalarProperty Name="AssessmentType" ColumnName="AssessmentType" />
+                <ScalarProperty Name="ShowCalculator" ColumnName="ShowCalculator" />
+                <ScalarProperty Name="Timed" ColumnName="Timed" />
+                <ScalarProperty Name="InstructionImage" ColumnName="InstructionImage" />
+                <ScalarProperty Name="InstructionText" ColumnName="InstructionText" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AssessmentId" ColumnName="AssessmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssessmentAnswers">
+            <EntityTypeMapping TypeName="FotLanModel.AssessmentAnswer">
+              <MappingFragment StoreEntitySet="AssessmentAnswer">
+                <ScalarProperty Name="IsCorrect" ColumnName="IsCorrect" />
+                <ScalarProperty Name="IsImage" ColumnName="IsImage" />
+                <ScalarProperty Name="AnswerImage" ColumnName="AnswerImage" />
+                <ScalarProperty Name="AnswerText" ColumnName="AnswerText" />
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssessmentBundles">
+            <EntityTypeMapping TypeName="FotLanModel.AssessmentBundle">
+              <MappingFragment StoreEntitySet="AssessmentBundle">
+                <ScalarProperty Name="AllowAssessmentSelection" ColumnName="AllowAssessmentSelection" />
+                <ScalarProperty Name="MinAggregatePassScore" ColumnName="MinAggregatePassScore" />
+                <ScalarProperty Name="OwnerPartnerId" ColumnName="OwnerPartnerId" />
+                <ScalarProperty Name="SendResultNotification" ColumnName="SendResultNotification" />
+                <ScalarProperty Name="SaveAsYouGo" ColumnName="SaveAsYouGo" />
+                <ScalarProperty Name="ShowResultsOnSubmit" ColumnName="ShowResultsOnSubmit" />
+                <ScalarProperty Name="DescriptionImage" ColumnName="DescriptionImage" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BundleId" ColumnName="BundleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssessmentBundleEntries">
+            <EntityTypeMapping TypeName="FotLanModel.AssessmentBundleEntry">
+              <MappingFragment StoreEntitySet="AssessmentBundleEntry">
+                <ScalarProperty Name="AssessmentId" ColumnName="AssessmentId" />
+                <ScalarProperty Name="BundleId" ColumnName="BundleId" />
+                <ScalarProperty Name="EntryId" ColumnName="EntryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssessmentOutputConfigs">
+            <EntityTypeMapping TypeName="FotLanModel.AssessmentOutputConfig">
+              <MappingFragment StoreEntitySet="AssessmentOutputConfig">
+                <ScalarProperty Name="NumQuestions" ColumnName="NumQuestions" />
+                <ScalarProperty Name="DifficultyLevel" ColumnName="DifficultyLevel" />
+                <ScalarProperty Name="TopicId" ColumnName="TopicId" />
+                <ScalarProperty Name="AssessmentId" ColumnName="AssessmentId" />
+                <ScalarProperty Name="ConfigId" ColumnName="ConfigId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssessmentQuestions">
+            <EntityTypeMapping TypeName="FotLanModel.AssessmentQuestion">
+              <MappingFragment StoreEntitySet="AssessmentQuestion">
+                <ScalarProperty Name="Retired" ColumnName="Retired" />
+                <ScalarProperty Name="OptionsLayoutIsVertical" ColumnName="OptionsLayoutIsVertical" />
+                <ScalarProperty Name="AnswerType" ColumnName="AnswerType" />
+                <ScalarProperty Name="AdditionalText" ColumnName="AdditionalText" />
+                <ScalarProperty Name="QuestionImage" ColumnName="QuestionImage" />
+                <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
+                <ScalarProperty Name="DifficultyLevel" ColumnName="DifficultyLevel" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="TopicId" ColumnName="TopicId" />
+                <ScalarProperty Name="AssessmentId" ColumnName="AssessmentId" />
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssessmentResults">
+            <EntityTypeMapping TypeName="FotLanModel.AssessmentResult">
+              <MappingFragment StoreEntitySet="AssessmentResult">
+                <ScalarProperty Name="EssayText" ColumnName="EssayText" />
+                <ScalarProperty Name="SelectedEssayId" ColumnName="SelectedEssayId" />
+                <ScalarProperty Name="CandidateOptions" ColumnName="CandidateOptions" />
+                <ScalarProperty Name="TestScore" ColumnName="TestScore" />
+                <ScalarProperty Name="AssessmentId" ColumnName="AssessmentId" />
+                <ScalarProperty Name="CampaignEntryId" ColumnName="CampaignEntryId" />
+                <ScalarProperty Name="EntryId" ColumnName="EntryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssessmentTopics">
+            <EntityTypeMapping TypeName="FotLanModel.AssessmentTopic">
+              <MappingFragment StoreEntitySet="AssessmentTopic">
+                <ScalarProperty Name="Topic" ColumnName="Topic" />
+                <ScalarProperty Name="AssessmentId" ColumnName="AssessmentId" />
+                <ScalarProperty Name="TopicId" ColumnName="TopicId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Campaigns">
+            <EntityTypeMapping TypeName="FotLanModel.Campaign">
+              <MappingFragment StoreEntitySet="Campaign">
+                <ScalarProperty Name="ViewResult" ColumnName="ViewResult" />
+                <ScalarProperty Name="ShowFeedback" ColumnName="ShowFeedback" />
+                <ScalarProperty Name="LogoPlacement" ColumnName="LogoPlacement" />
+                <ScalarProperty Name="InvitationLogo" ColumnName="InvitationLogo" />
+                <ScalarProperty Name="Instructions" ColumnName="Instructions" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="IsUnproctored" ColumnName="IsUnproctored" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="BundleId" ColumnName="BundleId" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
+                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+                <ScalarProperty Name="CampaignId" ColumnName="CampaignId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CampaignEntries">
+            <EntityTypeMapping TypeName="FotLanModel.CampaignEntry">
+              <MappingFragment StoreEntitySet="CampaignEntry">
+                <ScalarProperty Name="TestEndTime" ColumnName="TestEndTime" />
+                <ScalarProperty Name="TestStartTime" ColumnName="TestStartTime" />
+                <ScalarProperty Name="PhotoCapturedBy" ColumnName="PhotoCapturedBy" />
+                <ScalarProperty Name="PhotoCaptured" ColumnName="PhotoCaptured" />
+                <ScalarProperty Name="DateTested" ColumnName="DateTested" />
+                <ScalarProperty Name="Tested" ColumnName="Tested" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="Scheduled" ColumnName="Scheduled" />
+                <ScalarProperty Name="CandidateId" ColumnName="CandidateId" />
+                <ScalarProperty Name="CampaignId" ColumnName="CampaignId" />
+                <ScalarProperty Name="EntryId" ColumnName="EntryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Candidates">
+            <EntityTypeMapping TypeName="FotLanModel.Candidate">
+              <MappingFragment StoreEntitySet="Candidate">
+                <ScalarProperty Name="PhotoFileName" ColumnName="PhotoFileName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ClientUniqueID" ColumnName="ClientUniqueID" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="AlternateMobileNo" ColumnName="AlternateMobileNo" />
+                <ScalarProperty Name="AlternateEmail" ColumnName="AlternateEmail" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="BiometricaID" ColumnName="BiometricaID" />
+                <ScalarProperty Name="CandidateId" ColumnName="CandidateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CandidateAssessments">
+            <EntityTypeMapping TypeName="FotLanModel.CandidateAssessment">
+              <MappingFragment StoreEntitySet="CandidateAssessment">
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="SaveCount" ColumnName="SaveCount" />
+                <ScalarProperty Name="CurrentAssessmentState" ColumnName="CurrentAssessmentState" />
+                <ScalarProperty Name="AssessmentData" ColumnName="AssessmentData" />
+                <ScalarProperty Name="CandidateGuid" ColumnName="CandidateGuid" />
+                <ScalarProperty Name="CampaignEntryId" ColumnName="CampaignEntryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EssayTopics">
+            <EntityTypeMapping TypeName="FotLanModel.EssayTopic">
+              <MappingFragment StoreEntitySet="EssayTopic">
+                <ScalarProperty Name="Topic" ColumnName="Topic" />
+                <ScalarProperty Name="AssessmentId" ColumnName="AssessmentId" />
+                <ScalarProperty Name="EssayId" ColumnName="EssayId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuestionDifficultyLevels">
+            <EntityTypeMapping TypeName="FotLanModel.QuestionDifficultyLevel">
+              <MappingFragment StoreEntitySet="QuestionDifficultyLevel">
+                <ScalarProperty Name="LevelWeight" ColumnName="LevelWeight" />
+                <ScalarProperty Name="LevelName" ColumnName="LevelName" />
+                <ScalarProperty Name="AssessmentId" ColumnName="AssessmentId" />
+                <ScalarProperty Name="LevelId" ColumnName="LevelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuestionGroups">
+            <EntityTypeMapping TypeName="FotLanModel.QuestionGroup">
+              <MappingFragment StoreEntitySet="QuestionGroup">
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="AssessmentId" ColumnName="AssessmentId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Centers">
+            <EntityTypeMapping TypeName="FotLanModel.Center">
+              <MappingFragment StoreEntitySet="Center">
+                <ScalarProperty Name="OwnerPartnerId" ColumnName="OwnerPartnerId" />
+                <ScalarProperty Name="IsPrivateCenter" ColumnName="IsPrivateCenter" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="RatePerTested" ColumnName="RatePerTested" />
+                <ScalarProperty Name="CapacityPerSession" ColumnName="CapacityPerSession" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CenterName" ColumnName="CenterName" />
+                <ScalarProperty Name="CenterId" ColumnName="CenterId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="FotLanModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="MappedToLocation" ColumnName="MappedToLocation" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestSessions">
+            <EntityTypeMapping TypeName="FotLanModel.TestSession">
+              <MappingFragment StoreEntitySet="TestSession">
+                <ScalarProperty Name="TimeText" ColumnName="TimeText" />
+                <ScalarProperty Name="TimeIndex" ColumnName="TimeIndex" />
+                <ScalarProperty Name="TestDate" ColumnName="TestDate" />
+                <ScalarProperty Name="CenterId" ColumnName="CenterId" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FeedbackTypes">
+            <EntityTypeMapping TypeName="FotLanModel.FeedbackType">
+              <MappingFragment StoreEntitySet="FeedbackType">
+                <ScalarProperty Name="FeedbackReason" ColumnName="FeedbackReason" />
+                <ScalarProperty Name="EntryId" ColumnName="EntryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CandidateFeedbacks">
+            <EntityTypeMapping TypeName="FotLanModel.CandidateFeedback">
+              <MappingFragment StoreEntitySet="CandidateFeedback">
+                <ScalarProperty Name="DateSent" ColumnName="DateSent" />
+                <ScalarProperty Name="FeedbackMessage" ColumnName="FeedbackMessage" />
+                <ScalarProperty Name="FeedbackOther" ColumnName="FeedbackOther" />
+                <ScalarProperty Name="FeedBackTypeId" ColumnName="FeedBackTypeId" />
+                <ScalarProperty Name="CandidateId" ColumnName="CandidateId" />
+                <ScalarProperty Name="EntryId" ColumnName="EntryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChosenOptions">
+            <EntityTypeMapping TypeName="FotLanModel.ChosenOption">
+              <MappingFragment StoreEntitySet="ChosenOption">
+                <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
+                <ScalarProperty Name="ShowQuestionEntryId" ColumnName="ShowQuestionEntryId" />
+                <ScalarProperty Name="EntryId" ColumnName="EntryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShownQuestions">
+            <EntityTypeMapping TypeName="FotLanModel.ShownQuestion">
+              <MappingFragment StoreEntitySet="ShownQuestion">
+                <ScalarProperty Name="Correct" ColumnName="Correct" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="CampaignEntryId" ColumnName="CampaignEntryId" />
+                <ScalarProperty Name="CampaignId" ColumnName="CampaignId" />
+                <ScalarProperty Name="EntryId" ColumnName="EntryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Partners">
+            <EntityTypeMapping TypeName="FotLanModel.Partner">
+              <MappingFragment StoreEntitySet="Partner">
+                <ScalarProperty Name="APIKey" ColumnName="APIKey" />
+                <ScalarProperty Name="ResultsPostUrl" ColumnName="ResultsPostUrl" />
+                <ScalarProperty Name="IsIntegrationPartner" ColumnName="IsIntegrationPartner" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="WalletBalance" ColumnName="WalletBalance" />
+                <ScalarProperty Name="CostPerTestPrivate" ColumnName="CostPerTestPrivate" />
+                <ScalarProperty Name="CostPerTestPublic" ColumnName="CostPerTestPublic" />
+                <ScalarProperty Name="IsSelfManaged" ColumnName="IsSelfManaged" />
+                <ScalarProperty Name="PartnerName" ColumnName="PartnerName" />
+                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PartnerWalletDebits">
+            <EntityTypeMapping TypeName="FotLanModel.PartnerWalletDebit">
+              <MappingFragment StoreEntitySet="PartnerWalletDebit">
+                <ScalarProperty Name="DebitDate" ColumnName="DebitDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="CampaignEntryId" ColumnName="CampaignEntryId" />
+                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+                <ScalarProperty Name="EntryId" ColumnName="EntryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CampaignSessions">
+            <EntityTypeMapping TypeName="FotLanModel.CampaignSession">
+              <MappingFragment StoreEntitySet="CampaignSession">
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="CampaignId" ColumnName="CampaignId" />
+                <ScalarProperty Name="EntryId" ColumnName="EntryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CandidateScheduleResponses">
+            <EntityTypeMapping TypeName="FotLanModel.CandidateScheduleResponse">
+              <MappingFragment StoreEntitySet="CandidateScheduleResponse">
+                <ScalarProperty Name="DateResponded" ColumnName="DateResponded" />
+                <ScalarProperty Name="RejectReason" ColumnName="RejectReason" />
+                <ScalarProperty Name="AcceptSchedule" ColumnName="AcceptSchedule" />
+                <ScalarProperty Name="EntryId" ColumnName="EntryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FixedQuestions">
+            <EntityTypeMapping TypeName="FotLanModel.FixedQuestion">
+              <MappingFragment StoreEntitySet="FixedQuestion">
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="AssessmentId" ColumnName="AssessmentId" />
+                <ScalarProperty Name="EntryId" ColumnName="EntryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

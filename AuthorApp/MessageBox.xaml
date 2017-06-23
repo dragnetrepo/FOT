@@ -1,0 +1,39 @@
+﻿<Controls:MetroWindow x:Class="AuthorApp.MessageBox" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" Title="MsgBox" Height="170" Width="415"
+                      ShowInTaskbar="False" ShowMinButton="False" ShowMaxRestoreButton="False" WindowStartupLocation="CenterOwner">
+
+
+    <Controls:MetroWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colours.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <!--<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />-->
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+                <ResourceDictionary Source="Styles\Fot.Accents.xaml" />
+                <!--<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedSingleRowTabControl.xaml" />-->
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Controls:MetroWindow.Resources>
+
+
+    <Grid>
+
+
+        <TextBlock Margin="12,12,12,41" Name="txtMessage" Text="TextBlock" TextAlignment="Center" TextWrapping="WrapWithOverflow" />
+
+
+        <Button Content="OK" Height="28" HorizontalAlignment="Right" Margin="0,0,12,12" Name="btn1"
+                VerticalAlignment="Bottom" Width="75" Click="btn1_Click" />
+
+
+        <Button Content="OK" Height="28" HorizontalAlignment="Right" Margin="0,0,93,12" Name="btn2"
+                VerticalAlignment="Bottom" Width="75" Click="btn2_Click" />
+
+
+    </Grid>
+
+
+</Controls:MetroWindow>

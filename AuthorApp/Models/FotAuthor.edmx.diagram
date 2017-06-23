@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="357b8dba47f54a9b896ed84aaa6a2ac5" Name="Diagram1">
+        <EntityTypeShape EntityType="FotAuthorModel.Assessment" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FotAuthorModel.AssessmentAnswer" Width="1.5" PointX="7.5" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FotAuthorModel.AssessmentQuestion" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FotAuthorModel.AssessmentTopic" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FotAuthorModel.QuestionDifficultyLevel" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FotAuthorModel.QuestionGroup" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
+        <AssociationConnector Association="FotAuthorModel.FK_AssessmentQuestion_Assessment" ManuallyRouted="false" />
+        <AssociationConnector Association="FotAuthorModel.FK_AssessmentTopic_Assessment" ManuallyRouted="false" />
+        <AssociationConnector Association="FotAuthorModel.FK_QuestionDifficultyLevel_Assessment" ManuallyRouted="false" />
+        <AssociationConnector Association="FotAuthorModel.FK_QuestionGroup_Assessment" ManuallyRouted="false" />
+        <AssociationConnector Association="FotAuthorModel.FK_AssessmentAnswer_AssessmentQuestion" ManuallyRouted="false" />
+        <AssociationConnector Association="FotAuthorModel.FK_AssessmentQuestion_AssessmentTopic" ManuallyRouted="false" />
+        <AssociationConnector Association="FotAuthorModel.FK_AssessmentQuestion_QuestionDifficultyLevel" ManuallyRouted="false" />
+        <AssociationConnector Association="FotAuthorModel.FK_AssessmentQuestion_QuestionGroup" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

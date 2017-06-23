@@ -1,0 +1,19 @@
+<Controls:MetroWindow x:Class="AuthorApp.AddOrEditTopic"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      Title="Add Topic" Height="229" Width="419" ShowMaxRestoreButton="False" ShowMinButton="False" ShowInTaskbar="False" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Loaded="MetroWindow_Loaded_1" EnableDWMDropShadow="True"
+        NonActiveWindowTitleBrush="{DynamicResource AccentColorBrush}">
+
+    <Controls:MetroWindow.Resources>
+
+
+    </Controls:MetroWindow.Resources>
+    <Grid>
+        <TextBox x:Name="txtTopic" HorizontalAlignment="Left" Height="30" Margin="17,46,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="384" FontSize="14" TabIndex="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="17,17,0,0" TextWrapping="Wrap" Text="Assessment Topic" VerticalAlignment="Top" Width="368" FontSize="14" FontWeight="SemiBold"/>
+        <Button x:Name="bttnAdd" Content="Add Topic" HorizontalAlignment="Left" Margin="266,86,0,0" VerticalAlignment="Top" Width="135" Height="30" Click="bttnAdd_Click"/>
+        <TextBlock x:Name="lblStatus" HorizontalAlignment="Left" Margin="10,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="61" Width="391" FontSize="14"/>
+
+    </Grid>
+</Controls:MetroWindow>

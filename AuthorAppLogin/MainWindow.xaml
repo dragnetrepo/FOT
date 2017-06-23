@@ -1,0 +1,42 @@
+﻿<Controls:MetroWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:AuthorApp" x:Class="AuthorApp.MainWindow"
+        Title="FACE OF TESTING - Assessment Authoring" Height="780" Width="1262" MaxHeight="780" MaxWidth="1262" ResizeMode="CanResizeWithGrip"
+        EnableDWMDropShadow="True"
+        NonActiveWindowTitleBrush="{DynamicResource AccentColorBrush}"
+        IsMaxRestoreButtonEnabled="False"
+        WindowStartupLocation="CenterScreen">
+
+
+
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands Visibility="Hidden" x:Name="bttnCommands">
+            <Button x:Name="bttnUsers"
+                    ToolTip="Manage Users"
+                    Content="Manage Users" Click="bttnUsers_Click" />
+
+            <Button x:Name="bttnAssessments"
+                    ToolTip="View Assessments"
+                    Content="View Assessments" IsEnabled="False" Click="bttnAssessments_Click" />
+
+            <Button x:Name="bttnChangePassword"
+                    ToolTip="Change Password"
+                    Content="Change Password" Click="bttnChangePassword_Click" />
+
+            <Button x:Name="bttnLogout"
+                    ToolTip="Logout"
+                    Content="Logout" Click="bttnLogout_Click" />
+
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+
+
+
+    <Grid x:Name="MainGrid">
+        <!--<local:AssessmentList Height="Auto" Width="Auto"/>-->
+        <local:LoginScreen Height="Auto" Width="Auto"/>
+        <TextBlock x:Name="txtVersion" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="147" Margin="10,693,0,0" Foreground="#FF959090" RenderTransformOrigin="0.503,0.731"/>
+    </Grid>
+</Controls:MetroWindow>

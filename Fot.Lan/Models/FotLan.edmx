@@ -1,0 +1,645 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FotLanModel.Store" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminUser">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActualUserId" Type="int" Nullable="false" />
+          <Property Name="IsCaptureAdmin" Type="bit" Nullable="false" />
+          <Property Name="IsSupportStaff" Type="bit" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="200" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Firstname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="50" />
+          <Property Name="DownloadDate" Type="datetime" Nullable="false" />
+          <Property Name="PreTestPhoto" Type="image" />
+          <Property Name="PostTestPhoto" Type="image" />
+          <Property Name="Synchronized" Type="bit" Nullable="false" />
+          <Property Name="PreTestCapturedByAdminId" Type="int" />
+          <Property Name="PostTestCapturedByAdminId" Type="int" />
+        </EntityType>
+        <EntityType Name="AssessmentPackage">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BundleId" Type="int" Nullable="false" />
+          <Property Name="BundleName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="BundleData" Type="image" Nullable="false" />
+          <Property Name="DownloadDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AssessmentResult">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CandidateEntryId" Type="int" Nullable="false" />
+          <Property Name="AssessmentId" Type="int" Nullable="false" />
+          <Property Name="Score" Type="nvarchar" MaxLength="100" />
+          <Property Name="CandidateOptions" Type="ntext" />
+          <Property Name="SelectedEssayId" Type="int" />
+          <Property Name="EssayText" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Candidate">
+          <Key>
+            <PropertyRef Name="CandidateEntryId" />
+          </Key>
+          <Property Name="CandidateEntryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CandidateGuid" Type="nvarchar" MaxLength="50" />
+          <Property Name="CandidateId" Type="int" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Firstname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="CandidatePhoto" Type="image" />
+          <Property Name="BundleId" Type="int" Nullable="false" />
+          <Property Name="CampaignId" Type="int" Nullable="false" />
+          <Property Name="ShowFeedback" Type="bit" Nullable="false" />
+          <Property Name="SessionId" Type="int" Nullable="false" />
+          <Property Name="AssessmentStarted" Type="bit" Nullable="false" />
+          <Property Name="DateTimeStarted" Type="datetime" />
+          <Property Name="AssessmentCompleted" Type="bit" Nullable="false" />
+          <Property Name="DateTimeCompleted" Type="datetime" />
+          <Property Name="Synchronized" Type="bit" Nullable="false" />
+          <Property Name="DownloadDate" Type="datetime" />
+          <Property Name="PhotoCapturedByAdminId" Type="int" />
+        </EntityType>
+        <EntityType Name="CandidateAssessment">
+          <Key>
+            <PropertyRef Name="CandidateEntryId" />
+          </Key>
+          <Property Name="CandidateEntryId" Type="int" Nullable="false" />
+          <Property Name="CandidateGuid" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssessmentData" Type="image" />
+          <Property Name="CurrentAssessmentState" Type="image" />
+          <Property Name="SaveCount" Type="int" Nullable="false" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="LastUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PhotoLog">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CandidateId" Type="int" Nullable="false" />
+          <Property Name="AdminUserId" Type="int" Nullable="false" />
+          <Property Name="ExpungeDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RequiredAssessment">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BundleId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="SettingId" />
+          </Key>
+          <Property Name="SettingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SettingName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SettingValue" Type="ntext" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TestFeedback">
+          <Key>
+            <PropertyRef Name="CandidateEntryId" />
+          </Key>
+          <Property Name="CandidateEntryId" Type="int" Nullable="false" />
+          <Property Name="Directions" Type="int" />
+          <Property Name="WaitTime" Type="int" />
+          <Property Name="Professionalism" Type="int" />
+          <Property Name="StartTime" Type="int" />
+          <Property Name="Briefing" Type="int" />
+          <Property Name="Registration" Type="int" />
+          <Property Name="Overall" Type="int" />
+          <Property Name="UnsatisfactoryArea" Type="int" />
+          <Property Name="SatisfactoryArea" Type="int" />
+          <Property Name="Comments" Type="ntext" />
+        </EntityType>
+        <Association Name="FK_AdminUser_PostTestCapturedAdmin">
+          <End Role="AdminUser" Type="Self.AdminUser" Multiplicity="0..1" />
+          <End Role="AdminUser1" Type="Self.AdminUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdminUser">
+              <PropertyRef Name="AdminId" />
+            </Principal>
+            <Dependent Role="AdminUser1">
+              <PropertyRef Name="PostTestCapturedByAdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdminUser_PreTestCapturedAdmin">
+          <End Role="AdminUser" Type="Self.AdminUser" Multiplicity="0..1" />
+          <End Role="AdminUser1" Type="Self.AdminUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdminUser">
+              <PropertyRef Name="AdminId" />
+            </Principal>
+            <Dependent Role="AdminUser1">
+              <PropertyRef Name="PreTestCapturedByAdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentResult_Candidate">
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AssessmentResult" Type="Self.AssessmentResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidate">
+              <PropertyRef Name="CandidateEntryId" />
+            </Principal>
+            <Dependent Role="AssessmentResult">
+              <PropertyRef Name="CandidateEntryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidate_AdminUser">
+          <End Role="AdminUser" Type="Self.AdminUser" Multiplicity="0..1" />
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdminUser">
+              <PropertyRef Name="AdminId" />
+            </Principal>
+            <Dependent Role="Candidate">
+              <PropertyRef Name="PhotoCapturedByAdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_CandidateAssessment_Candidate' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_CandidateAssessment_Candidate" />-->
+        <Association Name="FK_CandidateAssessment_Candidate1">
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="1" />
+          <End Role="CandidateAssessment" Type="Self.CandidateAssessment" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Candidate">
+              <PropertyRef Name="CandidateEntryId" />
+            </Principal>
+            <Dependent Role="CandidateAssessment">
+              <PropertyRef Name="CandidateEntryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestFeedback_Candidate">
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TestFeedback" Type="Self.TestFeedback" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Candidate">
+              <PropertyRef Name="CandidateEntryId" />
+            </Principal>
+            <Dependent Role="TestFeedback">
+              <PropertyRef Name="CandidateEntryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FotLanModelStoreContainer">
+          <EntitySet Name="AdminUser" EntityType="Self.AdminUser" store:Type="Tables" />
+          <EntitySet Name="AssessmentPackage" EntityType="Self.AssessmentPackage" store:Type="Tables" />
+          <EntitySet Name="AssessmentResult" EntityType="Self.AssessmentResult" store:Type="Tables" />
+          <EntitySet Name="Candidate" EntityType="Self.Candidate" store:Type="Tables" />
+          <EntitySet Name="CandidateAssessment" EntityType="Self.CandidateAssessment" store:Type="Tables" />
+          <EntitySet Name="PhotoLog" EntityType="Self.PhotoLog" store:Type="Tables" />
+          <EntitySet Name="RequiredAssessment" EntityType="Self.RequiredAssessment" store:Type="Tables" />
+          <EntitySet Name="Setting" EntityType="Self.Setting" store:Type="Tables" />
+          <EntitySet Name="TestFeedback" EntityType="Self.TestFeedback" store:Type="Tables" />
+          <AssociationSet Name="FK_AdminUser_PostTestCapturedAdmin" Association="Self.FK_AdminUser_PostTestCapturedAdmin">
+            <End Role="AdminUser" EntitySet="AdminUser" />
+            <End Role="AdminUser1" EntitySet="AdminUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdminUser_PreTestCapturedAdmin" Association="Self.FK_AdminUser_PreTestCapturedAdmin">
+            <End Role="AdminUser" EntitySet="AdminUser" />
+            <End Role="AdminUser1" EntitySet="AdminUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentResult_Candidate" Association="Self.FK_AssessmentResult_Candidate">
+            <End Role="Candidate" EntitySet="Candidate" />
+            <End Role="AssessmentResult" EntitySet="AssessmentResult" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidate_AdminUser" Association="Self.FK_Candidate_AdminUser">
+            <End Role="AdminUser" EntitySet="AdminUser" />
+            <End Role="Candidate" EntitySet="Candidate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateAssessment_Candidate1" Association="Self.FK_CandidateAssessment_Candidate1">
+            <End Role="Candidate" EntitySet="Candidate" />
+            <End Role="CandidateAssessment" EntitySet="CandidateAssessment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestFeedback_Candidate" Association="Self.FK_TestFeedback_Candidate">
+            <End Role="Candidate" EntitySet="Candidate" />
+            <End Role="TestFeedback" EntitySet="TestFeedback" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FotLanModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdminUser">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActualUserId" Type="Int32" Nullable="false" />
+          <Property Name="IsCaptureAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="IsSupportStaff" Type="Boolean" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DownloadDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PreTestPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PostTestPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Synchronized" Type="Boolean" Nullable="false" />
+          <Property Name="PreTestCapturedByAdminId" Type="Int32" />
+          <Property Name="PostTestCapturedByAdminId" Type="Int32" />
+          <NavigationProperty Name="PostTestCapturedAdmins" Relationship="Self.FK_AdminUser_PostTestCapturedAdmin" FromRole="AdminUser" ToRole="AdminUser1" />
+          <NavigationProperty Name="PostTestCaptureAdmin" Relationship="Self.FK_AdminUser_PostTestCapturedAdmin" FromRole="AdminUser1" ToRole="AdminUser" />
+          <NavigationProperty Name="PreTestCapturedAdmins" Relationship="Self.FK_AdminUser_PreTestCapturedAdmin" FromRole="AdminUser" ToRole="AdminUser1" />
+          <NavigationProperty Name="PreTestCaptureAdmin" Relationship="Self.FK_AdminUser_PreTestCapturedAdmin" FromRole="AdminUser1" ToRole="AdminUser" />
+          <NavigationProperty Name="Candidates" Relationship="Self.FK_Candidate_AdminUser" FromRole="AdminUser" ToRole="Candidate" />
+        </EntityType>
+        <EntityType Name="AssessmentPackage">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BundleId" Type="Int32" Nullable="false" />
+          <Property Name="BundleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BundleData" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="DownloadDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="AssessmentResult">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CandidateEntryId" Type="Int32" Nullable="false" />
+          <Property Name="AssessmentId" Type="Int32" Nullable="false" />
+          <Property Name="Score" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CandidateOptions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SelectedEssayId" Type="Int32" />
+          <Property Name="EssayText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Candidate" Relationship="Self.FK_AssessmentResult_Candidate" FromRole="AssessmentResult" ToRole="Candidate" />
+        </EntityType>
+        <EntityType Name="Candidate">
+          <Key>
+            <PropertyRef Name="CandidateEntryId" />
+          </Key>
+          <Property Name="CandidateEntryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CandidateGuid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CandidateId" Type="Int32" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CandidatePhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="BundleId" Type="Int32" Nullable="false" />
+          <Property Name="CampaignId" Type="Int32" Nullable="false" />
+          <Property Name="ShowFeedback" Type="Boolean" Nullable="false" />
+          <Property Name="SessionId" Type="Int32" Nullable="false" />
+          <Property Name="AssessmentStarted" Type="Boolean" Nullable="false" />
+          <Property Name="DateTimeStarted" Type="DateTime" Precision="3" />
+          <Property Name="AssessmentCompleted" Type="Boolean" Nullable="false" />
+          <Property Name="DateTimeCompleted" Type="DateTime" Precision="3" />
+          <Property Name="Synchronized" Type="Boolean" Nullable="false" />
+          <Property Name="DownloadDate" Type="DateTime" Precision="3" />
+          <Property Name="PhotoCapturedByAdminId" Type="Int32" />
+          <NavigationProperty Name="AdminUser" Relationship="Self.FK_Candidate_AdminUser" FromRole="Candidate" ToRole="AdminUser" />
+          <NavigationProperty Name="AssessmentResults" Relationship="Self.FK_AssessmentResult_Candidate" FromRole="Candidate" ToRole="AssessmentResult" />
+          <NavigationProperty Name="CandidateAssessment" Relationship="Self.FK_CandidateAssessment_Candidate1" FromRole="Candidate" ToRole="CandidateAssessment" />
+          <NavigationProperty Name="TestFeedback" Relationship="Self.FK_TestFeedback_Candidate" FromRole="Candidate" ToRole="TestFeedback" />
+        </EntityType>
+        <EntityType Name="CandidateAssessment">
+          <Key>
+            <PropertyRef Name="CandidateEntryId" />
+          </Key>
+          <Property Name="CandidateEntryId" Type="Int32" Nullable="false" />
+          <Property Name="CandidateGuid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AssessmentData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CurrentAssessmentState" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SaveCount" Type="Int32" Nullable="false" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Candidate" Relationship="Self.FK_CandidateAssessment_Candidate1" FromRole="CandidateAssessment" ToRole="Candidate" />
+        </EntityType>
+        <EntityType Name="PhotoLog">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CandidateId" Type="Int32" Nullable="false" />
+          <Property Name="AdminUserId" Type="Int32" Nullable="false" />
+          <Property Name="ExpungeDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="RequiredAssessment">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BundleId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="SettingId" />
+          </Key>
+          <Property Name="SettingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SettingName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SettingValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TestFeedback">
+          <Key>
+            <PropertyRef Name="CandidateEntryId" />
+          </Key>
+          <Property Name="CandidateEntryId" Type="Int32" Nullable="false" />
+          <Property Name="Directions" Type="Int32" />
+          <Property Name="WaitTime" Type="Int32" />
+          <Property Name="Professionalism" Type="Int32" />
+          <Property Name="StartTime" Type="Int32" />
+          <Property Name="Briefing" Type="Int32" />
+          <Property Name="Registration" Type="Int32" />
+          <Property Name="Overall" Type="Int32" />
+          <Property Name="UnsatisfactoryArea" Type="Int32" />
+          <Property Name="SatisfactoryArea" Type="Int32" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Candidate" Relationship="Self.FK_TestFeedback_Candidate" FromRole="TestFeedback" ToRole="Candidate" />
+        </EntityType>
+        <Association Name="FK_AdminUser_PostTestCapturedAdmin">
+          <End Role="AdminUser" Type="Self.AdminUser" Multiplicity="0..1" />
+          <End Role="AdminUser1" Type="Self.AdminUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdminUser">
+              <PropertyRef Name="AdminId" />
+            </Principal>
+            <Dependent Role="AdminUser1">
+              <PropertyRef Name="PostTestCapturedByAdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdminUser_PreTestCapturedAdmin">
+          <End Role="AdminUser" Type="Self.AdminUser" Multiplicity="0..1" />
+          <End Role="AdminUser1" Type="Self.AdminUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdminUser">
+              <PropertyRef Name="AdminId" />
+            </Principal>
+            <Dependent Role="AdminUser1">
+              <PropertyRef Name="PreTestCapturedByAdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidate_AdminUser">
+          <End Role="AdminUser" Type="Self.AdminUser" Multiplicity="0..1" />
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdminUser">
+              <PropertyRef Name="AdminId" />
+            </Principal>
+            <Dependent Role="Candidate">
+              <PropertyRef Name="PhotoCapturedByAdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssessmentResult_Candidate">
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AssessmentResult" Type="Self.AssessmentResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidate">
+              <PropertyRef Name="CandidateEntryId" />
+            </Principal>
+            <Dependent Role="AssessmentResult">
+              <PropertyRef Name="CandidateEntryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateAssessment_Candidate1">
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="1" />
+          <End Role="CandidateAssessment" Type="Self.CandidateAssessment" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Candidate">
+              <PropertyRef Name="CandidateEntryId" />
+            </Principal>
+            <Dependent Role="CandidateAssessment">
+              <PropertyRef Name="CandidateEntryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestFeedback_Candidate">
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TestFeedback" Type="Self.TestFeedback" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Candidate">
+              <PropertyRef Name="CandidateEntryId" />
+            </Principal>
+            <Dependent Role="TestFeedback">
+              <PropertyRef Name="CandidateEntryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LanContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminUsers" EntityType="Self.AdminUser" />
+          <EntitySet Name="AssessmentPackages" EntityType="Self.AssessmentPackage" />
+          <EntitySet Name="AssessmentResults" EntityType="Self.AssessmentResult" />
+          <EntitySet Name="Candidates" EntityType="Self.Candidate" />
+          <EntitySet Name="CandidateAssessments" EntityType="Self.CandidateAssessment" />
+          <EntitySet Name="PhotoLogs" EntityType="Self.PhotoLog" />
+          <EntitySet Name="RequiredAssessments" EntityType="Self.RequiredAssessment" />
+          <EntitySet Name="Settings" EntityType="Self.Setting" />
+          <EntitySet Name="TestFeedbacks" EntityType="Self.TestFeedback" />
+          <AssociationSet Name="FK_AdminUser_PostTestCapturedAdmin" Association="Self.FK_AdminUser_PostTestCapturedAdmin">
+            <End Role="AdminUser" EntitySet="AdminUsers" />
+            <End Role="AdminUser1" EntitySet="AdminUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdminUser_PreTestCapturedAdmin" Association="Self.FK_AdminUser_PreTestCapturedAdmin">
+            <End Role="AdminUser" EntitySet="AdminUsers" />
+            <End Role="AdminUser1" EntitySet="AdminUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidate_AdminUser" Association="Self.FK_Candidate_AdminUser">
+            <End Role="AdminUser" EntitySet="AdminUsers" />
+            <End Role="Candidate" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssessmentResult_Candidate" Association="Self.FK_AssessmentResult_Candidate">
+            <End Role="Candidate" EntitySet="Candidates" />
+            <End Role="AssessmentResult" EntitySet="AssessmentResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateAssessment_Candidate1" Association="Self.FK_CandidateAssessment_Candidate1">
+            <End Role="Candidate" EntitySet="Candidates" />
+            <End Role="CandidateAssessment" EntitySet="CandidateAssessments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestFeedback_Candidate" Association="Self.FK_TestFeedback_Candidate">
+            <End Role="Candidate" EntitySet="Candidates" />
+            <End Role="TestFeedback" EntitySet="TestFeedbacks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FotLanModelStoreContainer" CdmEntityContainer="LanContext">
+          <EntitySetMapping Name="AdminUsers">
+            <EntityTypeMapping TypeName="FotLanModel.AdminUser">
+              <MappingFragment StoreEntitySet="AdminUser">
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="ActualUserId" ColumnName="ActualUserId" />
+                <ScalarProperty Name="IsCaptureAdmin" ColumnName="IsCaptureAdmin" />
+                <ScalarProperty Name="IsSupportStaff" ColumnName="IsSupportStaff" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="DownloadDate" ColumnName="DownloadDate" />
+                <ScalarProperty Name="PreTestPhoto" ColumnName="PreTestPhoto" />
+                <ScalarProperty Name="PostTestPhoto" ColumnName="PostTestPhoto" />
+                <ScalarProperty Name="Synchronized" ColumnName="Synchronized" />
+                <ScalarProperty Name="PreTestCapturedByAdminId" ColumnName="PreTestCapturedByAdminId" />
+                <ScalarProperty Name="PostTestCapturedByAdminId" ColumnName="PostTestCapturedByAdminId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssessmentPackages">
+            <EntityTypeMapping TypeName="FotLanModel.AssessmentPackage">
+              <MappingFragment StoreEntitySet="AssessmentPackage">
+                <ScalarProperty Name="EntryId" ColumnName="EntryId" />
+                <ScalarProperty Name="BundleId" ColumnName="BundleId" />
+                <ScalarProperty Name="BundleName" ColumnName="BundleName" />
+                <ScalarProperty Name="BundleData" ColumnName="BundleData" />
+                <ScalarProperty Name="DownloadDate" ColumnName="DownloadDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssessmentResults">
+            <EntityTypeMapping TypeName="FotLanModel.AssessmentResult">
+              <MappingFragment StoreEntitySet="AssessmentResult">
+                <ScalarProperty Name="EntryId" ColumnName="EntryId" />
+                <ScalarProperty Name="CandidateEntryId" ColumnName="CandidateEntryId" />
+                <ScalarProperty Name="AssessmentId" ColumnName="AssessmentId" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="CandidateOptions" ColumnName="CandidateOptions" />
+                <ScalarProperty Name="SelectedEssayId" ColumnName="SelectedEssayId" />
+                <ScalarProperty Name="EssayText" ColumnName="EssayText" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Candidates">
+            <EntityTypeMapping TypeName="FotLanModel.Candidate">
+              <MappingFragment StoreEntitySet="Candidate">
+                <ScalarProperty Name="CandidateEntryId" ColumnName="CandidateEntryId" />
+                <ScalarProperty Name="CandidateGuid" ColumnName="CandidateGuid" />
+                <ScalarProperty Name="CandidateId" ColumnName="CandidateId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="CandidatePhoto" ColumnName="CandidatePhoto" />
+                <ScalarProperty Name="BundleId" ColumnName="BundleId" />
+                <ScalarProperty Name="CampaignId" ColumnName="CampaignId" />
+                <ScalarProperty Name="ShowFeedback" ColumnName="ShowFeedback" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="AssessmentStarted" ColumnName="AssessmentStarted" />
+                <ScalarProperty Name="DateTimeStarted" ColumnName="DateTimeStarted" />
+                <ScalarProperty Name="AssessmentCompleted" ColumnName="AssessmentCompleted" />
+                <ScalarProperty Name="DateTimeCompleted" ColumnName="DateTimeCompleted" />
+                <ScalarProperty Name="Synchronized" ColumnName="Synchronized" />
+                <ScalarProperty Name="DownloadDate" ColumnName="DownloadDate" />
+                <ScalarProperty Name="PhotoCapturedByAdminId" ColumnName="PhotoCapturedByAdminId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CandidateAssessments">
+            <EntityTypeMapping TypeName="FotLanModel.CandidateAssessment">
+              <MappingFragment StoreEntitySet="CandidateAssessment">
+                <ScalarProperty Name="CandidateEntryId" ColumnName="CandidateEntryId" />
+                <ScalarProperty Name="CandidateGuid" ColumnName="CandidateGuid" />
+                <ScalarProperty Name="AssessmentData" ColumnName="AssessmentData" />
+                <ScalarProperty Name="CurrentAssessmentState" ColumnName="CurrentAssessmentState" />
+                <ScalarProperty Name="SaveCount" ColumnName="SaveCount" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhotoLogs">
+            <EntityTypeMapping TypeName="FotLanModel.PhotoLog">
+              <MappingFragment StoreEntitySet="PhotoLog">
+                <ScalarProperty Name="EntryId" ColumnName="EntryId" />
+                <ScalarProperty Name="CandidateId" ColumnName="CandidateId" />
+                <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
+                <ScalarProperty Name="ExpungeDate" ColumnName="ExpungeDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequiredAssessments">
+            <EntityTypeMapping TypeName="FotLanModel.RequiredAssessment">
+              <MappingFragment StoreEntitySet="RequiredAssessment">
+                <ScalarProperty Name="EntryId" ColumnName="EntryId" />
+                <ScalarProperty Name="BundleId" ColumnName="BundleId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="FotLanModel.Setting">
+              <MappingFragment StoreEntitySet="Setting">
+                <ScalarProperty Name="SettingId" ColumnName="SettingId" />
+                <ScalarProperty Name="SettingName" ColumnName="SettingName" />
+                <ScalarProperty Name="SettingValue" ColumnName="SettingValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestFeedbacks">
+            <EntityTypeMapping TypeName="FotLanModel.TestFeedback">
+              <MappingFragment StoreEntitySet="TestFeedback">
+                <ScalarProperty Name="CandidateEntryId" ColumnName="CandidateEntryId" />
+                <ScalarProperty Name="Directions" ColumnName="Directions" />
+                <ScalarProperty Name="WaitTime" ColumnName="WaitTime" />
+                <ScalarProperty Name="Professionalism" ColumnName="Professionalism" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="Briefing" ColumnName="Briefing" />
+                <ScalarProperty Name="Registration" ColumnName="Registration" />
+                <ScalarProperty Name="Overall" ColumnName="Overall" />
+                <ScalarProperty Name="UnsatisfactoryArea" ColumnName="UnsatisfactoryArea" />
+                <ScalarProperty Name="SatisfactoryArea" ColumnName="SatisfactoryArea" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

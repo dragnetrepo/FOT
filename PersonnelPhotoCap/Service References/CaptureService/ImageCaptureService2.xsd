@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/Fot.Lan/ImageCaptureService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Fot.Lan" />
+  <xs:element name="GetCandidates">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCandidatesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Fot.Lan" minOccurs="0" name="GetCandidatesResult" nillable="true" type="q1:ResponseObj" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCandidate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CandidateId" type="xs:int" />
+        <xs:element minOccurs="0" name="imgBytes" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCandidateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Fot.Lan" minOccurs="0" name="UpdateCandidateResult" nillable="true" type="q2:ResponseObj" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStaffList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStaffListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Fot.Lan" minOccurs="0" name="GetStaffListResult" nillable="true" type="q3:StaffResponseObj" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateStaff">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AdminId" type="xs:int" />
+        <xs:element minOccurs="0" name="imgBytes" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Fot.Lan" minOccurs="0" name="phase" type="q4:CapturePhase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateStaffResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Fot.Lan" minOccurs="0" name="UpdateStaffResult" nillable="true" type="q5:StaffResponseObj" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="47d3a720caa941a6be10a94b867ce523" Name="Diagram1">
+        <EntityTypeShape EntityType="fotModel.Assessment" Width="1.5" PointX="0.75" PointY="11.625" />
+        <EntityTypeShape EntityType="fotModel.AssessmentAnswer" Width="1.5" PointX="7.5" PointY="22.25" />
+        <EntityTypeShape EntityType="fotModel.AssessmentBundle" Width="1.5" PointX="0.75" PointY="6.875" />
+        <EntityTypeShape EntityType="fotModel.AssessmentBundleEntry" Width="1.5" PointX="3" PointY="13.5" />
+        <EntityTypeShape EntityType="fotModel.AssessmentOutputConfig" Width="1.5" PointX="5.25" PointY="17.875" />
+        <EntityTypeShape EntityType="fotModel.AssessmentQuestion" Width="1.5" PointX="5.25" PointY="21.375" />
+        <EntityTypeShape EntityType="fotModel.AssessmentResult" Width="1.5" PointX="6" PointY="13.125" />
+        <EntityTypeShape EntityType="fotModel.AssessmentTopic" Width="1.5" PointX="3" PointY="26.75" />
+        <EntityTypeShape EntityType="fotModel.AuthorAssignedAssessment" Width="1.5" PointX="3" PointY="32.375" />
+        <EntityTypeShape EntityType="fotModel.Campaign" Width="1.5" PointX="1.5" PointY="45.125" />
+        <EntityTypeShape EntityType="fotModel.CampaignEntry" Width="1.5" PointX="3.75" PointY="39.375" />
+        <EntityTypeShape EntityType="fotModel.Candidate" Width="1.5" PointX="1.5" PointY="35.125" />
+        <EntityTypeShape EntityType="fotModel.MessageBatch" Width="1.5" PointX="6.75" PointY="36.5" />
+        <EntityTypeShape EntityType="fotModel.QuestionDifficultyLevel" Width="1.5" PointX="3" PointY="9.25" />
+        <EntityTypeShape EntityType="fotModel.QuestionGroup" Width="1.5" PointX="3" PointY="29.625" />
+        <EntityTypeShape EntityType="fotModel.TestSession" Width="1.5" PointX="1.5" PointY="50.25" />
+        <AssociationConnector Association="fotModel.FK_AssessmentBundleEntry_Assessment" />
+        <AssociationConnector Association="fotModel.FK_AssessmentOutputConfig_Assessment" />
+        <AssociationConnector Association="fotModel.FK_AssessmentQuestion_Assessment" />
+        <AssociationConnector Association="fotModel.FK_AssessmentResult_Assessment" />
+        <AssociationConnector Association="fotModel.FK_AssessmentTopic_Assessment" />
+        <AssociationConnector Association="fotModel.FK_AuthorAssignedAssessment_Assessment" />
+        <AssociationConnector Association="fotModel.FK_QuestionDifficultyLevel_Assessment" />
+        <AssociationConnector Association="fotModel.FK_QuestionGroup_Assessment" />
+        <AssociationConnector Association="fotModel.FK_AssessmentAnswer_AssessmentQuestion" />
+        <AssociationConnector Association="fotModel.FK_AssessmentBundleEntry_AssessmentBundle" />
+        <AssociationConnector Association="fotModel.FK_Campaign_AssessmentBundle" />
+        <AssociationConnector Association="fotModel.FK_AssessmentOutputConfig_AssessmentTopic" />
+        <AssociationConnector Association="fotModel.FK_AssessmentOutputConfig_QuestionDifficultyLevel" />
+        <AssociationConnector Association="fotModel.FK_AssessmentQuestion_AssessmentTopic" />
+        <AssociationConnector Association="fotModel.FK_AssessmentQuestion_QuestionDifficultyLevel" />
+        <AssociationConnector Association="fotModel.FK_AssessmentQuestion_QuestionGroup" />
+        <AssociationConnector Association="fotModel.FK_AssessmentResult_CampaignEntry" />
+        <AssociationConnector Association="fotModel.FK_CampaignEntry_Campaign" />
+        <AssociationConnector Association="fotModel.FK_CampaignEntry_Candidate" />
+        <AssociationConnector Association="fotModel.FK_CampaignEntry_TestSession" />
+        <EntityTypeShape EntityType="fotModel.MessageQueue" Width="1.5" PointX="9" PointY="40" />
+        <AssociationConnector Association="fotModel.FK_MessageQueue_CampaignEntry" />
+        <AssociationConnector Association="fotModel.FK_MessageQueue_MessageBatch" />
+        <EntityTypeShape EntityType="fotModel.EmailBatch" Width="1.5" PointX="3.75" PointY="35.25" />
+        <EntityTypeShape EntityType="fotModel.EmailQueue" Width="1.5" PointX="6" PointY="40.125" />
+        <AssociationConnector Association="fotModel.FK_EmailQueue_CampaignEntry" />
+        <AssociationConnector Association="fotModel.FK_EmailQueue_EmailBatch" />
+        <EntityTypeShape EntityType="fotModel.Center" Width="1.5" PointX="1.5" PointY="53.875" />
+        <AssociationConnector Association="fotModel.FK_TestSession_Center" />
+        <EntityTypeShape EntityType="fotModel.Location" Width="1.5" PointX="1.5" PointY="41.125" />
+        <AssociationConnector Association="fotModel.FK_Candidate_Location" />
+        <AssociationConnector Association="fotModel.FK_Center_Location" />
+        <AssociationConnector Association="fotModel.FK_Location_Location" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

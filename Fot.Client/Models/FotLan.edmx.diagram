@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7fa6cc2317f34a4d98818bcac9b3d6de" Name="Diagram1">
+        <EntityTypeShape EntityType="FotLanModel.Assessment" Width="1.5" PointX="3" PointY="22.875" />
+        <EntityTypeShape EntityType="FotLanModel.AssessmentAnswer" Width="1.5" PointX="9.75" PointY="38" />
+        <EntityTypeShape EntityType="FotLanModel.AssessmentBundle" Width="1.5" PointX="3" PointY="32.125" />
+        <EntityTypeShape EntityType="FotLanModel.AssessmentBundleEntry" Width="1.5" PointX="5.25" PointY="29.25" />
+        <EntityTypeShape EntityType="FotLanModel.AssessmentOutputConfig" Width="1.5" PointX="7.5" PointY="30.75" />
+        <EntityTypeShape EntityType="FotLanModel.AssessmentQuestion" Width="1.5" PointX="7.5" PointY="34.25" />
+        <EntityTypeShape EntityType="FotLanModel.AssessmentResult" Width="1.5" PointX="10.5" PointY="30.125" />
+        <EntityTypeShape EntityType="FotLanModel.AssessmentTopic" Width="1.5" PointX="5.25" PointY="20.625" />
+        <EntityTypeShape EntityType="FotLanModel.Campaign" Width="1.5" PointX="8.25" PointY="24.625" />
+        <EntityTypeShape EntityType="FotLanModel.CampaignEntry" Width="1.5" PointX="13.5" PointY="22.75" />
+        <EntityTypeShape EntityType="FotLanModel.Candidate" Width="1.5" PointX="11.25" PointY="14.75" />
+        <EntityTypeShape EntityType="FotLanModel.CandidateAssessment" Width="1.5" PointX="15.75" PointY="28.125" />
+        <EntityTypeShape EntityType="FotLanModel.EssayTopic" Width="1.5" PointX="5.25" PointY="38.375" />
+        <EntityTypeShape EntityType="FotLanModel.QuestionDifficultyLevel" Width="1.5" PointX="5.25" PointY="41.125" />
+        <EntityTypeShape EntityType="FotLanModel.QuestionGroup" Width="1.5" PointX="5.25" PointY="44.125" />
+        <AssociationConnector Association="FotLanModel.FK_AssessmentBundleEntry_Assessment" />
+        <AssociationConnector Association="FotLanModel.FK_AssessmentOutputConfig_Assessment" />
+        <AssociationConnector Association="FotLanModel.FK_AssessmentQuestion_Assessment" />
+        <AssociationConnector Association="FotLanModel.FK_AssessmentResult_Assessment" />
+        <AssociationConnector Association="FotLanModel.FK_AssessmentTopic_Assessment" />
+        <AssociationConnector Association="FotLanModel.FK_EssayTopic_Assessment" />
+        <AssociationConnector Association="FotLanModel.FK_QuestionDifficultyLevel_Assessment" />
+        <AssociationConnector Association="FotLanModel.FK_QuestionGroup_Assessment" />
+        <AssociationConnector Association="FotLanModel.FK_AssessmentAnswer_AssessmentQuestion" />
+        <AssociationConnector Association="FotLanModel.FK_AssessmentBundleEntry_AssessmentBundle" />
+        <AssociationConnector Association="FotLanModel.FK_Campaign_AssessmentBundle" />
+        <AssociationConnector Association="FotLanModel.FK_AssessmentOutputConfig_AssessmentTopic" />
+        <AssociationConnector Association="FotLanModel.FK_AssessmentOutputConfig_QuestionDifficultyLevel" />
+        <AssociationConnector Association="FotLanModel.FK_AssessmentQuestion_AssessmentTopic" />
+        <AssociationConnector Association="FotLanModel.FK_AssessmentQuestion_QuestionDifficultyLevel" />
+        <AssociationConnector Association="FotLanModel.FK_AssessmentQuestion_QuestionGroup" />
+        <AssociationConnector Association="FotLanModel.FK_AssessmentResult_CampaignEntry" />
+        <AssociationConnector Association="FotLanModel.FK_AssessmentResult_EssayTopic" />
+        <AssociationConnector Association="FotLanModel.FK_CampaignEntry_Campaign" />
+        <AssociationConnector Association="FotLanModel.FK_CampaignEntry_Candidate" />
+        <AssociationConnector Association="FotLanModel.FK_CandidateAssessment_CampaignEntry" />
+        <EntityTypeShape EntityType="FotLanModel.Center" Width="1.5" PointX="6" PointY="24.375" />
+        <EntityTypeShape EntityType="FotLanModel.Location" Width="1.5" PointX="9" PointY="15.75" />
+        <EntityTypeShape EntityType="FotLanModel.TestSession" Width="1.5" PointX="8.25" PointY="20.75" />
+        <AssociationConnector Association="FotLanModel.FK_CampaignEntry_TestSession" />
+        <AssociationConnector Association="FotLanModel.FK_Candidate_Location" />
+        <AssociationConnector Association="FotLanModel.FK_Center_Location" />
+        <AssociationConnector Association="FotLanModel.FK_TestSession_Center" />
+        <AssociationConnector Association="FotLanModel.FK_Location_Location" />
+        <EntityTypeShape EntityType="FotLanModel.FeedbackType" Width="1.5" PointX="0.75" PointY="1.375" />
+        <EntityTypeShape EntityType="FotLanModel.CandidateFeedback" Width="1.5" PointX="13.5" PointY="9" />
+        <AssociationConnector Association="FotLanModel.FK_CandidateFeedback_Candidate" />
+        <AssociationConnector Association="FotLanModel.FK_CandidateFeedback_FeedbackType" />
+        <EntityTypeShape EntityType="FotLanModel.ChosenOption" Width="1.5" PointX="5" PointY="1.25" />
+        <EntityTypeShape EntityType="FotLanModel.ShownQuestion" Width="1.5" PointX="2.75" PointY="1" />
+        <AssociationConnector Association="FotLanModel.FK_ChosenOption_ShownQuestion" />
+        <EntityTypeShape EntityType="FotLanModel.Partner" Width="1.5" PointX="0.75" PointY="22" />
+        <EntityTypeShape EntityType="FotLanModel.PartnerWalletDebit" Width="1.5" PointX="18.75" PointY="23.375" />
+        <AssociationConnector Association="FotLanModel.FK_Assessment_Partner" />
+        <AssociationConnector Association="FotLanModel.FK_AssessmentBundle_Partner" />
+        <AssociationConnector Association="FotLanModel.FK_Campaign_Partner" />
+        <AssociationConnector Association="FotLanModel.FK_PartnerWalletDebit_CampaignEntry" />
+        <AssociationConnector Association="FotLanModel.FK_Center_Partner" />
+        <AssociationConnector Association="FotLanModel.FK_PartnerWalletDebit_Partner" />
+        <EntityTypeShape EntityType="FotLanModel.CampaignSession" Width="1.5" PointX="10.5" PointY="24" />
+        <AssociationConnector Association="FotLanModel.FK_CampaignSession_Campaign" />
+        <AssociationConnector Association="FotLanModel.FK_CampaignSession_TestSession" />
+        <EntityTypeShape EntityType="FotLanModel.CandidateScheduleResponse" Width="1.5" PointX="15.75" PointY="22.25" />
+        <AssociationConnector Association="FotLanModel.FK_CandidateScheduleResponse_CampaignEntry" />
+        <EntityTypeShape EntityType="FotLanModel.FixedQuestion" Width="1.5" PointX="10.75" PointY="26.75" />
+        <AssociationConnector Association="FotLanModel.FK_FixedQuestion_Assessment" />
+        <AssociationConnector Association="FotLanModel.FK_FixedQuestion_AssessmentQuestion" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="357b8dba47f54a9b896ed84aaa6a2ac5" Name="Diagram1">
+        <EntityTypeShape EntityType="FotAuthorModel.Assessment" Width="1.5" PointX="3" PointY="3.875" />
+        <EntityTypeShape EntityType="FotAuthorModel.AssessmentAnswer" Width="1.5" PointX="9.75" PointY="5" />
+        <EntityTypeShape EntityType="FotAuthorModel.AssessmentTopic" Width="1.5" PointX="5.25" PointY="2.375" />
+        <EntityTypeShape EntityType="FotAuthorModel.QuestionDifficultyLevel" Width="1.5" PointX="5.25" PointY="7.875" />
+        <EntityTypeShape EntityType="FotAuthorModel.QuestionGroup" Width="1.5" PointX="5.25" PointY="5.125" />
+        <AssociationConnector Association="FotAuthorModel.FK_AssessmentTopic_Assessment" />
+        <AssociationConnector Association="FotAuthorModel.FK_QuestionDifficultyLevel_Assessment" />
+        <AssociationConnector Association="FotAuthorModel.FK_QuestionGroup_Assessment" />
+        <EntityTypeShape EntityType="FotAuthorModel.AdminUser" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="FotAuthorModel.AssessmentQuestion" Width="1.5" PointX="7.5" PointY="4.125" />
+        <AssociationConnector Association="FotAuthorModel.Assessment_AuthorAdmin" />
+        <AssociationConnector Association="FotAuthorModel.FK_AssessmentQuestion_Assessment" />
+        <AssociationConnector Association="FotAuthorModel.FK_AssessmentAnswer_AssessmentQuestion" />
+        <AssociationConnector Association="FotAuthorModel.FK_AssessmentQuestion_AssessmentTopic" />
+        <AssociationConnector Association="FotAuthorModel.FK_AssessmentQuestion_QuestionDifficultyLevel" />
+        <AssociationConnector Association="FotAuthorModel.FK_AssessmentQuestion_QuestionGroup" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

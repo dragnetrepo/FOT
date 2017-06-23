@@ -1,0 +1,41 @@
+﻿<Controls:MetroWindow x:Class="AuthorApp.AddOrEditLevel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      xmlns:System="clr-namespace:System;assembly=mscorlib" Title="Add Difficulty Level" Height="290" Width="419" ShowMaxRestoreButton="False" ShowMinButton="False" ShowInTaskbar="False" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Loaded="MetroWindow_Loaded_1">
+
+    <Controls:MetroWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colours.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <!--<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />-->
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+                <ResourceDictionary Source="Styles\Fot.Accents.xaml" />
+                <!--<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedSingleRowTabControl.xaml" />-->
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Controls:MetroWindow.Resources>
+    <Grid>
+        <TextBox x:Name="txtLevel" HorizontalAlignment="Left" Height="30" Margin="17,46,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="384" FontSize="14" TabIndex="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="17,17,0,0" TextWrapping="Wrap" Text="Difficulty Level" VerticalAlignment="Top" Width="368" FontSize="14" FontWeight="SemiBold"/>
+        <Button x:Name="bttnAdd" Content="Add Level" HorizontalAlignment="Left" Margin="266,149,0,0" VerticalAlignment="Top" Width="135" Height="30" Click="bttnAdd_Click"/>
+        <TextBlock x:Name="lblStatus" HorizontalAlignment="Left" Margin="10,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="61" Width="391" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Margin="17,81,0,0" TextWrapping="Wrap" Text="Scale" VerticalAlignment="Top" Width="368" FontSize="14" FontWeight="SemiBold"/>
+        <ComboBox x:Name="listScale" HorizontalAlignment="Left" Margin="17,105,0,0" VerticalAlignment="Top" Width="120">
+            <System:String>1</System:String>
+            <System:String>2</System:String>
+            <System:String>3</System:String>
+            <System:String>4</System:String>
+            <System:String>5</System:String>
+            <System:String>6</System:String>
+            <System:String>7</System:String>
+            <System:String>8</System:String>
+            <System:String>9</System:String>
+        </ComboBox>
+
+    </Grid>
+</Controls:MetroWindow>

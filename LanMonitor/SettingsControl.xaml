@@ -1,0 +1,41 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls" x:Class="LanMonitor.SettingsControl" 
+             mc:Ignorable="d" 
+            d:DesignHeight="543" d:DesignWidth="1024" Width="1024" Height="543" Loaded="UserControl_Loaded_1">
+    <Grid>
+        <GroupBox Header="Photo Capture Option" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="70" Width="1004">
+            <Canvas>
+                <TextBlock Canvas.Left="30" TextWrapping="Wrap" Text="Require Candidate Image Capture Before Assessment" Canvas.Top="16" Width="333" FontSize="14"/>
+                <CheckBox x:Name="chkImageCapture" Content="                                                                                                                              " Canvas.Left="10" Canvas.Top="19" FontSize="14" Checked="chkImageCapture_Checked" Unchecked="chkImageCapture_Unchecked" TabIndex="1" Width="353"/>
+            </Canvas>
+        </GroupBox>
+        <GroupBox Header="End Of Day" HorizontalAlignment="Left" Margin="10,87,0,0" VerticalAlignment="Top" Height="211" Width="1004" Visibility="Visible">
+            <Canvas>
+                <Button x:Name="bttnEndOfDay" Content="End Of Day" Canvas.Left="134" Canvas.Top="146" Width="180" TabIndex="2" Click="bttnEndOfDay_Click" Loaded="bttnEndOfDay_Loaded" IsEnabled="False"/>
+                <TextBlock Canvas.Left="10" TextWrapping="Wrap" Text="Clicking the &quot;End Of Day&quot; Button triggers the final process of an assessment day. It is assumed that all assessments have been completed and all results synchronized." Canvas.Top="10" Width="730" Height="53" FontSize="14"/>
+                <TextBlock x:Name="lblStatusEndOfDay" TextWrapping="Wrap" FontSize="16" FontWeight="Bold" Foreground="#FFF03030" Height="64" Canvas.Left="446" Canvas.Top="83" Width="536"/>
+                <Custom:ProgressRing x:Name="progressRing" IsActive="False" Canvas.Left="331" Canvas.Top="68" />
+                <TextBox x:Name="txtEodUsername" Height="23" Canvas.Left="135" TextWrapping="Wrap" Canvas.Top="60" Width="180" IsEnabled="False"/>
+                <PasswordBox x:Name="txtEodPassword" Height="23" Canvas.Left="135"  Canvas.Top="104" Width="180" IsEnabled="False"/>
+                <TextBlock Canvas.Left="16" TextWrapping="Wrap" Text="Username" Canvas.Top="63" Width="114" FontSize="14"/>
+                <TextBlock Canvas.Left="16" TextWrapping="Wrap" Text="Password" Canvas.Top="105" Width="114" FontSize="14"/>
+            </Canvas>
+        </GroupBox>
+        <GroupBox Header="Synchronize Personnel Photo Capture Data" HorizontalAlignment="Left" Margin="10,305,0,0" VerticalAlignment="Top" Height="211" Width="1004" Visibility="Visible">
+            <Canvas>
+                <Button x:Name="bttnSynchronize" Content="Synchronize" Canvas.Left="134" Canvas.Top="146" Width="180" TabIndex="2" Loaded="bttnEndOfDay_Loaded" IsEnabled="False" Click="bttnSynchronize_Click"/>
+                <TextBlock Canvas.Left="10" TextWrapping="Wrap" Text="Clicking the &quot;Synchronize&quot; Button initiates the process of sending personnel pre/post test photos to the server." Canvas.Top="10" Width="730" Height="53" FontSize="14"/>
+                <TextBlock x:Name="lblStatusSynchronize" TextWrapping="Wrap" FontSize="16" FontWeight="Bold" Foreground="#FFF03030" Height="64" Canvas.Left="446" Canvas.Top="66" Width="536"/>
+                <Custom:ProgressRing x:Name="progressRingSync" IsActive="False" Canvas.Left="381" Canvas.Top="68" />
+                <TextBlock Canvas.Left="134" TextWrapping="Wrap" Text="Total Captured" Canvas.Top="68" Width="126" FontSize="14" FontWeight="Bold"/>
+                <TextBlock Canvas.Left="134" TextWrapping="Wrap" Text="Total Synchronized" Canvas.Top="95" Width="126" FontSize="14" FontWeight="Bold"/>
+                <TextBlock x:Name="txtTotalCaptured" Canvas.Left="275" TextWrapping="Wrap" Text="0" Canvas.Top="68" Width="28" FontSize="14"/>
+                <TextBlock x:Name="txtTotalSynchronized" Canvas.Left="275" TextWrapping="Wrap" Text="0" Canvas.Top="95" Width="28" FontSize="14"/>
+            </Canvas>
+        </GroupBox>
+    </Grid>
+</UserControl>

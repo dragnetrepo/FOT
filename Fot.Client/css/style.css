@@ -1,0 +1,512 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/*
+==============================================
+Clearing css
+==============================================
+*/
+*
+{
+    padding: 0;
+    margin: 0;
+    outline: none;
+}
+/*
+==============================================
+Typography Css
+==============================================
+*/
+
+html, body
+{
+    /*font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#555;*/
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font: 14px/21px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #444;
+    -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
+    -webkit-text-size-adjust: 100%;
+}
+
+a img, img
+{
+    border: none;
+}
+
+a
+{
+    text-decoration: none;
+    color: #004267;
+}
+
+    a:hover
+    {
+        text-decoration: underline;
+    }
+
+input
+{
+    font-family: tahoma, arial, sans-serif;
+    font-size: 11px;
+    color: #999;
+}
+
+ul, ol
+{
+    list-style: none;
+}
+
+.clear
+{
+    clear: both;
+    line-height: 0;
+    font-size: 0;
+}
+
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover
+{
+    text-decoration: none;
+}
+
+h1
+{
+    font-size: 20px;
+    color: #003f64;
+    line-height: 16px;
+    padding-bottom: 8px;
+}
+
+    h1.PageHeader
+    {
+        font-size: 20px;
+        color: #003f64;
+        line-height: 16px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #ccc;
+    }
+
+h2
+{
+    font-size: 14px;
+    color: #fff;
+    line-height: 16px;
+    padding-bottom: 8px;
+}
+
+    h2.PageHeader
+    {
+        font-size: 14px;
+        color: #003f64;
+        line-height: 14px;
+        padding-bottom: 8px;
+        margin-top: 4px;
+    }
+
+h3
+{
+    font-size: 12px;
+    color: #004267;
+    line-height: 16px;
+    padding-bottom: 8px;
+}
+
+h4
+{
+    font-size: 1px;
+    line-height: 16px;
+    padding-bottom: 8px;
+}
+
+p
+{
+    line-height: 15px;
+    padding-bottom: 8px;
+}
+/*
+==============================================
+WRAPPER AREA
+==============================================
+*/
+
+#outer_wrapper_inner
+{
+    width: 100%;
+    background: url(../images/bg-body-inner.png) repeat-x top;
+    min-height: 100%;
+    position: relative;
+}
+
+#wrapper
+{
+    width: 100%;
+    margin: 0 auto;
+    /*padding-bottom:62px; */
+    min-height: 100%;
+}
+/*
+==============================================
+header section
+==============================================
+*/
+
+#header
+{
+    width: 100%;
+    float: left;
+    padding-top: 0px;
+    padding-bottom: 10px;
+}
+
+    #header img#logo
+    {
+        float: left;
+        margin-left: 15px;
+        margin-top: 15px;
+    }
+
+    #header img#logo2
+    {
+        float: right;
+        margin-left: 8px;
+        margin-top: 15px;
+    }
+
+
+
+/*
+==============================================
+content section
+==============================================
+*/
+#content
+{
+    width: 100%;
+    float: left;
+    height: 100%;
+    min-height: 100%;
+}
+
+
+
+
+
+/* #Buttons
+================================================== */
+
+a.button, button, input[type=submit], input[type=reset], input[type=button]
+{
+    background: #eee; /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(255,255,255,.2) 0%, rgba(0,0,0,.2) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,.2)), color-stop(100%,rgba(0,0,0,.2))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(255,255,255,.2) 0%,rgba(0,0,0,.2) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(255,255,255,.2) 0%,rgba(0,0,0,.2) 100%); /* Opera11.10+ */
+    background: -ms-linear-gradient(top, rgba(255,255,255,.2) 0%,rgba(0,0,0,.2) 100%); /* IE10+ */
+    background: linear-gradient(top, rgba(255,255,255,.2) 0%,rgba(0,0,0,.2) 100%); /* W3C */
+    border: 1px solid #aaa;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    padding: 4px 12px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    color: #444;
+    display: inline-block;
+    font-size: 11px;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: 0 1px rgba(255, 255, 255, .75);
+    cursor: pointer;
+    margin-bottom: 20px;
+    line-height: 21px;
+    font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+    a.button:hover, button:hover, input[type=submit]:hover, input[type=reset]:hover, input[type=button]:hover
+    {
+        color: #222;
+        background: #eee; /* Old browsers */
+        background: -moz-linear-gradient(top, rgba(255,255,255,.3) 0%, rgba(0,0,0,.3) 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,.3)), color-stop(100%,rgba(0,0,0,.3))); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, rgba(255,255,255,.3) 0%,rgba(0,0,0,.3) 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, rgba(255,255,255,.3) 0%,rgba(0,0,0,.3) 100%); /* Opera11.10+ */
+        background: -ms-linear-gradient(top, rgba(255,255,255,.3) 0%,rgba(0,0,0,.3) 100%); /* IE10+ */
+        background: linear-gradient(top, rgba(255,255,255,.3) 0%,rgba(0,0,0,.3) 100%); /* W3C */
+        border: 1px solid #888;
+        border-top: 1px solid #aaa;
+        border-left: 1px solid #aaa;
+    }
+
+    a.button:active, button:active, input[type=submit]:active, input[type=reset]:active, input[type=button]:active
+    {
+        background: #eee; /* Old browsers */
+        background: -moz-linear-gradient(top, rgba(0,0,0,.3) 0%, rgba(255,255,255,.3) 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,.3)), color-stop(100%,rgba(255,255,255,.3))); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, rgba(0,0,0,.3) 0%,rgba(255,255,255,.3) 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, rgba(0,0,0,.3) 0%,rgba(255,255,255,.3) 100%); /* Opera11.10+ */
+        background: -ms-linear-gradient(top, rgba(0,0,0,.3) 0%,rgba(255,255,255,.3) 100%); /* IE10+ */
+        background: linear-gradient(top, rgba(0,0,0,.3) 0%,rgba(255,255,255,.3) 100%); /* W3C */
+        border: 1px solid #888;
+        border-bottom: 1px solid #aaa;
+        border-right: 1px solid #aaa;
+    }
+
+    .button.full-width, button.full-width, input[type=submit].full-width, input[type=reset].full-width, input[type=button].full-width
+    {
+        width: 100%;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        text-align: center;
+    }
+
+
+
+
+/* #Misc
+================================================== */
+.remove-bottom
+{
+    margin-bottom: 0 !important;
+}
+
+.half-bottom
+{
+    margin-bottom: 10px !important;
+}
+
+.add-bottom
+{
+    margin-bottom: 20px !important;
+}
+
+/*** TEXT CLASSES ***/
+/*=======================================================*/
+.small
+{
+    font-size: .8em;
+    margin-bottom: 1.875em;
+    line-height: 1.875em;
+}
+
+.large
+{
+    font-size: 1.2em;
+    line-height: 2.5em;
+    margin-bottom: 1.25em;
+}
+
+.hide
+{
+    display: none;
+}
+
+.quiet
+{
+    color: #666;
+}
+
+.loud
+{
+    color: #000;
+}
+
+.highlight
+{
+    background: #ff0;
+}
+
+.top
+{
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.bottom
+{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.thin
+{
+    font-weight: lighter;
+}
+
+.error, .notice, .success
+{
+    padding: .8em;
+    margin-bottom: 1.6em;
+    border: 2px solid #ddd;
+}
+
+.error
+{
+    background: #FBE3E4;
+    color: #8a1f11;
+    border-color: #FBC2C4;
+}
+
+.notice
+{
+    background: #FFF6BF;
+    color: #514721;
+    border-color: #FFD324;
+}
+
+.success
+{
+    background: #E6EFC2;
+    color: #264409;
+    border-color: #C6D880;
+}
+
+.error a
+{
+    color: #8a1f11;
+    background: none;
+    padding: 0;
+    margin: 0;
+}
+
+.notice a
+{
+    color: #514721;
+    background: none;
+    padding: 0;
+    margin: 0;
+}
+
+.success a
+{
+    color: #264409;
+    background: none;
+    padding: 0;
+    margin: 0;
+}
+
+.center
+{
+    text-align: center;
+}
+
+.Formerror
+{
+    color: #cc0000;
+    background: none;
+    padding: 2px;
+    margin: 2px;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+/*=========EXTRA STUFF========================================================*/
+.loginDiv
+{
+    border: 1px solid #ccc;
+    background-color: #fff;
+    width: 420px;
+    height: 210px;
+    padding: 20px;
+    -moz-box-shadow: 0 0 2px rgba(0,0,0,.2);
+    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.2);
+    box-shadow: 0 0 2px rgba(0,0,0,.2);
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+
+
+/*** OTHER STUFF ***/
+/*=======================================================*/
+
+.contentDiv
+{
+    margin: 5px;
+    padding: 5px;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.divFormlabel
+{
+    float: left;
+    width: 200px;
+    padding-top: 9px;
+    margin: 3px;
+    font: 14px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #777;
+}
+
+.divFormInput
+{
+    float: left;
+    padding: 3px;
+    margin: 3px;
+    min-width: 600px;
+}
+
+.formContainer
+{
+    float: left;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    min-width: 100%;
+    clear: both;
+}
+
+input[type=text], input[type=password], input[type=email], input[type=file], textarea, select
+{
+    border: 1px solid #ccc;
+    padding: 6px 4px;
+    font: 13px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #777;
+}
+
+    input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=file]:focus, textarea:focus
+    {
+        border: 1px solid #aaa;
+        color: #444;
+    }
+
+.fixedWidth
+{
+    width: 250px;
+}
+
+div.divFormInput label
+{
+    padding-left: 3px;
+}
+
+
+label
+{
+    padding-left: 5px;
+    padding-bottom: 5px;
+    padding-right: 30px;
+}
+
+
+#myContainer
+{
+    border: 1px solid #ccc;
+    background-color: #fff;
+    width: 98%;
+    min-height: 550px;
+    padding: 10px;
+    float: left;
+}
+
+    #myContainer h1
+    {
+        font-size: 20px;
+        color: #003F64;
+        line-height: 16px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #CCC;
+    }

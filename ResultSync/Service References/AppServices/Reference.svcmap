@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2acd025e-d715-421f-bfc2-b83382f0bb37" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/Fot.Lan/AppService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AppService.xsd" MetadataType="Schema" ID="9f9ccbc5-69e4-40b8-b193-01d15c87a1d2" SourceId="1" SourceUrl="http://localhost/Fot.Lan/AppService.svc?xsd=xsd0" />
+    <MetadataFile FileName="AppService.wsdl" MetadataType="Wsdl" ID="6b71a661-f460-4ae9-9e06-e4b58374a80f" SourceId="1" SourceUrl="http://localhost/Fot.Lan/AppService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="AppService1.wsdl" MetadataType="Wsdl" ID="5aa7ef54-1d48-4f5e-914f-7ab31d18f3be" SourceId="1" SourceUrl="http://localhost/Fot.Lan/AppService.svc?wsdl" />
+    <MetadataFile FileName="AppService1.xsd" MetadataType="Schema" ID="99cf6ef7-7bb7-472a-98f2-f2c327f89122" SourceId="1" SourceUrl="http://localhost/Fot.Lan/AppService.svc?xsd=xsd3" />
+    <MetadataFile FileName="AppService2.xsd" MetadataType="Schema" ID="947abc3d-82c2-4d64-94e3-7aca46bb8b5e" SourceId="1" SourceUrl="http://localhost/Fot.Lan/AppService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AppService3.xsd" MetadataType="Schema" ID="38fe6841-ce12-459d-baa5-216ba6cf0cf9" SourceId="1" SourceUrl="http://localhost/Fot.Lan/AppService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AppService.disco" MetadataType="Disco" ID="827fb81f-4be3-48c2-89b8-27d8016601bc" SourceId="1" SourceUrl="http://localhost/Fot.Lan/AppService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

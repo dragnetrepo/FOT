@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="AuthorApp.UserManagementScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="1234" Width="1234" Height="700" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="340"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="170"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Content="Manage Users" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" Width="500" FontSize="22"/>
+
+        <DataGrid Grid.Row="1" x:Name="gridUsers"  AutoGenerateColumns="False" MinColumnWidth="100" Margin="10"  CanUserDeleteRows="False" FontSize="14" RowHeight="30"   IsReadOnly="True" HorizontalGridLinesBrush="#FF666666" Foreground="#FF666666" GridLinesVisibility="Horizontal" SelectionChanged="gridUsers_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Username" Width="320"  Binding="{Binding Username}"/>
+                <DataGridTextColumn Header="Firstname" Width="320" Binding="{Binding Firstname}" />
+                <DataGridTextColumn Header="Lastname" Width="320" Binding="{Binding Lastname}" />
+                <DataGridCheckBoxColumn Header="Active?" Width="90" Binding="{Binding Active}"></DataGridCheckBoxColumn>
+                <DataGridTextColumn Header="Date Added" Width="120" Binding="{Binding RegDate, StringFormat=\{0:dd-MMM-yyyy\}}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="2">
+            <Button x:Name="bttnEditSelected" Content="Edit Selected Entry" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Height="30" Width="140" IsEnabled="False" Click="bttnEditSelected_Click"/>
+            <Button x:Name="bttnDeleteSelected" Content="Delete Selected Entry" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Height="30" Width="140" IsEnabled="False" Click="bttnDeleteSelected_Click"/>
+
+        </StackPanel>
+        
+
+        <Border Grid.Row="3"  BorderBrush="#FFf0f0f0" BorderThickness="1" Margin="10">
+ <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical"  Margin="0,20,50,0"  Width="450" HorizontalAlignment="Center">
+
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10" >
+                        <Label Content="Username" Width="150" FontSize="14"/>
+                        <TextBox x:Name="txtUsername" Width="300" TabIndex="1"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10" >
+                        <Label Content="First Name" Width="150" FontSize="14"/>
+                        <TextBox x:Name="txtFirstname" Width="300" TabIndex="3"/>
+                    </StackPanel>
+
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10" >
+                        <Label Content="" Width="150" FontSize="14"/>
+                        <CheckBox x:Name="chkActive" Content="Active" IsChecked="True" TabIndex="5" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical"  Margin="0,20,0,0"  Width="500" HorizontalAlignment="Center">
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10" >
+                        <Label Content="Password" Width="150" FontSize="14"/>
+                        <PasswordBox x:Name="txtPassword" Width="300"  TabIndex="2"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10" >
+                        <Label Content="Last Name" Width="150" FontSize="14"/>
+                        <TextBox x:Name="txtLastname" Width="300" TabIndex="4" />
+                    </StackPanel>
+                  
+
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10" >
+                        <Label Content="" Width="150" FontSize="14"/>
+                        <Button x:Name="bttnAddUser" Width="150"  Content="Add User" Click="bttnAddUser_Click" TabIndex="5" />
+                        <Button x:Name="bttnUpdateUser" Width="150"  Content="Update User" Visibility="Collapsed" Click="bttnUpdateUser_Click" TabIndex="6" />
+                    </StackPanel>
+                </StackPanel>
+
+            </StackPanel>
+
+        </Border>
+
+
+        <TextBlock x:Name="lblStatus" Margin="10" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top"  FontSize="20" TextAlignment="Center" HorizontalAlignment="Left" Width="800" FontWeight="Bold"/>
+
+    </Grid>
+</UserControl>

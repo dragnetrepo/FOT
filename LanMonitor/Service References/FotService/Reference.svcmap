@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="da3437ea-f956-4a80-8240-5d85efa9281f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/Fot.Admin/FotService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="FotService.wsdl" MetadataType="Wsdl" ID="a3f4cc3e-f131-4529-b0b4-380e7c8d7835" SourceId="1" SourceUrl="http://localhost/Fot.Admin/FotService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="FotService.disco" MetadataType="Disco" ID="f146ec22-0cce-443c-9935-dbd9f58ae0d4" SourceId="1" SourceUrl="http://localhost/Fot.Admin/FotService.svc?disco" />
+    <MetadataFile FileName="FotService1.wsdl" MetadataType="Wsdl" ID="885896e1-c669-4728-9168-df14d81786f2" SourceId="1" SourceUrl="http://localhost/Fot.Admin/FotService.svc?wsdl" />
+    <MetadataFile FileName="FotService.xsd" MetadataType="Schema" ID="fa43874b-2afa-4063-9c21-4418e2461159" SourceId="1" SourceUrl="http://localhost/Fot.Admin/FotService.svc?xsd=xsd0" />
+    <MetadataFile FileName="FotService1.xsd" MetadataType="Schema" ID="b24fac3b-9b97-409d-9ea3-8fb20721ed8e" SourceId="1" SourceUrl="http://localhost/Fot.Admin/FotService.svc?xsd=xsd1" />
+    <MetadataFile FileName="FotService2.xsd" MetadataType="Schema" ID="0f36216e-b0cb-4235-a956-1ddc4a4735a1" SourceId="1" SourceUrl="http://localhost/Fot.Admin/FotService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

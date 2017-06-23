@@ -1,0 +1,29 @@
+﻿<Controls:MetroWindow x:Class="AuthorApp.AddOrEditGroup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      Title="Add Question Group" Height="409" Width="576" ShowMaxRestoreButton="False" ShowMinButton="False" ShowInTaskbar="False" ResizeMode="NoResize" 
+                      WindowStartupLocation="CenterOwner" 
+                      Loaded="MetroWindow_Loaded_1"
+                      EnableDWMDropShadow="True"
+                      NonActiveWindowTitleBrush="{DynamicResource AccentColorBrush}">
+
+    <Controls:MetroWindow.Resources>
+
+
+    </Controls:MetroWindow.Resources>
+    <Grid>
+        <TextBox x:Name="txtGroupName" HorizontalAlignment="Left" Height="30" Margin="10,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="410" FontSize="14" TabIndex="1" TextChanged="txtGroupName_TextChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="12,12,0,0" TextWrapping="Wrap" Text="Question Group" VerticalAlignment="Top" Width="368" FontSize="14" FontWeight="SemiBold"/>
+        <Button x:Name="bttnAdd" Content="Add Group" HorizontalAlignment="Left" Margin="425,36,0,0" VerticalAlignment="Top" Width="135" Height="30" Click="bttnAdd_Click" />
+        <TextBlock x:Name="lblStatus" HorizontalAlignment="Left" Margin="10,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="61" Width="550" FontSize="14"/>
+        <DataGrid x:Name="GroupGrid" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="410" Height="227"  MinColumnWidth="100"  AutoGenerateColumns="False" FontSize="14" Foreground="#FF666666" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="#FF666666" IsReadOnly="True" Margin="10,78,0,0" SelectionChanged="GroupGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Question Group" Width="390"  Binding="{Binding GroupName}"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="bttnDelete" Content="Delete Selected" HorizontalAlignment="Left" Margin="425,78,0,0" VerticalAlignment="Top" Width="135" Height="30" Click="bttnDelete_Click" IsEnabled="False" />
+
+    </Grid>
+</Controls:MetroWindow>

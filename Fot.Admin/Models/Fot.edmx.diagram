@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="21bd3eba59804fb79b17c74ad131decc" Name="Diagram1" ZoomLevel="75">
+        <EntityTypeShape EntityType="FotModel.AdminUser" Width="1.5" PointX="8.25" PointY="43" />
+        <EntityTypeShape EntityType="FotModel.Assessment" Width="1.5" PointX="3" PointY="43.25" />
+        <EntityTypeShape EntityType="FotModel.AssessmentAnswer" Width="1.5" PointX="15.75" PointY="57" />
+        <EntityTypeShape EntityType="FotModel.AssessmentBundle" Width="1.5" PointX="3" PointY="74.375" />
+        <EntityTypeShape EntityType="FotModel.AssessmentBundleEntry" Width="1.5" PointX="8.25" PointY="62.625" />
+        <EntityTypeShape EntityType="FotModel.AssessmentOutputConfig" Width="1.5" PointX="7.5" PointY="58.75" />
+        <EntityTypeShape EntityType="FotModel.AssessmentQuestion" Width="1.5" PointX="13.5" PointY="53.25" />
+        <EntityTypeShape EntityType="FotModel.AssessmentResult" Width="1.5" PointX="12.75" PointY="49.5" />
+        <EntityTypeShape EntityType="FotModel.AssessmentTopic" Width="1.5" PointX="5.25" PointY="41" />
+        <EntityTypeShape EntityType="FotModel.AuthorAssignedAssessment" Width="1.5" PointX="10.5" PointY="42.625" />
+        <EntityTypeShape EntityType="FotModel.CampaignEntry" Width="1.5" PointX="10.5" PointY="53.5" />
+        <EntityTypeShape EntityType="FotModel.CandidateAssessment" Width="1.5" PointX="12.75" PointY="72" />
+        <EntityTypeShape EntityType="FotModel.CandidateFeedback" Width="1.5" PointX="10.5" PointY="18.375" />
+        <EntityTypeShape EntityType="FotModel.Center" Width="1.5" PointX="6" PointY="44.625" />
+        <EntityTypeShape EntityType="FotModel.ChosenOption" Width="1.5" PointX="5" PointY="1.25" />
+        <EntityTypeShape EntityType="FotModel.EssayTopic" Width="1.5" PointX="5.25" PointY="55.25" />
+        <EntityTypeShape EntityType="FotModel.FeedbackType" Width="1.5" PointX="0.75" PointY="1.375" />
+        <EntityTypeShape EntityType="FotModel.Location" Width="1.5" PointX="3.75" PointY="37.5" />
+        <EntityTypeShape EntityType="FotModel.Partner" Width="1.5" PointX="0.75" PointY="44.25" />
+        <EntityTypeShape EntityType="FotModel.PartnerAssignedAssessment" Width="1.5" PointX="5.25" PointY="49.625" />
+        <EntityTypeShape EntityType="FotModel.PartnerWalletDebit" Width="1.5" PointX="15.75" PointY="50.25" />
+        <EntityTypeShape EntityType="FotModel.PartnerWalletEntry" Width="1.5" PointX="13.5" PointY="45.375" />
+        <EntityTypeShape EntityType="FotModel.QuestionDifficultyLevel" Width="1.5" PointX="5.25" PointY="64.75" />
+        <EntityTypeShape EntityType="FotModel.QuestionGroup" Width="1.5" PointX="5.25" PointY="67.875" />
+        <EntityTypeShape EntityType="FotModel.ScheduleDownload" Width="1.5" PointX="8.25" PointY="39" />
+        <EntityTypeShape EntityType="FotModel.Setting" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="FotModel.ShownQuestion" Width="1.5" PointX="2.75" PointY="1" />
+        <EntityTypeShape EntityType="FotModel.TestSession" Width="1.5" PointX="8.25" PointY="55.375" />
+        <AssociationConnector Association="FotModel.FK_AdminUser_Center" />
+        <AssociationConnector Association="FotModel.FK_AdminUser_Partner" />
+        <AssociationConnector Association="FotModel.FK_AuthorAssignedAssessment_AdminUser" />
+        <AssociationConnector Association="FotModel.FK_PartnerWalletEntry_AdminUser" />
+        <AssociationConnector Association="FotModel.FK_Assessment_Partner" />
+        <AssociationConnector Association="FotModel.FK_AssessmentBundleEntry_Assessment" />
+        <AssociationConnector Association="FotModel.FK_AssessmentOutputConfig_Assessment" />
+        <AssociationConnector Association="FotModel.FK_AssessmentQuestion_Assessment" />
+        <AssociationConnector Association="FotModel.FK_AssessmentResult_Assessment" />
+        <AssociationConnector Association="FotModel.FK_AssessmentTopic_Assessment" />
+        <AssociationConnector Association="FotModel.FK_AuthorAssignedAssessment_Assessment" />
+        <AssociationConnector Association="FotModel.FK_EssayTopic_Assessment" />
+        <AssociationConnector Association="FotModel.FK_PartnerAssignedAssessment_Assessment" />
+        <AssociationConnector Association="FotModel.FK_QuestionDifficultyLevel_Assessment" />
+        <AssociationConnector Association="FotModel.FK_QuestionGroup_Assessment" />
+        <AssociationConnector Association="FotModel.FK_AssessmentAnswer_AssessmentQuestion" />
+        <AssociationConnector Association="FotModel.FK_AssessmentBundle_Partner" />
+        <AssociationConnector Association="FotModel.FK_AssessmentBundleEntry_AssessmentBundle" />
+        <AssociationConnector Association="FotModel.FK_AssessmentOutputConfig_AssessmentTopic" />
+        <AssociationConnector Association="FotModel.FK_AssessmentOutputConfig_QuestionDifficultyLevel" />
+        <AssociationConnector Association="FotModel.FK_AssessmentQuestion_AssessmentTopic" />
+        <AssociationConnector Association="FotModel.FK_AssessmentQuestion_QuestionDifficultyLevel" />
+        <AssociationConnector Association="FotModel.FK_AssessmentQuestion_QuestionGroup" />
+        <AssociationConnector Association="FotModel.FK_AssessmentResult_CampaignEntry" />
+        <AssociationConnector Association="FotModel.FK_AssessmentResult_EssayTopic" />
+        <AssociationConnector Association="FotModel.FK_CampaignEntry_TestSession" />
+        <AssociationConnector Association="FotModel.FK_CandidateAssessment_CampaignEntry" />
+        <AssociationConnector Association="FotModel.FK_PartnerWalletDebit_CampaignEntry" />
+        <AssociationConnector Association="FotModel.FK_CandidateFeedback_FeedbackType" />
+        <AssociationConnector Association="FotModel.FK_Center_Location" />
+        <AssociationConnector Association="FotModel.FK_Center_Partner" />
+        <AssociationConnector Association="FotModel.FK_ScheduleDownload_Center" />
+        <AssociationConnector Association="FotModel.FK_TestSession_Center" />
+        <AssociationConnector Association="FotModel.FK_ChosenOption_ShownQuestion" />
+        <AssociationConnector Association="FotModel.FK_Location_Location" />
+        <AssociationConnector Association="FotModel.FK_PartnerAssignedAssessment_Partner" />
+        <AssociationConnector Association="FotModel.FK_PartnerWalletDebit_Partner" />
+        <AssociationConnector Association="FotModel.FK_PartnerWalletEntry_Partner" />
+        <EntityTypeShape EntityType="FotModel.PartnerAssignedCenter" Width="1.5" PointX="13.25" PointY="42.625" />
+        <AssociationConnector Association="FotModel.FK_PartnerAssignedCenter_Center" />
+        <AssociationConnector Association="FotModel.FK_PartnerAssignedCenter_Partner" />
+        <EntityTypeShape EntityType="FotModel.AccessLog" Width="1.5" PointX="10.5" PointY="68.5" />
+        <AssociationConnector Association="FotModel.FK_AccessLog_AdminUser" />
+        <EntityTypeShape EntityType="FotModel.CampaignSession" Width="1.5" PointX="10.5" PointY="60.375" />
+        <AssociationConnector Association="FotModel.FK_CampaignSession_TestSession" />
+        <EntityTypeShape EntityType="FotModel.Candidate" Width="1.5" PointX="8.25" PointY="33.25" />
+        <AssociationConnector Association="FotModel.FK_CampaignEntry_Candidate" />
+        <AssociationConnector Association="FotModel.FK_Candidate_Location" />
+        <AssociationConnector Association="FotModel.FK_CandidateFeedback_Candidate" />
+        <EntityTypeShape EntityType="FotModel.CandidateScheduleResponse" Width="1.5" PointX="12.75" PointY="69.25" />
+        <AssociationConnector Association="FotModel.FK_CandidateScheduleResponse_CampaignEntry" />
+        <EntityTypeShape EntityType="FotModel.EmailBatch" Width="1.5" PointX="10.5" PointY="63.875" />
+        <EntityTypeShape EntityType="FotModel.EmailQueue" Width="1.5" PointX="12.75" PointY="58.75" />
+        <EntityTypeShape EntityType="FotModel.MessageBatch" Width="1.5" PointX="16.5" PointY="54" />
+        <EntityTypeShape EntityType="FotModel.MessageQueue" Width="1.5" PointX="18.75" PointY="54.75" />
+        <AssociationConnector Association="FotModel.FK_EmailQueue_CampaignEntry" />
+        <AssociationConnector Association="FotModel.FK_MessageQueue_CampaignEntry" />
+        <AssociationConnector Association="FotModel.FK_EmailQueue_EmailBatch" />
+        <AssociationConnector Association="FotModel.FK_MessageQueue_MessageBatch" />
+        <EntityTypeShape EntityType="FotModel.CenterUser" Width="1.5" PointX="8.25" PointY="51.75" />
+        <AssociationConnector Association="FotModel.FK_CampaignEntry_AdminUser" />
+        <AssociationConnector Association="FotModel.FK_CenterUser_Center" />
+        <EntityTypeShape EntityType="FotModel.TestDayPhoto" Width="1.5" PointX="10.5" PointY="49.125" />
+        <AssociationConnector Association="FotModel.FK_TestDayPhoto_AdminUser" />
+        <AssociationConnector Association="FotModel.FK_TestDayPhoto_PostTestCapturedByAdminId" />
+        <AssociationConnector Association="FotModel.FK_TestDayPhoto_PreTestCapturedByAdminId" />
+        <AssociationConnector Association="FotModel.FK_TestDayPhoto_CenterUser" />
+        <EntityTypeShape EntityType="FotModel.FixedQuestion" Width="1.5" PointX="15.75" PointY="47.375" />
+        <AssociationConnector Association="FotModel.FK_FixedQuestion_Assessment" />
+        <AssociationConnector Association="FotModel.FK_FixedQuestion_AssessmentQuestion" />
+        <EntityTypeShape EntityType="FotModel.Campaign" Width="1.5" PointX="5.25" PointY="58.875" />
+        <AssociationConnector Association="FotModel.FK_Campaign_AssessmentBundle" />
+        <AssociationConnector Association="FotModel.FK_Campaign_Partner" />
+        <AssociationConnector Association="FotModel.FK_CampaignEntry_Campaign" />
+        <AssociationConnector Association="FotModel.FK_CampaignSession_Campaign" />
+        <EntityTypeShape EntityType="FotModel.TestFeedback" Width="1.5" PointX="12.75" PointY="65.25" />
+        <AssociationConnector Association="FotModel.FK_TestFeedback_CampaignEntry" />
+        <EntityTypeShape EntityType="FotModel.AssessmentAuthor" Width="1.5" PointX="0.75" PointY="41.875" />
+        <AssociationConnector Association="FotModel.FK_Assessment_AssessmentAuthor" />
+        <EntityTypeShape EntityType="FotModel.PhotoLog" Width="1.5" PointX="10.5" PointY="45.5" />
+        <AssociationConnector Association="FotModel.FK_PhotoLog_AdminUser" />
+        <AssociationConnector Association="FotModel.FK_PhotoLog_Candidate" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="/Imports">
+      <xsd:import schemaLocation="http://localhost/Fot.Lan/AppService.svc?xsd=xsd0" />
+      <xsd:import schemaLocation="http://localhost/Fot.Lan/AppService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost/Fot.Lan/AppService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Fot.Lan.Models" />
+      <xsd:import schemaLocation="http://localhost/Fot.Lan/AppService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="AppService_GetCandidatesForSummary_InputMessage">
+    <wsdl:part name="parameters" element="GetCandidatesForSummary" />
+  </wsdl:message>
+  <wsdl:message name="AppService_GetCandidatesForSummary_OutputMessage">
+    <wsdl:part name="parameters" element="GetCandidatesForSummaryResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppService_GetCandidates_InputMessage">
+    <wsdl:part name="parameters" element="GetCandidates" />
+  </wsdl:message>
+  <wsdl:message name="AppService_GetCandidates_OutputMessage">
+    <wsdl:part name="parameters" element="GetCandidatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppService_GetRequiredAssessments_InputMessage">
+    <wsdl:part name="parameters" element="GetRequiredAssessments" />
+  </wsdl:message>
+  <wsdl:message name="AppService_GetRequiredAssessments_OutputMessage">
+    <wsdl:part name="parameters" element="GetRequiredAssessmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppService_GetRequiredAssessmentList_InputMessage">
+    <wsdl:part name="parameters" element="GetRequiredAssessmentList" />
+  </wsdl:message>
+  <wsdl:message name="AppService_GetRequiredAssessmentList_OutputMessage">
+    <wsdl:part name="parameters" element="GetRequiredAssessmentListResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppService_AddRequiredAssessments_InputMessage">
+    <wsdl:part name="parameters" element="AddRequiredAssessments" />
+  </wsdl:message>
+  <wsdl:message name="AppService_AddRequiredAssessments_OutputMessage">
+    <wsdl:part name="parameters" element="AddRequiredAssessmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppService_AddStaff_InputMessage">
+    <wsdl:part name="parameters" element="AddStaff" />
+  </wsdl:message>
+  <wsdl:message name="AppService_AddStaff_OutputMessage">
+    <wsdl:part name="parameters" element="AddStaffResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppService_DeleteAll_InputMessage">
+    <wsdl:part name="parameters" element="DeleteAll" />
+  </wsdl:message>
+  <wsdl:message name="AppService_DeleteAll_OutputMessage">
+    <wsdl:part name="parameters" element="DeleteAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppService_DeleteEverything_InputMessage">
+    <wsdl:part name="parameters" element="DeleteEverything" />
+  </wsdl:message>
+  <wsdl:message name="AppService_DeleteEverything_OutputMessage">
+    <wsdl:part name="parameters" element="DeleteEverythingResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppService_Add_InputMessage">
+    <wsdl:part name="parameters" element="Add" />
+  </wsdl:message>
+  <wsdl:message name="AppService_Add_OutputMessage">
+    <wsdl:part name="parameters" element="AddResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppService_CanTriggerEndOfDay_InputMessage">
+    <wsdl:part name="parameters" element="CanTriggerEndOfDay" />
+  </wsdl:message>
+  <wsdl:message name="AppService_CanTriggerEndOfDay_OutputMessage">
+    <wsdl:part name="parameters" element="CanTriggerEndOfDayResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppService_SaveBundle_InputMessage">
+    <wsdl:part name="parameters" element="SaveBundle" />
+  </wsdl:message>
+  <wsdl:message name="AppService_SaveBundle_OutputMessage">
+    <wsdl:part name="parameters" element="SaveBundleResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppService_SetImageCaptureSetting_InputMessage">
+    <wsdl:part name="parameters" element="SetImageCaptureSetting" />
+  </wsdl:message>
+  <wsdl:message name="AppService_SetImageCaptureSetting_OutputMessage">
+    <wsdl:part name="parameters" element="SetImageCaptureSettingResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppService_GetImageCapatureSetting_InputMessage">
+    <wsdl:part name="parameters" element="GetImageCapatureSetting" />
+  </wsdl:message>
+  <wsdl:message name="AppService_GetImageCapatureSetting_OutputMessage">
+    <wsdl:part name="parameters" element="GetImageCapatureSettingResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppService_GetCaptureAdminUsername_InputMessage">
+    <wsdl:part name="parameters" element="GetCaptureAdminUsername" />
+  </wsdl:message>
+  <wsdl:message name="AppService_GetCaptureAdminUsername_OutputMessage">
+    <wsdl:part name="parameters" element="GetCaptureAdminUsernameResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppService_GetCaptureAdminPassword_InputMessage">
+    <wsdl:part name="parameters" element="GetCaptureAdminPassword" />
+  </wsdl:message>
+  <wsdl:message name="AppService_GetCaptureAdminPassword_OutputMessage">
+    <wsdl:part name="parameters" element="GetCaptureAdminPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppService_UpdateAdminUsernameAndPassword_InputMessage">
+    <wsdl:part name="parameters" element="UpdateAdminUsernameAndPassword" />
+  </wsdl:message>
+  <wsdl:message name="AppService_UpdateAdminUsernameAndPassword_OutputMessage">
+    <wsdl:part name="parameters" element="UpdateAdminUsernameAndPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppService_GetStaffList_InputMessage">
+    <wsdl:part name="parameters" element="GetStaffList" />
+  </wsdl:message>
+  <wsdl:message name="AppService_GetStaffList_OutputMessage">
+    <wsdl:part name="parameters" element="GetStaffListResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppService_GetPendingStaffList_InputMessage">
+    <wsdl:part name="parameters" element="GetPendingStaffList" />
+  </wsdl:message>
+  <wsdl:message name="AppService_GetPendingStaffList_OutputMessage">
+    <wsdl:part name="parameters" element="GetPendingStaffListResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppService_GetPhotoLogs_InputMessage">
+    <wsdl:part name="parameters" element="GetPhotoLogs" />
+  </wsdl:message>
+  <wsdl:message name="AppService_GetPhotoLogs_OutputMessage">
+    <wsdl:part name="parameters" element="GetPhotoLogsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppService_SynchronizeStaffList_InputMessage">
+    <wsdl:part name="parameters" element="SynchronizeStaffList" />
+  </wsdl:message>
+  <wsdl:message name="AppService_SynchronizeStaffList_OutputMessage">
+    <wsdl:part name="parameters" element="SynchronizeStaffListResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppService_GetTestedList_InputMessage">
+    <wsdl:part name="parameters" element="GetTestedList" />
+  </wsdl:message>
+  <wsdl:message name="AppService_GetTestedList_OutputMessage">
+    <wsdl:part name="parameters" element="GetTestedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppService_SynchronizeCandidate_InputMessage">
+    <wsdl:part name="parameters" element="SynchronizeCandidate" />
+  </wsdl:message>
+  <wsdl:message name="AppService_SynchronizeCandidate_OutputMessage">
+    <wsdl:part name="parameters" element="SynchronizeCandidateResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AppService">
+    <wsdl:operation name="GetCandidatesForSummary">
+      <wsdl:input wsaw:Action="urn:AppService/GetCandidatesForSummary" message="AppService_GetCandidatesForSummary_InputMessage" />
+      <wsdl:output wsaw:Action="urn:AppService/GetCandidatesForSummaryResponse" message="AppService_GetCandidatesForSummary_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCandidates">
+      <wsdl:input wsaw:Action="urn:AppService/GetCandidates" message="AppService_GetCandidates_InputMessage" />
+      <wsdl:output wsaw:Action="urn:AppService/GetCandidatesResponse" message="AppService_GetCandidates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRequiredAssessments">
+      <wsdl:input wsaw:Action="urn:AppService/GetRequiredAssessments" message="AppService_GetRequiredAssessments_InputMessage" />
+      <wsdl:output wsaw:Action="urn:AppService/GetRequiredAssessmentsResponse" message="AppService_GetRequiredAssessments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRequiredAssessmentList">
+      <wsdl:input wsaw:Action="urn:AppService/GetRequiredAssessmentList" message="AppService_GetRequiredAssessmentList_InputMessage" />
+      <wsdl:output wsaw:Action="urn:AppService/GetRequiredAssessmentListResponse" message="AppService_GetRequiredAssessmentList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRequiredAssessments">
+      <wsdl:input wsaw:Action="urn:AppService/AddRequiredAssessments" message="AppService_AddRequiredAssessments_InputMessage" />
+      <wsdl:output wsaw:Action="urn:AppService/AddRequiredAssessmentsResponse" message="AppService_AddRequiredAssessments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddStaff">
+      <wsdl:input wsaw:Action="urn:AppService/AddStaff" message="AppService_AddStaff_InputMessage" />
+      <wsdl:output wsaw:Action="urn:AppService/AddStaffResponse" message="AppService_AddStaff_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAll">
+      <wsdl:input wsaw:Action="urn:AppService/DeleteAll" message="AppService_DeleteAll_InputMessage" />
+      <wsdl:output wsaw:Action="urn:AppService/DeleteAllResponse" message="AppService_DeleteAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEverything">
+      <wsdl:input wsaw:Action="urn:AppService/DeleteEverything" message="AppService_DeleteEverything_InputMessage" />
+      <wsdl:output wsaw:Action="urn:AppService/DeleteEverythingResponse" message="AppService_DeleteEverything_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Add">
+      <wsdl:input wsaw:Action="urn:AppService/Add" message="AppService_Add_InputMessage" />
+      <wsdl:output wsaw:Action="urn:AppService/AddResponse" message="AppService_Add_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CanTriggerEndOfDay">
+      <wsdl:input wsaw:Action="urn:AppService/CanTriggerEndOfDay" message="AppService_CanTriggerEndOfDay_InputMessage" />
+      <wsdl:output wsaw:Action="urn:AppService/CanTriggerEndOfDayResponse" message="AppService_CanTriggerEndOfDay_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveBundle">
+      <wsdl:input wsaw:Action="urn:AppService/SaveBundle" message="AppService_SaveBundle_InputMessage" />
+      <wsdl:output wsaw:Action="urn:AppService/SaveBundleResponse" message="AppService_SaveBundle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetImageCaptureSetting">
+      <wsdl:input wsaw:Action="urn:AppService/SetImageCaptureSetting" message="AppService_SetImageCaptureSetting_InputMessage" />
+      <wsdl:output wsaw:Action="urn:AppService/SetImageCaptureSettingResponse" message="AppService_SetImageCaptureSetting_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetImageCapatureSetting">
+      <wsdl:input wsaw:Action="urn:AppService/GetImageCapatureSetting" message="AppService_GetImageCapatureSetting_InputMessage" />
+      <wsdl:output wsaw:Action="urn:AppService/GetImageCapatureSettingResponse" message="AppService_GetImageCapatureSetting_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCaptureAdminUsername">
+      <wsdl:input wsaw:Action="urn:AppService/GetCaptureAdminUsername" message="AppService_GetCaptureAdminUsername_InputMessage" />
+      <wsdl:output wsaw:Action="urn:AppService/GetCaptureAdminUsernameResponse" message="AppService_GetCaptureAdminUsername_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCaptureAdminPassword">
+      <wsdl:input wsaw:Action="urn:AppService/GetCaptureAdminPassword" message="AppService_GetCaptureAdminPassword_InputMessage" />
+      <wsdl:output wsaw:Action="urn:AppService/GetCaptureAdminPasswordResponse" message="AppService_GetCaptureAdminPassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAdminUsernameAndPassword">
+      <wsdl:input wsaw:Action="urn:AppService/UpdateAdminUsernameAndPassword" message="AppService_UpdateAdminUsernameAndPassword_InputMessage" />
+      <wsdl:output wsaw:Action="urn:AppService/UpdateAdminUsernameAndPasswordResponse" message="AppService_UpdateAdminUsernameAndPassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStaffList">
+      <wsdl:input wsaw:Action="urn:AppService/GetStaffList" message="AppService_GetStaffList_InputMessage" />
+      <wsdl:output wsaw:Action="urn:AppService/GetStaffListResponse" message="AppService_GetStaffList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPendingStaffList">
+      <wsdl:input wsaw:Action="urn:AppService/GetPendingStaffList" message="AppService_GetPendingStaffList_InputMessage" />
+      <wsdl:output wsaw:Action="urn:AppService/GetPendingStaffListResponse" message="AppService_GetPendingStaffList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPhotoLogs">
+      <wsdl:input wsaw:Action="urn:AppService/GetPhotoLogs" message="AppService_GetPhotoLogs_InputMessage" />
+      <wsdl:output wsaw:Action="urn:AppService/GetPhotoLogsResponse" message="AppService_GetPhotoLogs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizeStaffList">
+      <wsdl:input wsaw:Action="urn:AppService/SynchronizeStaffList" message="AppService_SynchronizeStaffList_InputMessage" />
+      <wsdl:output wsaw:Action="urn:AppService/SynchronizeStaffListResponse" message="AppService_SynchronizeStaffList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTestedList">
+      <wsdl:input wsaw:Action="urn:AppService/GetTestedList" message="AppService_GetTestedList_InputMessage" />
+      <wsdl:output wsaw:Action="urn:AppService/GetTestedListResponse" message="AppService_GetTestedList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizeCandidate">
+      <wsdl:input wsaw:Action="urn:AppService/SynchronizeCandidate" message="AppService_SynchronizeCandidate_InputMessage" />
+      <wsdl:output wsaw:Action="urn:AppService/SynchronizeCandidateResponse" message="AppService_SynchronizeCandidate_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>
