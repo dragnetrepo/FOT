@@ -195,6 +195,14 @@ namespace Fot.Admin
                 lblPlaceHolders.Text = testedPlaceHolders;
                 lblSmsPlaceholders.Text = testedPlaceHoldersSms;
             }
+            else if (type == MessageType.Untested_Candidates)
+            {
+                trCenter.Visible = false;
+                trSessions.Visible = false;
+
+                lblPlaceHolders.Text = defaultPlaceHolders;
+                lblSmsPlaceholders.Text = defaultPlaceHoldersSms;
+            }
             else
             {
                 trCenter.Visible = false;
@@ -237,6 +245,12 @@ namespace Fot.Admin
                         query = ctx.CampaignEntries.Where(x => x.CampaignId == campaignId && x.Tested);
                         break;
                     }
+
+                case MessageType.Untested_Candidates:
+                {
+                    query = ctx.CampaignEntries.Where(x => x.CampaignId == campaignId && x.Tested == false);
+                    break;
+                }
 
                 default:
                     {
@@ -359,6 +373,13 @@ namespace Fot.Admin
                         query = ctx.CampaignEntries.Where(x => x.CampaignId == campaignId && x.Tested);
                         break;
                     }
+
+                case MessageType.Untested_Candidates:
+                {
+
+                    query = ctx.CampaignEntries.Where(x => x.CampaignId == campaignId && x.Tested == false);
+                    break;
+                }
             }
 
 

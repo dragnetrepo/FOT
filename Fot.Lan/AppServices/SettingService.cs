@@ -135,7 +135,7 @@ namespace Fot.Lan.AppServices
                         CampaignId = x.CampaignId,
                         SessionId = x.SessionId,
                         CandidatePhoto = x.CandidatePhoto,
-                        DateTimeStarted = x.DateTimeStarted.Value,
+                        DateTimeStarted = x.DateTimeStarted.HasValue? x.DateTimeStarted.Value : x.DateTimeCompleted.Value,
                         DateTimeCompleted = x.DateTimeCompleted.Value,
                         PhotoCapturedByAdminId = x.PhotoCapturedByAdminId.HasValue ? x.AdminUser.ActualUserId : default(int?),
                         AssessmentResults = x.AssessmentResults.Select(y => new AssessmentResultViewModel

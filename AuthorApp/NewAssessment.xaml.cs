@@ -32,6 +32,9 @@ namespace AuthorApp
             InitializeComponent();
 
             txtAddTopics.Visibility = tabLower.Visibility = chkShowLower.Visibility = Visibility.Hidden;
+
+
+            
         }
 
         private void chkShowLower_Click(object sender, RoutedEventArgs e)

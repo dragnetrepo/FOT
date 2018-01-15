@@ -42,7 +42,7 @@
                             <td style="width: 120px; font-weight: bold">Time</td>
                             <td style="margin-bottom: 10px;"><%# Item.TimeText %></td>
                             <td style="width: 150px; margin-bottom: 10px;">
-                                <%# "<a href='Invitation.aspx?id=" + Item.CampaignEntryId+"' target='_blank' style='font-size: 13px; font-weight: bold; text-decoration: underline;'>View / Print Invitation</a>" %></td>
+                                <%# "<a href='Invitation.aspx?id=" + Item.CampaignEntryId+"' target='_blank' style='font-size: 13px; font-weight: bold; text-decoration: underline;'>Accept / Reject Invitation</a>" %></td>
               
                 
                     </table>

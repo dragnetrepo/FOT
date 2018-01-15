@@ -10,6 +10,7 @@ namespace MessageService
         All_Candidates = 1,
         Scheduled_Candidates = 2,
         Unscheduled_Candidates = 3,
-        Tested_Candidates = 4
+        Tested_Candidates = 4,
+        Untested_Candidates = 5
     }
 }

@@ -107,6 +107,8 @@ namespace AuthorApp
                                           : GetTextOption(item.AnswerId, item.AnswerText, item.IsCorrect));
             }
 
+            txtBlockAdditionalText.Text = questionList[currentQuestion].AdditionalText;
+
         }
 
         private void bttnPrevious_Click(object sender, RoutedEventArgs e)

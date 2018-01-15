@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.4
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fot.Admin", "Fot.Admin\Fot.Admin.csproj", "{54BCC8BA-2F5A-4FED-88B1-85D86F434A7A}"
 EndProject
@@ -182,5 +182,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E6B7E474-6A05-47B7-8C77-DADEB774B7B3}
 	EndGlobalSection
 EndGlobal

@@ -102,7 +102,14 @@
                         temp = temp.replace("[[TEST_CENTER]]", "ChamsCity @ Lagos");
 
                         temp = temp.replace("[[ASSESSMENT_SCORES]]", getScores());
-                    }
+                }
+
+                else if (index === "5") {
+
+                    temp = temp.replace("[[NAME]]", "John Ggboko");
+                    temp = temp.replace("[[USERNAME]]", "DRG00878888");
+                    temp = temp.replace("[[PASSWORD]]", "r$78ju76");
+                }
 
         return temp;
 
@@ -242,6 +249,7 @@
                         <asp:ListItem Value="2">Scheduled Candidates In The Campaign</asp:ListItem>
                         <asp:ListItem Value="3">Unscheduled Candidates In The Campaign</asp:ListItem>
                         <asp:ListItem Value="4">Tested Candidates In The Campaign</asp:ListItem>
+                        <asp:ListItem Value="5">Untested Candidates In The Campaign</asp:ListItem>
                     </asp:DropDownList></div>
                     <div style="float: left; margin-left: 10px; padding-top: 5px;">
                         <asp:Label ID="lblCandidateCount" runat="server" style="font-weight: 700"></asp:Label></div>

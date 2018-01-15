@@ -10,6 +10,7 @@ using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using Fot.Admin.Models;
 using Fot.Admin.Services;
 using Hangfire;
 using Newtonsoft.Json;
@@ -23,7 +24,7 @@ namespace Fot.Admin.Infrastructure
 
         public static async Task ProcessSummary()
         {
-            var ctx = new ServiceBase().Context;
+            var ctx = new FotContext();
 
             ctx.Database.CommandTimeout = 0;
 

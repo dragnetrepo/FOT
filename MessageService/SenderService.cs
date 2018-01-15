@@ -615,6 +615,11 @@ namespace MessageService
                         return FormatPlaceHoldersForTested(item, emailMessage);
                         
                     }
+                case MessageType.Untested_Candidates:
+                {
+                    return FormatPlaceHolders(item, emailMessage);
+
+                }
 
                 default:
                     {

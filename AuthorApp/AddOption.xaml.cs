@@ -52,12 +52,37 @@ namespace AuthorApp
                     {
                         QuestionId = CallerInstance.Id,
                         AnswerText = txtOptionText.Text,
-                        IsCorrect = false,
+                        IsCorrect = checkCorrect.IsChecked.HasValue && checkCorrect.IsChecked.Value,
                         IsImage = false
 
                     };
 
+
+
+                if (item.IsCorrect)
+                {
+
+                    var ctx = new ServiceBase().Context;
+
+                    var question = ctx.AssessmentQuestions.FirstOrDefault(x => x.QuestionId == CallerInstance.Id);
+
+                    if (question?.AnswerType == "Single")
+                    {
+
+                       var list = ctx.AssessmentAnswers.Where(x => x.QuestionId == question.QuestionId).ToList();
+
+                        list.ForEach(x => x.IsCorrect = false);
+
+                        ctx.SaveChanges();
+
+                    }
+
+
+                }
+
                 var app = service.Add(item);
+
+                
 
                 if (app.IsDone)
                 {
@@ -116,10 +141,31 @@ namespace AuthorApp
                 {
                     QuestionId = CallerInstance.Id,
                     AnswerImage = imgBytes,
-                    IsCorrect = false,
+                    IsCorrect = checkCorrectImage.IsChecked.HasValue && checkCorrectImage.IsChecked.Value,
                     IsImage = true
 
                 };
+
+                if (item.IsCorrect)
+                {
+
+                    var ctx = new ServiceBase().Context;
+
+                    var question = ctx.AssessmentQuestions.FirstOrDefault(x => x.QuestionId == CallerInstance.Id);
+
+                    if (question?.AnswerType == "Single")
+                    {
+
+                        var list = ctx.AssessmentAnswers.Where(x => x.QuestionId == question.QuestionId).ToList();
+
+                        list.ForEach(x => x.IsCorrect = false);
+
+                        ctx.SaveChanges();
+
+                    }
+
+
+                }
 
                 var app = service.Add(item);
 

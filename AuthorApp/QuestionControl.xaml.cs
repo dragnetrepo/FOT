@@ -119,6 +119,7 @@ namespace AuthorApp
                 if (item != null)
                 {
                     editor.ContentHtml = item.QuestionText;
+                  
                     txtAdditionalText.Text = item.AdditionalText;
 
                     listTopics.SelectedValue = item.TopicId.HasValue ? item.TopicId.Value.ToString() : "0";

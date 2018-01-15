@@ -4,15 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
-             xmlns:System="clr-namespace:System;assembly=mscorlib" 
-             xmlns:HtmlEditor="clr-namespace:Smith.WPF.HtmlEditor;assembly=Smith.WPF.HtmlEditor" x:Class="AuthorApp.QuestionControl" 
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:smith="clr-namespace:Smith.WPF.HtmlEditor;assembly=Smith.WPF.HtmlEditor"
+             x:Class="AuthorApp.QuestionControl" 
              mc:Ignorable="d" 
             d:DesignHeight="700" d:DesignWidth="1234" Width="1234" Height="700">
     <Grid>
         <TextBlock x:Name="lblHeading" HorizontalAlignment="Left" Margin="19,12,0,0" TextWrapping="Wrap" Text="QUESTIONS - " VerticalAlignment="Top" Height="28" Width="1023" FontSize="18" FontWeight="Bold" Foreground="#FF003C60"/>
         <ListBox x:Name="listQuestionList" HorizontalAlignment="Left" Height="628" Margin="19,48,0,0" VerticalAlignment="Top" Width="120" FontSize="14" DisplayMemberPath="Text" SelectedValuePath="Id" MouseDoubleClick="listQuestionList_MouseDoubleClick" SelectionChanged="listQuestionList_SelectionChanged"/>
 
-        <HtmlEditor:HtmlEditor x:Name="editor" HorizontalAlignment="Left" Margin="156,48,0,0" VerticalAlignment="Top" Height="179" Width="886" BorderBrush="#fff0f0f0" BorderThickness="1" />
+     
+        <smith:HtmlEditor x:Name="editor" HorizontalAlignment="Left" Margin="156,48,0,0" VerticalAlignment="Top" Height="179" Width="886" BorderBrush="#fff0f0f0" BorderThickness="1" />
         <TextBox x:Name="txtAdditionalText" HorizontalAlignment="Left" Height="28" Margin="156,254,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="886"/>
         <TextBlock HorizontalAlignment="Left" Margin="156,230,0,0" TextWrapping="Wrap" Text="Additional Text" VerticalAlignment="Top" Width="368" FontSize="14"/>
         <Button x:Name="bttnBackToAssessment" Content="Back To Assessment" HorizontalAlignment="Left" Margin="1079,10,0,0" VerticalAlignment="Top" Width="135" Height="30" Click="bttnBackToAssessment_Click"/>
