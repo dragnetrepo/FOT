@@ -21,7 +21,7 @@ namespace Fot.Admin.Services
             {
 
                 
-                query =  Context.Candidates.OrderBy(x => x.FirstName).ThenBy(x => x.LastName).Select(
+                query =  Context.Candidates.Select(
                         x => new CandidateViewModel
                             {
                                 CandidateId = x.CandidateId,
@@ -31,13 +31,13 @@ namespace Fot.Admin.Services
                                 MobileNo = x.MobileNo,
                                 Email = x.Email,
                                 Location = x.Location.LocationName,
-                                CampaignCount = x.CampaignEntries.Count
+                                //CampaignCount = x.CampaignEntries.Count
                             });
             }
             else
             {
                 
-                 query =  Context.Candidates.Where(x => x.Username.Equals(searchTerm) || x.FirstName.Equals(searchTerm) || x.LastName.Equals(searchTerm) || x.Email.Equals(searchTerm)).OrderBy(x => x.FirstName).ThenBy(x => x.LastName).Select(
+                 query =  Context.Candidates.Where(x => x.Username.Equals(searchTerm) || x.FirstName.Equals(searchTerm) || x.LastName.Equals(searchTerm) || x.Email.Equals(searchTerm)).Select(
                        x => new CandidateViewModel
                        {
                            CandidateId = x.CandidateId,
@@ -47,7 +47,7 @@ namespace Fot.Admin.Services
                            MobileNo = x.MobileNo,
                            Email = x.Email,
                            Location = x.Location.LocationName,
-                           CampaignCount = x.CampaignEntries.Count
+                          // CampaignCount = x.CampaignEntries.Count
                        });
             }
 

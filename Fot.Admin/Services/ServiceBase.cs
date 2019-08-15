@@ -13,7 +13,7 @@ namespace Fot.Admin.Services
         public ServiceBase()
         {
             Context = ContextManager.AsSingleton<FotContext>();
-
+            Context.Database.CommandTimeout = 0;
           
         }
 

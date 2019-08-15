@@ -22,6 +22,7 @@
     <TargetFrameworkProfile />
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -407,13 +408,11 @@
     <Content Include="TestCenter\Schedules.aspx" />
     <Content Include="TestCenter\Candidates.aspx" />
     <Content Include="TestDayCapture.aspx" />
-    <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="TestCenter\Web.config" />
     <Content Include="TestCenter\CenterMaster.Master" />
-    <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activity.aspx.cs">
@@ -1294,13 +1293,6 @@
     <Compile Include="ShowQuestion.aspx.designer.cs">
       <DependentUpon>ShowQuestion.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Site.Mobile.Master.cs">
-      <DependentUpon>Site.Mobile.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Site.Mobile.Master.designer.cs">
-      <DependentUpon>Site.Mobile.Master</DependentUpon>
-    </Compile>
     <Compile Include="SmsLog.aspx.cs">
       <DependentUpon>SmsLog.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1684,13 +1676,6 @@
     </Compile>
     <Compile Include="TestDayCapture.aspx.designer.cs">
       <DependentUpon>TestDayCapture.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ViewSwitcher.ascx.cs">
-      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ViewSwitcher.ascx.designer.cs">
-      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
