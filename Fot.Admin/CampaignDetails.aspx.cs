@@ -55,7 +55,7 @@ namespace Fot.Admin
 
                 lblCampaignType.Text = item.IsUnproctored ? "Unproctored" : "Proctored";
 
-                trStartDate.Visible = trEndDate.Visible = item.IsUnproctored;
+                trStartDate.Visible = trEndDate.Visible = trProctored.Visible = item.IsUnproctored;
 
 
 
@@ -77,6 +77,7 @@ namespace Fot.Admin
 
                     }
 
+                    chkProctoring.Checked = item.EnableProctoring;
 
                     RadTabStrip1.Tabs[1].Visible = false;
                     RadTabStrip1.Tabs[2].Visible = false;
@@ -162,7 +163,7 @@ namespace Fot.Admin
                         item.EndDate = txtEndDate.SelectedDate;
                     }
 
-                   
+                    item.EnableProctoring = chkProctoring.Checked;
                 }
 
                 var app = service.Update(item);

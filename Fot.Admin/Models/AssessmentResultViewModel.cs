@@ -15,6 +15,8 @@ namespace Fot.Admin.Models
         public int CandidateId { get; set; }
 
         public int CampaignId { get; set; }
+
+        public string ProctorPlaybackId { get; set; }
         public string CandidateName { get; set; }
         public DateTime DateTested { get; set; }
 
@@ -47,13 +49,16 @@ namespace Fot.Admin.Models
             {
                 var sb = new StringBuilder();
 
-                var str = @" <tr><td class='assessmentContent'>{0}</td>
-                                  <td class='assessmentContent'>{1}</td>
-                                     <td class='assessmentContent'><a href='{3}?id={2}'>Review</a></td></tr>";
                 foreach (var result in ResultList)
                 {
                     var page = result.AssessmentType == AssessmentType.MCQ ? "ResultReview.aspx" : "EssayReview.aspx";
-                    var temp = String.Format(str, result.AssessmentName, result.TestScore, result.EntryId,page);
+
+                    var temp = $@" <tr><td class='assessmentContent'>{result.AssessmentName}</td>
+                                  <td class='assessmentContent'>{result.TestScore}</td>
+                                     <td class='assessmentContent'><a href='{page}?id={result.EntryId}'>Review</a></td></tr>";
+
+                   
+                    //var temp = String.Format(str, result.AssessmentName, result.TestScore, result.EntryId,page);
 
                     sb.Append(temp);
                 }

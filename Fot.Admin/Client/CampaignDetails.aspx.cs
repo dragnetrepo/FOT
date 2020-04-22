@@ -53,7 +53,7 @@ namespace Fot.Admin.Client
 
                 lblCampaignType.Text = item.IsUnproctored ? "Unproctored" : "Proctored";
 
-                trStartDate.Visible = trEndDate.Visible = item.IsUnproctored;
+                trStartDate.Visible = trEndDate.Visible = trProctored.Visible = item.IsUnproctored;
 
                 if (!string.IsNullOrWhiteSpace(item.InvitationLogo))
                 {
@@ -73,6 +73,8 @@ namespace Fot.Admin.Client
                         txtStartDate.Enabled = false;
 
                     }
+
+                    chkProctoring.Checked = item.EnableProctoring;
 
 
                     RadTabStrip1.Tabs[1].Visible = false;
@@ -158,7 +160,7 @@ namespace Fot.Admin.Client
                         item.EndDate = txtEndDate.SelectedDate;
                     }
 
-                   
+                    item.EnableProctoring = chkProctoring.Checked;
                 }
 
                 var app = service.Update(item);

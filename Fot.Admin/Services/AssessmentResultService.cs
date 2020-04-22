@@ -19,6 +19,7 @@ namespace Fot.Admin.Services
                             {
                                 CampaignEntryId = x.EntryId,
                                 CampaignId = x.CampaignId,
+                                ProctorPlaybackId = x.ProctorPlaybackId,
                                 CandidateName = x.Candidate.FirstName + " " + x.Candidate.LastName,
                                 CandidateId = x.CandidateId,
                                 DateTested = x.DateTested.Value,
@@ -232,6 +233,7 @@ namespace Fot.Admin.Services
                     .Select(x => new PartnerAssessmentResultViewModel
                     {
                         CampaignEntryId = x.EntryId,
+                        ProctorPlaybackId = x.ProctorPlaybackId,
                         CandidateName = x.Candidate.FirstName + " " + x.Candidate.LastName,
                         DateTested = x.DateTested.Value,
                         StartTime = x.TestStartTime,
@@ -262,6 +264,7 @@ namespace Fot.Admin.Services
                     .Select(x => new PartnerAssessmentResultViewModel
                     {
                         CampaignEntryId = x.EntryId,
+                        ProctorPlaybackId = x.ProctorPlaybackId,
                         CandidateName = x.Candidate.FirstName + " " + x.Candidate.LastName,
                         DateTested = x.DateTested.Value,
                         StartTime = x.TestStartTime,

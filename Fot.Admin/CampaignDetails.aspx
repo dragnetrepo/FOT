@@ -60,8 +60,8 @@
 
             var radMgr = $find("<%=RadAjaxManager1.ClientID %>");
 
-                radMgr.ajaxRequest("Rebind");
-            }
+            radMgr.ajaxRequest("Rebind");
+        }
 
 
     </script>
@@ -84,13 +84,13 @@
                 </telerik:RadTab>
                 <telerik:RadTab runat="server" Text="Campaign Sessions">
                 </telerik:RadTab>
-                  <telerik:RadTab runat="server" Text="Campaign Logos">
+                <telerik:RadTab runat="server" Text="Campaign Logos">
                 </telerik:RadTab>
             </Tabs>
         </telerik:RadTabStrip>
         <telerik:RadMultiPage ID="RadMultiPage1" runat="server" Height="340px" Width="100%" SelectedIndex="0">
             <telerik:RadPageView ID="RadPageView1" runat="server">
-                <div style="padding: 10px; border: 1px solid #ccc; margin-top: 10px; height: 320px;">
+                <div style="padding: 10px; border: 1px solid #ccc; margin-top: 10px; height: 390px; width: 100%; float: left;">
                     <table style="width: 100%;">
                         <tr>
                             <td style="width: 150px;">Campaign Name</td>
@@ -158,6 +158,12 @@
                                 <asp:CheckBox ID="chkViewResults" runat="server" Text="Candidate Can View Results" />
                             </td>
                         </tr>
+                        <tr id="trProctored" runat="server" visible="False">
+                            <td style="width: 150px;">Enable Proctoring</td>
+                            <td>
+                                <asp:CheckBox ID="chkProctoring" runat="server" Text="Enable" />
+                            </td>
+                        </tr>
                         <tr>
                             <td style="width: 150px;">Status</td>
                             <td>
@@ -175,7 +181,7 @@
                 </div>
             </telerik:RadPageView>
             <telerik:RadPageView ID="RadPageView2" runat="server">
-                <div style="padding: 10px; border: 1px solid #ccc; margin-top: 10px; height: 320px;">
+                <div style="padding: 10px; border: 1px solid #ccc; margin-top: 10px; height: 360px; width: 100%; float: left;">
                     <table style="width: 100%;">
                         <tr>
                             <td>Campaign Instructions</td>
@@ -289,7 +295,7 @@
                     </div>
                 </div>
             </telerik:RadPageView>
-                <telerik:RadPageView ID="RadPageView4" runat="server">
+            <telerik:RadPageView ID="RadPageView4" runat="server">
                 <div style="padding: 10px; border: 1px solid #ccc; margin-top: 10px; height: 320px;">
                     <table style="width: 100%;">
                         <tr>
@@ -299,13 +305,13 @@
                                     <asp:ListItem Value="1">Dragnet Logo</asp:ListItem>
                                     <asp:ListItem Value="2">Dragnet Logo + Company Logo</asp:ListItem>
                                     <asp:ListItem Value="3">Company Logo</asp:ListItem>
-                                </asp:DropDownList>   
-                        </td>
+                                </asp:DropDownList>
+                            </td>
                         </tr>
                         <tr>
                             <td style="width: 150px;">&nbsp;</td>
                             <td>
-                                <asp:Button ID="bttnUpdateOptions" runat="server" Text="Update Options" style="margin-bottom: 1px;" OnClick="bttnUpdateOptions_Click" />
+                                <asp:Button ID="bttnUpdateOptions" runat="server" Text="Update Options" Style="margin-bottom: 1px;" OnClick="bttnUpdateOptions_Click" />
                             </td>
                         </tr>
                         <tr>
@@ -326,16 +332,16 @@
                             <td style="width: 150px;">&nbsp;</td>
                             <td>
                                 <asp:FileUpload ID="picFile" runat="server" />
-                                <asp:Button ID="bttnUpload" runat="server" Text="Upload Image" style="margin-bottom: 1px; margin-left: 5px;" OnClick="bttnUpload_Click" />
+                                <asp:Button ID="bttnUpload" runat="server" Text="Upload Image" Style="margin-bottom: 1px; margin-left: 5px;" OnClick="bttnUpload_Click" />
                             </td>
                         </tr>
                         <tr>
                             <td style="width: 150px;">&nbsp;</td>
                             <td>&nbsp;</td>
                         </tr>
-                        </table>
-                    </div>
-                    </telerik:RadPageView>
+                    </table>
+                </div>
+            </telerik:RadPageView>
         </telerik:RadMultiPage>
 
 
@@ -376,8 +382,8 @@
         <div class='boxDiv' onclick="location.href='CampaignStats.aspx?id=<%=Request.QueryString["id"] %>';">
             <div class='codeStyle'>Campaign Stats</div>
         </div>
-        
-          <div class='boxDiv' onclick="location.href='CampaignFeedback.aspx?id=<%=Request.QueryString["id"] %>';">
+
+        <div class='boxDiv' onclick="location.href='CampaignFeedback.aspx?id=<%=Request.QueryString["id"] %>';">
             <div class='codeStyle'>Test Feedback</div>
         </div>
 

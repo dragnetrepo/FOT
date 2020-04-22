@@ -44,6 +44,7 @@ namespace Fot.Client.Models
         public Nullable<int> OwnerPartnerId { get; set; }
         public bool HasFixedQuestions { get; set; }
         public Nullable<int> AuthorId { get; set; }
+        public Nullable<bool> AllowGTDView { get; set; }
     
         public virtual ICollection<AssessmentBundleEntry> AssessmentBundleEntries { get; set; }
         public virtual ICollection<AssessmentOutputConfig> AssessmentOutputConfigs { get; set; }

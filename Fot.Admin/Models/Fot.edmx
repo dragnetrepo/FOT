@@ -179,6 +179,7 @@
           <Property Name="BundleId" Type="int" Nullable="false" />
           <Property Name="DateCreated" Type="datetime" Nullable="false" />
           <Property Name="IsUnproctored" Type="bit" Nullable="false" />
+          <Property Name="EnableProctoring" Type="bit" Nullable="false" />
           <Property Name="StartDate" Type="datetime" />
           <Property Name="EndDate" Type="datetime" />
         </EntityType>
@@ -191,6 +192,7 @@
           <Property Name="CandidateId" Type="int" Nullable="false" />
           <Property Name="Scheduled" Type="bit" Nullable="false" />
           <Property Name="SessionId" Type="int" />
+          <Property Name="ProctorPlaybackId" Type="nvarchar" MaxLength="50" />
           <Property Name="Tested" Type="bit" Nullable="false" />
           <Property Name="DateTested" Type="datetime" />
           <Property Name="PhotoCaptured" Type="bit" />
@@ -2187,6 +2189,7 @@
           <NavigationProperty Name="AdminUser" Relationship="FotModel.FK_CampaignEntry_AdminUser" FromRole="CampaignEntry" ToRole="AdminUser" />
           <NavigationProperty Name="Campaign" Relationship="FotModel.FK_CampaignEntry_Campaign" FromRole="CampaignEntry" ToRole="Campaign" />
           <NavigationProperty Name="TestFeedback" Relationship="FotModel.FK_TestFeedback_CampaignEntry" FromRole="CampaignEntry" ToRole="TestFeedback" />
+          <Property Name="ProctorPlaybackId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="CandidateAssessment">
           <Key>
@@ -3309,6 +3312,7 @@
           <NavigationProperty Name="CampaignEntries" Relationship="FotModel.FK_CampaignEntry_Campaign" FromRole="Campaign" ToRole="CampaignEntry" />
           <NavigationProperty Name="CampaignSessions" Relationship="FotModel.FK_CampaignSession_Campaign" FromRole="Campaign" ToRole="CampaignSession" />
           <Property Name="ViewResult" Type="Boolean" Nullable="false" />
+          <Property Name="EnableProctoring" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_Campaign_AssessmentBundle">
           <End Type="FotModel.AssessmentBundle" Role="AssessmentBundle" Multiplicity="1" />
@@ -3604,6 +3608,7 @@
           <EntitySetMapping Name="CampaignEntries">
             <EntityTypeMapping TypeName="FotModel.CampaignEntry">
               <MappingFragment StoreEntitySet="CampaignEntry">
+                <ScalarProperty Name="ProctorPlaybackId" ColumnName="ProctorPlaybackId" />
                 <ScalarProperty Name="TestEndTime" ColumnName="TestEndTime" />
                 <ScalarProperty Name="TestStartTime" ColumnName="TestStartTime" />
                 <ScalarProperty Name="PhotoCapturedBy" ColumnName="PhotoCapturedBy" />
@@ -3958,6 +3963,7 @@
           <EntitySetMapping Name="Campaigns">
             <EntityTypeMapping TypeName="FotModel.Campaign">
               <MappingFragment StoreEntitySet="Campaign">
+                <ScalarProperty Name="EnableProctoring" ColumnName="EnableProctoring" />
                 <ScalarProperty Name="ViewResult" ColumnName="ViewResult" />
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />

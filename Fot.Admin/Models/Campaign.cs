@@ -34,6 +34,7 @@ namespace Fot.Admin.Models
         public Nullable<System.DateTime> StartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
         public bool ViewResult { get; set; }
+        public bool EnableProctoring { get; set; }
     
         public virtual AssessmentBundle AssessmentBundle { get; set; }
         public virtual Partner Partner { get; set; }

@@ -46,7 +46,7 @@ namespace Fot.Admin
                 lblCampaignName.Text = item.CampaignName;
                 hidId.Value = id.ToString();
 
-                var centers = ctx.CampaignEntries.Where(x => x.CampaignId == id && x.Tested)
+                var centers = ctx.CampaignEntries.Where(x => x.CampaignId == id && x.Tested && x.SessionId.HasValue)
                     .Select(x => new {x.TestSession.Center.CenterName, x.TestSession.CenterId}).Distinct().ToList();
 
                 listCenters.Items.Clear();

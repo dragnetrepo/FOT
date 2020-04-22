@@ -26,6 +26,7 @@
           <Property Name="DateAdded" Type="datetime" Nullable="false" />
           <Property Name="DateLastUpdated" Type="datetime" />
           <Property Name="HasFixedQuestions" Type="bit" Nullable="false" />
+          <Property Name="AllowGTDView" Type="bit" />
         </EntityType>
         <EntityType Name="AssessmentAnswer">
           <Key>
@@ -123,6 +124,7 @@
           <Property Name="BundleId" Type="int" Nullable="false" />
           <Property Name="DateCreated" Type="datetime" Nullable="false" />
           <Property Name="IsUnproctored" Type="bit" Nullable="false" />
+          <Property Name="EnableProctoring" Type="bit" Nullable="false" />
           <Property Name="StartDate" Type="datetime" />
           <Property Name="EndDate" Type="datetime" />
         </EntityType>
@@ -135,6 +137,7 @@
           <Property Name="CandidateId" Type="int" Nullable="false" />
           <Property Name="Scheduled" Type="bit" Nullable="false" />
           <Property Name="SessionId" Type="int" />
+          <Property Name="ProctorPlaybackId" Type="nvarchar" MaxLength="50" />
           <Property Name="Tested" Type="bit" Nullable="false" />
           <Property Name="DateTested" Type="datetime" />
           <Property Name="PhotoCaptured" Type="bit" />
@@ -1245,6 +1248,7 @@
           <Property Name="HasFixedQuestions" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="FixedQuestions" Relationship="FotLanModel.FK_FixedQuestion_Assessment" FromRole="Assessment" ToRole="FixedQuestion" />
           <Property Name="AuthorId" Type="Int32" />
+          <Property Name="AllowGTDView" Type="Boolean" />
         </EntityType>
         <EntityType Name="AssessmentAnswer">
           <Key>
@@ -1369,6 +1373,7 @@
           <Property Name="LogoPlacement" Type="Int32" />
           <Property Name="ShowFeedback" Type="Boolean" Nullable="false" />
           <Property Name="ViewResult" Type="Boolean" Nullable="false" />
+          <Property Name="EnableProctoring" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="CampaignEntry">
           <Key>
@@ -1392,6 +1397,7 @@
           <Property Name="PhotoCapturedBy" Type="Int32" />
           <Property Name="TestStartTime" Type="DateTime" Precision="3" />
           <Property Name="TestEndTime" Type="DateTime" Precision="3" />
+          <Property Name="ProctorPlaybackId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Candidate">
           <Key>
@@ -2123,6 +2129,7 @@
           <EntitySetMapping Name="Assessments">
             <EntityTypeMapping TypeName="FotLanModel.Assessment">
               <MappingFragment StoreEntitySet="Assessment">
+                <ScalarProperty Name="AllowGTDView" ColumnName="AllowGTDView" />
                 <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
                 <ScalarProperty Name="HasFixedQuestions" ColumnName="HasFixedQuestions" />
                 <ScalarProperty Name="OwnerPartnerId" ColumnName="OwnerPartnerId" />
@@ -2233,6 +2240,7 @@
           <EntitySetMapping Name="Campaigns">
             <EntityTypeMapping TypeName="FotLanModel.Campaign">
               <MappingFragment StoreEntitySet="Campaign">
+                <ScalarProperty Name="EnableProctoring" ColumnName="EnableProctoring" />
                 <ScalarProperty Name="ViewResult" ColumnName="ViewResult" />
                 <ScalarProperty Name="ShowFeedback" ColumnName="ShowFeedback" />
                 <ScalarProperty Name="LogoPlacement" ColumnName="LogoPlacement" />
@@ -2253,6 +2261,7 @@
           <EntitySetMapping Name="CampaignEntries">
             <EntityTypeMapping TypeName="FotLanModel.CampaignEntry">
               <MappingFragment StoreEntitySet="CampaignEntry">
+                <ScalarProperty Name="ProctorPlaybackId" ColumnName="ProctorPlaybackId" />
                 <ScalarProperty Name="TestEndTime" ColumnName="TestEndTime" />
                 <ScalarProperty Name="TestStartTime" ColumnName="TestStartTime" />
                 <ScalarProperty Name="PhotoCapturedBy" ColumnName="PhotoCapturedBy" />

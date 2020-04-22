@@ -8,18 +8,12 @@ var essayTemplate = null;
 var essayStarterTemplate = null;
 var assessmentEndTemplate = null;
 
-
-
 $(function () {
 
     $("#img").show();
     $("#img").css("display", "block");
 
     var loader_url = $("#loader").data("request-url-get-test");
-
-
-
-
 
     $.get(loader_url).done(function (data) {
 
@@ -30,33 +24,22 @@ $(function () {
             if (bundle.current_assessment_index < 0) {
 
                 bundle.current_assessment_index = 0;
-
             }
-
-           
 
             if (bundle.assessments[bundle.current_assessment_index].started) {
 
                 instructionPage.moveNext();
-
             } else {
 
-              
                 $("#img").prop("src", "data:image/png;base64," + bundle.bundle_icon);
-               $("#bttn").show(); 
+                $("#bttn").show();
             }
-
-
-
         } else {
             var error = "<h1> " + bundle.error_message + "</h1>";
 
             $("#content").html(error);
         }
-
     });
-
-
 
     //compile templates.
 
@@ -66,32 +49,25 @@ $(function () {
     essayTemplate = Handlebars.compile($("#essay").html());
     essayStarterTemplate = Handlebars.compile($("#essayStarter").html());
     assessmentEndTemplate = Handlebars.compile($("#assessmentEnd").html());
-
-
 });
-
-
 
 var firstPage = (function () {
 
-    var moveNext = function () {
+    var moveNext = function moveNext() {
 
         var html = instructionTemplate(bundle.assessments[bundle.current_assessment_index]);
 
         $("#container").html(html);
-    }
+    };
 
     return {
         moveNext: moveNext
     };
-
 })();
-
 
 var instructionPage = (function () {
 
-
-    var moveNext = function () {
+    var moveNext = function moveNext() {
 
         var timed = bundle.assessments[bundle.current_assessment_index].timed;
         var duration = bundle.assessments[bundle.current_assessment_index].duration;
@@ -102,34 +78,29 @@ var instructionPage = (function () {
 
         if (bundle.assessments[bundle.current_assessment_index].assessment_type === 'MCQ') {
 
-        var message = "";
-         btn_text = "Start Test";
+            var message = "";
+            btn_text = "Start Test";
 
-        if (timed == true) {
+            if (timed == true) {
 
-            if (bundle.assessments[bundle.current_assessment_index].started == true) {
-                message = "You have started this assessment previously and you have " + bundle.assessments[bundle.current_assessment_index].time_remaining + " minutes left to complete it. The timer will continue when you click on 'Continue Test' .";
-                btn_text = "Continue Test";
+                if (bundle.assessments[bundle.current_assessment_index].started == true) {
+                    message = "You have started this assessment previously and you have " + bundle.assessments[bundle.current_assessment_index].time_remaining + " minutes left to complete it. The timer will continue when you click on 'Continue Test' .";
+                    btn_text = "Continue Test";
+                } else {
+                    message = "You will have " + duration + " minutes to work on this test. The timer will start when you click on 'Start Test' .";
+                }
             } else {
-                message = "You will have " + duration + " minutes to work on this test. The timer will start when you click on 'Start Test' .";
+
+                message = "You have no time limit on this assesment. You may click on 'Start Test' to begin.";
             }
 
-        } else {
-
-            message = "You have no time limit on this assesment. You may click on 'Start Test' to begin.";
-        }
-
-
-
-        var context = { assessment_name: assessment_name, message: message, btn_text: btn_text };
-
-        
+            var context = { assessment_name: assessment_name, message: message, btn_text: btn_text };
 
             html = starterTemplate(context);
         } else {
 
             var essay_message = "";
-             btn_text = "Start Test";
+            btn_text = "Start Test";
 
             if (timed == true) {
 
@@ -139,24 +110,17 @@ var instructionPage = (function () {
                 } else {
                     essay_message = "You will have " + duration + " minutes to work on this test. The timer will start when you click on 'Start Test'. Select your preferred essay topic from the list below.";
                 }
-
             } else {
 
                 essay_message = "You have no time limit on this assesment. You may click on 'Start Test' to begin.";
             }
 
-
             var essay_context = { assessment_name: assessment_name, message: essay_message, btn_text: btn_text };
 
-
-            
             html = essayStarterTemplate(essay_context);
         }
 
-        
-
         $("#container").html(html);
-
 
         if (bundle.assessments[bundle.current_assessment_index].assessment_type !== 'MCQ') {
 
@@ -171,48 +135,29 @@ var instructionPage = (function () {
                     optionsHtml += "<option value='" + x + "' selected>Topic " + (x + 1) + " </option>";
 
                     selectedTopic = bundle.assessments[bundle.current_assessment_index].essays[x].topic;
-
-                    
-
                 } else {
 
                     optionsHtml += "<option value='" + x + "'>Topic " + (x + 1) + " </option>";
-                    
                 }
-                
-
             }
-
-
 
             $("#listTopics").html(optionsHtml);
 
             if (selectedTopic !== '') $("#listTopics").prop("disabled", true);
 
             $("#divTopic").html(selectedTopic === '' ? bundle.assessments[bundle.current_assessment_index].essays[0].topic : selectedTopic);
-
-
-
-
         }
-
-    }
+    };
 
     return {
         moveNext: moveNext
 
     };
-
 })();
-
-
 
 var starterPage = (function () {
 
-
-    var startTest = function () {
-
-
+    var startTest = function startTest() {
 
         var assessment_name = bundle.assessments[bundle.current_assessment_index].assessment_name;
         var questions = bundle.assessments[bundle.current_assessment_index].questions;
@@ -222,14 +167,10 @@ var starterPage = (function () {
             if (bundle.assessments[bundle.current_assessment_index].timed) {
                 bundle.assessments[bundle.current_assessment_index].duration = bundle.assessments[bundle.current_assessment_index].time_remaining;
             }
-
-
         } else {
             bundle.assessments[bundle.current_assessment_index].current_question_index = 0;
             bundle.assessments[bundle.current_assessment_index].questions[0].seen = true;
         }
-
-
 
         var question_count = "Question " + (bundle.assessments[bundle.current_assessment_index].current_question_index + 1) + " of " + questions.length;
 
@@ -251,12 +192,9 @@ var starterPage = (function () {
         $("#container").html(html);
 
         assessmentPage.init();
+    };
 
-
-    }
-
-    var getOptions = function (question) {
-
+    var getOptions = function getOptions(question) {
 
         var localQuestionIndex = bundle.assessments[bundle.current_assessment_index].current_question_index;
         var options = [];
@@ -271,62 +209,44 @@ var starterPage = (function () {
 
                 if (question.answer_type === "Single") {
 
-
                     if (question.answers[i].is_image == true) {
 
                         options.push('<div class="radio"><span style="margin-right: 20px;font-weight: bold; color: #666;">[', letters[i], ']</span><label><input type="radio" name="', question.question_id, '" id="', localQuestionIndex + "_" + i, '" value="', i, '" ', checked, ' onclick="assessmentPage.saveRadioState(this)">', '<img src="data:image/png;base64,', question.answers[i].answer_image, '" style="max-height: 90px;" />', '</label></div>');
-
                     } else {
-                        
+
                         options.push('<div class="radio"><span style="margin-right: 20px;font-weight: bold; color: #666;">[', letters[i], ']</span><label><input type="radio" name="', question.question_id, '" id="', localQuestionIndex + "_" + i, '" value="', i, '" ', checked, ' onclick="assessmentPage.saveRadioState(this)">', question.answers[i].answer_text, '</label></div>');
-
-
                     }
-
                 } else {
 
                     if (question.answers[i].is_image == true) {
-                        options.push('<div class="checkbox"><span style="margin-right: 20px;font-weight:bold; color: #666;">[', letters[i], ']</span><label><input type="checkbox" id="', localQuestionIndex + "_" + i, '"  value="', i, '" ', checked, ' onclick="assessmentPage.saveCheckBoxState(this)">', '<img src="data:image/png;base64,', question.answers[i].answer_image, '" style="max-height: 90px;" />' , '</label></div>');
-
+                        options.push('<div class="checkbox"><span style="margin-right: 20px;font-weight:bold; color: #666;">[', letters[i], ']</span><label><input type="checkbox" id="', localQuestionIndex + "_" + i, '"  value="', i, '" ', checked, ' onclick="assessmentPage.saveCheckBoxState(this)">', '<img src="data:image/png;base64,', question.answers[i].answer_image, '" style="max-height: 90px;" />', '</label></div>');
                     } else {
-                        
+
                         options.push('<div class="checkbox"><span style="margin-right: 20px;font-weight:bold; color: #666;">[', letters[i], ']</span><label><input type="checkbox" id="', localQuestionIndex + "_" + i, '"  value="', i, '" ', checked, ' onclick="assessmentPage.saveCheckBoxState(this)">', question.answers[i].answer_text, '</label></div>');
                     }
                 }
-
             } else {
-                
 
                 if (question.answer_type === "Single") {
-
 
                     if (question.answers[i].is_image == true) {
 
                         options.push('<label class="radio-inline">', '<span style="margin-right: 20px;font-weight: bold; color: #666;">[', letters[i], ']</span>', '<input type="radio" name="', question.question_id, '" id="', localQuestionIndex + "_" + i, '" value="', i, '" ', checked, ' onclick="assessmentPage.saveRadioState(this)">', '<img src="data:image/png;base64,', question.answers[i].answer_image, '" style="max-height: 90px;" />', '</label>');
-
                     } else {
 
                         options.push('<label class="radio-inline">', '<span style="margin-right: 20px;font-weight: bold; color: #666;">[', letters[i], ']</span>', '<input type="radio" name="', question.question_id, '" id="', localQuestionIndex + "_" + i, '" value="', i, '" ', checked, ' onclick="assessmentPage.saveRadioState(this)">', question.answers[i].answer_text, '</label>');
-
-
                     }
-
                 } else {
 
                     if (question.answers[i].is_image == true) {
                         options.push('<label class="checkbox-inline">', '<span style="margin-right: 20px;font-weight:bold; color: #666;">[', letters[i], ']</span>', '<input type="checkbox" id="', localQuestionIndex + "_" + i, '"  value="', i, '" ', checked, ' onclick="assessmentPage.saveCheckBoxState(this)">', '<img src="data:image/png;base64,', question.answers[i].answer_image, '" style="max-height: 90px;" />', '</label>');
-
                     } else {
 
                         options.push('<label class="checkbox-inline">', '<span style="margin-right: 20px;font-weight:bold; color: #666;">[', letters[i], ']</span>', '<input type="checkbox" id="', localQuestionIndex + "_" + i, '"  value="', i, '" ', checked, ' onclick="assessmentPage.saveCheckBoxState(this)">', question.answers[i].answer_text, '</label>');
                     }
                 }
-
             }
-
-
         }
-
 
         optionsHtml = options.join('');
 
@@ -336,24 +256,18 @@ var starterPage = (function () {
         }
 
         return optionsHtml;
-    }
+    };
 
     return {
         startTest: startTest,
         getOptions: getOptions
 
     };
-
 })();
-
-
 
 var essayStarterPage = (function () {
 
-
-    var startTest = function () {
-
-
+    var startTest = function startTest() {
 
         var assessment_name = bundle.assessments[bundle.current_assessment_index].assessment_name;
         var essays = bundle.assessments[bundle.current_assessment_index].essays;
@@ -363,14 +277,10 @@ var essayStarterPage = (function () {
             if (bundle.assessments[bundle.current_assessment_index].timed) {
                 bundle.assessments[bundle.current_assessment_index].duration = bundle.assessments[bundle.current_assessment_index].time_remaining;
             }
-
-
         } else {
             bundle.assessments[bundle.current_assessment_index].current_question_index = parseInt($("#listTopics").val());
             essays[bundle.assessments[bundle.current_assessment_index].current_question_index].selected = true;
         }
-
-
 
         var essay_topic = essays[bundle.assessments[bundle.current_assessment_index].current_question_index].topic;
 
@@ -387,32 +297,24 @@ var essayStarterPage = (function () {
 
         $("#editor").kendoEditor();
 
-        essayPage.init(); 
+        essayPage.init();
+    };
 
-
-    }
-
-
-    var changeTopic = function() {
+    var changeTopic = function changeTopic() {
 
         var topic_index = parseInt($("#listTopics").val());
 
         $("#divTopic").html(bundle.assessments[bundle.current_assessment_index].essays[topic_index].topic);
-
-    }
-
+    };
 
     return {
         startTest: startTest,
         changeTopic: changeTopic
-        
 
     };
-
 })();
 
 var assessmentPage = (function () {
-
 
     var IsLastPage = false;
 
@@ -420,11 +322,9 @@ var assessmentPage = (function () {
     var seconds = 0;
     var minutes = 0;
 
-
-    var init = function () {
+    var init = function init() {
 
         $("#bttnPrevious").hide();
-
 
         if (bundle.assessments[bundle.current_assessment_index].timed) {
 
@@ -435,7 +335,6 @@ var assessmentPage = (function () {
             interval = setInterval(timerTick, 1000);
 
             $("#divTimerWrapper").show();
-
         } else {
 
             $("#divTimerWrapper").hide();
@@ -444,8 +343,6 @@ var assessmentPage = (function () {
         if (bundle.assessments[bundle.current_assessment_index].started) {
 
             gotoPage(bundle.assessments[bundle.current_assessment_index].current_question_index);
-
-
         } else {
             bundle.assessments[bundle.current_assessment_index].started = true;
         }
@@ -456,24 +353,16 @@ var assessmentPage = (function () {
 
             if (key.keyCode == 39 && IsLastPage == false) {
                 moveNext();
-            }
-            else if (key.keyCode == 37 && bundle.assessments[bundle.current_assessment_index].current_question_index > 0) {
+            } else if (key.keyCode == 37 && bundle.assessments[bundle.current_assessment_index].current_question_index > 0) {
                 movePrevious();
-            }
-
-            else if ((key.keyCode >= 65 && key.keyCode <= 74) && (bundle.assessments[bundle.current_assessment_index].current_question_index >= 0 && IsLastPage == false)) {
+            } else if (key.keyCode >= 65 && key.keyCode <= 74 && bundle.assessments[bundle.current_assessment_index].current_question_index >= 0 && IsLastPage == false) {
 
                 selectOption(bundle.assessments[bundle.current_assessment_index].current_question_index, getAnswerIndex(key.keyCode));
-
             }
-
-
         });
-    }
+    };
 
-
-    var selectOption = function (questionIndex, optionIndex) {
-
+    var selectOption = function selectOption(questionIndex, optionIndex) {
 
         var selectObj = $("#" + questionIndex + "_" + optionIndex);
 
@@ -486,15 +375,10 @@ var assessmentPage = (function () {
             } else {
                 $(selectObj).click();
             }
-
-
         }
+    };
 
-
-    }
-
-
-    var getAnswerIndex = function (keyCode) {
+    var getAnswerIndex = function getAnswerIndex(keyCode) {
 
         var answerIndex = 0;
 
@@ -531,12 +415,10 @@ var assessmentPage = (function () {
                 break;
         }
 
-
         return answerIndex;
-    }
+    };
 
-    var LoadNav = function () {
-
+    var LoadNav = function LoadNav() {
 
         var current = bundle.assessments[bundle.current_assessment_index].current_question_index;
 
@@ -553,8 +435,7 @@ var assessmentPage = (function () {
             if (ctr == current) {
 
                 numStr = "<li class='active'><a href='javascript:void(0)'> " + num + "</a></li>";
-            }
-            else {
+            } else {
 
                 if (bundle.assessments[bundle.current_assessment_index].questions[ctr].seen == true) {
 
@@ -567,14 +448,12 @@ var assessmentPage = (function () {
                 }
             }
             navArray.push(numStr);
-
         }
 
         var navHtml = prefix + navArray.join('') + suffix;
 
         $("#navDiv").html(navHtml);
-
-    }
+    };
 
     function timerTick() {
 
@@ -584,7 +463,6 @@ var assessmentPage = (function () {
 
             bundle.assessments[bundle.current_assessment_index].time_remaining = minutes;
 
-
             //save state
 
             var tempBundle = JSON.parse(JSON.stringify(bundle));
@@ -592,7 +470,6 @@ var assessmentPage = (function () {
             tempBundle.bundle_name = '';
             tempBundle.bundle_icon = '';
             tempBundle.candidate_photo = '';
-
 
             for (var j = 0; j < tempBundle.assessments.length; j++) {
 
@@ -610,24 +487,16 @@ var assessmentPage = (function () {
 
                             tempBundle.assessments[j].questions[i].answers[t].answer_image = '';
                             tempBundle.assessments[j].questions[i].answers[t].answer_text = '';
-
-
                         }
-
                     }
-
                 } else {
 
                     for (var i = 0; i < tempBundle.assessments[j].essays.length; i++) {
 
                         tempBundle.assessments[j].essays[i].topic = '';
-
                     }
                 }
-
             }
-
-           
 
             var saveData = { bundle: tempBundle };
 
@@ -640,27 +509,16 @@ var assessmentPage = (function () {
                 contentType: 'application/json',
                 dataType: 'json',
                 timeout: 5000
-            })
-                .done(function (result) {
-                    
-                })
-                .fail(function () {
-                   
-                });
-
+            }).done(function (result) {}).fail(function () {});
         }
 
         showTime(minutes, --seconds);
 
         if (minutes <= 0 && seconds <= 0) {
 
-
             progressAssessment();
-
         }
-
     }
-
 
     function progressAssessment() {
 
@@ -669,8 +527,7 @@ var assessmentPage = (function () {
             clearInterval(interval);
         }
 
-     
-        if (bundle.current_assessment_index == (bundle.assessments.length - 1)) {
+        if (bundle.current_assessment_index == bundle.assessments.length - 1) {
 
             $("body").off('keyup');
 
@@ -681,55 +538,45 @@ var assessmentPage = (function () {
             $("#container").html(html);
 
             assessmentEndPage.submitAssessment();
-
-
         } else {
 
-            //progress assessment 
+            //progress assessment
             bundle.current_assessment_index++;
 
             minutes = 0;
             seconds = 0;
 
             firstPage.moveNext();
-
         }
-
-
-
-
     }
 
-
-    var doEnd = function () {
+    var doEnd = function doEnd() {
 
         if (confirm("Are you sure you want to end the assessment ?")) {
 
             progressAssessment();
         }
-    }
+    };
 
-    var moveTo = function (pageNum) {
+    var moveTo = function moveTo(pageNum) {
 
         gotoPage(pageNum);
-    }
+    };
 
-    var moveNext = function () {
+    var moveNext = function moveNext() {
 
-
-        if (bundle.assessments[bundle.current_assessment_index].current_question_index < (bundle.assessments[bundle.current_assessment_index].questions.length - 1)) {
+        if (bundle.assessments[bundle.current_assessment_index].current_question_index < bundle.assessments[bundle.current_assessment_index].questions.length - 1) {
 
             gotoPage(++bundle.assessments[bundle.current_assessment_index].current_question_index);
 
             if (bundle.assessments[bundle.current_assessment_index].current_question_index > 0) {
                 $("#bttnPrevious").show();
             }
-
         } else {
 
             showLastPage();
         }
-    }
+    };
 
     function hideItems(flag) {
 
@@ -741,7 +588,6 @@ var assessmentPage = (function () {
             $("#divOptions").hide();
             $("#bttnNext").hide();
             $("#navDiv").hide();
-
         } else {
 
             $("#divQuestionCount").show();
@@ -790,11 +636,9 @@ var assessmentPage = (function () {
         }
 
         $("#divTimer").text(hrStr + ":" + minStr + ":" + secStr);
-
     }
 
-
-    var movePrevious = function () {
+    var movePrevious = function movePrevious() {
 
         if (IsLastPage == true) {
 
@@ -803,24 +647,16 @@ var assessmentPage = (function () {
             IsLastPage = false;
             $("#divEnd").hide();
             $("#bttnEnd").hide();
-
-
         } else {
 
             gotoPage(--bundle.assessments[bundle.current_assessment_index].current_question_index);
             if (bundle.assessments[bundle.current_assessment_index].current_question_index == 0) {
                 $("#bttnPrevious").hide();
             }
-
         }
-
-
-
-    }
+    };
 
     function gotoPage(index) {
-
-
 
         $("#item_img").prop("src", "data:image/png;base64," + bundle.assessments[bundle.current_assessment_index].questions[index].item_img);
 
@@ -831,13 +667,9 @@ var assessmentPage = (function () {
         bundle.assessments[bundle.current_assessment_index].questions[index].seen = true;
         bundle.assessments[bundle.current_assessment_index].current_question_index = index;
 
-
         var optionsHtml = starterPage.getOptions(bundle.assessments[bundle.current_assessment_index].questions[index]);
 
         $("#divOptions").html(optionsHtml);
-
-
-
 
         if (bundle.assessments[bundle.current_assessment_index].current_question_index == 0) {
             $("#bttnPrevious").hide();
@@ -848,14 +680,9 @@ var assessmentPage = (function () {
         LoadNav();
     }
 
-    var saveRadioState = function (element) {
-
-
-
+    var saveRadioState = function saveRadioState(element) {
 
         if (element.checked) {
-
-
 
             var answer_index = parseInt($(element).val());
 
@@ -867,20 +694,12 @@ var assessmentPage = (function () {
             bundle.assessments[bundle.current_assessment_index].questions[bundle.assessments[bundle.current_assessment_index].current_question_index].answers[answer_index].selected = true;
 
             bundle.assessments[bundle.current_assessment_index].questions[bundle.assessments[bundle.current_assessment_index].current_question_index].answered = true;
-
-
-
         }
+    };
 
-    }
-
-    var saveCheckBoxState = function (element) {
-
-
-
+    var saveCheckBoxState = function saveCheckBoxState(element) {
 
         var answer_index = parseInt($(element).val());
-
 
         bundle.assessments[bundle.current_assessment_index].questions[bundle.assessments[bundle.current_assessment_index].current_question_index].answers[answer_index].selected = element.checked;
 
@@ -892,9 +711,7 @@ var assessmentPage = (function () {
             }
             bundle.assessments[bundle.current_assessment_index].questions[bundle.assessments[bundle.current_assessment_index].current_question_index].answered = false;
         }
-
-    }
-
+    };
 
     return {
         moveNext: moveNext,
@@ -906,23 +723,15 @@ var assessmentPage = (function () {
         moveTo: moveTo
 
     };
-
 })();
 
-
-
 var essayPage = (function () {
-
 
     var interval;
     var seconds = 0;
     var minutes = 0;
 
-
-    var init = function () {
-
-      
-
+    var init = function init() {
 
         if (bundle.assessments[bundle.current_assessment_index].timed) {
 
@@ -933,7 +742,6 @@ var essayPage = (function () {
             interval = setInterval(timerTick, 1000);
 
             $("#divTimerWrapper").show();
-
         } else {
 
             $("#divTimerWrapper").hide();
@@ -941,21 +749,12 @@ var essayPage = (function () {
 
         if (bundle.assessments[bundle.current_assessment_index].started) {
 
-          //  gotoPage(bundle.assessments[bundle.current_assessment_index].current_question_index);
-
+            //  gotoPage(bundle.assessments[bundle.current_assessment_index].current_question_index);
 
         } else {
-            bundle.assessments[bundle.current_assessment_index].started = true;
-        }
-
-    
-
- 
-    }
-
-
-
-
+                bundle.assessments[bundle.current_assessment_index].started = true;
+            }
+    };
 
     function timerTick() {
 
@@ -964,7 +763,6 @@ var essayPage = (function () {
             minutes--;
 
             bundle.assessments[bundle.current_assessment_index].time_remaining = minutes;
-
 
             //save state
 
@@ -976,7 +774,6 @@ var essayPage = (function () {
             tempBundle.bundle_icon = '';
             tempBundle.candidate_photo = '';
 
-
             for (var j = 0; j < tempBundle.assessments.length; j++) {
 
                 tempBundle.assessments[j].assessment_name = '';
@@ -984,19 +781,16 @@ var essayPage = (function () {
 
                 if (tempBundle.assessments[j].assessment_type === 'MCQ') {
 
-                  //shouldn't get here.
+                    //shouldn't get here.
 
                 } else {
 
-                    for (var i = 0; i < tempBundle.assessments[j].essays.length; i++) {
+                        for (var i = 0; i < tempBundle.assessments[j].essays.length; i++) {
 
-                        tempBundle.assessments[j].essays[i].topic = '';
-
+                            tempBundle.assessments[j].essays[i].topic = '';
+                        }
                     }
-                }
-
             }
-
 
             var saveData = { bundle: tempBundle };
 
@@ -1009,27 +803,16 @@ var essayPage = (function () {
                 contentType: 'application/json',
                 dataType: 'json',
                 timeout: 5000
-            })
-                .done(function (result) {
-
-                })
-                .fail(function () {
-                    
-                });
-
+            }).done(function (result) {}).fail(function () {});
         }
 
         showTime(minutes, --seconds);
 
         if (minutes <= 0 && seconds <= 0) {
 
-
             progressAssessment();
-
         }
-
     }
-
 
     function progressAssessment() {
 
@@ -1038,11 +821,9 @@ var essayPage = (function () {
             clearInterval(interval);
         }
 
-
         saveCurrentResponse();
 
-
-        if (bundle.current_assessment_index == (bundle.assessments.length - 1)) {
+        if (bundle.current_assessment_index == bundle.assessments.length - 1) {
 
             //end assessment session
 
@@ -1053,46 +834,35 @@ var essayPage = (function () {
             $("#container").html(html);
 
             assessmentEndPage.submitAssessment();
-
-
         } else {
 
-            //progress assessment 
+            //progress assessment
             bundle.current_assessment_index++;
-          
+
             minutes = 0;
             seconds = 0;
 
             firstPage.moveNext();
-
         }
-
-
     }
 
+    var saveCurrentResponse = function saveCurrentResponse() {
 
-    var saveCurrentResponse = function() {
-        
         var editor = $("#editor").data("kendoEditor");
 
         var response = editor.value();
         var currentIndex = bundle.current_assessment_index;
 
         bundle.assessments[currentIndex].essays[bundle.assessments[currentIndex].current_question_index].candidate_response = response;
+    };
 
-    }
-
-
-    var doEnd = function () {
+    var doEnd = function doEnd() {
 
         if (confirm("Are you sure you want to end this assessment ?")) {
 
             progressAssessment();
         }
-    }
-
-
-
+    };
 
     function showTime(min, sec) {
 
@@ -1123,14 +893,7 @@ var essayPage = (function () {
         }
 
         $("#divTimer").text(hrStr + ":" + minStr + ":" + secStr);
-
     }
-
-
-
-
-
-
 
     return {
 
@@ -1138,37 +901,27 @@ var essayPage = (function () {
         init: init
 
     };
-
 })();
 
 var assessmentEndPage = (function () {
 
-    var submitAssessment = function () {
+    var submitAssessment = function submitAssessment() {
 
         $("#divProgress").show();
         $("#bttnResend").hide();
 
-
         var temp = [];
 
-        
-         
-
         for (var ctr = 0; ctr < bundle.assessments.length; ctr++) {
-            
+
             if (bundle.assessments[ctr].assessment_type === 'MCQ') {
 
                 temp.push({ assessment_id: bundle.assessments[ctr].assessment_id, result: getResult(bundle.assessments[ctr]) });
-
-
             } else {
 
                 temp.push({ assessment_id: bundle.assessments[ctr].assessment_id, is_essay: true, essay_id: getEssayId(bundle.assessments[ctr]), result: getEssayResponse(bundle.assessments[ctr]) });
             }
-
         }
-
-
 
         var data = { responses: temp };
 
@@ -1180,8 +933,7 @@ var assessmentEndPage = (function () {
             type: 'POST',
             contentType: 'application/json',
             dataType: 'json'
-        })
-        .done(function (result) {
+        }).done(function (result) {
 
             if (result.Succeeded == true) {
 
@@ -1194,8 +946,7 @@ var assessmentEndPage = (function () {
 
                     var morePractice = "<br/><br/><div><p>For more practice test questions go to <a href='http://mytestpractice.com' target='_blank'>http://mytestpractice.com</a></p></div>";
 
-                 $("#divResult").html(getScoreTable(result.resultList) + morePractice);
-
+                    $("#divResult").html(getScoreTable(result.resultList) + morePractice);
                 }
 
                 if (bundle.min_aggregate_score != null) {
@@ -1204,39 +955,29 @@ var assessmentEndPage = (function () {
 
                     $("#lblPassFail").show();
                     $("#lblPassFail").html(totalScore >= bundle.min_aggregate_score ? "<strong style='color: green; font-size: 18px;'>Congratulations. Your attempt is successful, you have passed the test.</strong>" : "<strong style='color: red; font-size: 18px;'>Sorry, your attempt has not been successful.</strong>");
-
                 }
-                
+
                 if (ProctorClient3) {
                     ProctorClient3.stop(function () {
                         console.log("completed the proctoring session");
                     });
                 }
-               
             } else {
 
                 $("#divProgress").hide();
                 $("#bttnResend").show();
                 $("#divStatus").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>Error!</strong> ' + result.ErrorMessage + '. Please click on "Submit Test" below.</div>');
-
             }
-
-           
-
-        })
-        .fail(function () {
+        }).fail(function () {
 
             $("#divProgress").hide();
             $("#bttnResend").show();
             $("#divStatus").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>Error!</strong> Could not submit test. Please click on "Submit Test" below.</div>');
-
         });
-
-    }
-
+    };
 
     function getTotalScore(results) {
-        
+
         var total = 0;
 
         for (var i = 0; i < results.length; i++) {
@@ -1266,11 +1007,8 @@ var assessmentEndPage = (function () {
 
         prefix += "</tbody></table></div>";
 
-
         return prefix;
-
     }
-
 
     function getEssayResponse(ass) {
 
@@ -1292,7 +1030,6 @@ var assessmentEndPage = (function () {
                 return ass.essays[i].essay_id;
             }
         }
-
     }
 
     function getResult(ass) {
@@ -1310,16 +1047,12 @@ var assessmentEndPage = (function () {
                     if (ret.length > 0) ret += ",";
                     ret += ass.questions[i].answers[x].answer_id + '';
                 }
-
-
             }
             if (ret.length == 0) ret = "0";
 
             if (ans_options.length > 0) ans_options += ";";
             ans_options += q_id + ":" + ret;
-
         }
-
 
         return ans_options;
     }
@@ -1330,6 +1063,5 @@ var assessmentEndPage = (function () {
         getEssayResponse: getEssayResponse
 
     };
-
-
 })();
+

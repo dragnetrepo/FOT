@@ -21,6 +21,8 @@ namespace Fot.Admin.Models
 
         public int CampaignId { get; set; }
 
+        public string ProctorPlaybackId { get; set; }
+
         public bool? CandidatePhoto { get; set; }
 
         public bool AllowReview { get; set; }

@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Fot.Admin.Client {
-    
-    
-    public partial class CampaignDetails {
-        
+namespace Fot.Admin.Client
+{
+
+
+    public partial class CampaignDetails
+    {
+
         /// <summary>
         /// lblStatus control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal lblStatus;
-        
+
         /// <summary>
         /// RadTabStrip1 control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadTabStrip RadTabStrip1;
-        
+
         /// <summary>
         /// RadMultiPage1 control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadMultiPage RadMultiPage1;
-        
+
         /// <summary>
         /// RadPageView1 control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadPageView RadPageView1;
-        
+
         /// <summary>
         /// txtCampaignName control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCampaignName;
-        
+
         /// <summary>
         /// RequiredFieldValidator1 control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
-        
+
         /// <summary>
         /// listAssessmentBundles control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList listAssessmentBundles;
-        
+
         /// <summary>
         /// RequiredFieldValidator3 control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
-        
+
         /// <summary>
         /// lblCampaignType control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCampaignType;
-        
+
         /// <summary>
         /// trStartDate control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableRow trStartDate;
-        
+
         /// <summary>
         /// txtStartDate control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadDatePicker txtStartDate;
-        
+
         /// <summary>
         /// trEndDate control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableRow trEndDate;
-        
+
         /// <summary>
         /// txtEndDate control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadDatePicker txtEndDate;
-        
+
         /// <summary>
         /// chkFeedback control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkFeedback;
-        
+
         /// <summary>
         /// chkViewResults control.
         /// </summary>
@@ -146,7 +148,25 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkViewResults;
-        
+
+        /// <summary>
+        /// trProctored control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow trProctored;
+
+        /// <summary>
+        /// chkProctoring control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkProctoring;
+
         /// <summary>
         /// chkActive control.
         /// </summary>
@@ -155,7 +175,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkActive;
-        
+
         /// <summary>
         /// bttnUpdate control.
         /// </summary>
@@ -164,7 +184,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button bttnUpdate;
-        
+
         /// <summary>
         /// hidId control.
         /// </summary>
@@ -173,7 +193,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hidId;
-        
+
         /// <summary>
         /// RadPageView2 control.
         /// </summary>
@@ -182,7 +202,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadPageView RadPageView2;
-        
+
         /// <summary>
         /// editor control.
         /// </summary>
@@ -191,7 +211,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadEditor editor;
-        
+
         /// <summary>
         /// bttnUpdateCampaignInstructions control.
         /// </summary>
@@ -200,7 +220,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button bttnUpdateCampaignInstructions;
-        
+
         /// <summary>
         /// RadPageView3 control.
         /// </summary>
@@ -209,7 +229,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadPageView RadPageView3;
-        
+
         /// <summary>
         /// RadGrid1 control.
         /// </summary>
@@ -218,7 +238,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadGrid RadGrid1;
-        
+
         /// <summary>
         /// CampaignSessionDataSource control.
         /// </summary>
@@ -227,7 +247,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource CampaignSessionDataSource;
-        
+
         /// <summary>
         /// RadWindowManager1 control.
         /// </summary>
@@ -236,7 +256,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadWindowManager RadWindowManager1;
-        
+
         /// <summary>
         /// RadAjaxManager1 control.
         /// </summary>
@@ -245,7 +265,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadAjaxManager RadAjaxManager1;
-        
+
         /// <summary>
         /// RadPageView4 control.
         /// </summary>
@@ -254,7 +274,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadPageView RadPageView4;
-        
+
         /// <summary>
         /// listOptions control.
         /// </summary>
@@ -263,7 +283,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList listOptions;
-        
+
         /// <summary>
         /// bttnUpdateOptions control.
         /// </summary>
@@ -272,7 +292,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button bttnUpdateOptions;
-        
+
         /// <summary>
         /// imgLogo control.
         /// </summary>
@@ -281,7 +301,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image imgLogo;
-        
+
         /// <summary>
         /// picFile control.
         /// </summary>
@@ -290,7 +310,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload picFile;
-        
+
         /// <summary>
         /// bttnUpload control.
         /// </summary>
@@ -299,7 +319,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button bttnUpload;
-        
+
         /// <summary>
         /// linkScheduling control.
         /// </summary>
@@ -308,7 +328,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal linkScheduling;
-        
+
         /// <summary>
         /// linkResponses control.
         /// </summary>
@@ -317,7 +337,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal linkResponses;
-        
+
         /// <summary>
         /// boxResult control.
         /// </summary>
@@ -326,7 +346,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl boxResult;
-        
+
         /// <summary>
         /// divCampaignReports control.
         /// </summary>
@@ -335,7 +355,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCampaignReports;
-        
+
         /// <summary>
         /// divReset control.
         /// </summary>
@@ -344,7 +364,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divReset;
-        
+
         /// <summary>
         /// lblCount control.
         /// </summary>
@@ -353,7 +373,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal lblCount;
-        
+
         /// <summary>
         /// bttnReset control.
         /// </summary>
@@ -362,7 +382,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button bttnReset;
-        
+
         /// <summary>
         /// BundleDataSource control.
         /// </summary>
@@ -371,7 +391,7 @@ namespace Fot.Admin.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource BundleDataSource;
-        
+
         /// <summary>
         /// PartnerDataSource control.
         /// </summary>

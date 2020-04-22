@@ -205,7 +205,7 @@
                                     <tr>
                                         <td class="assessmentHeader">Assessment Name</td>
                                         <td class="assessmentHeader" style="width: 100px;">Score</td>
-                                        <td class="assessmentHeader" style="width: 100px;">&nbsp;</td>
+                                         <td class="assessmentHeader" style="width: 200px; text-align: right"> <%# string.IsNullOrWhiteSpace(Item.ProctorPlaybackId)? "&nbsp;": "<a style='text-decoration: underline;' href='ProctorStats.aspx?id=" + Item.ProctorPlaybackId + "'>Proctor Stats</a>" %></td>
                                     </tr>
 
                                     <%# Item.FormatedResultsTable %>

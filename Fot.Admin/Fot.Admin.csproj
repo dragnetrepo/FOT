@@ -242,6 +242,7 @@
     <Content Include="Client\CenterAdmins.aspx" />
     <Content Include="Client\NotFound.aspx" />
     <Content Include="Client\Photo.aspx" />
+    <Content Include="Client\ProctorStats.aspx" />
     <Content Include="Client\Profile.aspx" />
     <Content Include="Client\Reports.aspx" />
     <Content Include="Client\Sessions.aspx" />
@@ -283,6 +284,7 @@
     <Content Include="PrintHook64.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="ProctorStats.aspx" />
     <Content Include="QuestionSummary.aspx" />
     <Content Include="Reports.aspx" />
     <Content Include="ResultReview.aspx" />
@@ -812,6 +814,13 @@
     <Compile Include="Client\Photo.aspx.designer.cs">
       <DependentUpon>Photo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Client\ProctorStats.aspx.cs">
+      <DependentUpon>ProctorStats.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Client\ProctorStats.aspx.designer.cs">
+      <DependentUpon>ProctorStats.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Client\Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1234,6 +1243,13 @@
     </Compile>
     <Compile Include="Photo.aspx.designer.cs">
       <DependentUpon>Photo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProctorStats.aspx.cs">
+      <DependentUpon>ProctorStats.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProctorStats.aspx.designer.cs">
+      <DependentUpon>ProctorStats.aspx</DependentUpon>
     </Compile>
     <Compile Include="QuestionSummary.aspx.cs">
       <DependentUpon>QuestionSummary.aspx</DependentUpon>

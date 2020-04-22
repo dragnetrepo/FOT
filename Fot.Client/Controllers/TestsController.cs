@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,29 @@ namespace Fot.Client.Controllers
     {
         public ActionResult TakeTest(string id)
         {
-            return View();
+
+            var vm = new ProviewInitModel();
+
+            var ctx = new ServiceBase().Context;
+
+
+            var candidate = ctx.CandidateAssessments.Where(x => x.CandidateGuid == id).Select(x => new { x.CampaignEntry.Campaign.EnableProctoring, x.CampaignEntry.Candidate.Username }).FirstOrDefault();
+
+            if (candidate != null)
+            {
+                vm.Username = candidate.Username;
+
+                vm.ProctoringEnabled = candidate.EnableProctoring;
+            }
+
+            vm.SessionToken = Guid.NewGuid().ToString();
+
+            vm.ProviewToken = ConfigurationManager.AppSettings["ProctorToken"];
+
+
+
+
+            return View(vm);
         }
 
 
@@ -46,18 +69,18 @@ namespace Fot.Client.Controllers
                     try
                     {
                         var bundleService = new BundleService();
-                         ret = bundleService.GetAppBundle(item.CandidateGuid, item.BundleId);
+                        ret = bundleService.GetAppBundle(item.CandidateGuid, item.BundleId);
 
                         if (ret != null)
                         {
                             ret.flagsuccess = true;
 
 
-                          //  service.CandidateStarted(item);
+                            //  service.CandidateStarted(item);
 
 
 
-                            
+
                         }
                         else
                         {
@@ -68,7 +91,7 @@ namespace Fot.Client.Controllers
                             };
                         }
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
 
                         ret = new AppBundle
@@ -121,7 +144,7 @@ namespace Fot.Client.Controllers
         {
             var service = new AssessmentService();
 
-           
+
 
 
             var ret = service.AssessmentSubmitted(id, responses);
@@ -133,6 +156,25 @@ namespace Fot.Client.Controllers
 
 
             return jsonNetResult;
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult SavePlayBackId(string id, string playbackId)
+        {
+            var ctx = new ServiceBase().Context;
+
+
+            var entry = ctx.CandidateAssessments.Where(x => x.CandidateGuid == id).Select(x => x.CampaignEntry).FirstOrDefault();
+
+            if(entry != null)
+            {
+                entry.ProctorPlaybackId = playbackId;
+
+                ctx.SaveChanges();
+            }
+
+            return Json(new { status = "Done" });
         }
     }
 }

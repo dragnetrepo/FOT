@@ -22,6 +22,7 @@
     <SilverlightApplicationList>
     </SilverlightApplicationList>
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -239,10 +240,13 @@
     <Content Include="assets\images\loading18.gif" />
     <Content Include="assets\js\Bootstrap\bootstrap.js" />
     <Content Include="assets\js\Bootstrap\bootstrap.min.js" />
-    <Content Include="assets\js\code.js" />
-    <Content Include="assets\js\code.min.js">
+    <Content Include="assets\js\code.es5.js">
       <DependentUpon>code.js</DependentUpon>
     </Content>
+    <Content Include="assets\js\code.es5.min.js">
+      <DependentUpon>code.es5.js</DependentUpon>
+    </Content>
+    <Content Include="assets\js\code.js" />
     <Content Include="assets\js\handlebars-v1.3.0.js" />
     <Content Include="assets\js\html5shiv.js" />
     <Content Include="assets\js\jQuery\jquery-2.1.1.js" />
@@ -302,9 +306,10 @@
     <Content Include="assets\fonts\ionicons.ttf" />
     <Content Include="assets\fonts\ionicons.woff" />
     <Content Include="assets\images\Thumbs.db" />
-    <Content Include="assets\js\code.min.js.map">
-      <DependentUpon>code.min.js</DependentUpon>
-    </Content>
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="Properties\PublishProfiles\Fot web deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Fot.Client.pubxml" />
     <None Include="Scripts\jquery-1.7.1-vsdoc.js" />
@@ -514,6 +519,7 @@
     <Compile Include="Models\PartnerWalletDebit.cs">
       <DependentUpon>FotLan.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProviewInitModel.cs" />
     <Compile Include="Models\QuestionDifficultyLevel.cs">
       <DependentUpon>FotLan.tt</DependentUpon>
     </Compile>

@@ -31,6 +31,7 @@ namespace Fot.Client.Models
         public Nullable<int> PhotoCapturedBy { get; set; }
         public Nullable<System.DateTime> TestStartTime { get; set; }
         public Nullable<System.DateTime> TestEndTime { get; set; }
+        public string ProctorPlaybackId { get; set; }
     
         public virtual ICollection<AssessmentResult> AssessmentResults { get; set; }
         public virtual Campaign Campaign { get; set; }
