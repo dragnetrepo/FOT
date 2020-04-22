@@ -409,7 +409,7 @@
             user: user, // unique user ID in your application
             clear: false, // create new session for same session value
             screen: false, //screen-capture optional feature
-            skipHardwareTest: true,
+            skipHardwareTest: false,
             previewStyle: 'top:50px', // custom css style for the preview video
             initCallback: function (err, a, v, s, uid) { console.log([err, a, v, s, uid]); savePlaybackId(a); }
         });
@@ -417,15 +417,17 @@
 
             function savePlaybackId(id) {
 
-                var saver_url = '@Url.Action("SavePlayBackId", new {id = ViewContext.RouteData.Values["id"] })/?playbackId=' + id;
+                var saver_url = '@Url.Action("SavePlayBackId")';
 
-            $.ajax({
-                url: saver_url,
-                type: 'POST',
-                contentType: 'application/json',
-                dataType: 'json',
-                timeout: 5000
-            })
+                var data = {CandidateGuid: '@ViewContext.RouteData.Values["id"]', PlaybackId: id};
+
+               $.ajax({
+            url: saver_url,
+            data: JSON.stringify(data),
+            type: 'POST',
+            contentType: 'application/json',
+            dataType: 'json'
+        })
                 .done(function (result) {
                      console.log('saved playback id', id);
                      $('#bttn').removeAttr('disabled');

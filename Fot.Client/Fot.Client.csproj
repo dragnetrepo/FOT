@@ -519,6 +519,7 @@
     <Compile Include="Models\PartnerWalletDebit.cs">
       <DependentUpon>FotLan.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProctorModel.cs" />
     <Compile Include="Models\ProviewInitModel.cs" />
     <Compile Include="Models\QuestionDifficultyLevel.cs">
       <DependentUpon>FotLan.tt</DependentUpon>

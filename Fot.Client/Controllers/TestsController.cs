@@ -160,21 +160,28 @@ namespace Fot.Client.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public ActionResult SavePlayBackId(string id, string playbackId)
+        public ActionResult SavePlayBackId(ProctorModel model)
         {
             var ctx = new ServiceBase().Context;
 
 
-            var entry = ctx.CandidateAssessments.Where(x => x.CandidateGuid == id).Select(x => x.CampaignEntry).FirstOrDefault();
+            var entry = ctx.CandidateAssessments.Where(x => x.CandidateGuid == model.CandidateGuid).Select(x => x.CampaignEntry).FirstOrDefault();
 
             if(entry != null)
             {
-                entry.ProctorPlaybackId = playbackId;
+                entry.ProctorPlaybackId = model.PlaybackId;
 
                 ctx.SaveChanges();
             }
 
-            return Json(new { status = "Done" });
+            var ret = new ResultResponse { Succeeded = true };
+
+            JsonNetResult jsonNetResult = new JsonNetResult();
+            jsonNetResult.Formatting = Formatting.Indented;
+            jsonNetResult.Data = ret;
+
+
+            return jsonNetResult;
         }
     }
 }
