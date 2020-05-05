@@ -24,13 +24,15 @@ namespace Fot.Client.Controllers
             var ctx = new ServiceBase().Context;
 
 
-            var candidate = ctx.CandidateAssessments.Where(x => x.CandidateGuid == id).Select(x => new { x.CampaignEntry.Campaign.EnableProctoring, x.CampaignEntry.Candidate.Username }).FirstOrDefault();
+            var candidate = ctx.CandidateAssessments.Where(x => x.CandidateGuid == id).Select(x => new { x.CampaignEntry.Campaign.EnableProctoring, x.CampaignEntry.Candidate.Username, x.CampaignEntry.Campaign.AssessmentBundle.Name }).FirstOrDefault();
 
             if (candidate != null)
             {
                 vm.Username = candidate.Username;
 
                 vm.ProctoringEnabled = candidate.EnableProctoring;
+
+                vm.TestTitle = candidate.Name;
             }
 
             vm.SessionToken = Guid.NewGuid().ToString();

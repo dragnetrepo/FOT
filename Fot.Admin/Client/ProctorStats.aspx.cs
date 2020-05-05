@@ -33,7 +33,7 @@ namespace Fot.Admin.Client
 
             lblCandidateName.Text = entry.FirstName + " " + entry.LastName;
 
-            lblFrame.Text = $"<iframe src='https://app.proview.io/embedded/{id}' width='100%' height='650px;'style = 'overflow:auto'>";
+            lblFrame.Text = $"<iframe src='https://appv5.proview.io/embedded/{id}' width='100%' height='650px;'style = 'overflow:auto'>";
 
 
             hidId.Value = entry.CampaignId.ToString();

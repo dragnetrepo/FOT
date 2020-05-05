@@ -14,5 +14,7 @@ namespace Fot.Client.Models
         public string SessionToken { get; set; }
 
         public bool ProctoringEnabled { get; set; }
+
+        public string TestTitle { get; set; }
     }
 }
