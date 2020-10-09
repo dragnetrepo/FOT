@@ -42,7 +42,7 @@ namespace Fot.Client
 
                 lblLocation.Text = schedule.Location;
                 lblCenter.Text = schedule.CenterName;
-                lblDateTime.Text = string.Format("{0} @ {1}", schedule.TestDate.ToString("dd-MMM-yyyy"),
+                lblDateTime.Text = string.Format("{0} @ {1}", schedule.TestDate?.ToString("dd-MMM-yyyy"),
                                                  schedule.TimeText);
 
 

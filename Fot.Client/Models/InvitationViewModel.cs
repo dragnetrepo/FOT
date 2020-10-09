@@ -14,7 +14,7 @@ namespace Fot.Client.Models
         public string CenterName { get; set; }
         public string Address { get; set; }
         public string Location { get; set; }
-        public DateTime TestDate { get; set; }
+        public DateTime? TestDate { get; set; }
         public string TimeText { get; set; }
         public string Instructions { get; set; }
 

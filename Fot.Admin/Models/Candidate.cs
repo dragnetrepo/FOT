@@ -36,6 +36,7 @@ namespace Fot.Admin.Models
         public System.DateTime DateAdded { get; set; }
         public Nullable<int> LocationId { get; set; }
         public string PhotoFileName { get; set; }
+        public string SebGuid { get; set; }
     
         public virtual ICollection<CampaignEntry> CampaignEntries { get; set; }
         public virtual Location Location { get; set; }

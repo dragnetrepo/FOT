@@ -53,7 +53,7 @@ namespace Fot.Admin.Client
 
                 lblCampaignType.Text = item.IsUnproctored ? "Unproctored" : "Proctored";
 
-                trStartDate.Visible = trEndDate.Visible = trProctored.Visible = item.IsUnproctored;
+                trStartDate.Visible = trEndDate.Visible = trProctored.Visible = trSeb.Visible = item.IsUnproctored;
 
                 if (!string.IsNullOrWhiteSpace(item.InvitationLogo))
                 {
@@ -79,6 +79,8 @@ namespace Fot.Admin.Client
 
                     RadTabStrip1.Tabs[1].Visible = false;
                     RadTabStrip1.Tabs[2].Visible = false;
+
+                    chkSeb.Checked = item.RequireSEB;
                 }
 
                 if (new PartnerCampaignService().AnyCandidateTestedOrScheduled(id))
@@ -161,6 +163,8 @@ namespace Fot.Admin.Client
                     }
 
                     item.EnableProctoring = chkProctoring.Checked;
+
+                    item.RequireSEB = chkSeb.Checked;
                 }
 
                 var app = service.Update(item);

@@ -182,6 +182,7 @@
           <Property Name="EnableProctoring" Type="bit" Nullable="false" />
           <Property Name="StartDate" Type="datetime" />
           <Property Name="EndDate" Type="datetime" />
+          <Property Name="RequireSEB" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="CampaignEntry">
           <Key>
@@ -227,6 +228,7 @@
           <Property Name="DateAdded" Type="datetime" Nullable="false" />
           <Property Name="LocationId" Type="int" />
           <Property Name="PhotoFileName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SebGuid" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="CandidateAssessment">
           <Key>
@@ -2987,6 +2989,7 @@
           <NavigationProperty Name="CandidateFeedbacks" Relationship="FotModel.FK_CandidateFeedback_Candidate" FromRole="Candidate" ToRole="CandidateFeedback" />
           <Property Name="PhotoFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="PhotoLogs" Relationship="FotModel.FK_PhotoLog_Candidate" FromRole="Candidate" ToRole="PhotoLog" />
+          <Property Name="SebGuid" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_CampaignEntry_Candidate">
           <End Type="FotModel.Candidate" Role="Candidate" Multiplicity="1" />
@@ -3313,6 +3316,7 @@
           <NavigationProperty Name="CampaignSessions" Relationship="FotModel.FK_CampaignSession_Campaign" FromRole="Campaign" ToRole="CampaignSession" />
           <Property Name="ViewResult" Type="Boolean" Nullable="false" />
           <Property Name="EnableProctoring" Type="Boolean" Nullable="false" />
+          <Property Name="RequireSEB" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_Campaign_AssessmentBundle">
           <End Type="FotModel.AssessmentBundle" Role="AssessmentBundle" Multiplicity="1" />
@@ -3843,6 +3847,7 @@
           <EntitySetMapping Name="Candidates">
             <EntityTypeMapping TypeName="FotModel.Candidate">
               <MappingFragment StoreEntitySet="Candidate">
+                <ScalarProperty Name="SebGuid" ColumnName="SebGuid" />
                 <ScalarProperty Name="PhotoFileName" ColumnName="PhotoFileName" />
                 <ScalarProperty Name="LocationId" ColumnName="LocationId" />
                 <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
@@ -3963,6 +3968,7 @@
           <EntitySetMapping Name="Campaigns">
             <EntityTypeMapping TypeName="FotModel.Campaign">
               <MappingFragment StoreEntitySet="Campaign">
+                <ScalarProperty Name="RequireSEB" ColumnName="RequireSEB" />
                 <ScalarProperty Name="EnableProctoring" ColumnName="EnableProctoring" />
                 <ScalarProperty Name="ViewResult" ColumnName="ViewResult" />
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />

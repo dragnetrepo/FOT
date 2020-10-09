@@ -127,6 +127,7 @@
           <Property Name="EnableProctoring" Type="bit" Nullable="false" />
           <Property Name="StartDate" Type="datetime" />
           <Property Name="EndDate" Type="datetime" />
+          <Property Name="RequireSEB" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="CampaignEntry">
           <Key>
@@ -172,6 +173,7 @@
           <Property Name="DateAdded" Type="datetime" Nullable="false" />
           <Property Name="LocationId" Type="int" />
           <Property Name="PhotoFileName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SebGuid" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="CandidateAssessment">
           <Key>
@@ -1374,6 +1376,7 @@
           <Property Name="ShowFeedback" Type="Boolean" Nullable="false" />
           <Property Name="ViewResult" Type="Boolean" Nullable="false" />
           <Property Name="EnableProctoring" Type="Boolean" Nullable="false" />
+          <Property Name="RequireSEB" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="CampaignEntry">
           <Key>
@@ -1421,6 +1424,7 @@
           <Property Name="ClientUniqueID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="PhotoFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SebGuid" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="CandidateAssessment">
           <Key>
@@ -2240,6 +2244,7 @@
           <EntitySetMapping Name="Campaigns">
             <EntityTypeMapping TypeName="FotLanModel.Campaign">
               <MappingFragment StoreEntitySet="Campaign">
+                <ScalarProperty Name="RequireSEB" ColumnName="RequireSEB" />
                 <ScalarProperty Name="EnableProctoring" ColumnName="EnableProctoring" />
                 <ScalarProperty Name="ViewResult" ColumnName="ViewResult" />
                 <ScalarProperty Name="ShowFeedback" ColumnName="ShowFeedback" />
@@ -2279,6 +2284,7 @@
           <EntitySetMapping Name="Candidates">
             <EntityTypeMapping TypeName="FotLanModel.Candidate">
               <MappingFragment StoreEntitySet="Candidate">
+                <ScalarProperty Name="SebGuid" ColumnName="SebGuid" />
                 <ScalarProperty Name="PhotoFileName" ColumnName="PhotoFileName" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="ClientUniqueID" ColumnName="ClientUniqueID" />

@@ -71,6 +71,7 @@
                          <asp:Literal runat="server" ID="lblMessage">
          <h1 style="line-height: 25px;">Provide your login details to take the online test. Only candidates who have been notified will be able to login.</h1>
                              </asp:Literal>
+
                      </div>
 
                     <table cellpadding="5" cellspacing="5" width="100%" border="0">
@@ -158,6 +159,41 @@
                                                     </ItemTemplate>
                                                 </asp:ListView>
 
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                           <tr id="trSeb" runat="server" visible="False">
+                            <td>&nbsp;</td>
+                            <td style="height: 300px" valign="top">
+
+                                <div class="loginDiv" style="width: 820px; min-height: 400px;">
+
+                                    <table border="0" cellpadding="2" cellspacing="0"
+                                        style="width: 826px; height: 419px;">
+                                        <tr>
+                                            <td style="height: 40px;">
+                                                <h1 style="padding-bottom: 20px; color: #003C60">Assessment Instructions</h1>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="height: 30px; font-size: 20px; line-height: 2;">
+                                                This assessment requires you to download <strong>Safe Exam Browser</strong> <br />
+                                                Click on <a href="https://safeexambrowser.org/download_en.html" target="_blank">https://safeexambrowser.org/download_en.html</a> to open the download page. <br />
+                                                Download and install <strong>Safe Exam Browser</strong> and then click on the assessment link below.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 20px; margin-top: 40px; line-height: 2;">
+                                                Click <a id="linkUrl" href="#" runat="server"><strong>here</strong></a> to launch the assessment after you have downloaded and installed <strong>Safe Exam Browser</strong>)
                                             </td>
                                         </tr>
 

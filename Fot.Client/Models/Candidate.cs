@@ -35,6 +35,7 @@ namespace Fot.Client.Models
         public string ClientUniqueID { get; set; }
         public string Email { get; set; }
         public string PhotoFileName { get; set; }
+        public string SebGuid { get; set; }
     
         public virtual ICollection<CampaignEntry> CampaignEntries { get; set; }
         public virtual Location Location { get; set; }

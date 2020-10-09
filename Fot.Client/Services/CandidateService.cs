@@ -30,7 +30,8 @@ namespace Fot.Client.Services
                        .Select(x => new CandidateAssessmentViewModel
                            {
                                AssessmentName = x.Campaign.AssessmentBundle.Name,
-                               CandidateGuid = x.CandidateAssessment.CandidateGuid
+                               CandidateGuid = x.CandidateAssessment.CandidateGuid,
+                               RequiresSEB = x.Campaign.RequireSEB
                            }).ToList();
 
 
@@ -57,18 +58,18 @@ namespace Fot.Client.Services
             var result =
                 Context.CampaignEntries.Where(
                     x =>
-                    x.Candidate.CandidateId.Equals(CandidateId) && x.Scheduled && x.Tested == false &&
-                    x.Campaign.IsUnproctored == false && x.TestSession.TestDate >= DateTime.Today)
+                    x.Candidate.CandidateId.Equals(CandidateId) && x.Tested == false &&
+                    ((x.Campaign.IsUnproctored && x.Campaign.EndDate > DateTime.Today ) || (x.Scheduled && x.TestSession.TestDate >= DateTime.Today)))
                        .Select(x => new CandidateScheduleViewModel()
                            {
                                CampaignEntryId = x.EntryId,
-                               SessionId = x.SessionId.Value,
-                               CenterName = x.TestSession.Center.CenterName,
-                               Address = x.TestSession.Center.Address,
-                               Location = x.TestSession.Center.Location.LocationName,
-                               TestDate = x.TestSession.TestDate,
-                               TimeText = x.TestSession.TimeText,
-                               IsPrivateCenter = x.TestSession.Center.IsPrivateCenter
+                               SessionId = x.SessionId.HasValue ? x.SessionId.Value : default(int?),
+                               CenterName = x.SessionId.HasValue ? x.TestSession.Center.CenterName : "Online Test",
+                               Address = x.SessionId.HasValue ? x.TestSession.Center.Address : string.Empty,
+                               Location = x.SessionId.HasValue ? x.TestSession.Center.Location.LocationName : string.Empty,
+                               TestDate = x.SessionId.HasValue ? x.TestSession.TestDate : default(DateTime?) ,
+                               TimeText = x.SessionId.HasValue ?x.TestSession.TimeText : string.Empty,
+                               IsPrivateCenter = x.SessionId.HasValue ? x.TestSession.Center.IsPrivateCenter : false
                            }).ToList();
 
             return result;
@@ -138,19 +139,19 @@ namespace Fot.Client.Services
         public InvitationViewModel GetCandidateInvitation(int CampaignEntryId)
         {
             return
-                Context.CampaignEntries.Where(x => x.EntryId == CampaignEntryId && x.Scheduled && x.Tested == false &&
-                    x.Campaign.IsUnproctored == false && x.TestSession.TestDate >= DateTime.Today).Include(y => y.CandidateScheduleResponse)
+                Context.CampaignEntries.Where(x => x.EntryId == CampaignEntryId && x.Tested == false &&
+                    ((x.Campaign.IsUnproctored && x.Campaign.EndDate > DateTime.Today) || (x.Scheduled && x.TestSession.TestDate >= DateTime.Today))).Include(y => y.CandidateScheduleResponse)
                        .Select(x => new InvitationViewModel
                        {
                            CandidateId = x.CandidateId,
                            Fullname = x.Candidate.FirstName + " " + x.Candidate.LastName,
                            Username = x.Candidate.Username,
                            Password = x.Candidate.Password,
-                           CenterName = x.TestSession.Center.CenterName,
-                           Address = x.TestSession.Center.Address,
-                           Location = x.TestSession.Center.Location.LocationName,
-                           TestDate = x.TestSession.TestDate,
-                           TimeText = x.TestSession.TimeText,
+                           CenterName = x.SessionId.HasValue ? x.TestSession.Center.CenterName : "Online Test",
+                           Address = x.SessionId.HasValue ? x.TestSession.Center.Address : string.Empty,
+                           Location = x.SessionId.HasValue ? x.TestSession.Center.Location.LocationName : string.Empty,
+                           TestDate = x.SessionId.HasValue ? x.TestSession.TestDate : default(DateTime?),
+                           TimeText = x.SessionId.HasValue ? x.TestSession.TimeText : string.Empty,
                            Instructions = x.Campaign.Instructions,
                            LogoPlacement = x.Campaign.LogoPlacement,
                            LogoFileName = x.Campaign.InvitationLogo,

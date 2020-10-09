@@ -35,6 +35,7 @@ namespace Fot.Client.Models
         public bool ShowFeedback { get; set; }
         public bool ViewResult { get; set; }
         public bool EnableProctoring { get; set; }
+        public bool RequireSEB { get; set; }
     
         public virtual AssessmentBundle AssessmentBundle { get; set; }
         public virtual ICollection<CampaignEntry> CampaignEntries { get; set; }

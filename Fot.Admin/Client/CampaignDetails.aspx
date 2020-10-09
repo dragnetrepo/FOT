@@ -91,7 +91,7 @@
         </telerik:RadTabStrip>
         <telerik:RadMultiPage ID="RadMultiPage1" runat="server" Height="340px" Width="100%" SelectedIndex="0">
             <telerik:RadPageView ID="RadPageView1" runat="server">
-                <div style="padding: 10px; border: 1px solid #ccc; margin-top: 10px; height: 390px; width: 100%; float: left;">
+                <div style="padding: 10px; border: 1px solid #ccc; margin-top: 10px; height: 430px; width: 100%; float: left;">
                     <table style="width: 100%;">
                         <tr>
                             <td style="width: 150px;">Campaign Name</td>
@@ -155,6 +155,12 @@
                             <td style="width: 150px;">Enable Proctoring</td>
                             <td>
                                 <asp:CheckBox ID="chkProctoring" runat="server" Text="Enable" />
+                            </td>
+                        </tr>
+                          <tr id="trSeb" runat="server" visible="False">
+                            <td style="width: 150px;">Safe Exam Browser</td>
+                            <td>
+                                <asp:CheckBox ID="chkSeb" runat="server" Text="Require Safe Exam Browser" />
                             </td>
                         </tr>
                         <tr>

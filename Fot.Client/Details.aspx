@@ -30,12 +30,12 @@
                             <td style="width: 120px; font-weight: bold">Location</td>
                             <td style="margin-bottom: 10px;"><%# Item.Location %></td>
                             <td style="width: 150px; margin-bottom: 10px;">
-                                <%# (Item.TestDate == DateTime.Today) ? "&nbsp;" : "<a href='ChangeVenue.aspx?id=" + Item.CampaignEntryId+"' style='font-size: 13px; font-weight: bold; text-decoration: underline;'>Change Schedule</a>" %></td>
+                                <%# (Item.TestDate.HasValue == false || Item.TestDate == DateTime.Today) ? "&nbsp;" : "<a href='ChangeVenue.aspx?id=" + Item.CampaignEntryId+"' style='font-size: 13px; font-weight: bold; text-decoration: underline;'>Change Schedule</a>" %></td>
                 
                         </tr>
                         <tr>
                             <td style="width: 120px; font-weight: bold">Date</td>
-                            <td style="margin-bottom: 10px;"><%# Item.TestDate.ToString("dd-MMM-yyyy") %></td>
+                            <td style="margin-bottom: 10px;"><%# Item.TestDate.HasValue? Item.TestDate.Value.ToString("dd-MMM-yyyy") : string.Empty %></td>
                             <td style="width: 150px; margin-bottom: 10px;">&nbsp;</td>
                         </tr>
                         <tr >

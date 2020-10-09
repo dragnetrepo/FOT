@@ -55,7 +55,7 @@ namespace Fot.Admin
 
                 lblCampaignType.Text = item.IsUnproctored ? "Unproctored" : "Proctored";
 
-                trStartDate.Visible = trEndDate.Visible = trProctored.Visible = item.IsUnproctored;
+                trStartDate.Visible = trEndDate.Visible = trProctored.Visible = trSeb.Visible = item.IsUnproctored;
 
 
 
@@ -81,6 +81,8 @@ namespace Fot.Admin
 
                     RadTabStrip1.Tabs[1].Visible = false;
                     RadTabStrip1.Tabs[2].Visible = false;
+
+                    chkSeb.Checked = item.RequireSEB;
                 }
 
                 if (new CampaignService().AnyCandidateTestedOrScheduled(id))
@@ -120,7 +122,7 @@ namespace Fot.Admin
                 linkScheduling.Text = item.IsUnproctored ? string.Empty : "<div class='boxDiv' onclick=\"location.href='Scheduling.aspx?id="+ id +"';\" ><div class='codeStyle'>Scheduling</div></div>";
 
 
-                linkResponses.Text = item.IsUnproctored ? string.Empty : "<div class='boxDiv' onclick=\"location.href='InvitationResponses.aspx?id=" + id + "';\" ><div class='codeStyle'>Invite Responses</div></div>";
+                linkResponses.Text =  "<div class='boxDiv' onclick=\"location.href='InvitationResponses.aspx?id=" + id + "';\" ><div class='codeStyle'>Invite Responses</div></div>";
 
             }
             else
@@ -164,6 +166,7 @@ namespace Fot.Admin
                     }
 
                     item.EnableProctoring = chkProctoring.Checked;
+                    item.RequireSEB = chkSeb.Checked;
                 }
 
                 var app = service.Update(item);

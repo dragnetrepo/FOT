@@ -186,6 +186,24 @@ namespace Fot.Admin
         protected global::System.Web.UI.WebControls.CheckBox chkProctoring;
 
         /// <summary>
+        /// trSeb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow trSeb;
+
+        /// <summary>
+        /// chkSeb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkSeb;
+
+        /// <summary>
         /// chkActive control.
         /// </summary>
         /// <remarks>

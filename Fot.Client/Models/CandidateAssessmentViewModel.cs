@@ -9,6 +9,8 @@ namespace Fot.Client.Models
     {
         public string AssessmentName { get; set; }
         public string CandidateGuid { get; set; }
+
+        public bool RequiresSEB { get; set; }
        
     }
 }

@@ -58,7 +58,7 @@ namespace Fot.Client
                 lblLocation.Text = schedule.Location;
                 lblCenterName.Text = schedule.CenterName;
                 lblCenterAddress.Text = schedule.Address;
-                lblSessionDateTime.Text = string.Format("{0} @ {1}", schedule.TestDate.ToString("dd-MMM-yyyy"), schedule.TimeText);
+                lblSessionDateTime.Text = string.Format("{0} @ {1}", schedule.TestDate?.ToString("dd-MMM-yyyy"), schedule.TimeText);
 
                 lblInstructions.Text = schedule.Instructions;
 
@@ -152,7 +152,7 @@ namespace Fot.Client
                     lblLocation.Text = schedule.Location;
                     lblCenterName.Text = schedule.CenterName;
                     lblCenterAddress.Text = schedule.Address;
-                    lblSessionDateTime.Text = string.Format("{0} @ {1}", schedule.TestDate.ToString("dd-MMM-yyyy"),schedule.TimeText);
+                    lblSessionDateTime.Text = string.Format("{0} @ {1}", schedule.TestDate?.ToString("dd-MMM-yyyy"),schedule.TimeText);
 
                     lblInstructions.Text = schedule.Instructions;
 
