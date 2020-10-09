@@ -104,7 +104,7 @@ namespace Fot.Client
                             var sebUrl = configFileUrl + sebFileName;
 
                             linkUrl.HRef = sebUrl;
-
+                            lblStatus.Visible = false;
                         }
                         else
                         {

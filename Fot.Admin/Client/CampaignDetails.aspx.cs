@@ -118,7 +118,7 @@ namespace Fot.Admin.Client
 
                 linkScheduling.Text = item.IsUnproctored ? string.Empty : "<div class='boxDiv' onclick=\"location.href='Scheduling.aspx?id="+ id +"';\" ><div class='codeStyle'>Scheduling</div></div>";
 
-                linkResponses.Text = item.IsUnproctored ? string.Empty : "<div class='boxDiv' onclick=\"location.href='InvitationResponses.aspx?id=" + id + "';\" ><div class='codeStyle'>Invite Responses</div></div>";
+                linkResponses.Text = "<div class='boxDiv' onclick=\"location.href='InvitationResponses.aspx?id=" + id + "';\" ><div class='codeStyle'>Invite Responses</div></div>";
 
             
             
