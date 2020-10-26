@@ -141,7 +141,7 @@ namespace Fot.Client
         {
             var xml = $@"<?xml version=""1.0"" encoding=""utf-8""?>
 <!DOCTYPE plist PUBLIC ""-//Apple Computer//DTD PLIST 1.0//EN"" ""http://www.apple.com/DTDs/PropertyList-1.0.dtd"">
-<plist version='1.0'>
+<plist version=""1.0"">
   <dict>
     <key>originatorVersion</key>
     <string>SEB_Win_2.1.1</string>
@@ -274,7 +274,7 @@ namespace Fot.Client
     <key>removeLocalStorage</key>
     <false />
     <key>enableSebBrowser</key>
-    <true />
+    <false />
     <key>browserWindowAllowReload</key>
     <true />
     <key>newBrowserWindowAllowReload</key>
@@ -354,7 +354,59 @@ namespace Fot.Client
     <key>allowFlashFullscreen</key>
     <false />
     <key>permittedProcesses</key>
-    <array></array>
+    <array>
+      <dict>
+        <key>active</key>
+        <true />
+        <key>autostart</key>
+        <true />
+        <key>iconInTaskbar</key>
+        <true />
+        <key>runInBackground</key>
+        <false />
+        <key>allowUserToChooseApp</key>
+        <true />
+        <key>strongKill</key>
+        <true />
+        <key>os</key>
+        <integer>1</integer>
+        <key>title</key>
+        <string>Dragnet Assessment Window CM</string>
+        <key>description</key>
+        <string>Special version of Chrome Web Browser for use in establishing a web video connection.</string>
+        <key>executable</key>
+        <string>chrominimum.exe</string>
+        <key>originalName</key>
+        <string>Chrominimum.exe</string>
+        <key>windowHandlingProcess</key>
+        <string />
+        <key>path</key>
+        <string>c:\program files\chrominimum</string>
+        <key>identifier</key>
+        <string />
+        <key>arguments</key>
+        <array>
+          <dict>
+            <key>active</key>
+            <true />
+            <key>argument</key>
+            <string>--start-url=""{testUrl}""</string>
+          </dict>
+		   <dict>
+             <key>active</key>
+                <true/>
+                <key>argument</key>
+                <string>--show-maximized</string>
+           </dict>
+           <dict>
+             <key>active</key>
+               <true/>
+               <key>argument</key>
+               <string>--user-agent-suffix=""SEB-Dragon54Dragnet21333""</string>
+           </dict>
+        </array>
+      </dict>
+    </array>
     <key>prohibitedProcesses</key>
     <array>
       <dict>
