@@ -152,7 +152,7 @@ namespace Fot.Client
     <key>sebServerURL</key>
     <string />
     <key>hashedAdminPassword</key>
-    <string>88A1881F0025CF7117501D07AEFC5D4BE6696656790D765678DF8BC48CA52687</string>
+    <string>9AFCC4E3A0D597829FD3C64505BB78E4EE1C742A720FD9B40F5101A863500EB1</string>
     <key>allowQuit</key>
     <true />
     <key>ignoreExitKeys</key>
@@ -179,10 +179,6 @@ namespace Fot.Client
     <false />
     <key>browserViewMode</key>
     <integer>1</integer>
-    <key>browserWindowAllowAddressBar</key>
-    <false />
-    <key>newBrowserWindowAllowAddressBar</key>
-    <false />
     <key>mainBrowserWindowWidth</key>
     <string>100%</string>
     <key>mainBrowserWindowHeight</key>
@@ -196,8 +192,6 @@ namespace Fot.Client
     <key>showMenuBar</key>
     <false />
     <key>showTaskBar</key>
-    <true />
-    <key>showSideMenu</key>
     <true />
     <key>taskBarHeight</key>
     <integer>40</integer>
@@ -235,8 +229,6 @@ namespace Fot.Client
     <integer>25</integer>
     <key>audioSetVolumeLevel</key>
     <false />
-    <key>allowDeveloperConsole</key>
-    <false />
     <key>browserScreenKeyboard</key>
     <false />
     <key>newBrowserWindowByLinkPolicy</key>
@@ -262,19 +254,19 @@ namespace Fot.Client
     <key>blockPopUpWindows</key>
     <false />
     <key>allowVideoCapture</key>
-    <false />
+    <true />
     <key>allowAudioCapture</key>
-    <false />
+    <true />
     <key>allowBrowsingBackForward</key>
     <false />
     <key>newBrowserWindowNavigation</key>
     <true />
     <key>removeBrowserProfile</key>
-    <true />
+    <false />
     <key>removeLocalStorage</key>
     <false />
     <key>enableSebBrowser</key>
-    <false />
+    <true />
     <key>browserWindowAllowReload</key>
     <true />
     <key>newBrowserWindowAllowReload</key>
@@ -284,9 +276,9 @@ namespace Fot.Client
     <key>newBrowserWindowShowReloadWarning</key>
     <false />
     <key>browserUserAgentWinDesktopMode</key>
-    <integer>0</integer>
+    <integer>1</integer>
     <key>browserUserAgentWinDesktopModeCustom</key>
-    <string />
+    <string>Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0 Proview-SB/1.0</string>
     <key>browserUserAgentWinTouchMode</key>
     <integer>0</integer>
     <key>browserUserAgentWinTouchModeIPad</key>
@@ -301,8 +293,6 @@ namespace Fot.Client
     <string />
     <key>browserWindowTitleSuffix</key>
     <string />
-    <key>allowPDFReaderToolbar</key>
-    <false />
     <key>allowDownUploads</key>
     <true />
     <key>downloadDirectoryOSX</key>
@@ -322,17 +312,17 @@ namespace Fot.Client
     <key>backgroundOpenSEBConfig</key>
     <false />
     <key>examKeySalt</key>
-    <data></data>
-    <key>examSessionClearCookiesOnEnd</key>
-    <true />
-    <key>examSessionClearCookiesOnStart</key>
-    <true />
+    <data>0UJySQ+iVUUtiQEMIgO1GY9Kk39AhKblRhrBr8jfZ6E=</data>
     <key>browserExamKey</key>
     <string />
     <key>browserURLSalt</key>
     <true />
     <key>sendBrowserExamKey</key>
     <false />
+    <key>examSessionClearCookiesOnEnd</key>
+    <true />
+    <key>examSessionClearCookiesOnStart</key>
+    <true />
     <key>quitURL</key>
     <string />
     <key>quitURLConfirm</key>
@@ -365,46 +355,27 @@ namespace Fot.Client
         <key>runInBackground</key>
         <false />
         <key>allowUserToChooseApp</key>
-        <true />
+        <false />
         <key>strongKill</key>
-        <true />
+        <false />
         <key>os</key>
         <integer>1</integer>
         <key>title</key>
-        <string>Dragnet Assessment Window CM</string>
+        <string>SEB</string>
         <key>description</key>
-        <string>Special version of Chrome Web Browser for use in establishing a web video connection.</string>
+        <string />
         <key>executable</key>
-        <string>chrominimum.exe</string>
+        <string>firefox.exe</string>
         <key>originalName</key>
-        <string>Chrominimum.exe</string>
+        <string>firefox.exe</string>
+        <key>path</key>
+        <string>../xulrunner/</string>
+        <key>identifier</key>
+        <string>Firefox</string>
         <key>windowHandlingProcess</key>
         <string />
-        <key>path</key>
-        <string>c:\program files\chrominimum</string>
-        <key>identifier</key>
-        <string />
         <key>arguments</key>
-        <array>
-          <dict>
-            <key>active</key>
-            <true />
-            <key>argument</key>
-            <string>--start-url=""{testUrl}""</string>
-          </dict>
-		   <dict>
-             <key>active</key>
-                <true/>
-                <key>argument</key>
-                <string>--show-maximized</string>
-           </dict>
-           <dict>
-             <key>active</key>
-               <true/>
-               <key>argument</key>
-               <string>--user-agent-suffix=""SEB-Dragon54Dragnet21333""</string>
-           </dict>
-        </array>
+        <array></array>
       </dict>
     </array>
     <key>prohibitedProcesses</key>
@@ -419,9 +390,9 @@ namespace Fot.Client
         <key>os</key>
         <integer>1</integer>
         <key>executable</key>
-        <string>join.me.exe</string>
+        <string>Zoom</string>
         <key>originalName</key>
-        <string>join.me.exe</string>
+        <string>Zoom</string>
         <key>description</key>
         <string />
         <key>identifier</key>
@@ -441,9 +412,9 @@ namespace Fot.Client
         <key>os</key>
         <integer>1</integer>
         <key>executable</key>
-        <string>RPCSuite.exe</string>
+        <string>Riot</string>
         <key>originalName</key>
-        <string>RPCSuite.exe</string>
+        <string>Riot</string>
         <key>description</key>
         <string />
         <key>identifier</key>
@@ -463,9 +434,9 @@ namespace Fot.Client
         <key>os</key>
         <integer>1</integer>
         <key>executable</key>
-        <string>RPCService.exe</string>
+        <string>seamonkey</string>
         <key>originalName</key>
-        <string>RPCService.exe</string>
+        <string>seamonkey</string>
         <key>description</key>
         <string />
         <key>identifier</key>
@@ -485,9 +456,9 @@ namespace Fot.Client
         <key>os</key>
         <integer>1</integer>
         <key>executable</key>
-        <string>RemotePCDesktop.exe</string>
+        <string>Discord</string>
         <key>originalName</key>
-        <string>RemotePCDesktop.exe</string>
+        <string>Discord</string>
         <key>description</key>
         <string />
         <key>identifier</key>
@@ -507,9 +478,9 @@ namespace Fot.Client
         <key>os</key>
         <integer>1</integer>
         <key>executable</key>
-        <string>beamyourscreen-host.exe</string>
+        <string>Slack</string>
         <key>originalName</key>
-        <string>beamyourscreen-host.exe</string>
+        <string>Slack</string>
         <key>description</key>
         <string />
         <key>identifier</key>
@@ -529,9 +500,9 @@ namespace Fot.Client
         <key>os</key>
         <integer>1</integer>
         <key>executable</key>
-        <string>AeroAdmin.exe</string>
+        <string>Teams</string>
         <key>originalName</key>
-        <string>AeroAdmin.exe</string>
+        <string>Teams</string>
         <key>description</key>
         <string />
         <key>identifier</key>
@@ -551,9 +522,9 @@ namespace Fot.Client
         <key>os</key>
         <integer>1</integer>
         <key>executable</key>
-        <string>Mikogo-host.exe</string>
+        <string>join.me</string>
         <key>originalName</key>
-        <string>Mikogo-host.exe</string>
+        <string>join.me</string>
         <key>description</key>
         <string />
         <key>identifier</key>
@@ -573,9 +544,9 @@ namespace Fot.Client
         <key>os</key>
         <integer>1</integer>
         <key>executable</key>
-        <string>chromoting.exe</string>
+        <string>RPCSuite</string>
         <key>originalName</key>
-        <string>chromoting.exe</string>
+        <string>RPCSuite</string>
         <key>description</key>
         <string />
         <key>identifier</key>
@@ -595,9 +566,9 @@ namespace Fot.Client
         <key>os</key>
         <integer>1</integer>
         <key>executable</key>
-        <string>vncserverui.exe</string>
+        <string>RPCService</string>
         <key>originalName</key>
-        <string>vncserverui.exe</string>
+        <string>RPCService</string>
         <key>description</key>
         <string />
         <key>identifier</key>
@@ -617,9 +588,9 @@ namespace Fot.Client
         <key>os</key>
         <integer>1</integer>
         <key>executable</key>
-        <string>vncviewer.exe</string>
+        <string>RemotePCDesktop</string>
         <key>originalName</key>
-        <string>vncviewer.exe</string>
+        <string>RemotePCDesktop</string>
         <key>description</key>
         <string />
         <key>identifier</key>
@@ -639,9 +610,9 @@ namespace Fot.Client
         <key>os</key>
         <integer>1</integer>
         <key>executable</key>
-        <string>vncserver.exe</string>
+        <string>beamyourscreen-host</string>
         <key>originalName</key>
-        <string>vncserver.exe</string>
+        <string>beamyourscreen-host</string>
         <key>description</key>
         <string />
         <key>identifier</key>
@@ -661,9 +632,9 @@ namespace Fot.Client
         <key>os</key>
         <integer>1</integer>
         <key>executable</key>
-        <string>TeamViewer.exe</string>
+        <string>AeroAdmin</string>
         <key>originalName</key>
-        <string>TeamViewer.exe</string>
+        <string>AeroAdmin</string>
         <key>description</key>
         <string />
         <key>identifier</key>
@@ -683,9 +654,141 @@ namespace Fot.Client
         <key>os</key>
         <integer>1</integer>
         <key>executable</key>
-        <string>GotoMeetingWinStore.exe</string>
+        <string>Mikogo-host</string>
         <key>originalName</key>
-        <string>GotoMeetingWinStore.exe</string>
+        <string>Mikogo-host</string>
+        <key>description</key>
+        <string />
+        <key>identifier</key>
+        <string />
+        <key>windowHandlingProcess</key>
+        <string />
+        <key>user</key>
+        <string />
+      </dict>
+      <dict>
+        <key>active</key>
+        <true />
+        <key>currentUser</key>
+        <true />
+        <key>strongKill</key>
+        <false />
+        <key>os</key>
+        <integer>1</integer>
+        <key>executable</key>
+        <string>chromoting</string>
+        <key>originalName</key>
+        <string>chromoting</string>
+        <key>description</key>
+        <string />
+        <key>identifier</key>
+        <string />
+        <key>windowHandlingProcess</key>
+        <string />
+        <key>user</key>
+        <string />
+      </dict>
+      <dict>
+        <key>active</key>
+        <true />
+        <key>currentUser</key>
+        <true />
+        <key>strongKill</key>
+        <false />
+        <key>os</key>
+        <integer>1</integer>
+        <key>executable</key>
+        <string>vncserverui</string>
+        <key>originalName</key>
+        <string>vncserverui</string>
+        <key>description</key>
+        <string />
+        <key>identifier</key>
+        <string />
+        <key>windowHandlingProcess</key>
+        <string />
+        <key>user</key>
+        <string />
+      </dict>
+      <dict>
+        <key>active</key>
+        <true />
+        <key>currentUser</key>
+        <true />
+        <key>strongKill</key>
+        <false />
+        <key>os</key>
+        <integer>1</integer>
+        <key>executable</key>
+        <string>vncviewer</string>
+        <key>originalName</key>
+        <string>vncviewer</string>
+        <key>description</key>
+        <string />
+        <key>identifier</key>
+        <string />
+        <key>windowHandlingProcess</key>
+        <string />
+        <key>user</key>
+        <string />
+      </dict>
+      <dict>
+        <key>active</key>
+        <true />
+        <key>currentUser</key>
+        <true />
+        <key>strongKill</key>
+        <false />
+        <key>os</key>
+        <integer>1</integer>
+        <key>executable</key>
+        <string>vncserver</string>
+        <key>originalName</key>
+        <string>vncserver</string>
+        <key>description</key>
+        <string />
+        <key>identifier</key>
+        <string />
+        <key>windowHandlingProcess</key>
+        <string />
+        <key>user</key>
+        <string />
+      </dict>
+      <dict>
+        <key>active</key>
+        <true />
+        <key>currentUser</key>
+        <true />
+        <key>strongKill</key>
+        <false />
+        <key>os</key>
+        <integer>1</integer>
+        <key>executable</key>
+        <string>TeamViewer</string>
+        <key>originalName</key>
+        <string>TeamViewer</string>
+        <key>description</key>
+        <string />
+        <key>identifier</key>
+        <string />
+        <key>windowHandlingProcess</key>
+        <string />
+        <key>user</key>
+        <string />
+      </dict>
+      <dict>
+        <key>active</key>
+        <true />
+        <key>currentUser</key>
+        <true />
+        <key>strongKill</key>
+        <false />
+        <key>os</key>
+        <integer>1</integer>
+        <key>executable</key>
+        <string>GotoMeetingWinStore</string>
+        <key>originalName</key>
+        <string>GotoMeetingWinStore</string>
         <key>description</key>
         <string />
         <key>identifier</key>
@@ -727,9 +830,9 @@ namespace Fot.Client
         <key>os</key>
         <integer>1</integer>
         <key>executable</key>
-        <string>SkypeHost.exe</string>
+        <string>CamRecorder</string>
         <key>originalName</key>
-        <string>SkypeHost.exe</string>
+        <string>CamRecorder</string>
         <key>description</key>
         <string />
         <key>identifier</key>
@@ -749,9 +852,9 @@ namespace Fot.Client
         <key>os</key>
         <integer>1</integer>
         <key>executable</key>
-        <string>SkypeApp.exe</string>
+        <string>SkypeHost</string>
         <key>originalName</key>
-        <string>SkypeApp.exe</string>
+        <string>SkypeHost</string>
         <key>description</key>
         <string />
         <key>identifier</key>
@@ -771,9 +874,9 @@ namespace Fot.Client
         <key>os</key>
         <integer>1</integer>
         <key>executable</key>
-        <string>Skype.exe</string>
+        <string>Skype</string>
         <key>originalName</key>
-        <string>Skype.exe</string>
+        <string>Skype</string>
         <key>description</key>
         <string />
         <key>identifier</key>
@@ -887,8 +990,6 @@ namespace Fot.Client
     </dict>
     <key>sebServicePolicy</key>
     <integer>1</integer>
-    <key>sebServiceIgnore</key>
-    <true />
     <key>allowVirtualMachine</key>
     <false />
     <key>allowScreenSharing</key>
@@ -901,10 +1002,6 @@ namespace Fot.Client
     <false />
     <key>enableLogging</key>
     <true />
-    <key>allowApplicationLog</key>
-    <false />
-    <key>showApplicationLogButton</key>
-    <false />
     <key>logDirectoryOSX</key>
     <string>~/Documents</string>
     <key>logDirectoryWin</key>
@@ -933,10 +1030,6 @@ namespace Fot.Client
     <integer>1</integer>
     <key>allowedDisplayBuiltin</key>
     <true />
-    <key>enableChromeNotifications</key>
-    <false />
-    <key>enableWindowsUpdate</key>
-    <false />
     <key>insideSebEnableSwitchUser</key>
     <false />
     <key>insideSebEnableLockThisComputer</key>
@@ -953,7 +1046,7 @@ namespace Fot.Client
     <false />
     <key>insideSebEnableVmWareClientShade</key>
     <false />
-    <key>insideSebEnableNetworkConnectionSelector</key>
+    <key>insideSebEnableEnableNetworkConnectionSelector</key>
     <false />
     <key>setVmwareConfiguration</key>
     <false />

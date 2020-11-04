@@ -187,19 +187,19 @@
                                         <tr>
                                             <td style="height: 30px; font-size: 20px; line-height: 2; margin-bottom: 20px;">
                                                 This assessment requires a <strong>Secure Web Browser</strong> <br />
-                                                In order to complete this assessment, you must first confirm the following requirements.
+                                                To complete this assessment, you must meet the following preconditions: 
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                
-                                                <p style="font-size: 20px; line-height: 2; margin-top: 40px;">Windows 10 (or above) is required. Please download and install BOTH of the files below. <br />
+                                                <p style="font-size: 20px; line-height: 2; margin-top: 40px;">Windows 10 (or above) is required. Please download and install the file below if you have not already done so. <br />
 
-                                                    <strong>Secure Exam Browser: </strong> Download and install <a href="https://github.com/SafeExamBrowser/seb-win-refactoring/releases/download/3.0.1/SEB_3.0.1.163_SetupBundle.exe">Safe Exam Browser</a> <br />
-                                                    <strong>Chrominimum: </strong> Download and install <a href="https://github.com/SafeExamBrowser/Chrominimum/releases/download/1.1.0/Chrominimum_1.1.0.21_SetupBundle.exe">Chrominimum</a> <br />
+                                                    <strong>Safe Exam Browser: </strong> Download and install <a href="https://github.com/SafeExamBrowser/seb-win/releases/download/v2.4.1/SafeExamBrowserInstaller.exe">Safe Exam Browser</a> <br />
+                                                  
                                                 </p>
                                                 <p style="font-size: 20px; line-height: 2; margin-top: 30px; ">
-                                                    Be sure to download BOTH files listed above. INSTALL by clicking on the downloaded files and approving all prompts during the installation process.
+                                                    Be sure to download the file above. INSTALL by clicking on the downloaded file and approving all prompts during the installation process.
 
                                                 </p>
 
@@ -207,7 +207,7 @@
                                         </tr>
                                         <tr>
                                             <td style="font-size: 20px; margin-top: 60px; line-height: 2;">
-                                                Click <a id="linkUrl" href="#" runat="server"><strong>here</strong></a> to launch the assessment after you have downloaded and installed <strong>Safe Exam Browser</strong>)
+                                                Click <a id="linkUrl" href="#" runat="server"><strong>here</strong></a> to launch the assessment after you have downloaded and installed <strong>Safe Exam Browser</strong>. Ensure you have your password as this will be required once the assessment is launched. 
                                             </td>
                                         </tr>
 
