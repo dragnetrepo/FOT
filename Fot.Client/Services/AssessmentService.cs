@@ -151,7 +151,9 @@ namespace Fot.Client.Services
         {
             Bundle bundle = new BundleService().GetBundle(bundle_id);
 
-            return bundle.Assessments.First(x => x.AssessmentId == assessmentId).Name;
+            var item = bundle.Assessments.FirstOrDefault(x => x.AssessmentId == assessmentId);
+
+            return item?.Name ?? string.Empty;
 
         }
 
