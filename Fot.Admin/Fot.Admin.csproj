@@ -103,12 +103,24 @@
     <Reference Include="Microsoft.AspNet.FriendlyUrls">
       <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.1.0.0-alpha1\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    <Reference Include="Microsoft.Owin, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.1.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Cors, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Cors.4.1.1\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ScriptManager.jQuery, Version=1.7.2.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -132,8 +144,8 @@
     <Reference Include="Mindscape.Raygun4Net">
       <HintPath>..\packages\Mindscape.Raygun4Net.2.0.0\lib\net35\Mindscape.Raygun4Net.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
@@ -143,9 +155,14 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Cors, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.0.0\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Optimization">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0-beta2\lib\net40\System.Web.Optimization.dll</HintPath>
@@ -241,10 +258,37 @@
     <Content Include="Client\Campaigns.aspx" />
     <Content Include="Client\CenterAdmins.aspx" />
     <Content Include="Client\NotFound.aspx" />
+    <Content Include="Client\OnlineTests.aspx" />
     <Content Include="Client\Photo.aspx" />
     <Content Include="Client\ProctorStats.aspx" />
     <Content Include="Client\Profile.aspx" />
     <Content Include="Client\Reports.aspx" />
+    <None Include="Client\Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Client\Scripts\jquery-1.8.2.js" />
+    <Content Include="Client\Scripts\jquery-1.8.2.min.js" />
+    <Content Include="Client\Scripts\jquery.signalR-2.2.2.js" />
+    <Content Include="Client\Scripts\jquery.signalR-2.2.2.min.js" />
+    <Content Include="Client\Scripts\WebForms\DetailsView.js" />
+    <Content Include="Client\Scripts\WebForms\Focus.js" />
+    <Content Include="Client\Scripts\WebForms\GridView.js" />
+    <Content Include="Client\Scripts\WebForms\Menu.js" />
+    <Content Include="Client\Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Client\Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="Client\Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="Client\Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="Client\Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="Client\Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="Client\Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="Client\Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="Client\Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="Client\Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="Client\Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="Client\Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="Client\Scripts\WebForms\SmartNav.js" />
+    <Content Include="Client\Scripts\WebForms\TreeView.js" />
+    <Content Include="Client\Scripts\WebForms\WebForms.js" />
+    <Content Include="Client\Scripts\WebForms\WebParts.js" />
+    <Content Include="Client\Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Client\Sessions.aspx" />
     <Content Include="Client\Messaging.aspx" />
     <Content Include="Client\Questions.aspx" />
@@ -280,6 +324,7 @@
     <Content Include="Messaging.aspx" />
     <Content Include="None.aspx" />
     <Content Include="NotFound.aspx" />
+    <Content Include="OnlineTests.aspx" />
     <Content Include="Photo.aspx" />
     <Content Include="PrintHook64.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -298,10 +343,13 @@
     <Content Include="ext\ImageHandler.ashx" />
     <Content Include="photos\Web.config" />
     <Content Include="ext\ImageByIdHandler.ashx" />
+    <Content Include="Client\Scripts\Web.config" />
     <None Include="Properties\PublishProfiles\FotAdmin web deploy.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.min.js" />
     <Content Include="ShowQuestion.aspx" />
     <Content Include="SmsLog.aspx" />
     <Content Include="Summary.aspx" />
@@ -807,6 +855,13 @@
     <Compile Include="Client\NotFound.aspx.designer.cs">
       <DependentUpon>NotFound.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Client\OnlineTests.aspx.cs">
+      <DependentUpon>OnlineTests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Client\OnlineTests.aspx.designer.cs">
+      <DependentUpon>OnlineTests.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Client\Photo.aspx.cs">
       <DependentUpon>Photo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1037,6 +1092,7 @@
     <Compile Include="Infrastructure\HangfireBootstrapper.cs" />
     <Compile Include="Infrastructure\MessageType.cs" />
     <Compile Include="Infrastructure\MyFriendlyUrlResolver.cs" />
+    <Compile Include="Infrastructure\ProcessHub.cs" />
     <Compile Include="Infrastructure\Processor.cs" />
     <Compile Include="InvitationResponses.aspx.cs">
       <DependentUpon>InvitationResponses.aspx</DependentUpon>
@@ -1134,6 +1190,7 @@
     <Compile Include="Models\FixedQuestion.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OnlineTestViewModel.cs" />
     <Compile Include="Models\PersonnelPhotoUpdateModel.cs" />
     <Compile Include="Models\PhotoLog.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -1236,6 +1293,13 @@
     </Compile>
     <Compile Include="NotFound.aspx.designer.cs">
       <DependentUpon>NotFound.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OnlineTests.aspx.cs">
+      <DependentUpon>OnlineTests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OnlineTests.aspx.designer.cs">
+      <DependentUpon>OnlineTests.aspx</DependentUpon>
     </Compile>
     <Compile Include="Photo.aspx.cs">
       <DependentUpon>Photo.aspx</DependentUpon>

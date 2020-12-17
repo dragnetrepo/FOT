@@ -129,7 +129,7 @@ namespace Fot.Admin
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadDatePicker txtStartDate;
+        protected global::Telerik.Web.UI.RadDateTimePicker txtStartDate;
 
         /// <summary>
         /// trEndDate control.
@@ -147,7 +147,7 @@ namespace Fot.Admin
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadDatePicker txtEndDate;
+        protected global::Telerik.Web.UI.RadDateTimePicker txtEndDate;
 
         /// <summary>
         /// chkFeedback control.
@@ -382,6 +382,15 @@ namespace Fot.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl boxResult;
+
+        /// <summary>
+        /// boxTests control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl boxTests;
 
         /// <summary>
         /// divCampaignReports control.

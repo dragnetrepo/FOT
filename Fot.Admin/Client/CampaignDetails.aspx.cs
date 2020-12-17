@@ -81,6 +81,10 @@ namespace Fot.Admin.Client
                     RadTabStrip1.Tabs[2].Visible = false;
 
                     chkSeb.Checked = item.RequireSEB;
+
+                    boxTests.Visible = true;
+                    boxTests.Attributes.Add("onclick", "location.href='OnlineTests.aspx?id=" + id + "'");
+
                 }
 
                 if (new PartnerCampaignService().AnyCandidateTestedOrScheduled(id))

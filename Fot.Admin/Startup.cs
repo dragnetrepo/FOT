@@ -3,7 +3,9 @@ using System.Threading.Tasks;
 using System.Web;
 using Fot.Admin.Infrastructure;
 using Hangfire;
+using Microsoft.AspNet.SignalR;
 using Microsoft.Owin;
+using Microsoft.Owin.Cors;
 using Owin;
 
 [assembly: OwinStartup(typeof(Fot.Admin.Startup))]
@@ -24,6 +26,18 @@ namespace Fot.Admin
 
 
             RecurringJob.AddOrUpdate(SummaryJob,  () => Processor.ProcessSummary(), Cron.Daily);
+
+
+            //app.MapSignalR();
+
+            app.Map("/signalr", map =>
+            {
+                map.UseCors(CorsOptions.AllowAll);
+                var hubConfiguration = new HubConfiguration
+                {
+                };
+                map.RunSignalR(hubConfiguration);
+            });
 
         }
     }

@@ -83,6 +83,9 @@ namespace Fot.Admin
                     RadTabStrip1.Tabs[2].Visible = false;
 
                     chkSeb.Checked = item.RequireSEB;
+
+                    boxTests.Visible = true;
+                    boxTests.Attributes.Add("onclick", "location.href='OnlineTests.aspx?id=" + id + "'");
                 }
 
                 if (new CampaignService().AnyCandidateTestedOrScheduled(id))

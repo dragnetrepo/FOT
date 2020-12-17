@@ -21,6 +21,9 @@ namespace Fot.Client.Models
         public int SaveCount { get; set; }
         public Nullable<System.DateTime> EntryDate { get; set; }
         public Nullable<System.DateTime> LastUpdated { get; set; }
+        public Nullable<System.DateTime> FirstUpdated { get; set; }
+        public string CurrentAssessment { get; set; }
+        public Nullable<int> TimeRemainingMinutes { get; set; }
     
         public virtual CampaignEntry CampaignEntry { get; set; }
     }

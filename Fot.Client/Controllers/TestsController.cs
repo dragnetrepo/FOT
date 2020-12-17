@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Fot.Client.Hubs;
 using Fot.Client.Infrastructure;
 using Fot.Client.Models;
 using Fot.Client.Services;
+using Microsoft.AspNet.SignalR;
 using Newtonsoft.Json;
 
 namespace Fot.Client.Controllers
@@ -126,10 +129,10 @@ namespace Fot.Client.Controllers
 
 
         [HttpPost]
-        public ActionResult SaveState(string id, AppBundle bundle)
+        public ActionResult SaveState(string id, AppBundle bundle, string assessmentName, int timeRemaining)
         {
             var bundleService = new BundleService();
-            bundleService.SaveState(id, bundle);
+            bundleService.SaveState(id, bundle, assessmentName, timeRemaining);
 
             var ret = new ResultResponse { Succeeded = true };
 
@@ -159,6 +162,16 @@ namespace Fot.Client.Controllers
 
             return jsonNetResult;
         }
+
+        public ActionResult UserSubmit(string id)
+        {
+            var context = GlobalHost.ConnectionManager.GetHubContext<ProcessHub>();
+
+            context.Clients.Group(id).userSubmit();
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
+
 
         [AllowAnonymous]
         [HttpPost]

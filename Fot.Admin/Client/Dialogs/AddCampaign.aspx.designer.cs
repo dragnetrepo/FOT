@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Fot.Admin.Client.Dialogs {
-    
-    
-    public partial class AddCampaign {
-        
+namespace Fot.Admin.Client.Dialogs
+{
+
+
+    public partial class AddCampaign
+    {
+
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace Fot.Admin.Client.Dialogs {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
+
         /// <summary>
         /// txtCampaignName control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace Fot.Admin.Client.Dialogs {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCampaignName;
-        
+
         /// <summary>
         /// RequiredFieldValidator1 control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace Fot.Admin.Client.Dialogs {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
-        
+
         /// <summary>
         /// listAssessmentBundles control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace Fot.Admin.Client.Dialogs {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList listAssessmentBundles;
-        
+
         /// <summary>
         /// RequiredFieldValidator3 control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace Fot.Admin.Client.Dialogs {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
-        
+
         /// <summary>
         /// listCampaignType control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace Fot.Admin.Client.Dialogs {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList listCampaignType;
-        
+
         /// <summary>
         /// txtStartDate control.
         /// </summary>
@@ -73,8 +75,8 @@ namespace Fot.Admin.Client.Dialogs {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadDatePicker txtStartDate;
-        
+        protected global::Telerik.Web.UI.RadDateTimePicker txtStartDate;
+
         /// <summary>
         /// txtEndDate control.
         /// </summary>
@@ -82,8 +84,8 @@ namespace Fot.Admin.Client.Dialogs {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadDatePicker txtEndDate;
-        
+        protected global::Telerik.Web.UI.RadDateTimePicker txtEndDate;
+
         /// <summary>
         /// bttnAdd control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace Fot.Admin.Client.Dialogs {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button bttnAdd;
-        
+
         /// <summary>
         /// hidId control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace Fot.Admin.Client.Dialogs {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hidId;
-        
+
         /// <summary>
         /// lblStatus control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace Fot.Admin.Client.Dialogs {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal lblStatus;
-        
+
         /// <summary>
         /// ScriptManager1 control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace Fot.Admin.Client.Dialogs {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.ScriptManager ScriptManager1;
-        
+
         /// <summary>
         /// PartnerDataSource control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace Fot.Admin.Client.Dialogs {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource PartnerDataSource;
-        
+
         /// <summary>
         /// BundleDataSource control.
         /// </summary>

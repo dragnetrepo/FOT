@@ -113,25 +113,25 @@
                 <tr id="trStartDate" style="display: none">
                     <td style="width: 150px;">Start Date</td>
                     <td>
-                        <telerik:RadDatePicker ID="txtStartDate" runat="server" Skin="Windows7" Culture="en-US" HiddenInputTitleAttibute="Visually hidden input created for functionality purposes." WrapperTableSummary="Table holding date picker control for selection of dates.">
+                        <telerik:RadDateTimePicker ID="txtStartDate" runat="server" Skin="Windows7" Culture="en-US" HiddenInputTitleAttibute="Visually hidden input created for functionality purposes." WrapperTableSummary="Table holding date picker control for selection of dates."  TimeView-Interval="00:30:00">
                             <Calendar UseRowHeadersAsSelectors="False" UseColumnHeadersAsSelectors="False" ViewSelectorText="x" Skin="Windows7"></Calendar>
 
-                            <DateInput DisplayDateFormat="dd-MMM-yyyy" DateFormat="dd-MMM-yyyy" LabelWidth="40%"></DateInput>
+                            <DateInput DisplayDateFormat="dd-MMM-yyyy hh:mm tt" DateFormat="dd-MMM-yyyy hh:mm tt" LabelWidth="40%"></DateInput>
 
                             <DatePopupButton ImageUrl="" HoverImageUrl=""></DatePopupButton>
-                        </telerik:RadDatePicker>
+                        </telerik:RadDateTimePicker>
                     </td>
                 </tr >
                 <tr id="trEndDate" style="display: none">
                     <td style="width: 150px;">End Date</td>
                     <td>
-                        <telerik:RadDatePicker ID="txtEndDate" runat="server" Skin="Windows7" Culture="en-US" HiddenInputTitleAttibute="Visually hidden input created for functionality purposes." WrapperTableSummary="Table holding date picker control for selection of dates.">
+                        <telerik:RadDateTimePicker ID="txtEndDate" runat="server" Skin="Windows7" Culture="en-US" HiddenInputTitleAttibute="Visually hidden input created for functionality purposes." WrapperTableSummary="Table holding date picker control for selection of dates."  TimeView-Interval="00:30:00">
                             <Calendar UseRowHeadersAsSelectors="False" UseColumnHeadersAsSelectors="False" ViewSelectorText="x" Skin="Windows7"></Calendar>
 
-                            <DateInput DisplayDateFormat="dd-MMM-yyyy" DateFormat="dd-MMM-yyyy" LabelWidth="40%"></DateInput>
+                            <DateInput DisplayDateFormat="dd-MMM-yyyy hh:mm tt" DateFormat="dd-MMM-yyyy hh:mm tt" LabelWidth="40%"></DateInput>
 
                             <DatePopupButton ImageUrl="" HoverImageUrl=""></DatePopupButton>
-                        </telerik:RadDatePicker>
+                        </telerik:RadDateTimePicker>
                     </td>
                 </tr>
                 <tr>

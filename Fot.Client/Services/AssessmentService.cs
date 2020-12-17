@@ -24,7 +24,7 @@ namespace Fot.Client.Services
             {
                 try
                 {
-                    if (candidate.AssessmentCompleted) return new ResultResponse { Succeeded = false };
+                    if (candidate.AssessmentCompleted) return new ResultResponse { Succeeded = true };
 
 
                     var item =
@@ -139,11 +139,11 @@ namespace Fot.Client.Services
             }
             else
             {
-                return new ResultResponse { Succeeded = false, ErrorMessage = "No candidate with specified ID was scheduled."};
+                return new ResultResponse { Succeeded = true };
             }
 
 
-           
+
         }
 
 

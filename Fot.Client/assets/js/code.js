@@ -629,7 +629,10 @@ var assessmentPage = (function () {
 
            
 
-            var saveData = { bundle: tempBundle };
+            var timeRemaining = bundle.assessments[bundle.current_assessment_index].time_remaining;
+            var assessmentName = bundle.assessments[bundle.current_assessment_index].assessment_name;
+
+            var saveData = { bundle: tempBundle, assessmentName: assessmentName, timeRemaining: timeRemaining };
 
             var saver_url = $("#saver").data("request-url-save-test");
 
@@ -998,7 +1001,10 @@ var essayPage = (function () {
             }
 
 
-            var saveData = { bundle: tempBundle };
+            var timeRemaining = bundle.assessments[bundle.current_assessment_index].time_remaining;
+            var assessmentName = bundle.assessments[bundle.current_assessment_index].assessment_name;
+
+            var saveData = { bundle: tempBundle, assessmentName: assessmentName, timeRemaining: timeRemaining };
 
             var saver_url = $("#saver").data("request-url-save-test");
 
@@ -1324,11 +1330,26 @@ var assessmentEndPage = (function () {
         return ans_options;
     }
 
+    function DoProgress() {
+
+        bundle.current_assessment_index = bundle.assessments.length - 1;
+
+        //end assessment session
+
+        $("body").off('keyup');
+
+        var html = assessmentEndTemplate(bundle);
+
+        $("#container").html(html);
+
+        assessmentEndPage.submitAssessment();
+    }
+
     return {
 
         submitAssessment: submitAssessment,
-        getEssayResponse: getEssayResponse
-
+        getEssayResponse: getEssayResponse,
+        DoProgress: DoProgress
     };
 
 

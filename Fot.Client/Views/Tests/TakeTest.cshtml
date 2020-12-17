@@ -163,6 +163,17 @@
         }
     </script>
 
+    <!-- JavaScript -->
+    <script src="~/assets/js/jQuery/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/Bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/modernizr.custom.js"></script>
+
+    <script src="~/assets/js/handlebars-v1.3.0.js"></script>
+
+    <script src="~/assets/js/code.es5.min.js" type="text/javascript"></script>
+    <script src="~/assets/js/kendo.all.min.js"></script>
+    <script src="~/assets/js/jquery.signalR-2.2.2.min.js"></script>
+    <script src="~/signalr/hubs"></script>
 </head>
 <body>
     <div class="container" style="height: 740px; width: 1060px; margin-top: 20px;">
@@ -195,15 +206,7 @@
     <div id="submitter" data-request-url-submit-test="@Url.Action("SubmitTest", "Tests", new {id = @ViewContext.RouteData.Values["id"]})"></div>
     <div id="saver" data-request-url-save-test="@Url.Action("SaveState", "Tests", new {id = @ViewContext.RouteData.Values["id"]})"></div>
 
-    <!-- JavaScript -->
-    <script src="~/assets/js/jQuery/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="~/assets/js/Bootstrap/bootstrap.min.js"></script>
-    <script type="text/javascript" src="~/assets/js/modernizr.custom.js"></script>
 
-    <script src="~/assets/js/handlebars-v1.3.0.js"></script>
-
-    <script src="~/assets/js/code.es5.min.js" type="text/javascript"></script>
-    <script src="~/assets/js/kendo.all.min.js"></script>
 
 
     <script id="assessmentEnd" type="text/x-handlebars-template">
@@ -447,6 +450,34 @@
 
     }
 
+    <script>
+
+    var candidateId = "@ViewContext.RouteData.Values["id"]";
+
+            $(function () {
+                // Reference the auto-generated proxy for the hub.
+                var chat = $.connection.processHub;
+                // Create a function that the hub can call back to display messages.
+                chat.client.userSubmit = function () {
+                    // Add the message to the page.
+
+                    assessmentEndPage.DoProgress();
+
+                };
+
+                // Start the connection.
+                $.connection.hub.start().done(function () {
+
+                    chat.server.joinRoom(candidateId);
+                    console.log('connected successfully.');
+                    //alert('connected successfully');
+
+                }).fail(function () { /*alert('connection failed'); */ });
+
+            });
+
+
+    </script>
 
 </body>
 

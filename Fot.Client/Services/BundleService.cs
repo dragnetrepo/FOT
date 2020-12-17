@@ -147,6 +147,7 @@ namespace Fot.Client.Services
 
                 item.SaveCount = 1;
                 item.EntryDate = DateTime.Now;
+                item.FirstUpdated = DateTime.Now;
                 item.LastUpdated = DateTime.Now;
                 item.AssessmentData = FotSecurity<AppBundle>.Serialize(bundle);         
 
@@ -432,7 +433,7 @@ namespace Fot.Client.Services
         }
 
 
-        public void SaveState(string CandidateGuid, AppBundle bundleStatus)
+        public void SaveState(string CandidateGuid, AppBundle bundleStatus, string assessmentName, int timeRemaining)
         {
 
             if (BundleExists(CandidateGuid))
@@ -454,12 +455,16 @@ namespace Fot.Client.Services
                 item.LastUpdated = DateTime.Now;
                 item.SaveCount = item.SaveCount + 1;
                 item.CurrentAssessmentState = FotSecurity<AppBundle>.Serialize(bundleStatus);
+                item.CurrentAssessment = assessmentName;
+                item.TimeRemainingMinutes = timeRemaining;
 
 
 
                 Context.Entry(item).Property(x => x.LastUpdated).IsModified = true;
                 Context.Entry(item).Property(x => x.SaveCount).IsModified = true;
                 Context.Entry(item).Property(x => x.CurrentAssessmentState).IsModified = true;
+                Context.Entry(item).Property(x => x.CurrentAssessment).IsModified = true;
+                Context.Entry(item).Property(x => x.TimeRemainingMinutes).IsModified = true;
 
 
 

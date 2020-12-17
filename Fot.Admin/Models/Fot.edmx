@@ -240,7 +240,10 @@
           <Property Name="CurrentAssessmentState" Type="varbinary(max)" />
           <Property Name="SaveCount" Type="int" Nullable="false" />
           <Property Name="EntryDate" Type="datetime" />
+          <Property Name="FirstUpdated" Type="datetime" />
           <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="CurrentAssessment" Type="nvarchar" MaxLength="200" />
+          <Property Name="TimeRemainingMinutes" Type="int" />
         </EntityType>
         <EntityType Name="CandidateFeedback">
           <Key>
@@ -2205,6 +2208,9 @@
           <Property Type="DateTime" Name="EntryDate" Precision="3" />
           <Property Type="DateTime" Name="LastUpdated" Precision="3" />
           <NavigationProperty Name="CampaignEntry" Relationship="FotModel.FK_CandidateAssessment_CampaignEntry" FromRole="CandidateAssessment" ToRole="CampaignEntry" />
+          <Property Name="FirstUpdated" Type="DateTime" Precision="3" />
+          <Property Name="CurrentAssessment" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TimeRemainingMinutes" Type="Int32" />
         </EntityType>
         <EntityType Name="CandidateFeedback">
           <Key>
@@ -3630,6 +3636,9 @@
           <EntitySetMapping Name="CandidateAssessments">
             <EntityTypeMapping TypeName="FotModel.CandidateAssessment">
               <MappingFragment StoreEntitySet="CandidateAssessment">
+                <ScalarProperty Name="TimeRemainingMinutes" ColumnName="TimeRemainingMinutes" />
+                <ScalarProperty Name="CurrentAssessment" ColumnName="CurrentAssessment" />
+                <ScalarProperty Name="FirstUpdated" ColumnName="FirstUpdated" />
                 <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
                 <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
                 <ScalarProperty Name="SaveCount" ColumnName="SaveCount" />
