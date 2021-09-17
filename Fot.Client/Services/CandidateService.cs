@@ -26,7 +26,7 @@ namespace Fot.Client.Services
                 Context.CampaignEntries.Where(
                     x =>
                     x.CandidateId == CandidateId && x.Campaign.IsUnproctored &&
-                    x.Tested == false && x.Campaign.Active && x.Campaign.StartDate <= DateTime.Today && x.Campaign.EndDate >= DateTime.Today)
+                    x.Tested == false && x.Campaign.Active && x.Campaign.StartDate <= DateTime.Now && x.Campaign.EndDate >= DateTime.Now)
                        .Select(x => new CandidateAssessmentViewModel
                            {
                                AssessmentName = x.Campaign.AssessmentBundle.Name,

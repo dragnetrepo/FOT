@@ -288,9 +288,9 @@ namespace Fot.Client
     <key>browserUserAgent</key>
     <string>Dragon54Dragnet21333</string>
     <key>browserUserAgentMac</key>
-    <integer>0</integer>
+    <integer>1</integer>
     <key>browserUserAgentMacCustom</key>
-    <string />
+    <string>Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0 Proview-SB/1.0</string>
     <key>browserWindowTitleSuffix</key>
     <string />
     <key>allowDownUploads</key>
@@ -312,7 +312,7 @@ namespace Fot.Client
     <key>backgroundOpenSEBConfig</key>
     <false />
     <key>examKeySalt</key>
-    <data>0UJySQ+iVUUtiQEMIgO1GY9Kk39AhKblRhrBr8jfZ6E=</data>
+    <data>j1DIdy/rctZdP93FDYuhXBY5FTVIymn3zG7b1xY5V8U=</data>
     <key>browserExamKey</key>
     <string />
     <key>browserURLSalt</key>
@@ -1007,7 +1007,7 @@ namespace Fot.Client
     <key>logDirectoryWin</key>
     <string />
     <key>allowWlan</key>
-    <false />
+    <true />
     <key>lockOnMessageSocketClose</key>
     <true />
     <key>minMacOSVersion</key>
