@@ -52,8 +52,8 @@ namespace Fot.Client.Services
 
 
                 Bundle bundle = GetBundle(BundleId);
-
-                var appBundle = new AppBundle
+            var campaign = Context.CandidateAssessments.Where(x => x.CandidateGuid == CandidateGuid).Select(p => p.CampaignEntry.Campaign).FirstOrDefault();
+            var appBundle = new AppBundle
                     {
                         bundle_id = bundle.BundleId,
                         bundle_name = bundle.Name,
@@ -62,7 +62,8 @@ namespace Fot.Client.Services
                         save_as_you_go = bundle.SaveAsYouGo,
                         show_results_on_submit = bundle.ShowResultsOnSubmit,
                         current_assessment_index = -1,
-                        min_aggregate_score = bundle.MinAggregateScore
+                        min_aggregate_score = bundle.MinAggregateScore,
+                        external_link = campaign.ExternalLink
                     };
 
 

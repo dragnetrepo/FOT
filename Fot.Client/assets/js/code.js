@@ -1198,10 +1198,29 @@ var assessmentEndPage = (function () {
 
                     $("#divResult").show();
 
-                    var morePractice = "<br/><br/><div><p>For more practice test questions go to <a href='http://mytestpractice.com' target='_blank'>http://mytestpractice.com</a></p></div>";
+                    var morePractice = '';
 
-                 $("#divResult").html(getScoreTable(result.resultList) + morePractice);
+                    if (bundle.external_link && bundle.external_link.length > 0) {
+                        morePractice = "<br/><br/><div><p>Please visit this <a href='" + bundle.external_link + "' target='_blank'>link</a> as part of your assessment</p></div>";
 
+                    } else {
+                        morePractice = "<br/><br/><div><p>For more practice test questions go to <a href='http://mytestpractice.com' target='_blank'>http://mytestpractice.com</a></p></div>";
+                    }
+
+
+                    $("#divResult").html(getScoreTable(result.resultList) + morePractice);
+
+                } else {
+                    var morePractice = '';
+
+                    if (bundle.external_link && bundle.external_link.length > 0) {
+                        morePractice = "<br/><br/><div><p>Please visit this <a href='" + bundle.external_link + "' target='_blank'>link</a> as part of your assessment</p></div>";
+
+                        var htmlStr = $("#divStatus").html();
+
+                        $("#divStatus").html(htmlStr + morePractice);
+                    } 
+                   
                 }
 
                 if (bundle.min_aggregate_score != null) {

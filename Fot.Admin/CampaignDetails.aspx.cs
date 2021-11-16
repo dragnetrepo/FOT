@@ -86,6 +86,12 @@ namespace Fot.Admin
 
                     boxTests.Visible = true;
                     boxTests.Attributes.Add("onclick", "location.href='OnlineTests.aspx?id=" + id + "'");
+
+                    trExternalLink.Visible = true;
+                }
+                else
+                {
+                    trExternalLink.Visible = false;
                 }
 
                 if (new CampaignService().AnyCandidateTestedOrScheduled(id))
@@ -170,6 +176,8 @@ namespace Fot.Admin
 
                     item.EnableProctoring = chkProctoring.Checked;
                     item.RequireSEB = chkSeb.Checked;
+
+                    item.ExternalLink = txtExternalLink.Text;
                 }
 
                 var app = service.Update(item);

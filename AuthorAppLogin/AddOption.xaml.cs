@@ -26,13 +26,42 @@ namespace AuthorApp
     {
         public QuestionControl CallerInstance { get; set; }
 
+        public bool Updating { get; set; }
+        public int? Id { get; set; }
 
-       
 
 
-        public AddOption()
+        public AddOption(int? id = null)
         {
             InitializeComponent();
+
+            if (id.HasValue)
+            {
+                Updating = true;
+                Id = id;
+
+                var ctx = new ServiceBase().Context;
+
+                var item = ctx.AssessmentAnswers.FirstOrDefault(x => x.AnswerId == Id);
+                if (item != null)
+                {
+                    if (item.IsImage == false)
+                    {
+                        txtOptionText.Text = item.AnswerText;
+                    }
+
+                    bttnAdd.Visibility = Visibility.Collapsed;
+                    bttnUpdate.Visibility = Visibility.Visible;
+
+                    bttnAddImage.Visibility = Visibility.Collapsed;
+                    bttnUpdateImage.Visibility = Visibility.Visible;
+
+                    checkCorrect.Visibility = Visibility.Collapsed;
+                    checkCorrectImage.Visibility = Visibility.Collapsed;
+
+                }
+
+            }
         }
 
         private void bttnAdd_Click(object sender, RoutedEventArgs e)
@@ -56,6 +85,27 @@ namespace AuthorApp
                         IsImage = false
 
                     };
+
+                if (item.IsCorrect)
+                {
+
+                    var ctx = new ServiceBase().Context;
+
+                    var question = ctx.AssessmentQuestions.FirstOrDefault(x => x.QuestionId == CallerInstance.Id);
+
+                    if (question?.AnswerType == "Single")
+                    {
+
+                        var list = ctx.AssessmentAnswers.Where(x => x.QuestionId == question.QuestionId).ToList();
+
+                        list.ForEach(x => x.IsCorrect = false);
+
+                        ctx.SaveChanges();
+
+                    }
+
+
+                }
 
                 var app = service.Add(item);
 
@@ -121,6 +171,27 @@ namespace AuthorApp
 
                 };
 
+                if (item.IsCorrect)
+                {
+
+                    var ctx = new ServiceBase().Context;
+
+                    var question = ctx.AssessmentQuestions.FirstOrDefault(x => x.QuestionId == CallerInstance.Id);
+
+                    if (question?.AnswerType == "Single")
+                    {
+
+                        var list = ctx.AssessmentAnswers.Where(x => x.QuestionId == question.QuestionId).ToList();
+
+                        list.ForEach(x => x.IsCorrect = false);
+
+                        ctx.SaveChanges();
+
+                    }
+
+
+                }
+
                 var app = service.Add(item);
 
                 if (app.IsDone)
@@ -135,5 +206,83 @@ namespace AuthorApp
 
             }
         }
+
+
+        private void bttnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtOptionText.Text))
+            {
+                UpdateTextOption();
+            }
+        }
+
+        private void UpdateTextOption()
+        {
+            using (var service = new AssessmentAnswerService())
+            {
+                var item = service.GetAnswer(Id.Value);
+
+                item.AnswerText = txtOptionText.Text;
+                item.IsImage = false;
+                item.AnswerImage = null;
+
+                var app = service.Update(item);
+
+                if (app.IsDone)
+                {
+
+
+                    CallerInstance.LoadOptions();
+
+                    txtOptionText.Text = string.Empty;
+
+                    this.Close();
+
+                }
+
+            }
+        }
+
+        private void bttnUpdateImage_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtImgUrl.Text))
+            {
+                UpdateImageOption();
+            }
+        }
+
+        private void UpdateImageOption()
+        {
+            var imgBytes = File.ReadAllBytes(txtImgUrl.Text);
+
+            using (var service = new AssessmentAnswerService())
+            {
+                var item = service.GetAnswer(Id.Value);
+
+                item.AnswerImage = imgBytes;
+                item.IsImage = true;
+                item.AnswerText = null;
+
+
+
+                var app = service.Update(item);
+
+                if (app.IsDone)
+                {
+
+
+                    CallerInstance.LoadOptions();
+
+                    txtImgUrl.Text = string.Empty;
+                    imgOption.Source = null;
+                    txtOptionText.Text = string.Empty;
+
+                    this.Close();
+                }
+
+            }
+        }
+
+
     }
 }

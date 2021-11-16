@@ -30,6 +30,7 @@ namespace Fot.Client.Infrastructure
         public string error_message { get; set; }
         public int? min_aggregate_score { get; set; }
 
+        public string external_link { get; set; }
         public int current_assessment_index { get; set; }
     }
 

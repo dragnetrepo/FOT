@@ -128,6 +128,7 @@
           <Property Name="StartDate" Type="datetime" />
           <Property Name="EndDate" Type="datetime" />
           <Property Name="RequireSEB" Type="bit" Nullable="false" />
+          <Property Name="ExternalLink" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="CampaignEntry">
           <Key>
@@ -1380,6 +1381,7 @@
           <Property Name="ViewResult" Type="Boolean" Nullable="false" />
           <Property Name="EnableProctoring" Type="Boolean" Nullable="false" />
           <Property Name="RequireSEB" Type="Boolean" Nullable="false" />
+          <Property Name="ExternalLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="CampaignEntry">
           <Key>
@@ -2250,6 +2252,7 @@
           <EntitySetMapping Name="Campaigns">
             <EntityTypeMapping TypeName="FotLanModel.Campaign">
               <MappingFragment StoreEntitySet="Campaign">
+                <ScalarProperty Name="ExternalLink" ColumnName="ExternalLink" />
                 <ScalarProperty Name="RequireSEB" ColumnName="RequireSEB" />
                 <ScalarProperty Name="EnableProctoring" ColumnName="EnableProctoring" />
                 <ScalarProperty Name="ViewResult" ColumnName="ViewResult" />

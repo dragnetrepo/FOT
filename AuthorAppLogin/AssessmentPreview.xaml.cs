@@ -100,6 +100,8 @@ namespace AuthorApp
                 imgQuestion.Source = bitmap;
             }
 
+            txtBlockAdditionalText.Text = questionList[currentQuestion].AdditionalText;
+
             var list = questionList[currentQuestion].AssessmentAnswers.ToList();
 
 

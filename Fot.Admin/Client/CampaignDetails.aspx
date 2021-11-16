@@ -89,9 +89,9 @@
                 </telerik:RadTab>
             </Tabs>
         </telerik:RadTabStrip>
-        <telerik:RadMultiPage ID="RadMultiPage1" runat="server" Height="340px" Width="100%" SelectedIndex="0">
+        <telerik:RadMultiPage ID="RadMultiPage1" runat="server" style="min-height:260px" Width="100%" SelectedIndex="0">
             <telerik:RadPageView ID="RadPageView1" runat="server">
-                <div style="padding: 10px; border: 1px solid #ccc; margin-top: 10px; height: 430px; width: 100%; float: left;">
+                <div style="padding: 10px; border: 1px solid #ccc; margin-top: 10px; min-height: 260px; width: 100%; float: left;">
                     <table style="width: 100%;">
                         <tr>
                             <td style="width: 150px;">Campaign Name</td>
@@ -161,6 +161,20 @@
                             <td style="width: 150px;">Safe Exam Browser</td>
                             <td>
                                 <asp:CheckBox ID="chkSeb" runat="server" Text="Require Safe Exam Browser" />
+                            </td>
+                        </tr>
+                                  <tr id="trExternalLink" runat="server" visible="False">
+                            <td style="width: 150px;">External Link</td>
+                            <td>
+                                <asp:TextBox ID="txtExternalLink" runat="server" Width="400px"></asp:TextBox>
+                                <asp:RegularExpressionValidator 
+            ID="RegularExpressionValidator1"
+            runat="server" 
+            ValidationExpression="http(s)?://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?"
+            ControlToValidate="txtExternalLink"
+            ErrorMessage="Input a valid Internet URL!"
+                                     CssClass="Formerror"
+            >Input a valid internet URL</asp:RegularExpressionValidator>
                             </td>
                         </tr>
                         <tr>

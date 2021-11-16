@@ -16,6 +16,7 @@ namespace Fot.DTO
 
         public bool AllowAssessmentSelection { get; set; }
 
+        public string ExternalLink { get; set; }
         public List<Assessment> Assessments { get; set; }
     }
 

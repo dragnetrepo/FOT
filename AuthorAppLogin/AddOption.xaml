@@ -13,9 +13,11 @@
         <TabControl HorizontalAlignment="Left" Height="267" Margin="10,10,0,0" VerticalAlignment="Top" Width="664">
             <TabItem Header="Text Option">
                 <Grid >
-                    <TextBox x:Name="txtOptionText" HorizontalAlignment="Left" Height="63" Margin="17,46,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="618" FontSize="14" TabIndex="1" MaxLength="300"/>
+                    <TextBox x:Name="txtOptionText" HorizontalAlignment="Left" Height="63" Margin="17,46,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="618" FontSize="14" TabIndex="1" MaxLength="500"/>
                     <TextBlock HorizontalAlignment="Left" Margin="17,17,0,0" TextWrapping="Wrap" Text="Option Text" VerticalAlignment="Top" Width="368" FontSize="14" FontWeight="SemiBold"/>
                     <Button x:Name="bttnAdd" Content="Add Option" HorizontalAlignment="Left" Margin="500,154,0,0" VerticalAlignment="Top" Width="135" Height="30" Click="bttnAdd_Click"/>
+                    <Button x:Name="bttnUpdate" Content="Update Option" HorizontalAlignment="Left" Margin="500,154,0,0" VerticalAlignment="Top" Width="135" Height="30" Click="bttnUpdate_Click" Visibility="Collapsed" />
+                    <CheckBox x:Name="checkCorrect" Margin="17,113,0,79.333" Height="35" Width="200" HorizontalAlignment="Left">Correct Option</CheckBox>
                 </Grid>
             </TabItem>
             <TabItem Header="Image Option" Margin="41,0,-41,0">
@@ -23,11 +25,14 @@
                     <TextBox x:Name="txtImgUrl" HorizontalAlignment="Left" Height="29" Margin="17,46,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="468" FontSize="14" TabIndex="1" IsReadOnly="True"/>
                     <TextBlock HorizontalAlignment="Left" Margin="17,17,0,0" TextWrapping="Wrap" Text="Image File" VerticalAlignment="Top" Width="368" FontSize="14" FontWeight="SemiBold"/>
                     <Button x:Name="bttnAddImage" Content="Add Image" HorizontalAlignment="Left" Margin="500,154,0,0" VerticalAlignment="Top" Width="135" Height="30" Click="bttnAddImage_Click"/>
+                    <Button x:Name="bttnUpdateImage" Content="Update Image" HorizontalAlignment="Left" Margin="500,154,0,0" VerticalAlignment="Top" Width="135" Height="30" Click="bttnUpdateImage_Click" Visibility="Collapsed"/>
                     <Button x:Name="bttnBrowseButton" Content="Browse ..." HorizontalAlignment="Left" Margin="500,45,0,0" VerticalAlignment="Top" Width="135" Height="30" Click="bttnBrowseButton_Click"/>
                     <ScrollViewer HorizontalAlignment="Left" Height="100" Margin="17,111,0,0" VerticalAlignment="Top" Width="468">
                         <Image x:Name="imgOption"  HorizontalAlignment="Left" Stretch="None"/>
                     </ScrollViewer>
                     <TextBlock HorizontalAlignment="Left" Margin="17,80,0,0" TextWrapping="Wrap" Text="Image must not exceed a maximum width of 700px and a maximum height of 90px" VerticalAlignment="Top" Height="26" Width="468" Foreground="#FFB60A0A"/>
+
+                    <CheckBox x:Name="checkCorrectImage" Margin="17,113,0,79.333" Height="35" Width="200" HorizontalAlignment="Left">Correct Option</CheckBox>
                 </Grid>
             </TabItem>
         </TabControl>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -12,10 +13,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 using AuthorApp.Infrastructure;
 using AuthorApp.Models;
 using AuthorApp.Services;
 using Microsoft.Win32;
+using OfficeOpenXml;
 
 namespace AuthorApp
 {
@@ -31,7 +34,7 @@ namespace AuthorApp
         {
             InitializeComponent();
 
-            txtAddTopics.Visibility = tabLower.Visibility = chkShowLower.Visibility = Visibility.Hidden;
+            txtAddTopics.Visibility = tabLower.Visibility = chkShowLower.Visibility = txtFilePath.Visibility = btnBrowse.Visibility = btnImport.Visibility = Visibility.Hidden;
         }
 
         private void chkShowLower_Click(object sender, RoutedEventArgs e)
@@ -468,6 +471,461 @@ namespace AuthorApp
             }
         }
 
+
+        private void SelectFile()
+        {
+            var dialog = new OpenFileDialog();
+
+            dialog.Multiselect = false;
+            dialog.DefaultExt = ".xlsx";
+            dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            var ret = dialog.ShowDialog();
+
+            if (ret.HasValue && ret.Value)
+            {
+
+                txtFilePath.Text = dialog.FileName;
+
+                btnImport.IsEnabled = File.Exists(dialog.FileName);
+
+
+            }
+
+
+        }
+
+        private void ImportExcel()
+        {
+            try
+            {
+                var fileBytes = File.ReadAllBytes(txtFilePath.Text);
+
+                var ms = new MemoryStream(fileBytes);
+
+                var excelEngine = new ExcelPackage(ms);
+
+
+                var workBook = excelEngine.Workbook;
+                var workSheet = workBook.Worksheets.First();
+
+
+                var id = this.Id;
+
+                var questions = new List<AssessmentQuestion>();
+
+                for (int rowIndex = 2; rowIndex <= workSheet.Dimension.End.Row; rowIndex++)
+                {
+
+                    var questionText = workSheet.Cells[rowIndex, 1].Text.Trim();
+
+                    var options = GetOptions(workSheet, rowIndex);
+
+                    if (options.Count < 2) continue;
+
+                    var tempQuestion = GetQuestion(questionText);
+
+                    foreach (var option in options)
+                    {
+                        var answer = new AssessmentAnswer();
+                        answer.AnswerText = option;
+                        answer.IsCorrect = (option == options[0]);
+                        answer.IsImage = false;
+
+                        tempQuestion.AssessmentAnswers.Add(answer);
+
+                    }
+                    tempQuestion.AssessmentId = id;
+                    questions.Add(tempQuestion);
+                }
+
+                if (questions.Any())
+                {
+                    var ctx = new ServiceBase().Context;
+
+                    ctx.AssessmentQuestions.AddRange(questions);
+
+                    ctx.SaveChanges();
+
+                    var app = new AppMessage()
+                    {
+                        IsDone = true,
+                        Message = $"{questions.Count} {(questions.Count == 1 ? "question" : "questions")} uploaded successfully.",
+                        Status = MessageStatus.Success
+                    };
+
+                    // System.Windows.Forms.MessageBox.Show(app.Message);
+
+                    ShowStatus(app.Message, IsErrorType: false);
+
+                    txtFilePath.Text = string.Empty;
+                    btnImport.IsEnabled = false;
+                }
+                else
+                {
+
+                    var app = new AppMessage()
+                    {
+                        IsDone = false,
+                        Message = "No Questions were uploaded.",
+                        Status = MessageStatus.Error
+                    };
+
+                    // System.Windows.Forms.MessageBox.Show(app.Message);
+
+                    ShowStatus(app.Message, IsErrorType: true);
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("An error occured. Error: " + ex.Message);
+            }
+
+
+        }
+
+        private void Import()
+        {
+            if (txtFilePath.Text.ToLower().EndsWith(".xlsx"))
+            {
+                ImportExcel();
+            }
+            else if (txtFilePath.Text.ToLower().EndsWith(".xml"))
+            {
+                ImportWordXml();
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("Import file should be either an Excel file (*.xlsx) or a Word 2003 XML file");
+            }
+
+
+        }
+
+        private void ImportWordXml()
+        {
+            try
+            {
+                var data = File.ReadAllText(txtFilePath.Text);
+
+                var xml = XElement.Parse(data);
+
+                XNamespace ns = "http://schemas.microsoft.com/office/word/2003/wordml";
+                XNamespace v = "urn:schemas-microsoft-com:vml";
+                XNamespace wx = "http://schemas.microsoft.com/office/word/2003/auxHint";
+
+                var body = xml.Element(ns + "body");
+
+                var paragraphs = body.Element(wx + "sect").Descendants().Where(x => x.Name == ns + "p" || x.Name == ns + "tbl").ToList();
+
+                paragraphs = paragraphs.Where(x => x.Ancestors(ns + "tbl").Any() == false).ToList();
+
+
+                var list = new List<TempItem>();
+
+
+                var entry = new TempItem();
+
+                foreach (var item in paragraphs)
+                {
+                    var newPage = item.Descendants(ns + "br").Any();
+
+                    if (newPage)
+                    {
+                        list.Add(entry);
+                        entry = new TempItem();
+
+                        var pageItems = item.Descendants(ns + "t").ToList();
+
+                        var formattedPageItems = new List<string>();
+
+                        foreach (var q in pageItems)
+                        {
+                            var temp = q.Value; if (string.IsNullOrWhiteSpace(temp.Trim())) continue;
+
+                            if (q.Ancestors(ns + "r").Any())
+                            {
+                                var ans = q.Ancestors(ns + "r").First();
+
+                                if (ans.Descendants(ns + "b").Any())
+                                {
+                                    temp = $"<strong>{temp}</strong>";
+                                }
+
+                                if (ans.Descendants(ns + "i").Any())
+                                {
+                                    temp = $"<i>{temp}</i>";
+                                }
+
+                                if (ans.Descendants(ns + "u").Any())
+                                {
+                                    temp = $"<u>{temp}</u>";
+                                }
+                            }
+
+                            formattedPageItems.Add(temp);
+                        }
+
+                        var pageText = string.Join("", formattedPageItems.Select(x => x).ToList());
+
+                        if (!string.IsNullOrWhiteSpace(pageText))
+                            entry.Question = pageText;
+
+
+                        continue;
+                    }
+
+                    //check if current paragraph is an option
+                    bool isOption = item.Descendants(ns + "listPr").Any();
+
+                    if (isOption)
+                    {
+                        var textItems = item.Descendants(ns + "t").ToList();
+
+                        var str = string.Join("", textItems.Select(x => x.Value).ToList());
+
+                        var option = new TempOption();
+
+                        option.IsCorrect = str.Trim().EndsWith("*");
+                        option.OptionText = option.IsCorrect ? str.Replace("*", string.Empty) : str;
+
+                        entry.Options.Add(option);
+
+                        continue;
+                    }
+
+
+                    bool isPicture = item.Descendants(ns + "pict").Any();
+
+                    if (isPicture)
+                    {
+                        var imgStr = item.Descendants(ns + "binData").FirstOrDefault()?.Value;
+
+                        if (!string.IsNullOrWhiteSpace(imgStr))
+                        {
+                            entry.ImageBytes = Convert.FromBase64String(imgStr);
+
+                            entry.ImageStyle = item.Descendants(v + "shape").FirstOrDefault()?.Attribute("style").Value;
+
+                            entry.FileName = item.Descendants(v + "imagedata").FirstOrDefault()?.Attribute("src").Value;
+                        }
+
+                        continue;
+                    }
+
+                    bool isTable = item.Name == ns + "tbl";
+
+                    if (isTable)
+                    {
+
+
+                        continue;
+                    }
+
+                    //maybe regular text;
+
+                    var questionItems = item.Descendants(ns + "t").ToList();
+
+                    var formattedItems = new List<string>();
+
+                    foreach (var q in questionItems)
+                    {
+                        var temp = q.Value; if (string.IsNullOrWhiteSpace(temp.Trim())) continue;
+
+                        if (q.Ancestors(ns + "r").Any())
+                        {
+                            var ans = q.Ancestors(ns + "r").First();
+
+                            if (ans.Descendants(ns + "b").Any())
+                            {
+                                temp = $"<strong>{temp}</strong>";
+                            }
+
+                            if (ans.Descendants(ns + "i").Any())
+                            {
+                                temp = $"<i>{temp}</i>";
+                            }
+
+                            if (ans.Descendants(ns + "u").Any())
+                            {
+                                temp = $"<u>{temp}</u>";
+                            }
+                        }
+
+                        formattedItems.Add(temp);
+                    }
+
+                    var questionText = string.Join("", formattedItems.Select(x => x).ToList());
+
+                    if (!string.IsNullOrWhiteSpace(questionText))
+                        entry.Question = entry.Question + questionText;
+
+                }
+
+                list.Add(entry);
+
+                var id = this.Id;
+
+                var questions = new List<AssessmentQuestion>();
+
+                foreach (var item in list)
+                {
+
+                    var questionText = item.Question;
+
+                    var options = item.Options;
+
+                    if (options.Count() < 2) continue;
+
+                    var tempQuestion = item.ImageBytes == null ? GetQuestion(questionText) : GetQuestionWithImage(item);
+
+                    foreach (var option in options)
+                    {
+                        var answer = new AssessmentAnswer();
+                        answer.AnswerText = option.OptionText;
+                        answer.IsCorrect = option.IsCorrect;
+                        answer.IsImage = false;
+
+                        tempQuestion.AssessmentAnswers.Add(answer);
+
+                    }
+                    tempQuestion.AssessmentId = id;
+                    questions.Add(tempQuestion);
+                }
+
+                if (questions.Any())
+                {
+                    var ctx = new ServiceBase().Context;
+
+                    ctx.AssessmentQuestions.AddRange(questions);
+
+                    ctx.SaveChanges();
+
+                    var app = new AppMessage()
+                    {
+                        IsDone = true,
+                        Message = $"{questions.Count} {(questions.Count == 1 ? "question" : "questions")} uploaded successfully.",
+                        Status = MessageStatus.Success
+                    };
+
+                    // System.Windows.Forms.MessageBox.Show(app.Message);
+
+                    ShowStatus(app.Message, IsErrorType: false);
+
+                    txtFilePath.Text = string.Empty;
+                    btnImport.IsEnabled = false;
+                }
+                else
+                {
+
+                    var app = new AppMessage()
+                    {
+                        IsDone = false,
+                        Message = "No Questions were uploaded.",
+                        Status = MessageStatus.Error
+                    };
+
+                    // System.Windows.Forms.MessageBox.Show(app.Message);
+
+                    ShowStatus(app.Message, IsErrorType: true);
+
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("An error occured. Error: " + ex.Message);
+            }
+
+
+        }
+
+        public AssessmentQuestion GetQuestion(string questionText)
+        {
+            string html = @"<table width='950px' border='0' cellpadding='1' cellspacing='0' style='font-size: 16px;'> <tr><td><div style='font-size: 16px;'>" + questionText +
+                          @"</div></td></tr></table>";
+
+
+            var img = TheArtOfDev.HtmlRenderer.WinForms.HtmlRender.RenderToImage(html);
+
+            var ms = new MemoryStream();
+
+            img.Save(ms, ImageFormat.Png);
+
+            byte[] htmlImage = ms.ToArray();// new Html2ImageBinary(html).GetImage();
+
+            var item = new AssessmentQuestion
+            {
+                TopicId = default(int?),
+                GroupId = default(int?),
+                DifficultyLevel = default(int?),
+                AnswerType = "Single",
+                QuestionText = html,
+                QuestionImage = htmlImage,
+                OptionsLayoutIsVertical = true
+            };
+
+            return item;
+        }
+
+        public AssessmentQuestion GetQuestionWithImage(TempItem entry)
+        {
+            var mime = entry.FileName.ToLower().EndsWith(".jpg") ? "image/jpg" : "image/png";
+
+            string html = @"<table width='950px' border='0' cellpadding='1' cellspacing='0' style='font-size: 16px;'> <tr><td><div style='font-size: 16px;'>" + entry.Question +
+                          @"</div></td></tr><tr><td><div style='font-size: 16px;'><img style='" + entry.ImageStyle + "' src='data:" + mime + ";base64," + Convert.ToBase64String(entry.ImageBytes) + "'/></div></td></tr></table>";
+
+
+            var img = TheArtOfDev.HtmlRenderer.WinForms.HtmlRender.RenderToImage(html);
+
+            var ms = new MemoryStream();
+
+            img.Save(ms, ImageFormat.Png);
+
+            byte[] htmlImage = ms.ToArray();// new Html2ImageBinary(html).GetImage();
+
+            var item = new AssessmentQuestion
+            {
+                TopicId = default(int?),
+                GroupId = default(int?),
+                DifficultyLevel = default(int?),
+                AnswerType = "Single",
+                QuestionText = html,
+                QuestionImage = htmlImage,
+                OptionsLayoutIsVertical = true
+            };
+
+            return item;
+        }
+
+
+        public List<string> GetOptions(ExcelWorksheet workSheet, int row)
+        {
+            var options = new List<string>();
+
+            for (int x = 2; x <= 6; x++)
+            {
+                var temp = workSheet.Cells[row, x].Text.Trim();
+                if (string.IsNullOrWhiteSpace(temp))
+                {
+                    break;
+                }
+                else
+                {
+                    if (temp.Length > 300) temp = temp.Substring(0, 300);
+                    options.Add(temp);
+                }
+            }
+
+
+            return options;
+        }
+
         private void TopicGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
             bttnDeleteTopic.IsEnabled = bttnEditTopic.IsEnabled = TopicGrid.SelectedItem != null;
@@ -477,5 +935,36 @@ namespace AuthorApp
         {
             bttnEditLevel.IsEnabled = bttnDeleteLevel.IsEnabled = LevelGrid.SelectedItem != null;
         }
+
+        private void BtnBrowse_Click(object sender, RoutedEventArgs e)
+        {
+            SelectFile();
+        }
+
+        private void BtnImport_Click(object sender, RoutedEventArgs e)
+        {
+            Import();
+        }
+    }
+
+    public class TempItem
+    {
+        public string Question { get; set; }
+
+        public byte[] ImageBytes { get; set; }
+
+        public string ImageStyle { get; set; }
+
+        public string FileName { get; set; }
+
+        public List<TempOption> Options { get; set; } = new List<TempOption>();
+
+    }
+
+    public class TempOption
+    {
+        public string OptionText { get; set; }
+
+        public bool IsCorrect { get; set; }
     }
 }
